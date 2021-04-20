@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Requests\UserRequest;
+use App\User as AppUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -18,21 +19,32 @@ class UserController extends Controller
     public function index(User $model)
     {
         return view('users.index');
-    }  
+    }
 
-    public function listAllUsers(){
+    public function listAllUsers()
+    {
         $users = User::all();
 
-        return view('users.users',[
+        return view('users.users', [
             'users' => $users
         ]);
     }
 
-    public function showForm(){
+    public function listUser(User $user)
+    {
+        return view("users.users-update", [
+            'user' => $user
+        ]);
+        
+    }
+
+    public function showForm()
+    {
         return view('users.users-create');
     }
 
-    public function addUser(Request $request){
+    public function addUser(Request $request)
+    {
 
         $this->validate($request, [
             'name' => 'required',
@@ -47,8 +59,6 @@ class UserController extends Controller
         $user = User::create($data);
 
         return redirect()
-        ->route('users');
+            ->route('users');
     }
-
-
 }

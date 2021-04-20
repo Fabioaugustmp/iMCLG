@@ -4,9 +4,12 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <!-- Brand -->
+        <!-- Brand 
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <img src="{{ asset('argon') }}/img/brand/blue.png" class="navbar-brand-img" alt="...">
+            <img src="{{ asset('argon') }}/img/brand/logo.png" class="navbar-brand-img" alt="...">
+        </a>-->
+        <a class="navbar-brand pt-0" href="{{ route('properties') }}">            
+            <h1 style="color: #1e1a55; font-weight: 800; "><i class="fas fa-city"></i> iMCLG</h1>            
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -78,11 +81,11 @@
             </form>
             <!-- Navigation -->
             <ul class="navbar-nav">
-                <li class="nav-item">
+               <!-- <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}">
                         <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
                     </a>
-                </li>
+                </li>-->
                 <li class="nav-item">
                     <a class="nav-link active" href="#ativos-usuarios" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="ativos-usuarios">
                         <i class="fas fa-users" style="color: #fb6340;"></i>
@@ -113,13 +116,13 @@
                     <div class="collapse show" id="ativos-imobiliarios">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('profile.edit') }}">
-                                    {{ __('User profile') }}
+                                <a class="nav-link" href="{{ route('properties') }}">
+                                    {{ __('Listar Ativos') }}
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.index') }}">
-                                    {{ __('User Management') }}
+                                <a class="nav-link" href="{{ route('properties.create') }}">
+                                    {{ __('Criar Ativo') }}
                                 </a>
                             </li>
                         </ul>
@@ -134,13 +137,13 @@
                     <div class="collapse show" id="ativos-socios-participacoes">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('profile.edit') }}">
-                                    {{ __('User profile') }}
+                                <a class="nav-link" href="{{ route('partners') }}">
+                                    {{ __('Listar Sócios e Participações') }}
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.index') }}">
-                                    {{ __('User Management') }}
+                                <a class="nav-link" href="{{ route('partner.create') }}">
+                                    {{ __('Criar Sócio ou Participaçao') }}
                                 </a>
                             </li>
                         </ul>
@@ -155,13 +158,13 @@
                     <div class="collapse show" id="despesas-ativos-imobiliarios">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('profile.edit') }}">
-                                    {{ __('User profile') }}
+                                <a class="nav-link" href="{{ route('expense') }}">
+                                    {{ __('Listar Despesas') }}
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.index') }}">
-                                    {{ __('User Management') }}
+                                <a class="nav-link" href="{{ route('expense.create') }}">
+                                    {{ __('Criar Despesa') }}
                                 </a>
                             </li>
                         </ul>
@@ -197,10 +200,10 @@
             </ul>
             <!-- Divider -->
             <hr class="my-3">
-            <!-- Heading -->
-            <h6 class="navbar-heading text-muted">Relatórios</h6>
+            <!-- Heading 
+            <h6 class="navbar-heading text-muted">Relatórios</h6>-->
             <!-- Navigation -->
-            <ul class="navbar-nav mb-md-3">
+            <!--<ul class="navbar-nav mb-md-3">
                 <li class="nav-item">
                     <a class="nav-link" href="https://argon-dashboard-laravel.creative-tim.com/docs/getting-started/overview.html">
                         <i class="ni ni-spaceship"></i> Getting started
@@ -216,7 +219,7 @@
                         <i class="ni ni-ui-04"></i> Components
                     </a>
                 </li>
-            </ul>
+            </ul>-->
         </div>
     </div>
 </nav>

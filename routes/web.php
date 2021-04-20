@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ExpensesController;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PropertiesController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,5 +38,20 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('users', [UserController::class, 'listAllUsers'])->name('users');
 	Route::get('users/create', [UserController::class, 'showForm'])->name('users/create');
 	Route::post('users/create', [UserController::class, 'addUser'])->name('users/create.post');
+	Route::get('users/{user}', [UserController::class, 'listUser'])->name('users.list');
+	Route::post('users/{user}', [UserController::class, 'updateUser'])->name('users.update');
+
+	Route::get('properties', [PropertiesController::class, 'listaAllProperties'])->name('properties');
+	Route::get('properties/create', [PropertiesController::class, 'createPropertie'])->name('properties.create');	
+
+	Route::get('partners', [PartnerController::class, 'listaAllPartner'])->name('partners');
+	Route::get('partner/create', [PartnerController::class, 'createPartner'])->name('partner.create');
+
+	Route::get('expense', [ExpensesController::class, 'listaAllExpenses'])->name('expense');
+	Route::get('expense/create', [ExpensesController::class, 'createExpense'])->name('expense.create');
+	
+
+
+	
 });
 
