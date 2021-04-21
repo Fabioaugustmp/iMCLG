@@ -84,7 +84,7 @@
             <div class="col-xl-12 order-xl-1">
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white border-0">
-                        <div class="row align-items-center">
+                        <div class="row justify-content-end">
                             <a href="{{ '/expense' }}" class="btn btn-icon btn-3 btn-primary" type="button">
                                 <span class="btn-inner--icon"><i class="fas fa-coins"></i></span>
                                 <span class="btn-inner--text">Histórico de Despesas</span>
@@ -336,11 +336,16 @@
                                     </table>
                                 </div>
                             </div>
-
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary mt-4"><i class="far fa-plus-square"
-                                        aria-hidden="true"></i> {{ __(' Criar ativo') }}</button>
-                            </div>
+                        </div>
+                        <div class="row align-items-center mb-3 card-body">
+                            <a href="{{ '/users/create' }}" class="btn btn-icon btn-3 btn-primary" type="button">
+                                <!--<span class="btn-inner--icon"><i class="fas fa-user-plus"></i></span>-->
+                                <span class="btn-inner--text">Gravar</span>
+                            </a>
+                            <a href="{{ route('properties') }}" class="btn btn-icon bt  n-3 btn-primary" type="button">
+                                <!--<span class="btn-inner--icon"><i class="fas fa-user-plus"></i></span>-->
+                                <span class="btn-inner--text">Cancelar</span>
+                            </a>
                         </form>
                         <hr class="my-4" />
                     </div>

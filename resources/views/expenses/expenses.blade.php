@@ -15,6 +15,15 @@
                         <form role="form" method="POST" action="">
                             @csrf
                             <div class="card-header bg-white border-0">
+                                <div class="row justify-content-end">
+                                    <a href="{{ route('expense.create') }}" class="btn btn-icon btn-3 btn-primary"
+                                        type="button">
+                                        <span class="btn-inner--icon"><i class="fas fa-plus-square"></i></span>
+                                        <span class="btn-inner--text">Nova Despesa</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-header bg-white border-0">
                                 <table class="table table-bordered table-hover mb-3">
                                     <thead>
                                         <tr>

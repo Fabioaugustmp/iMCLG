@@ -11,6 +11,15 @@
         <div class="row">
             <div class="col-xl-12 order-xl-1">
                 <div class="card bg-secondary shadow">
+                    <div class="card-header bg-white border-0">
+                        <div class="row justify-content-end">
+                            <a href="{{ route('partner.create') }}" class="btn btn-icon btn-3 btn-primary"
+                                type="button">
+                                <span class="btn-inner--icon"><i class="fas fa-plus-square"></i></span>
+                                <span class="btn-inner--text">Novo Sócio</span>
+                            </a>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <form role="form" method="POST" action="">
                             @csrf

@@ -77,7 +77,7 @@
                                         <!--<span class="btn-inner--icon"><i class="fas fa-user-plus"></i></span>-->
                                         <span class="btn-inner--text">Gravar</span>
                                     </a>
-                                    <a href="{{ '/users/create' }}" class="btn btn-icon bt  n-3 btn-primary" type="button">
+                                    <a href="{{ route('partners') }}" class="btn btn-icon bt  n-3 btn-primary" type="button">
                                         <!--<span class="btn-inner--icon"><i class="fas fa-user-plus"></i></span>-->
                                         <span class="btn-inner--text">Cancelar</span>
                                     </a>

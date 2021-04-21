@@ -4,6 +4,7 @@ use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PropertiesController;
+use App\Http\Controllers\RealEstateController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,10 +21,11 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\PropertiesController::class, 'listaAllProperties'])->name('home');
 Auth::routes();
 
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
+//Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
+Route::get('/home', 'App\Http\Controllers\PropertiesController@listaAllProperties')->name('home');
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -49,6 +51,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('expense', [ExpensesController::class, 'listaAllExpenses'])->name('expense');
 	Route::get('expense/create', [ExpensesController::class, 'createExpense'])->name('expense.create');
+
+	Route::get('realestate', [RealEstateController::class, 'listAllRealEstate'])->name('realestate');
+	Route::get('realestate/create', [RealEstateController::class, 'showRealEstate'])->name('realestate.create');
+	Route::post('realestate/create', [RealEstateController::class, 'addRealEstate'])->name('realestate.create.post');
+	Route::get('realestate/{realestate}', [RealEstateController::class, 'updateRealEstate'])->name('realestate.update');
 	
 
 

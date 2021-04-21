@@ -13,6 +13,6 @@ class PartnerController extends Controller
     }
 
     public function listaAllPartner(){
-        return view('partner.properties');
+        return view('partner.partner');
     }
 }
