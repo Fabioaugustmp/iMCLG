@@ -5,6 +5,10 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PropertiesController;
 use App\Http\Controllers\RealEstateController;
+use App\Http\Controllers\ConstructionController;
+use App\Http\Controllers\StatusPropertiesController;
+use App\Http\Controllers\ExpenseTypeController;
+use App\Models\Construction;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,9 +60,19 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('realestate/create', [RealEstateController::class, 'showRealEstate'])->name('realestate.create');
 	Route::post('realestate/create', [RealEstateController::class, 'addRealEstate'])->name('realestate.create.post');
 	Route::get('realestate/{realestate}', [RealEstateController::class, 'updateRealEstate'])->name('realestate.update');
-	
+	Route::put('realestate/{realestate}', [RealEstateController::class, 'editRealEstate'])->name('realestate.edit');
 
+	Route::get('construction', [ConstructionController::class, 'listAllConstruction'])->name('construction');
+	Route::get('construction/create', [ConstructionController::class, 'listConstruction'])->name('construction.create');
+	Route::post('construction/create', [ConstructionController::class, 'addConstruction'])->name('construction.add');
+	Route::get('construction/{construction}', [ConstructionController::class, 'updateConstruction'])->name('construction.show');
+	Route::put('construction/{construction}', [constructionController::class, 'editconstruction'])->name('construction.edit');
 
+	Route::get('statusproperties', [StatusPropertiesController::class, 'listAllSP'])->name('statusproperties');
+	Route::get('statusproperties/create', [StatusPropertiesController::class, 'createSP'])->name('statusproperties.create');
+
+	Route::get('expensetype', [ExpenseTypeController::class, 'listAllExpenseTypes'])->name('expensetype');
+	Route::get('expensetype/create', [ExpenseTypeController::class, 'createExpenseType'])->name('expensetype.create');
 	
 });
 

@@ -102,10 +102,9 @@
                                 </div>
                                 <select class="custom-select" id="inputGroupSelect01">
                                     <option selected>Selecione</option>
-                                    <option value="1">Casa</option>
-                                    <option value="2">Apartamento</option>
-                                    <option value="3">Lote</option>
-                                    <option value="4">Fazenda</option>
+                                    @foreach ($realestate as $estate)
+                                        <option value="{{ $estate->id }}">{{ $estate->realestate }}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -230,10 +229,9 @@
                                 <div class="col-sm-12">
                                     <select class="custom-select form-control" id="validationDefault04" required>
                                         <option selected disabled value="">Selecione ...</option>
-                                        <option>Variadas</option>
-                                        <option>Casa</option>
-                                        <option>Lote</option>
-                                        <option>Sobrado</option>
+                                        @foreach ($constructions as $construction)
+                                            <option value="{{ $construction->id }}">{{ $construction->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
@@ -303,7 +301,8 @@
                                                     <div class="custom-control custom-switch">
                                                         <input type="checkbox" class="custom-control-input"
                                                             id="customSwitch1">
-                                                        <label class="custom-control-label" for="customSwitch1">Gestor do Ativo</label>
+                                                        <label class="custom-control-label" for="customSwitch1">Gestor do
+                                                            Ativo</label>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -316,7 +315,8 @@
                                                     <div class="custom-control custom-switch">
                                                         <input type="checkbox" class="custom-control-input"
                                                             id="customSwitch2">
-                                                        <label class="custom-control-label" for="customSwitch2">Gestor do Ativo</label>
+                                                        <label class="custom-control-label" for="customSwitch2">Gestor do
+                                                            Ativo</label>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -328,7 +328,8 @@
                                                     <div class="custom-control custom-switch">
                                                         <input type="checkbox" class="custom-control-input"
                                                             id="customSwitch3">
-                                                        <label class="custom-control-label" for="customSwitch3">Gestor do Ativo</label>
+                                                        <label class="custom-control-label" for="customSwitch3">Gestor do
+                                                            Ativo</label>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -336,23 +337,22 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row align-items-center mb-3 card-body">
-                            <a href="{{ '/users/create' }}" class="btn btn-icon btn-3 btn-primary" type="button">
-                                <!--<span class="btn-inner--icon"><i class="fas fa-user-plus"></i></span>-->
-                                <span class="btn-inner--text">Gravar</span>
-                            </a>
-                            <a href="{{ route('properties') }}" class="btn btn-icon bt  n-3 btn-primary" type="button">
-                                <!--<span class="btn-inner--icon"><i class="fas fa-user-plus"></i></span>-->
-                                <span class="btn-inner--text">Cancelar</span>
-                            </a>
-                        </form>
-                        <hr class="my-4" />
                     </div>
+                    <div class="text-start">
+                        <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-save" aria-hidden="true"></i>
+                            {{ __(' Gravar Ativo') }}</button>
+                        <a href="{{ route('properties') }}" class="btn btn-primary mt-4" type="button">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                            <span class="btn-inner--text">Cancelar</span>
+                        </a>
+                    </div>
+                    </form>
+                    <hr class="my-4" />
                 </div>
             </div>
         </div>
+    </div>
 
-        @include('layouts.footers.auth')
+    @include('layouts.footers.auth')
     </div>
 @endsection

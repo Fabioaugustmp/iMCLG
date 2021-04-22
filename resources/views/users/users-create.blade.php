@@ -11,14 +11,6 @@
         <div class="row">
             <div class="col-xl-12 order-xl-1">
                 <div class="card bg-secondary shadow">
-                    <div class="card-header bg-white border-0">
-                        <div class="row align-items-center">
-                            <a href="{{ '/users/create' }}" class="btn btn-icon btn-3 btn-primary" type="button">
-                                <span class="btn-inner--icon"><i class="fas fa-user-plus"></i></span>
-                                <span class="btn-inner--text">Criar usuário</span>
-                            </a>
-                        </div>
-                    </div>
                     <div class="card-body">
                         <form role="form" method="POST" action="{{ route('users/create') }}">
                             @csrf
@@ -80,9 +72,13 @@
                                 <small>{{ __('password strength') }}: <span
                                         class="text-success font-weight-700">{{ __('strong') }}</span></small>
                             </div> --}}
-                            <div class="text-center">
+                            <div class="text-left">
                                 <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-user-plus"
                                         aria-hidden="true"></i> {{ __(' Criar conta') }}</button>
+                                <a href="{{ route('users') }}" class="btn btn-primary mt-4" type="button">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                    <span class="btn-inner--text">Cancelar</span>
+                                </a>
                             </div>
                         </form>
                         <hr class="my-4" />

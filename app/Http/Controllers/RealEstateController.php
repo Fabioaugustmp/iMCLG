@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Construction;
 use App\Models\RealEstate;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,9 @@ class RealEstateController extends Controller
     public function listAllRealEstate(){
 
         $realestates = RealEstate::all();
-
+    
         return view('realestate.realestate', [
-            'realestates' => $realestates
+            'realestates' => $realestates,           
         ]);
     }
 
@@ -26,6 +27,18 @@ class RealEstateController extends Controller
         return view('realestate.realestate-update', [
             'realestate' => $realestate
         ]);
+    }
+
+    public function editRealEstate(RealEstate $realestate, Request $request){
+
+        $realestate->description = $request->description;
+        $realestate->status = $request->status;
+
+        $realestate->save();
+
+        return redirect()
+        ->route('realestate')
+        ->with('success', 'Ativo atualizado com sucesso!');       
     }
 
     public function addRealEstate(Request $request){

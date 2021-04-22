@@ -11,7 +11,7 @@
             <div class="col-xl-12 order-xl-1">
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white border-0">
-                        <div class="row align-items-center">
+                        <div class="row justify-content-end">
                             <a href="{{ route('users/create') }}" class="btn btn-icon btn-3 btn-primary" type="button">
                                 <span class="btn-inner--icon"><i class="fas fa-user-plus"></i></span>
 

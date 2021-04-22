@@ -22,8 +22,19 @@
          <a class="navbar-brand pt-0" href="{{ route('properties') }}">
              <h1 style="color: #cfcfcf; font-weight: 800; "><i class="fas fa-city"></i> iMCLG</h1>
          </a>
+         <div align="center">
+             <div class="media align-items-center">
+                 <span class="avatar avatar-sm rounded-circle">
+                     <i class="far fa-user"></i>
+                 </span>
+                 <span class="mb-0 ml-2 text-sm  font-weight-bold">{{ auth()->user()->name }}</span>
+             </div>
+         </div>
+
+       
          <!-- User -->
          <ul class="nav align-items-center d-md-none">
+
              <li class="nav-item dropdown">
                  <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                      aria-expanded="false">
@@ -102,48 +113,28 @@
                     </a>
                 </li>-->
                  <li class="nav-item">
-                     <a class="nav-link active" href="{{ route('properties') }}" role="button"
-                         aria-expanded="true" aria-controls="ativos-imobiliarios"> <!--data-toggle="collapse"-->
+                     <a class="nav-link active" href="{{ route('properties') }}" role="button" aria-expanded="true"
+                         aria-controls="ativos-imobiliarios">
+                         <!--data-toggle="collapse"-->
                          <i class="fas fa-city" style="color: #cfcfcf;"></i>
                          <span class="nav-link-text" style="color: #cfcfcf;">{{ __('Ativos Imobiliários') }}</span>
                      </a>
                  <li class="nav-item">
-                     <a class="nav-link active" href="{{ route('partners') }}"  role="button"
-                         aria-expanded="true" aria-controls="ativos-socios-participacoes"> <!--data-toggle="collapse"-->
+                     <a class="nav-link active" href="{{ route('partners') }}" role="button" aria-expanded="true"
+                         aria-controls="ativos-socios-participacoes">
+                         <!--data-toggle="collapse"-->
                          <i class="fas fa-user-tie" style="color: #cfcfcf;"></i>
                          <span class="nav-link-text"
                              style="color: #cfcfcf;">{{ __('Sócios e Participações') }}</span>
                      </a>
                  </li>
                  <li class="nav-item">
-                     <a class="nav-link active" href="{{ route('expense') }}" role="button" 
-                     aria-expanded="true" aria-controls="despesas-ativos-imobiliarios">
+                     <a class="nav-link active" href="{{ route('expense') }}" role="button" aria-expanded="true"
+                         aria-controls="despesas-ativos-imobiliarios">
                          <i class="fas fa-hand-holding-usd" style="color: #cfcfcf;"></i>
                          <span class="nav-link-text"
                              style="color: #cfcfcf;">{{ __('Despesas dos Ativos Imobiliários') }}</span>
                      </a>
-                 </li>
-                 <li class="nav-item">
-                     <a class="nav-link active" href="#ativos-usuarios" data-toggle="collapse" role="button"
-                         aria-expanded="true" aria-controls="ativos-usuarios">
-                         <i class="fas fa-users" style="color: #cfcfcf;"></i>
-                         <span class="nav-link-text" style="color: #cfcfcf;">{{ __('Gestão de Usuários') }}</span>
-                     </a>
-
-                     <div class="collapse show" id="ativos-usuarios">
-                         <ul class="nav nav-sm flex-column">
-                             <li class="nav-item">
-                                 <a class="nav-link" href="{{ route('users') }}">
-                                     {{ __('Listar Usuários') }}
-                                 </a>
-                             </li>
-                             <li class="nav-item">
-                                 <a class="nav-link" href="{{ route('users/create') }}">
-                                     {{ __('Criar Usuário') }}
-                                 </a>
-                             </li>
-                         </ul>
-                     </div>
                  </li>
 
                  {{-- <li class="nav-item">
@@ -176,25 +167,40 @@
              <!-- Divider -->
              <hr class="my-3" style="background-color: #cfcfcf">
              <!-- Heading -->
-            <h6 class="navbar-heading text-muted">Cadastros</h6>
+             <h6 class="navbar-heading text-muted">Cadastros</h6>
              <!-- Navigation -->
              <ul class="navbar-nav mb-md-3">
-                <li class="nav-item" >
-                    <a class="nav-link" href="{{ route('realestate')}}" style="color: #cfcfcf">
-                        <i class="ni ni-collection"></i> Tipos de Ativos
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: #cfcfcf">
-                        <i class="ni ni-building"></i> Tipos de Construcao
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" style="color: #cfcfcf">
-                        <i class="ni ni-ui-04"></i> Tipos de Despesas
-                    </a>
-                </li>
-            </ul>
+                 <li class="nav-item">
+                     <a class="nav-link" href="{{ route('realestate') }}" style="color: #cfcfcf">
+                         <i class="ni ni-collection"></i> Tipos de Ativos
+                     </a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="{{ route('construction') }}" style="color: #cfcfcf">
+                         <i class="ni ni-building"></i> Tipos de Construcao
+                     </a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="{{ route('statusproperties') }}" style="color: #cfcfcf">
+                         <i class="ni ni-ui-04"></i> Status de Ativos
+                     </a>
+                 </li>
+                 <!--
+                 <li class="nav-item">
+                     <a class="nav-link" href="{{ route('expensetype') }}" style="color: #cfcfcf">
+                         <i class="ni ni-ui-04"></i> Tipos de Despesas
+                     </a>
+                 </li>
+                -->
+             </ul>
+             <hr class="my-3" style="background-color: #cfcfcf">
+             <ul class="navbar-nav mb-md-3">
+                 <li class="nav-item">
+                     <a class="nav-link" href="{{ route('users') }}" style="color: #cfcfcf">
+                         <i class="fas fa-users" style="color: #cfcfcf;"></i> Usuários
+                     </a>
+                 </li>
+             </ul>
          </div>
      </div>
  </nav>

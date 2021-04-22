@@ -70,13 +70,11 @@
                                     <span class="input-group-text" id="addon-wrapping">Obs</span>
                                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
-                                <div class="row align-items-center mb-3">
-                                    <a href="{{ '/users/create' }}" class="btn btn-icon btn-3 btn-primary" type="button">
-                                        <!--<span class="btn-inner--icon"><i class="fas fa-user-plus"></i></span>-->
-                                        <span class="btn-inner--text">Gravar</span>
-                                    </a>
-                                    <a href="{{ route('expense') }}" class="btn btn-icon bt  n-3 btn-primary" type="button">
-                                        <!--<span class="btn-inner--icon"><i class="fas fa-user-plus"></i></span>-->
+                                <div class="text-start">
+                                    <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-save"
+                                        aria-hidden="true"></i> {{ __(' Gravar Despesa') }}</button>
+                                    <a href="{{ route('expense') }}" class="btn btn-primary mt-4" type="button">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
                                         <span class="btn-inner--text">Cancelar</span>
                                     </a>
                                 </div>

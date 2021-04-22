@@ -14,17 +14,9 @@
                     <div class="card-body">
                         
                         <div class="card-body">
-                            <div class="card-header bg-white border-0">
-                                <div class="row align-items-center card-body">
-                                    <a href="{{ route('realestate') }}" class="btn btn-icon btn-3 btn-primary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-stream"></i></span>
-                                        <span class="btn-inner--text">Listar Ativos</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <form role="form" method="POST" action="{{  }}">
+                            <form role="form" method="POST" action="{{ route('realestate.edit', ['realestate' => $realestate->id]) }}">
                                 @csrf
-
+                                @method('PUT')
                                 <div class="form-group">
                                     <label for="realestate">Nome do Ativo</label>
                                     <div class="input-group input-group-alternative mb-3">
@@ -64,7 +56,7 @@
                                 <div class="form-group">
                                     <label for="status">Selecione Um Novo Status</label>
                                     <div>
-                                        <select class="custom-select" id="status" name="status">
+                                        <select class="custom-select" id="status" name="status" required>
                                             <option selected disabled>Selecione...</option>                                                                                        
                                             <option value="1">Ativo</option>
                                             <option value="0">Inativo</option>
@@ -77,9 +69,10 @@
                                 @endif
                                 </div>
 
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-plus"
+                                <div class="text-start">
+                                    <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-edit"
                                             aria-hidden="true"></i> {{ __(' Atualizar ativo') }}</button>
+                                            <a href="{{ route('realestate')}}" class="btn btn-primary mt-4"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
                                 </div>
                             </form>
                         </div>

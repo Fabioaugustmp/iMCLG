@@ -1,9 +1,9 @@
-@extends('layouts.app', ['title' => __('Tipos de Construção')])
+@extends('layouts.app', ['title' => __('Tipos de Despesa')])
 
 @section('content')
     @include('users.partials.header-profile', [
-    'title' => __('Tipos de Construção'),
-    'description' => __('Criar Tipo de Construção'),
+    'title' => __('Tipos de Despesa'),
+    'description' => __('Criar Tipo de Despesa'),
     'class' => 'col-lg-12'
     ])
 
@@ -18,7 +18,7 @@
                                 @csrf
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                    <label for="name">Tipo de Construção</label>
+                                    <label for="name">Tipo de Despesa</label>
                                     <div class="input-group input-group-alternative mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-flag"></i></span>
@@ -35,7 +35,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="description">Descricao da Construção</label>
+                                    <label for="description">Descricao</label>
                                     <textarea class="form-control {{ $errors->has('description') ? ' has-danger' : '' }}" id="description" rows="5" name="description"
                                         placeholder="Informe uma breve descricao da construção ..." required value="{{ old('description') }}"></textarea>
                                     @if ($errors->has('description'))
@@ -64,7 +64,7 @@
                                 <div class="text-start">
                                     <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-plus"
                                             aria-hidden="true"></i> {{ __(' Gravar') }}</button>
-                                    <a href="{{ route('construction')}}" class="btn btn-primary mt-4"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+                                    <a href="{{ route('expensetype')}}" class="btn btn-primary mt-4"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
                                 </div>
                             </form>
                         </div>

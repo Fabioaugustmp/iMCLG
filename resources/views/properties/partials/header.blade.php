@@ -1,6 +1,6 @@
-<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="background-image: url(../argon/img/theme/mprofile-cover.jpg); background-size: cover; background-position: center top;">
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="background-color:#1e1a55 ;">
     <!-- Mask -->
-    <span class="mask bg-gradient-default opacity-8"></span>
+    <span></span>
     <!-- Header container -->
     <div class="container-fluid d-flex align-items-center">
         <div class="row">

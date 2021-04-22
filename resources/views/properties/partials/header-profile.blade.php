@@ -1,7 +1,7 @@
-<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
-    style="background-image: url(../argon/img/theme/mprofile-cover.jpg); background-size: cover; background-position: center top;">
+<div class="header pb-7 pt-4 pt-lg-4 d-flex align-items-center"
+    style="background-color:#1e1a55; color: #1e1a55">
     <!-- Mask -->
-    <span class="mask bg-gradient-default opacity-8"></span>
+    <span></span>
     <!-- Header container -->
     <div class="container-fluid d-flex align-items-center">
         <div class="row">
@@ -9,7 +9,6 @@
                 <div class="header-body">
                     <div class="row align-items-center py-4">
                         <div class="col-12 col-lg-12">
-                            <h6 class="h2 text-white d-inline-block mb-0">{{ $title }}</h6>
                             <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                     <li class="breadcrumb-item"><a href="{{ route('home') }}"><i

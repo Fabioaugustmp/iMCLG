@@ -72,16 +72,14 @@
                                         </tr>
                                     </tbody>
                                     </table>
-                                <div class="row align-items-center mb-3">
-                                    <a href="{{ '/users/create' }}" class="btn btn-icon btn-3 btn-primary" type="button">
-                                        <!--<span class="btn-inner--icon"><i class="fas fa-user-plus"></i></span>-->
-                                        <span class="btn-inner--text">Gravar</span>
-                                    </a>
-                                    <a href="{{ route('partners') }}" class="btn btn-icon bt  n-3 btn-primary" type="button">
-                                        <!--<span class="btn-inner--icon"><i class="fas fa-user-plus"></i></span>-->
-                                        <span class="btn-inner--text">Cancelar</span>
-                                    </a>
-                                </div>
+                                    <div class="text-start">
+                                        <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-save"
+                                            aria-hidden="true"></i> {{ __(' Gravar Sócio') }}</button>
+                                        <a href="{{ route('partners') }}" class="btn btn-primary mt-4" type="button">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                            <span class="btn-inner--text">Cancelar</span>
+                                        </a>
+                                    </div>
                             </div>
 
                         </form>

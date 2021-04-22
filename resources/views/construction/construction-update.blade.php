@@ -1,9 +1,9 @@
-@extends('layouts.app', ['title' => __('Usuários')])
+@extends('layouts.app', ['title' => __('Tipos Construcao')])
 
 @section('content')
     @include('users.partials.header-profile', [
-    'title' => __('Tipo de Ativos'),
-    'description' => __('Atualizar Ativo'),
+    'title' => __('Tipos de Construção'),
+    'description' => __('Atualizar Construção'),
     'class' => 'col-lg-12'
     ])
 
@@ -14,38 +14,31 @@
                     <div class="card-body">
                         
                         <div class="card-body">
-                            <div class="card-header bg-white border-0">
-                                <div class="row align-items-center card-body">
-                                    <a href="{{ route('realestate') }}" class="btn btn-icon btn-3 btn-primary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-stream"></i></span>
-                                        <span class="btn-inner--text">Listar Ativos</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <form role="form" method="POST" action="{{ route('realestate.create.post') }}">
+                            <form role="form" method="POST" action="{{ route('construction.edit', $construction->id) }}">
                                 @csrf
+                                @method('PUT')
 
                                 <div class="form-group">
-                                    <label for="realestate">Nome do Ativo</label>
+                                    <label for="construction">Nome do Ativo</label>
                                     <div class="input-group input-group-alternative mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-flag"></i></span>
                                         </div>
                                         <input readonly class="form-control"
-                                            placeholder="{{ __('Tipo do Ativo') }}" type="text" name="realestate"
-                                            value="{{ $realestate->realestate }}" required autofocus>
+                                            placeholder="{{ __('Tipo do Ativo') }}" type="text" name="construction"
+                                            value="{{ $construction->name }}" required autofocus>
                                     </div>
-                                    @if ($errors->has('realestate'))
+                                    @if ($errors->has('construction'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
-                                            <strong>{{ $errors->first('realestate') }}</strong>
+                                            <strong>{{ $errors->first('construction') }}</strong>
                                         </span>
                                     @endif
                                 </div>
 
                                 <div class="form-group">
                                     <label for="description">Descricao do Ativo</label>
-                                    <textarea class="form-control {{ $errors->has('realestate') ? ' has-danger' : '' }}" id="description" rows="5" name="description"
-                                        placeholder="Informe uma breve descricao do ativo ..." required value="{{ $realestate->description }}"></textarea>
+                                    <textarea class="form-control {{ $errors->has('construction') ? ' has-danger' : '' }}" id="description" rows="5" name="description"
+                                        placeholder="Informe uma breve descricao do ativo ..." required>{{ $construction->description }}</textarea>
                                     @if ($errors->has('description'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $errors->first('description') }}</strong>
@@ -57,7 +50,7 @@
                                     <legend>Status do Ativo</legend>
                                     <div class="form-group">
                                       <label for="">Status Atual do Ativo</label>
-                                      <input type="text" id="" value="{{ $realestate->status === 1 ? 'Ativo' : 'Inativo' }}" class="form-control" placeholder="Disabled input">
+                                      <input type="text" id="" value="{{ $construction->status === 1 ? 'Ativo' : 'Inativo' }}" class="form-control" placeholder="Disabled input">
                                     </div>
                                 </fieldset>
 
@@ -65,7 +58,7 @@
                                     <label for="status">Selecione Um Novo Status</label>
                                     <div>
                                         <select class="custom-select" id="status" name="status">
-                                            <option selected disabled value="{{ $realestate->status }}">Selecione...</option>                                                                                        
+                                            <option selected disabled value="{{ $construction->status }}">Selecione...</option>                                                                                        
                                             <option value="1">Ativo</option>
                                             <option value="0">Inativo</option>
                                         </select>
@@ -77,9 +70,10 @@
                                 @endif
                                 </div>
 
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-plus"
-                                            aria-hidden="true"></i> {{ __(' Atualizar ativo') }}</button>
+                                <div class="text-left">
+                                    <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-save"
+                                            aria-hidden="true"></i> {{ __(' Gravar') }}</button>
+                                            <a href="{{ route('construction')}}" class="btn btn-primary mt-4"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
                                 </div>
                             </form>
                         </div>

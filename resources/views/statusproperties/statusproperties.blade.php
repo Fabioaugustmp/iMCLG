@@ -1,9 +1,9 @@
-@extends('layouts.app', ['title' => __('Tipos de Ativos')])
+@extends('layouts.app', ['title' => __('Status de Ativos')])
 
 @section('content')
     @include('users.partials.header-profile', [
-    'title' => __('Tipos de Ativos'),
-    'description' => __('Listar Tipos'),
+    'title' => __('Status de Ativos'),
+    'description' => __('Listar Status de Ativos'),
     'class' => 'col-lg-12'
     ])
 
@@ -12,17 +12,17 @@
             <div class="col-xl-12 order-xl-1">
                 <div class="card bg-secondary shadow">
                     <div class="card-body">
-                        <div class="card-header bg-white border-0">
+                        <div class="card-header bg-white border-0 justify-content-end">
                             <main role="main" class="container">
                                 @include('partials.alerts')
                                 @yield('content')
                             </main>
 
-                            <div class="row align-items-center justify-content-end">
-                                <a href="{{ route('realestate.create') }}" class="btn btn-icon btn-3 btn-primary"
+                            <div class="row justify-content-end">
+                                <a href="{{ route('statusproperties.create') }}" class="btn btn-icon btn-3 btn-primary"
                                     type="button">
                                     <span class="btn-inner--icon"><i class="fas fa-plus-square"></i></span>
-                                    <span class="btn-inner--text">Novo Tipo</span>
+                                    <span class="btn-inner--text">Novo Status</span>
                                 </a>
                             </div>
                         </div>
@@ -32,20 +32,20 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col" class="sort" data-sort="name">ID #</th>
-                                        <th scope="col" class="sort" data-sort="name">Nome do Ativo</th>
+                                        <th scope="col" class="sort" data-sort="name">Nome Status</th>
                                         <th scope="col" class="sort" data-sort="budget">Descricao</th>
                                         <th scope="col" class="sort" data-sort="status">Status</th>
                                         <th scope="col" class="sort">Acoes</th>
                                     </tr>
                                 </thead>
                                 <tbody class="list">
-                                    @foreach ($realestates as $realestate)
+                                   
                                         <tr>
                                             <th scope="row">
                                                 <div class="media align-items-center">
                                                     <div class="media-body">
                                                         <span class="name mb-0 text-md"
-                                                            style="text-transform: uppercase">{{ $realestate->id }}</span>
+                                                            style="text-transform: uppercase"></span>
                                                     </div>
                                                 </div>
                                             </th>
@@ -53,7 +53,7 @@
                                                 <div class="media align-items-center">
                                                     <div class="media-body">
                                                         <span class="name mb-0 text-md"
-                                                            style="text-transform: uppercase">{{ $realestate->realestate }}</span>
+                                                            style="text-transform: uppercase"></span>
                                                     </div>
                                                 </div>
                                             </th>
@@ -61,19 +61,18 @@
                                                 <div class="media align-items-center">
                                                     <div class="media-body">
                                                         <span class="name mb-0 text-md"
-                                                            style="text-transform: uppercase">{{ $realestate->description }}</span>
+                                                            style="text-transform: uppercase"></span>
                                                     </div>
                                                 </div>
                                             </th>
-                                            @if ($realestate->status === 1)
+                                            
                                                 <td class="budget">
                                                     <span class="badge badge-pill badge-success">Ativo</span>
                                                 </td>
-                                            @else
+                                            
                                                 <td class="budget">
                                                     <span class="badge badge-pill badge-danger">Inativo</span>
                                                 </td>
-                                            @endif
 
 
                                             <td class="text-right">
@@ -83,14 +82,14 @@
                                                         <i class="fas fa-ellipsis-v"></i>
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" href="{{ route('realestate.update', $realestate->id) }}"><i class="fas fa-user-edit"></i>
+                                                        <a class="dropdown-item" href=""><i class="fas fa-user-edit"></i>
                                                             Editar
-                                                        </a>
+                                                        
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    
                                 </tbody>
                             </table>
                         </div>
