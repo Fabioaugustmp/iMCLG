@@ -20,121 +20,190 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form role="form" method="POST" action="#">
+                        <form role="form" method="POST" action="{{ route('properties.create.post') }}">
                             @csrf
                             <hr>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">
-                                        Tipo</label>
+                                    <label class="input-group-text" for="realestate">
+                                        Tipo do Ativo</label>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect01">
-                                    <option selected>Selecione</option>
+                                <select class="custom-select" id="realestate" name="realestate">
+                                    <!--<option selected>Selecione</option>-->
                                     @foreach ($realestate as $estate)
                                         @if ($estate->status === 1)
-                                            <option value="{{ $estate->id }}">{{ $estate->realestate }}</option>
+                                            <option value="{{ $estate->realestate }}">{{ $estate->realestate }}</option>
                                         @endif
                                     @endforeach
                                 </select>
+                                @if ($errors->has('realestate'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('realestate') }}</strong>
+                                    </span>
+                                @endif
                             </div>
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect02">
+                                    <label class="input-group-text" for="statusproperties">
                                         Status do Ativos</label>
                                 </div>
-                                <select class="custom-select" id="inputGroupSelect02">
-                                    <option selected>Selecione</option>
+                                <select class="custom-select" id="statusproperties" name="statusproperties">
+                                    <!--<option selected>Selecione</option>-->
                                     @foreach ($statusproperties as $status)
                                         @if ($status->status === 1)
-                                            <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                            <option value="{{ $status->name }}">{{ $status->name }}</option>
                                         @endif
                                     @endforeach
                                 </select>
+                                @if ($errors->has('statusproperties'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('statusproperties') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-6">
                                     <div class="form-group">
                                         <label for="cep">CEP</label>
-                                        <input type="text" class="form-control" maxlength="9" id="cep" placeholder="CEP">                                        
+                                        <input type="text" class="form-control" maxlength="9" id="cep" placeholder="CEP"
+                                            name="cep" value="{{ old('cep')}}" >
                                     </div>
+                                    @if ($errors->has('cep'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('cep') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
 
                                 <div class="col-lg-8 col-md-8 col-sm-6">
                                     <div class="form-group">
                                         <label for="logradouro">Logradouro/Rua</label>
-                                        <input type="text" class="form-control" id="logradouro" placeholder="Logradouro / Rua">                                        
+                                        <input type="text" class="form-control" id="logradouro"
+                                            placeholder="Logradouro / Rua" name="logradouro"
+                                            value="{{ old('logradouro') }}">
                                     </div>
+                                    @if ($errors->has('logradouro'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('logradouro') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
 
 
                                 <div class="col-lg-4 col-md-4 col-sm-6">
                                     <div class="form-group">
                                         <label for="bairro">Bairro</label>
-                                        <input type="text" class="form-control" id="bairro" placeholder="Bairro">                                        
+                                        <input type="text" class="form-control" id="bairro" placeholder="Bairro"
+                                            name="bairro" value="{{ old('bairro') }}">
                                     </div>
+                                    @if ($errors->has('logradouro'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('logradouro') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
-                               
+
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <label for="localidade">Cidade / Localidade</label>
-                                        <input type="text" class="form-control" id="localidade" placeholder="Cidade / Localidade">                                        
+                                        <input type="text" class="form-control" id="localidade"
+                                            placeholder="Cidade / Localidade" name="cidade" value="{{ old('cidade') }}">
                                     </div>
+                                    @if ($errors->has('cidade'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('cidade') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-6">
                                     <div class="form-group">
                                         <label for="uf">Estado</label>
-                                        <input type="text" class="form-control" id="uf" placeholder="Estado / UF">                                    
+                                        <input type="text" class="form-control" id="uf" placeholder="Estado / UF" name="uf"
+                                            value="{{ old('uf') }}">
                                     </div>
-                                </div>                                                                                          
+                                </div>
+                                @if ($errors->has('uf'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('uf') }}</strong>
+                                    </span>
+                                @endif
                             </div>
-                            <hr>                                                   
+                            <hr>
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="validationDefault01">Área Total</label>
-                                    <input type="text" class="form-control" id="validationDefault01" value="Área Total"
-                                        required>
+                                    <label for="areatotal">Área Total</label>
+                                    <input type="number" class="form-control" id="areatotal" name="areatotal"
+                                        value="{{ old('areatotal') }}">
                                 </div>
+                                @if ($errors->has('areatotal'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('areatotal') }}</strong>
+                                    </span>
+                                @endif
                                 <div class="col-md-6 mb-3">
                                     <label for="validationDefault02">Área Construída</label>
-                                    <input type="text" class="form-control" id="validationDefault02" value="Área Construída"
-                                        required>
+                                    <input type="number" class="form-control" id="areaconstruida" name="areaconstruida"
+                                        value="{{ old('areaconstruida') }}">
                                 </div>
+                                @if ($errors->has('areaconstruida'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('areaconstruida') }}</strong>
+                                    </span>
+                                @endif
                             </div>
 
                             <hr>
 
                             <div class="form-row">
                                 <div class="col-4">
-                                    <label for="validationDefault01">Valor Venal</label>
+                                    <label for="valorvenal">Valor Venal</label>
                                     <div class="input-group mb-3">
 
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">R$</span>
                                         </div>
-                                        <input type="number" class="form-control" aria-label="Amount">
+                                        <input type="number" class="form-control" aria-label="Amount" name="valorvenal"
+                                            value="{{ old('valorvenal') }}">
                                     </div>
+                                    @if ($errors->has('valorvenal'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('valorvenal') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="col-4">
-                                    <label for="validationDefault01">Valor da Aquisição</label>
+                                    <label for="valordaaquisicao">Valor da Aquisição</label>
                                     <div class="input-group mb-3">
 
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">R$</span>
                                         </div>
-                                        <input type="number" class="form-control" aria-label="Amount">
+                                        <input type="number" class="form-control" aria-label="Amount"
+                                            name="valordaaquisicao" value="{{ old('valordaaquisicao') }}">
                                     </div>
+                                    @if ($errors->has('valordaaquisicao'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('valordaaquisicao') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="col-4">
-                                    <label for="validationDefault01">Valor de Venda</label>
+                                    <label for="valordevenda">Valor de Venda</label>
                                     <div class="input-group mb-3">
 
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">R$</span>
                                         </div>
-                                        <input type="number" class="form-control" aria-label="Amount">
+                                        <input type="number" class="form-control" aria-label="Amount" name="valordevenda"
+                                            value="{{ old('valordevenda') }}">
                                     </div>
+                                    @if ($errors->has('valordevenda'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('valordevenda') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
 
                             </div>
@@ -143,47 +212,52 @@
 
                             <div class="form-row">
 
-                                <label for="validationDefault04" class="col-form-label">Que tipo de construção existe no
+                                <label for="construction" class="col-form-label">Que tipo de construção existe no
                                     ativo</label>
                                 <div class="col-sm-12">
-                                    <select class="custom-select form-control" id="validationDefault04" required>
-                                        <option selected disabled value="">Selecione ...</option>
+                                    <select class="custom-select form-control" id="construction" required
+                                        name="construction">
                                         @foreach ($constructions as $construction)
                                             @if ($construction->status === 1)
-                                                <option value="{{ $construction->id }}">{{ $construction->name }}
+                                                <option value="{{ $construction->name }}">{{ $construction->name }}
                                                 </option>
                                             @endif
                                         @endforeach
                                     </select>
+                                    @if ($errors->has('construction'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('construction') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
 
                             </div>
 
                             <hr>
 
-                            <div class="form-row">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupFileAddon01">Fotos</span>
-                                    </div>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                            aria-describedby="inputGroupFileAddon01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Selecionar Foto(s)</label>
-                                    </div>
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupFileAddon01">Anexos</span>
-                                    </div>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                            aria-describedby="inputGroupFileAddon01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Selecionar
-                                            Arquivo(s)</label>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- <div class="form-row">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="inputGroupFileAddon01">Fotos</span>
+                                                </div>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                                        aria-describedby="inputGroupFileAddon01">
+                                                    <label class="custom-file-label" for="inputGroupFile01">Selecionar Foto(s)</label>
+                                                </div>
+                                            </div>
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="inputGroupFileAddon01">Anexos</span>
+                                                </div>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                                        aria-describedby="inputGroupFileAddon01">
+                                                    <label class="custom-file-label" for="inputGroupFile01">Selecionar
+                                                        Arquivo(s)</label>
+                                                </div>
+                                            </div>
+                                        </div>-->
 
                             <hr>
 
@@ -192,9 +266,14 @@
                                     <div class="mb-3">
                                         <label for="validationTextarea">Observações</label>
                                         <textarea class="form-control" id="validationTextarea"
-                                            placeholder="Observações gerais do ativo" required></textarea>
+                                            placeholder="Observações gerais do ativo" name="feedback"></textarea>
 
                                     </div>
+                                    @if ($errors->has('feedback'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('feedback') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
 
