@@ -1,9 +1,9 @@
-@extends('layouts.app', ['title' => __('Status de Ativos')])
+@extends('layouts.app', ['title' => __('Tipos de Despesa')])
 
 @section('content')
     @include('users.partials.header-profile', [
-    'title' => __('Status de Ativos'),
-    'description' => __('Criar Status de Ativos'),
+    'title' => __('Tipos de Despesa'),
+    'description' => __('Criar Tipo de Despesa'),
     'class' => 'col-lg-12'
     ])
 
@@ -14,17 +14,17 @@
                     <div class="card-body">
                         
                         <div class="card-body">
-                            <form role="form" method="POST" action="{{ route('statusproperties.add') }}">
+                            <form role="form" method="POST" action="{{ route('classexpenses.add') }}">
                                 @csrf
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                    <label for="name">Nome do Status</label>
+                                    <label for="name">Tipo de Despesa</label>
                                     <div class="input-group input-group-alternative mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-flag"></i></span>
                                         </div>
                                         <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                            placeholder="{{ __('Nome do Status do Ativo') }}" type="text" name="name"
+                                            placeholder="{{ __('Construção') }}" type="text" name="name"
                                             value="{{ old('name') }}" required autofocus>
                                     </div>
                                     @if ($errors->has('name'))
@@ -35,9 +35,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="description">Descricao do Status</label>
+                                    <label for="description">Descricao</label>
                                     <textarea class="form-control {{ $errors->has('description') ? ' has-danger' : '' }}" id="description" rows="5" name="description"
-                                        placeholder="Informe uma breve descricao do ativo ..." required value="{{ old('description') }}"></textarea>
+                                        placeholder="Informe uma breve descricao da construção ..." required value="{{ old('description') }}"></textarea>
                                     @if ($errors->has('description'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $errors->first('description') }}</strong>
@@ -64,7 +64,7 @@
                                 <div class="text-start">
                                     <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-plus"
                                             aria-hidden="true"></i> {{ __(' Gravar') }}</button>
-                                    <a href="{{ route('construction')}}" class="btn btn-primary mt-4"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+                                    <a href="{{ route('classexpenses')}}" class="btn btn-primary mt-4"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
                                 </div>
                             </form>
                         </div>

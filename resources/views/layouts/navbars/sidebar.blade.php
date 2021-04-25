@@ -30,8 +30,6 @@
                  <span class="mb-0 ml-2 text-sm  font-weight-bold">{{ auth()->user()->name }}</span>
              </div>
          </div>
-
-       
          <!-- User -->
          <ul class="nav align-items-center d-md-none">
 
@@ -135,7 +133,7 @@
                          <span class="nav-link-text"
                              style="color: #cfcfcf;">{{ __('Despesas dos Ativos Imobiliários') }}</span>
                      </a>
-                 </li>
+                 </li>                
 
                  {{-- <li class="nav-item">
                     <a class="nav-link" href="{{ route('icons') }}">
@@ -185,6 +183,16 @@
                          <i class="ni ni-ui-04"></i> Status de Ativos
                      </a>
                  </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('expensetype') }}" style="color: #cfcfcf">
+                        <i class="ni ni-money-coins"></i> Tipos de Despesas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('classexpenses') }}" style="color: #cfcfcf">
+                        <i class="fas fa-file-invoice-dollar"></i> Classe de Despesas
+                    </a>
+                </li>
                  <!--
                  <li class="nav-item">
                      <a class="nav-link" href="{{ route('expensetype') }}" style="color: #cfcfcf">
@@ -194,6 +202,8 @@
                 -->
              </ul>
              <hr class="my-3" style="background-color: #cfcfcf">
+             <!-- Heading -->
+             <h6 class="navbar-heading text-muted">Usuários</h6>
              <ul class="navbar-nav mb-md-3">
                  <li class="nav-item">
                      <a class="nav-link" href="{{ route('users') }}" style="color: #cfcfcf">

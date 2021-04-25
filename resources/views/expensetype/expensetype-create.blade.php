@@ -14,7 +14,7 @@
                     <div class="card-body">
                         
                         <div class="card-body">
-                            <form role="form" method="POST" action="{{ route('construction.add') }}">
+                            <form role="form" method="POST" action="{{ route('expensetype.add') }}">
                                 @csrf
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">

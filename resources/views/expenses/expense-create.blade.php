@@ -14,7 +14,7 @@
                     <div class="card-body">
                         <form role="form" method="POST" action="">
                             @csrf
-                            <div  class="card-header bg-white border-0">
+                            <div class="card-header bg-white border-0">
                                 <span class="input-group-text mb-3" id="basic-addon1">Ativo</span>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -23,27 +23,31 @@
                                     </div>
                                     <select class="custom-select" id="inputGroupSelect01">
                                         <option selected>Selecione</option>
-                                        <option value="1">Manutenção</option>
-                                        <option value="2">Impostos</option>
-                                        <option value="3">Condomínio</option>
+                                        @foreach ($expensetypes as $expensetype)
+                                            @if ($expensetype->status === 1)
+                                                <option value="{{ $expensetype->id }}">{{ $expensetype->name }}</option>
+                                            @endif
+                                        @endforeach
                                     </select>
                                 </div>
-                                 <div class="input-group mb-3">
+                                <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="inputGroupSelect02">
                                             Classe Despesa</label>
                                     </div>
                                     <select class="custom-select" id="inputGroupSelect02">
                                         <option selected>Selecione</option>
-                                        <option value="1">Estaduais</option>
-                                        <option value="2">Federais</option>
-                                        <option value="3">Municipais</option>
+                                        @foreach ($classexpenses as $classexpense)
+                                            @if ($classexpense->status === 1)
+                                                <option value="{{$classexpense->id}}">{{$classexpense->name}}</option>
+                                            @endif
+                                        @endforeach                                       
                                     </select>
                                 </div>
                                 <div class="input-group-prepend mb-3">
                                     <span class="input-group-text" id="addon-wrapping">Dt. Inclusão</span>
-                                    <input type="date" class="form-control" placeholder="Inclusao"
-                                        aria-label="DtInclusao" aria-describedby="addon-wrapping">
+                                    <input type="date" class="form-control" placeholder="Inclusao" aria-label="DtInclusao"
+                                        aria-describedby="addon-wrapping">
                                 </div>
                                 <div class="input-group-prepend mb-3">
                                     <span class="input-group-text" id="addon-wrapping">Dt. Vencimento</span>
@@ -52,13 +56,13 @@
                                 </div>
                                 <div class="input-group-prepend mb-3">
                                     <span class="input-group-text" id="addon-wrapping">Dt. Pagamento</span>
-                                    <input type="date" class="form-control" placeholder="Pagamento"
-                                        aria-label="DtPagamento" aria-describedby="addon-wrapping">
+                                    <input type="date" class="form-control" placeholder="Pagamento" aria-label="DtPagamento"
+                                        aria-describedby="addon-wrapping">
                                 </div>
                                 <div class="input-group-prepend mb-3">
                                     <span class="input-group-text" id="addon-wrapping">Competência</span>
-                                    <input type="month" class="form-control" placeholder="Competência" aria-label="CPF do Sócio"
-                                        aria-describedby="addon-wrapping">
+                                    <input type="month" class="form-control" placeholder="Competência"
+                                        aria-label="CPF do Sócio" aria-describedby="addon-wrapping">
                                 </div>
                                 <!--<div class="input-group mb-3">-->
                                 <div class="input-group-prepend mb-3">
@@ -72,7 +76,7 @@
                                 </div>
                                 <div class="text-start">
                                     <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-save"
-                                        aria-hidden="true"></i> {{ __(' Gravar Despesa') }}</button>
+                                            aria-hidden="true"></i> {{ __(' Gravar Despesa') }}</button>
                                     <a href="{{ route('expense') }}" class="btn btn-primary mt-4" type="button">
                                         <i class="fa fa-times" aria-hidden="true"></i>
                                         <span class="btn-inner--text">Cancelar</span>

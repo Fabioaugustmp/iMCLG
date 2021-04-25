@@ -8,7 +8,9 @@ use App\Http\Controllers\RealEstateController;
 use App\Http\Controllers\ConstructionController;
 use App\Http\Controllers\StatusPropertiesController;
 use App\Http\Controllers\ExpenseTypeController;
+use App\Http\Controllers\ClassExpensesController;
 use App\Models\Construction;
+use App\Models\StatusProperties;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -70,9 +72,21 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('statusproperties', [StatusPropertiesController::class, 'listAllSP'])->name('statusproperties');
 	Route::get('statusproperties/create', [StatusPropertiesController::class, 'createSP'])->name('statusproperties.create');
+	Route::post('statusproperties/create', [StatusPropertiesController::class, 'addStatusProperties'])->name('statusproperties.add');
+	Route::get('statusproperties/{statusproperties}', [StatusPropertiesController::class, 'updateStatusProperties'])->name('statuspropertie.show');
+	Route::put('statusproperties/{statusproperties}', [StatusPropertiesController::class, 'editStatusProperties'])->name('statuspropertie.edit');
 
 	Route::get('expensetype', [ExpenseTypeController::class, 'listAllExpenseTypes'])->name('expensetype');
 	Route::get('expensetype/create', [ExpenseTypeController::class, 'createExpenseType'])->name('expensetype.create');
+	Route::post('expensetype/create', [ExpensetypeController::class, 'addExpenseType'])->name('expensetype.add');
+	Route::get('expensetype/{expensetype}', [ExpensetypeController::class, 'updateExpenseType'])->name('expensetype.show');
+	Route::put('expensetype/{expensetype}', [ExpensetypeController::class, 'editExpenseType'])->name('expensetype.edit');
+
+	Route::get('classexpenses', [ClassExpensesController::class, 'listAllClassExpenses'])->name('classexpenses');
+	Route::get('classexpenses/create', [ClassExpensesController::class, 'createClassExpenses'])->name('classexpenses.create');
+	Route::post('classexpenses/create', [ClassExpensesController::class, 'addClassExpenses'])->name('classexpenses.add');
+	Route::get('classexpenses/{classexpenses}', [ClassExpensesController::class, 'updateClassExpenses'])->name('classexpenses.show');
+	Route::put('classexpenses/{classexpenses}', [ClassExpensesController::class, 'editClassExpenses'])->name('classexpenses.edit');
 	
 });
 

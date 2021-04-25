@@ -22,30 +22,31 @@
                                     </a>
                                 </div>
                             </div>
-                            <form role="form" method="POST" action="{{ route('realestate.create.post') }}">
+                            <form role="form" method="POST" action="{{ route('statuspropertie.edit', ['statusproperties' => $statusproperties->id]) }}">
                                 @csrf
+                                @method('PUT')
 
                                 <div class="form-group">
-                                    <label for="realestate">Nome do Ativo</label>
+                                    <label for="statusproperties">Nome do Ativo</label>
                                     <div class="input-group input-group-alternative mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-flag"></i></span>
                                         </div>
-                                        <input readonly class="form-control"
-                                            placeholder="{{ __('Tipo do Ativo') }}" type="text" name="realestate"
-                                            value="{{ $realestate->realestate }}" required autofocus>
+                                        <input class="form-control"
+                                            placeholder="{{ __('Tipo do Ativo') }}" type="text" name="name"
+                                            value="{{ $statusproperties->name }}" required autofocus>
                                     </div>
-                                    @if ($errors->has('realestate'))
+                                    @if ($errors->has('statusproperties'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
-                                            <strong>{{ $errors->first('realestate') }}</strong>
+                                            <strong>{{ $errors->first('statusproperties') }}</strong>
                                         </span>
                                     @endif
                                 </div>
 
                                 <div class="form-group">
                                     <label for="description">Descricao do Ativo</label>
-                                    <textarea class="form-control {{ $errors->has('realestate') ? ' has-danger' : '' }}" id="description" rows="5" name="description"
-                                        placeholder="Informe uma breve descricao do ativo ..." required value="{{ $realestate->description }}"></textarea>
+                                    <textarea class="form-control {{ $errors->has('statusproperties') ? ' has-danger' : '' }}" id="description" rows="5" name="description"
+                                        placeholder="Informe uma breve descricao do ativo ..." required>{{ $statusproperties->description }}</textarea>
                                     @if ($errors->has('description'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $errors->first('description') }}</strong>
@@ -57,15 +58,15 @@
                                     <legend>Status do Ativo</legend>
                                     <div class="form-group">
                                       <label for="">Status Atual do Ativo</label>
-                                      <input type="text" id="" value="{{ $realestate->status === 1 ? 'Ativo' : 'Inativo' }}" class="form-control" placeholder="Disabled input">
+                                      <input type="text" id="" value="{{ $statusproperties->status === 1 ? 'Ativo' : 'Inativo' }}" class="form-control" placeholder="Disabled input">
                                     </div>
                                 </fieldset>
 
                                 <div class="form-group">
                                     <label for="status">Selecione Um Novo Status</label>
                                     <div>
-                                        <select class="custom-select" id="status" name="status">
-                                            <option selected disabled value="{{ $realestate->status }}">Selecione...</option>                                                                                        
+                                        <select class="custom-select" id="status" name="status" required>
+                                            <option selected disabled">Selecione...</option>                                                                                        
                                             <option value="1">Ativo</option>
                                             <option value="0">Inativo</option>
                                         </select>

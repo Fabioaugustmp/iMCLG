@@ -14,31 +14,31 @@
                     <div class="card-body">
                         
                         <div class="card-body">
-                            <form role="form" method="POST" action="{{ route('construction.edit', $construction->id) }}">
+                            <form role="form" method="POST" action="{{ route('expensetype.edit', $expensetype->id) }}">
                                 @csrf
                                 @method('PUT')
 
                                 <div class="form-group">
-                                    <label for="construction">Tipo de Despesa</label>
+                                    <label for="name">Tipo de Despesa</label>
                                     <div class="input-group input-group-alternative mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-flag"></i></span>
                                         </div>
-                                        <input readonly class="form-control"
-                                            placeholder="{{ __('Tipo do Ativo') }}" type="text" name="construction"
-                                            value="{{ $construction->name }}" required autofocus>
+                                        <input class="form-control"
+                                            placeholder="{{ __('Tipo do Ativo') }}" type="text" name="name"
+                                            value="{{ $expensetype->name }}" required autofocus>
                                     </div>
-                                    @if ($errors->has('construction'))
+                                    @if ($errors->has('name'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
-                                            <strong>{{ $errors->first('construction') }}</strong>
+                                            <strong>{{ $errors->first('name') }}</strong>
                                         </span>
                                     @endif
                                 </div>
 
                                 <div class="form-group">
                                     <label for="description">Descricao do Ativo</label>
-                                    <textarea class="form-control {{ $errors->has('construction') ? ' has-danger' : '' }}" id="description" rows="5" name="description"
-                                        placeholder="Informe uma breve descricao do ativo ..." required>{{ $construction->description }}</textarea>
+                                    <textarea class="form-control {{ $errors->has('expensetype') ? ' has-danger' : '' }}" id="description" rows="5" name="description"
+                                        placeholder="Informe uma breve descricao do ativo ..." required>{{ $expensetype->description }}</textarea>
                                     @if ($errors->has('description'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $errors->first('description') }}</strong>
@@ -50,7 +50,7 @@
                                     <legend>Status do Ativo</legend>
                                     <div class="form-group">
                                       <label for="">Status Atual do Ativo</label>
-                                      <input type="text" id="" value="{{ $construction->status === 1 ? 'Ativo' : 'Inativo' }}" class="form-control" placeholder="Disabled input">
+                                      <input type="text" id="" value="{{ $expensetype->status === 1 ? 'Ativo' : 'Inativo' }}" class="form-control" placeholder="Disabled input">
                                     </div>
                                 </fieldset>
 
@@ -58,7 +58,7 @@
                                     <label for="status">Selecione Um Novo Status</label>
                                     <div>
                                         <select class="custom-select" id="status" name="status">
-                                            <option selected disabled value="{{ $construction->status }}">Selecione...</option>                                                                                        
+                                            <option selected disabled value="{{ $expensetype->status }}">Selecione...</option>                                                                                        
                                             <option value="1">Ativo</option>
                                             <option value="0">Inativo</option>
                                         </select>

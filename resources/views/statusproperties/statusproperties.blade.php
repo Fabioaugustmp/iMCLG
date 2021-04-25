@@ -39,13 +39,15 @@
                                     </tr>
                                 </thead>
                                 <tbody class="list">
-                                   
+                                    @foreach ($statusproperties as $status)
+
+
                                         <tr>
                                             <th scope="row">
                                                 <div class="media align-items-center">
                                                     <div class="media-body">
                                                         <span class="name mb-0 text-md"
-                                                            style="text-transform: uppercase"></span>
+                                                            style="text-transform: uppercase">{{ $status->id }}</span>
                                                     </div>
                                                 </div>
                                             </th>
@@ -53,7 +55,7 @@
                                                 <div class="media align-items-center">
                                                     <div class="media-body">
                                                         <span class="name mb-0 text-md"
-                                                            style="text-transform: uppercase"></span>
+                                                            style="text-transform: uppercase">{{ $status->name }}</span>
                                                     </div>
                                                 </div>
                                             </th>
@@ -61,35 +63,36 @@
                                                 <div class="media align-items-center">
                                                     <div class="media-body">
                                                         <span class="name mb-0 text-md"
-                                                            style="text-transform: uppercase"></span>
+                                                            style="text-transform: uppercase">{{ $status->description }}</span>
                                                     </div>
                                                 </div>
                                             </th>
-                                            
+
+                                            @if ($status->status === 1)
                                                 <td class="budget">
                                                     <span class="badge badge-pill badge-success">Ativo</span>
                                                 </td>
-                                            
+                                            @else
                                                 <td class="budget">
                                                     <span class="badge badge-pill badge-danger">Inativo</span>
                                                 </td>
+                                            @endif
 
-
-                                            <td class="text-right">
+                                            <td class="text-center">
                                                 <div class="dropdown">
                                                     <a class="btn btn-sm btn-icon-only text-light" href="#" role="button"
                                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <i class="fas fa-ellipsis-v"></i>
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" href=""><i class="fas fa-user-edit"></i>
+                                                        <a class="dropdown-item" href="{{ route('statuspropertie.show', $status->id) }}"><i class="fas fa-user-edit"></i>
                                                             Editar
-                                                        
+
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
-                                    
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

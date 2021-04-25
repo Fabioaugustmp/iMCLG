@@ -19,7 +19,7 @@
                             </main>
 
                             <div class="row justify-content-end">
-                                <a href="{{ route('expensetype.create') }}" class="btn btn-icon btn-3 btn-primary"
+                                <a href="{{ route('classexpenses.create') }}" class="btn btn-icon btn-3 btn-primary"
                                     type="button">
                                     <span class="btn-inner--icon"><i class="fas fa-plus-square"></i></span>
                                     <span class="btn-inner--text">Novo Tipo</span>
@@ -39,7 +39,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="list">
-                                    @foreach ($expensetype as $type)
+                                    @foreach ($classexpenses as $type)
                                         <tr>
                                             <th scope="row">
                                                 <div class="media align-items-center">
@@ -83,7 +83,7 @@
                                                         <i class="fas fa-ellipsis-v"></i>
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" href="{{ route('expensetype.show' , $type->id ) }}"><i class="fas fa-user-edit"></i>
+                                                        <a class="dropdown-item" href="{{ route('classexpenses.show' , $type->id ) }}"><i class="fas fa-user-edit"></i>
                                                             Editar
 
                                                     </div>

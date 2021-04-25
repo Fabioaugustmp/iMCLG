@@ -7,78 +7,6 @@
     'class' => 'col-lg-12'
     ])
 
-
-    <script>
-        function limpa_formulário_cep() {
-            //Limpa valores do formulário de cep.
-            document.getElementById('rua').value = ("");
-            document.getElementById('bairro').value = ("");
-            document.getElementById('cidade').value = ("");
-            document.getElementById('uf').value = ("");
-            document.getElementById('ibge').value = ("");
-        }
-
-        function meu_callback(conteudo) {
-            if (!("erro" in conteudo)) {
-                //Atualiza os campos com os valores.
-                document.getElementById('rua').value = (conteudo.logradouro);
-                document.getElementById('bairro').value = (conteudo.bairro);
-                document.getElementById('cidade').value = (conteudo.localidade);
-                document.getElementById('uf').value = (conteudo.uf);
-                document.getElementById('ibge').value = (conteudo.ibge);
-            } //end if.
-            else {
-                //CEP não Encontrado.
-                limpa_formulário_cep();
-                alert("CEP não encontrado.");
-            }
-        }
-
-        function pesquisacep(valor) {
-
-            //Nova variável "cep" somente com dígitos.
-            var cep = valor.replace(/\D/g, '');
-
-            //Verifica se campo cep possui valor informado.
-            if (cep != "") {
-
-                //Expressão regular para validar o CEP.
-                var validacep = /^[0-9]{8}$/;
-
-                //Valida o formato do CEP.
-                if (validacep.test(cep)) {
-
-                    //Preenche os campos com "..." enquanto consulta webservice.
-                    document.getElementById('rua').value = "...";
-                    document.getElementById('bairro').value = "...";
-                    document.getElementById('cidade').value = "...";
-                    document.getElementById('uf').value = "...";
-                    document.getElementById('ibge').value = "...";
-
-                    //Cria um elemento javascript.
-                    var script = document.createElement('script');
-
-                    //Sincroniza com o callback.
-                    script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
-
-                    //Insere script no documento e carrega o conteúdo.
-                    document.body.appendChild(script);
-
-                } //end if.
-                else {
-                    //cep é inválido.
-                    limpa_formulário_cep();
-                    alert("Formato de CEP inválido.");
-                }
-            } //end if.
-            else {
-                //cep sem valor, limpa formulário.
-                limpa_formulário_cep();
-            }
-        };
-
-    </script>
-
     <div class="container-fluid mt--7">
         <div class="row">
             <div class="col-xl-12 order-xl-1">
@@ -103,7 +31,9 @@
                                 <select class="custom-select" id="inputGroupSelect01">
                                     <option selected>Selecione</option>
                                     @foreach ($realestate as $estate)
-                                        <option value="{{ $estate->id }}">{{ $estate->realestate }}</option>
+                                        @if ($estate->status === 1)
+                                            <option value="{{ $estate->id }}">{{ $estate->realestate }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -115,62 +45,51 @@
                                 </div>
                                 <select class="custom-select" id="inputGroupSelect02">
                                     <option selected>Selecione</option>
-                                    <option value="1">Em Carteira</option>
-                                    <option value="2">Ativo</option>
+                                    @foreach ($statusproperties as $status)
+                                        @if ($status->status === 1)
+                                            <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                        @endif
+                                    @endforeach
                                 </select>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-6">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" name="cep" id="cep">CEP</span>
-                                        </div>
-                                        <input type="number" class="form-control" placeholder="CEP" aria-label="cep"
-                                            aria-describedby="cep" name="cep" value="" size="10" maxlength="9"
-                                            onblur="pesquisacep(this.value);">
+                                    <div class="form-group">
+                                        <label for="cep">CEP</label>
+                                        <input type="text" class="form-control" maxlength="9" id="cep" placeholder="CEP">                                        
                                     </div>
                                 </div>
+
+                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="logradouro">Logradouro/Rua</label>
+                                        <input type="text" class="form-control" id="logradouro" placeholder="Logradouro / Rua">                                        
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="bairro">Bairro</label>
+                                        <input type="text" class="form-control" id="bairro" placeholder="Bairro">                                        
+                                    </div>
+                                </div>
+                               
                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="cidade">Cidade</span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="Cidade" aria-label="cidade"
-                                            aria-describedby="cidade" name="cidade" value="">
+                                    <div class="form-group">
+                                        <label for="localidade">Cidade / Localidade</label>
+                                        <input type="text" class="form-control" id="localidade" placeholder="Cidade / Localidade">                                        
                                     </div>
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-6">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="uf">UF</span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="UF" aria-label="cep"
-                                            aria-describedby="uf">
+                                    <div class="form-group">
+                                        <label for="uf">Estado</label>
+                                        <input type="text" class="form-control" id="uf" placeholder="Estado / UF">                                    
                                     </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="rua">Rua</span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="Rua" aria-label="cep"
-                                            aria-describedby="rua">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="pais">Pais</span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="Pais" aria-label="cep"
-                                            aria-describedby="pais">
-                                    </div>
-                                </div>
+                                </div>                                                                                          
                             </div>
-
-                            <hr>
-
+                            <hr>                                                   
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <label for="validationDefault01">Área Total</label>
@@ -230,7 +149,10 @@
                                     <select class="custom-select form-control" id="validationDefault04" required>
                                         <option selected disabled value="">Selecione ...</option>
                                         @foreach ($constructions as $construction)
-                                            <option value="{{ $construction->id }}">{{ $construction->name }}</option>
+                                            @if ($construction->status === 1)
+                                                <option value="{{ $construction->id }}">{{ $construction->name }}
+                                                </option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>
@@ -352,7 +274,33 @@
             </div>
         </div>
     </div>
-
     @include('layouts.footers.auth')
     </div>
+    <script>
+        const cep = document.querySelector("#cep")
+
+        const showData = (result) => {
+            for (const campo in result) {
+                if (document.querySelector("#" + campo)) {
+                    document.querySelector("#" + campo).value = result[campo]
+                }
+            }
+        }
+
+        cep.addEventListener("blur", (e) => {
+            let search = cep.value.replace("-", "")
+            const options = {
+                method: 'GET',
+                mode: 'cors', //Alterar para cors posteriorment
+                cache: 'default'
+            }
+
+            fetch(`https://viacep.com.br/ws/${search}/json/`, options)
+                .then(response => {
+                    response.json().then(data => showData(data))
+                })
+                .catch(e => console.log('Deu Erro: ' + e, message))
+        })
+
+    </script>
 @endsection
