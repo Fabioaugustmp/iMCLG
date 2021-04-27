@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('users/{user}', [UserController::class, 'updateUser'])->name('users.update');
 
 	Route::get('properties', [PropertiesController::class, 'listaAllProperties'])->name('properties');
+	Route::get('properties/view/{properties}', [PropertiesController::class, 'showPropertie'])->name('propertie.show');
 	Route::get('properties/create', [PropertiesController::class, 'createPropertie'])->name('properties.create');
 	Route::post('properties/create', [PropertiesController::class, 'addProperties'])->name('properties.create.post');
 	Route::get('properties/{properties}', [PropertiesController::class, 'updatePropertie'])->name('properties.update');

@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form role="form" method="POST" action="{{ route('properties.create.post') }}">
+                        <form role="form" method="POST" action="{{ route('properties.create.post') }}" enctype="multipart/form-data">
                             @csrf
                             <hr>
                             <div class="input-group mb-3">
@@ -68,7 +68,7 @@
                                     <div class="form-group">
                                         <label for="cep">CEP</label>
                                         <input type="text" class="form-control" maxlength="9" id="cep" placeholder="CEP"
-                                            name="cep" value="{{ old('cep')}}" >
+                                            name="cep" value="{{ old('cep') }}">
                                     </div>
                                     @if ($errors->has('cep'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
@@ -235,29 +235,34 @@
 
                             <hr>
 
-                            <!-- <div class="form-row">
-                                            <div class="input-group mb-3">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="inputGroupFileAddon01">Fotos</span>
-                                                </div>
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                                        aria-describedby="inputGroupFileAddon01">
-                                                    <label class="custom-file-label" for="inputGroupFile01">Selecionar Foto(s)</label>
-                                                </div>
-                                            </div>
-                                            <div class="input-group mb-3">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="inputGroupFileAddon01">Anexos</span>
-                                                </div>
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                                        aria-describedby="inputGroupFileAddon01">
-                                                    <label class="custom-file-label" for="inputGroupFile01">Selecionar
-                                                        Arquivo(s)</label>
-                                                </div>
-                                            </div>
-                                        </div>-->
+                            <div class="form-row">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="pictures">Fotos</span>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="pictures"
+                                            aria-describedby="pictures" name="pictures[]" multiple>
+                                        <label class="custom-file-label" for="pictures">Selecionar Foto(s)</label>
+                                    </div>
+                                    @if ($errors->has('pictures'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('pictures') }}</strong>
+                                    </span>
+                                @endif
+                                </div>
+                               <!-- <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupFileAddon01">Anexos</span>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                            aria-describedby="inputGroupFileAddon01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Selecionar
+                                            Arquivo(s)</label>
+                                    </div>
+                                </div>-->
+                            </div>
 
                             <hr>
 
@@ -266,7 +271,7 @@
                                     <div class="mb-3">
                                         <label for="validationTextarea">Observações</label>
                                         <textarea class="form-control" id="validationTextarea"
-                                            placeholder="Observações gerais do ativo" name="feedback"></textarea>
+                                            placeholder="Observações gerais do ativo" name="feedback">{{ old('feedback') }}</textarea>
 
                                     </div>
                                     @if ($errors->has('feedback'))

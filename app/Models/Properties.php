@@ -24,4 +24,8 @@ class Properties extends Model
         'construction',
         'feedback'
     ];
+
+    public function images(){
+        return $this->hasMany(PropertiesImages::class, 'id_properties', 'id');
+    }
 }
