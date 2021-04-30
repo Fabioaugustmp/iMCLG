@@ -22,7 +22,7 @@
          <a class="navbar-brand pt-0" href="{{ route('properties') }}">
              <h1 style="color: #cfcfcf; font-weight: 800; "><i class="fas fa-city"></i> iMCLG</h1>
          </a>
-         <div align="center">
+         <!--<div align="center">
              <div class="media align-items-center">
                  <span class="avatar avatar-sm rounded-circle">
                      <i class="far fa-user"></i>
@@ -30,7 +30,7 @@
                  <span class="mb-0 ml-2 text-sm  font-weight-bold">{{ auth()->user()->name }}</span>
              </div>
          </div>
-         <!-- User -->
+          User -->
          <ul class="nav align-items-center d-md-none">
 
              <li class="nav-item dropdown">

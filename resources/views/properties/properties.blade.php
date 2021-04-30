@@ -46,7 +46,7 @@
                                                 <li>Bairro</li>
                                             </ul>
                                             </p>
-                                            <a href="{{ route('properties.create') }}" class="btn btn-primary"><i
+                                            <a href="/properties/view/11" class="btn btn-primary"><i
                                                     class="fas fa-search-location"></i>
                                                 Visualizar</a>
                                         </div>

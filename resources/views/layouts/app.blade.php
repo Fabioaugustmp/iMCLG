@@ -21,8 +21,6 @@
     <!-- Argon CSS -->
     <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
 
-    <script src="{{ asset('argon') }}/js/script.js"></script>
-
 </head>
 
 <body class="{{ $class ?? '' }}">
@@ -42,7 +40,8 @@
         @include('layouts.footers.guest')
     @endguest
 
-    <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <!--<script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>-->
     <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     @stack('js')

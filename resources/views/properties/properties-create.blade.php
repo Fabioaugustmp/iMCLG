@@ -7,6 +7,26 @@
     'class' => 'col-lg-12'
     ])
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#blah').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+
+        $("#imgInp").change(function() {
+            readURL(this);
+        });
+
+    </script>
+
     <div class="container-fluid mt--7">
         <div class="row">
             <div class="col-xl-12 order-xl-1">
@@ -20,7 +40,8 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form role="form" method="POST" action="{{ route('properties.create.post') }}" enctype="multipart/form-data">
+                        <form role="form" method="POST" action="{{ route('properties.create.post') }}"
+                            enctype="multipart/form-data">
                             @csrf
                             <hr>
                             <div class="input-group mb-3">
@@ -236,32 +257,124 @@
                             <hr>
 
                             <div class="form-row">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="pictures">Fotos</span>
-                                    </div>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="pictures"
-                                            aria-describedby="pictures" name="pictures[]" multiple>
-                                        <label class="custom-file-label" for="pictures">Selecionar Foto(s)</label>
-                                    </div>
-                                    @if ($errors->has('pictures'))
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModal">
+                                    <i class="fas fa-upload"></i> Upload de Imagens
+                                </button>
+
+                                @if ($errors->has('pictures'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
                                         <strong>{{ $errors->first('pictures') }}</strong>
                                     </span>
                                 @endif
+
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#filesModal">
+                                    <i class="fas fa-folder-plus"></i> Upload de Arquivos
+                                </button>
+
+                                @if ($errors->has('files'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('files') }}</strong>
+                                    </span>
+                                @endif
+
+                                <!-- Modal Images-->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-image"></i>
+                                                    Upload de Imagens</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <input type='file' id="imgInp" name="pictures[]" accept="image/*"
+                                                    multiple />
+                                                @if ($errors->has('pictures'))
+                                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                                        <strong>{{ $errors->first('pictures') }}</strong>
+                                                    </span>
+                                                @endif
+                                                <!--<img id="blah" src="#" alt="your image" />-->
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                                        class="far fa-times-circle"></i> Fechar</button>
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal"><i
+                                                        class="far fa-save"></i> Salvar</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                               <!-- <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupFileAddon01">Anexos</span>
+
+                                <!-- Modal Files -->
+                                <div class="modal fade" id="filesModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="filesModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="filesModalLabel"><i class="fas fa-file"></i>
+                                                    Upload de Arquivos</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <input type='file' id="imgInp" name="files[]" accept="application/pdf"
+                                                    multiple />
+                                                @if ($errors->has('files'))
+                                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                                        <strong>{{ $errors->first('files') }}</strong>
+                                                    </span>
+                                                @endif
+                                                <!--<img id="blah" src="#" alt="your image" />-->
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                                        class="far fa-times-circle"></i> Fechar</button>
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal"><i
+                                                        class="far fa-save"></i> Salvar</button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                            aria-describedby="inputGroupFileAddon01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Selecionar
-                                            Arquivo(s)</label>
-                                    </div>
-                                </div>-->
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <!--  <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="pictures">Fotos</span>
+                                                        </div>
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="pictures"
+                                                                aria-describedby="pictures" name="pictures[]" accept="image/*" multiple>
+                                                            <label class="custom-file-label" for="pictures">Selecionar Foto(s)</label>
+                                                        </div>
+                                                        @if ($errors->has('pictures'))
+                                                            <span class="invalid-feedback" style="display: block;" role="alert">
+                                                                <strong>{{ $errors->first('pictures') }}</strong>
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                                                                <div class="input-group-prepend">
+                                                                                                    <span class="input-group-text" id="inputGroupFileAddon01">Anexos</span>
+                                                                                                </div>
+                                                                                                <div class="custom-file">
+                                                                                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                                                                                        aria-describedby="inputGroupFileAddon01">
+                                                                                                    <label class="custom-file-label" for="inputGroupFile01">Selecionar
+                                                                                                        Arquivo(s)</label>
+                                                                                                </div>
+                                                                                            </div>-->
                             </div>
 
                             <hr>
@@ -271,7 +384,8 @@
                                     <div class="mb-3">
                                         <label for="validationTextarea">Observações</label>
                                         <textarea class="form-control" id="validationTextarea"
-                                            placeholder="Observações gerais do ativo" name="feedback">{{ old('feedback') }}</textarea>
+                                            placeholder="Observações gerais do ativo"
+                                            name="feedback">{{ old('feedback') }}</textarea>
 
                                     </div>
                                     @if ($errors->has('feedback'))
@@ -298,47 +412,34 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                                <td>
-                                                    <div class="custom-control custom-switch">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customSwitch1">
-                                                        <label class="custom-control-label" for="customSwitch1">Gestor do
-                                                            Ativo</label>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                                <td>
-                                                    <div class="custom-control custom-switch">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customSwitch2">
-                                                        <label class="custom-control-label" for="customSwitch2">Gestor do
-                                                            Ativo</label>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td colspan="2">Larry the Bird</td>
-                                                <td>@twitter</td>
-                                                <td>
-                                                    <div class="custom-control custom-switch">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customSwitch3">
-                                                        <label class="custom-control-label" for="customSwitch3">Gestor do
-                                                            Ativo</label>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            @foreach ($associates as $associate)
+                                                @if ($associate->status === 1)
+                                                    <tr>
+                                                        <th scope="row">{{ $associate->id }}</th>
+                                                        <td style="text-transform: uppercase">{{ $associate->name }}</td>
+                                                        <td>{{ $associate->email }}</td>
+                                                        <td>
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">R$</span>
+                                                                </div>
+                                                                <input type="number" class="form-control"
+                                                                    aria-label="Amount (to the nearest dollar)" id="currency">
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text">.00</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <label class="custom-toggle">
+                                                                <input type="checkbox" checked>
+                                                                <span class="custom-toggle-slider rounded-circle"></span>
+                                                            </label>
+                                                            <span class="clearfix"></span>
+                                                        </td>
+                                                    </tr>
+                                                @endif
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

@@ -28,4 +28,12 @@ class Properties extends Model
     public function images(){
         return $this->hasMany(PropertiesImages::class, 'id_properties', 'id');
     }
+
+    public function files(){
+        return $this->hasMany(PropertiesFiles::class, 'id_properties', 'id');
+    }
+
+    public function associates(){
+        return $this->belongsToMany(Associate::class, 'properties_associates', 'properties', 'associates');
+    }
 }
