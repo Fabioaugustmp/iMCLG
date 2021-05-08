@@ -12,11 +12,11 @@
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white border-0">
 
-                        <div class="row">
+                        <div class="row mx-2 px-2">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="row justify-content-start">
                                     <form class="form-inline my-2 my-lg-0" action="{{ route('search.propertie') }}"
-                                        method="POST" role="search">
+                                        method="GET" role="search">
                                         @csrf
                                         <input class="form-control mr-sm-2" type="search" placeholder="Pesquisa de Ativos"
                                             aria-label="Search" id="search" name="search">
@@ -28,6 +28,7 @@
 
                                 </div>
                             </div>
+                            
                             <div class="col-lg-6 col-md-6 col-sm-6">
 
                                 <div class="row justify-content-end">
@@ -55,8 +56,8 @@
                         <div class="container">
                             <div class="row">
                                 @foreach ($properties as $propertie)
-                                    <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
-                                        <div class="card" style="width: 18rem;">
+                                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 p-2">
+                                        <div class="card" style="width: 16rem;">
                                             <div id="carouselExampleFade" class="carousel slide carousel-fade"
                                                 data-ride="carousel">
                                                 <div class="carousel-inner">
@@ -67,7 +68,7 @@
                                                                 <div class="carousel-item">
                                                         @endif
                                                         <img src="{{ env('APP_URL') }}/storage/{{ $picture->path }}"
-                                                            alt="Ativo_{{ $picture->id }}" class="d-block w-100 rounded">
+                                                            alt="Ativo_{{ $picture->id }}" class="img-fluid d-block w-100 rounded" style="width: 254px; height: 254px;">
                                                 </div>
                                 @endforeach
 

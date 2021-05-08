@@ -35,8 +35,8 @@
                             </div>
                             <hr class="my-3">
 
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8 col-md-8 col-sm-8">
                                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                         <ol class="carousel-indicators">
                                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
@@ -52,7 +52,7 @@
                                                         <div class="carousel-item">
                                                 @endif
                                                 <img src="{{ env('APP_URL') }}/storage/{{ $picture->path }}"
-                                                    class="d-block rounded" alt="Ativo_{{ $picture->id }}" height="500">
+                                                    class="d-block rounded img-fluid" alt="Ativo_{{ $picture->id }}" style="height: auto; width:100%;" >
                                         </div>
                                         @endforeach
                                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"

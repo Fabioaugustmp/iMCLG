@@ -51,12 +51,15 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('users/{user}', [UserController::class, 'updateUser'])->name('users.update');
 
 	Route::get('properties', [PropertiesController::class, 'listaAllProperties'])->name('properties');
-	Route::post('properties/search', [PropertiesController::class, 'searchPropertie'])->name('search.propertie');
 	Route::get('properties/view/{properties}', [PropertiesController::class, 'showPropertie'])->name('propertie.show');
+	Route::get('properties/search', [PropertiesController::class, 'searchPropertie'])->name('search.propertie');	
 	Route::get('properties/create', [PropertiesController::class, 'createPropertie'])->name('properties.create');
 	Route::post('properties/create', [PropertiesController::class, 'addProperties'])->name('properties.create.post');
-	Route::get('properties/{properties}', [PropertiesController::class, 'updatePropertie'])->name('properties.update');
-	Route::put('properties/{properties}', [PropertiesController::class, 'editProperties'])->name('properties.edit');	
+	Route::get('properties/add/partner', [PropertiesController::class, 'showAddpartner'])->name('properties.show.partner');
+	//Route::get('properties/{properties}', [PropertiesController::class, 'updatePropertie'])->name('properties.update');
+	Route::put('properties/{properties}', [PropertiesController::class, 'editProperties'])->name('properties.edit');
+	
+	//https://stackoverflow.com/questions/51287100/laravel-ajax-search-in-bootstrap-modal
 
 	Route::get('partners', [PartnerController::class, 'listaAllPartner'])->name('partners');
 	Route::get('partner/create', [PartnerController::class, 'showCreatePartner'])->name('partner.showcreate');

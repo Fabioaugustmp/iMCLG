@@ -33,28 +33,63 @@ class PropertiesController extends Controller
         ]);
     }
 
+    public function showAddpartner(Properties $properties)
+    {
+
+        return view('properties.properties-create-partner', [
+            "properties" => $properties
+        ]);
+    }
+
     public function listaAllProperties(Properties $properties)
     {
         $properties = Properties::all();
 
+        $propertiename = DB::table('properties')->get();
+
+        $propertienames = [];
+
+        foreach ($propertiename as $name) {
+
+            $propertienames[] = $name->realestate;
+        }
+
         return view('properties.properties', [
-            'properties' => $properties
+            'properties' => $properties,
+            'propertiesnames' => $propertienames
         ]);
     }
 
-    public function searchPropertie(Properties $properties, Request $request){
+    public function searchPropertie(Properties $properties, Request $request)
+    {
 
         $search = $request->get('search');
 
         // $properties = DB::table('properties')->where('name', 'like', '%'.$search. '%');
         //  $properties = $properties->find($search)->images;
 
-        $properties = DB::table('properties')->where('realestate', 'like', '%'.$search.'%')->get();
+        $properties = DB::table('properties')
+            ->where('realestate', 'like', '%' . $search . '%')
+            ->orWhere('statusproperties', 'like', '%' . $search . '%')
+            ->orWhere('cep', 'like', '%' . $search . '%')
+            ->orWhere('logradouro', 'like', '%' . $search . '%')
+            ->orWhere('cidade', 'like', '%' . $search . '%')
+            ->orWhere('uf', 'like', '%' . $search . '%')
+            ->get();
 
-        return view('properties.properties-search', [
-            'properties' => $properties
-        ]);
+        if (is_null($properties) || $properties->count() == 0) {
 
+            $view = redirect()
+            ->route('search.propertie')
+            ->with('warning', 'Nenhum ativo encontrado com a seguinte descricao: ' . $search);
+                
+        } else {
+            $view = view('properties.properties-search', [
+                'properties' => $properties
+            ]);
+        }
+
+        return $view;
     }
 
     public function showPropertie(Properties $properties)
@@ -63,7 +98,7 @@ class PropertiesController extends Controller
         $associates = $properties->associates()->get();
 
         return view('properties.properties-show', [
-            'properties' => $properties, 
+            'properties' => $properties,
             'associates' => $associates
         ]);
     }
@@ -140,6 +175,6 @@ class PropertiesController extends Controller
             }
         }
 
-        return redirect('properties');
+        return redirect('properties.show.partner');
     }
 }
