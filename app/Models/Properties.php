@@ -34,6 +34,6 @@ class Properties extends Model
     }
 
     public function associates(){
-        return $this->belongsToMany(Associate::class, 'properties_associates', 'properties', 'associates');
+        return $this->belongsToMany(Partner::class, 'properties_associates', 'properties', 'associates');
     }
 }

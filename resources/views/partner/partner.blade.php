@@ -13,83 +13,84 @@
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white border-0">
                         <div class="row justify-content-end">
-                            <a href="{{ route('partner.create') }}" class="btn btn-icon btn-3 btn-primary"
-                                type="button">
+                            <a href="{{ route('partner.create') }}" class="btn btn-icon btn-3 btn-primary" type="button">
                                 <span class="btn-inner--icon"><i class="fas fa-plus-square"></i></span>
                                 <span class="btn-inner--text">Novo Sócio</span>
                             </a>
                         </div>
                     </div>
+                    
                     <div class="card-body">
-                        <form role="form" method="POST" action="">
-                            @csrf
-                            <div class="card-header bg-white border-0">
-                                <table class="table table-bordered table-hover mb-3">
-                                    <thead>
+                        <div class="table-responsive">
+                            <table class="table align-items-center table-flush table-striped table-hover">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col" class="sort" data-sort="name">ID #</th>
+                                        <th scope="col" class="sort" data-sort="name">Tipo de Despesa</th>
+                                        <th scope="col" class="sort" data-sort="budget">Descricao</th>
+                                        <th scope="col" class="sort" data-sort="status">Status</th>
+                                        <th scope="col" class="sort">Acoes</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="list">
+                                    @foreach ($partners as $partners)
                                         <tr>
-                                        <th scope="col">Nome Sócio</th>
-                                        <th scope="col">Total Investido</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                        <th scope="row"></th>
-                                        <td></td>
-                                        </tr>
-                                        <tr>
-                                        <th scope="row"></th>
-                                        <td></td>
-                                        </tr>
-                                        <tr>
-                                        <th scope="row"></th>
-                                        <td></td>
-                                        </tr>
-                                        <tr>
-                                        <th scope="row"></th>
-                                        <td></td>
-                                        </tr>
-                                        <tr>
-                                        <th scope="row"></th>
-                                        <td></td>
-                                        </tr>
-                                        <tr>
-                                        <th scope="row"></th>
-                                        <td></td>
-                                        </tr>
-                                        <tr>
-                                        <th scope="row"></th>
-                                        <td></td>
-                                        </tr>
-                                        <tr>
-                                        <th scope="row"></th>
-                                        <td></td>
-                                        </tr>
-                                        <tr>
-                                        <th scope="row"></th>
-                                        <td></td>
-                                        </tr>
-                                        <tr>
-                                        <th scope="row"></th>
-                                        <td></td>
-                                        </tr>
-                                        <tr>
-                                        <th scope="row"></th>
-                                        <td></td>
-                                        </tr>
-                                    </tbody>
-                                    </table>
-                                    <nav aria-label="Navegação">
-                                        <ul class="pagination">
-                                            <!--<li class="page-item"><a class="page-link" href="#">Anterior</a></li>-->
-                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">Próxima</a></li>
-                                        </ul>
-                                    </nav>
-                            </div>
+                                            <th scope="row">
+                                                <div class="media align-items-center">
+                                                    <div class="media-body">
+                                                        <span class="name mb-0 text-md"
+                                                            style="text-transform: uppercase">{{ $partners->id }}</span>
+                                                    </div>
+                                                </div>
+                                            </th>
+                                            <th scope="row">
+                                                <div class="media align-items-center">
+                                                    <div class="media-body">
+                                                        <span class="name mb-0 text-md"
+                                                            style="text-transform: uppercase">{{ $partners->name }}</span>
+                                                    </div>
+                                                </div>
+                                            </th>
+                                            <th scope="row">
+                                                <div class="media align-items-center">
+                                                    <div class="media-body">
+                                                        <span class="name mb-0 text-md"
+                                                            style="text-transform: uppercase">{{ $partners->email }}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </th>
+                                            @if ($partners->status === 1)
+                                                <td class="budget">
+                                                    <span class="badge badge-pill badge-success">Ativo</span>
+                                                </td>
+                                            @else
+                                                <td class="budget">
+                                                    <span class="badge badge-pill badge-danger">Inativo</span>
+                                                </td>
+                                            @endif
 
-                        </form>
+                                            <td class="text-right">
+                                                <div class="dropdown">
+                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button"
+                                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="fas fa-ellipsis-v"></i>
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                        <a class="dropdown-item" href=""><i class="fas fa-user-edit"></i>
+                                                            Editar
+                                                            <a class="dropdown-item" href=""><i
+                                                                    class="fas fa-user-times"></i>
+                                                                Excluir
+
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                         <hr class="my-4" />
                     </div>
                 </div>

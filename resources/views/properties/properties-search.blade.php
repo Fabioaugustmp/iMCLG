@@ -60,7 +60,7 @@
                                             <div id="carouselExampleFade" class="carousel slide carousel-fade"
                                                 data-ride="carousel">
                                                 <div class="carousel-inner">
-                                                    @foreach ($propertie->images as $picture)
+                                                    {{-- @foreach ($propertie->images as $picture)
                                                         @if ($loop->first)
                                                             <div class="carousel-item active">
                                                             @else
@@ -69,7 +69,7 @@
                                                         <img src="{{ env('APP_URL') }}/storage/{{ $picture->path }}"
                                                             alt="Ativo_{{ $picture->id }}" class="d-block w-100 rounded">
                                                 </div>
-                                @endforeach
+                                @endforeach --}}
 
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">

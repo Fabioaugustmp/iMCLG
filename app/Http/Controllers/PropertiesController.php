@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Associate;
 use App\Models\RealEstate;
 use App\Models\Construction;
+use App\Models\Partner;
 use App\Models\Properties;
 use App\Models\PropertiesFiles;
 use App\Models\PropertiesImages;
 use App\Models\StatusProperties;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PropertiesController extends Controller
 {
@@ -21,19 +23,38 @@ class PropertiesController extends Controller
         $realestate = RealEstate::all();
         $constructions = Construction::all();
         $statusproperties = StatusProperties::all();
-        $associates = Associate::all();
+        $partners = Partner::all();
 
         return view('properties.properties-create', [
             'realestate' => $realestate,
             'constructions' => $constructions,
             'statusproperties' => $statusproperties,
-            'associates' => $associates
+            'partners' => $partners
         ]);
     }
 
-    public function listaAllProperties()
+    public function listaAllProperties(Properties $properties)
     {
-        return view('properties.properties');
+        $properties = Properties::all();
+
+        return view('properties.properties', [
+            'properties' => $properties
+        ]);
+    }
+
+    public function searchPropertie(Properties $properties, Request $request){
+
+        $search = $request->get('search');
+
+        // $properties = DB::table('properties')->where('name', 'like', '%'.$search. '%');
+        //  $properties = $properties->find($search)->images;
+
+        $properties = DB::table('properties')->where('realestate', 'like', '%'.$search.'%')->get();
+
+        return view('properties.properties-search', [
+            'properties' => $properties
+        ]);
+
     }
 
     public function showPropertie(Properties $properties)

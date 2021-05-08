@@ -8,6 +8,7 @@
      }
 
  </style>
+
  <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light navbar-bg" id="sidenav-main">
      <div class="container-fluid">
          <!-- Toggler -->
@@ -21,7 +22,7 @@
         </a>-->
          <a class="navbar-brand pt-0" href="{{ route('properties') }}">
              <h1 style="color: #cfcfcf; font-weight: 800; "><i class="fas fa-city"></i> iMCLG</h1>
-         </a>
+         </a>         
          <!--<div align="center">
              <div class="media align-items-center">
                  <span class="avatar avatar-sm rounded-circle">
@@ -133,7 +134,7 @@
                          <span class="nav-link-text"
                              style="color: #cfcfcf;">{{ __('Despesas dos Ativos Imobiliários') }}</span>
                      </a>
-                 </li>                
+                 </li>
 
                  {{-- <li class="nav-item">
                     <a class="nav-link" href="{{ route('icons') }}">
@@ -184,15 +185,15 @@
                      </a>
                  </li>
                  <li class="nav-item">
-                    <a class="nav-link" href="{{ route('expensetype') }}" style="color: #cfcfcf">
-                        <i class="ni ni-money-coins"></i> Tipos de Despesas
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('classexpenses') }}" style="color: #cfcfcf">
-                        <i class="fas fa-file-invoice-dollar"></i> Classe de Despesas
-                    </a>
-                </li>
+                     <a class="nav-link" href="{{ route('expensetype') }}" style="color: #cfcfcf">
+                         <i class="ni ni-money-coins"></i> Tipos de Despesas
+                     </a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="{{ route('classexpenses') }}" style="color: #cfcfcf">
+                         <i class="fas fa-file-invoice-dollar"></i> Classe de Despesas
+                     </a>
+                 </li>
                  <!--
                  <li class="nav-item">
                      <a class="nav-link" href="{{ route('expensetype') }}" style="color: #cfcfcf">

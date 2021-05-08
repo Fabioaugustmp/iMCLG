@@ -10,6 +10,7 @@ use App\Http\Controllers\StatusPropertiesController;
 use App\Http\Controllers\ExpenseTypeController;
 use App\Http\Controllers\ClassExpensesController;
 use App\Models\Construction;
+use App\Models\Properties;
 use App\Models\StatusProperties;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -50,6 +51,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('users/{user}', [UserController::class, 'updateUser'])->name('users.update');
 
 	Route::get('properties', [PropertiesController::class, 'listaAllProperties'])->name('properties');
+	Route::post('properties/search', [PropertiesController::class, 'searchPropertie'])->name('search.propertie');
 	Route::get('properties/view/{properties}', [PropertiesController::class, 'showPropertie'])->name('propertie.show');
 	Route::get('properties/create', [PropertiesController::class, 'createPropertie'])->name('properties.create');
 	Route::post('properties/create', [PropertiesController::class, 'addProperties'])->name('properties.create.post');
@@ -57,7 +59,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('properties/{properties}', [PropertiesController::class, 'editProperties'])->name('properties.edit');	
 
 	Route::get('partners', [PartnerController::class, 'listaAllPartner'])->name('partners');
-	Route::get('partner/create', [PartnerController::class, 'createPartner'])->name('partner.create');
+	Route::get('partner/create', [PartnerController::class, 'showCreatePartner'])->name('partner.showcreate');
+	Route::post('partner/create', [PartnerController::class, 'createPartner'])->name('partner.create');
 
 	Route::get('expense', [ExpensesController::class, 'listaAllExpenses'])->name('expense');
 	Route::get('expense/create', [ExpensesController::class, 'createExpense'])->name('expense.create');

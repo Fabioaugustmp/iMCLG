@@ -12,11 +12,18 @@
             <div class="col-xl-12 order-xl-1">
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white border-0">
-                        <div class="row justify-content-end">
-                            <a href="{{ '/expense' }}" class="btn btn-icon btn-3 btn-primary" type="button">
-                                <span class="btn-inner--icon"><i class="far fa-edit"></i></span>
-                                <span class="btn-inner--text">Editar Ativo</span>
-                            </a>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row justify-content-end">
+                                    <a href="{{ '/expense' }}" class="btn btn-icon btn-3 btn-primary btn-outline-primary" type="button">                                        
+                                        <i class="fas fa-coins"></i> Histórico de Despesas                                                                                
+                                    </a>
+                                    <a href="{{ '/expense' }}" class="btn btn-icon btn-3 btn-primary btn-outline-primary" type="button">
+                                        <i class="far fa-edit"></i> Editar Ativo                                        
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -65,7 +72,7 @@
                     </div>
                     <hr class="my-3"">
 
-                                                 <div class=" row">
+                                                             <div class=" row">
                     <div class=" col-md-12">
                         <div class="card card-primary">
                             <div class="card-header">
@@ -310,7 +317,8 @@
                                                                 <div class="input-group-prepend">
                                                                     <span class="input-group-text">R$</span>
                                                                 </div>
-                                                                <input type="number" class="form-control" value="{{$associate->partial_value}}" readonly>
+                                                                <input type="number" class="form-control"
+                                                                    value="{{ $associate->partial_value }}" readonly>
                                                             </div>
                                                         </td>
                                                         <td>

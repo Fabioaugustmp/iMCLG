@@ -33,9 +33,9 @@
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white border-0">
                         <div class="row justify-content-end">
-                            <a href="{{ '/expense' }}" class="btn btn-icon btn-3 btn-primary" type="button">
-                                <span class="btn-inner--icon"><i class="fas fa-coins"></i></span>
-                                <span class="btn-inner--text">Histórico de Despesas</span>
+                            <a href="{{ '/expense' }}" class="btn btn-icon btn-3 btn-primary btn-outline-primary"
+                                type="button">
+                                <i class="fas fa-coins"></i> Histórico de Despesas
                             </a>
                         </div>
                     </div>
@@ -350,31 +350,31 @@
 
                             <div class="form-row">
                                 <!--  <div class="input-group mb-3">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="pictures">Fotos</span>
-                                                        </div>
-                                                        <div class="custom-file">
-                                                            <input type="file" class="custom-file-input" id="pictures"
-                                                                aria-describedby="pictures" name="pictures[]" accept="image/*" multiple>
-                                                            <label class="custom-file-label" for="pictures">Selecionar Foto(s)</label>
-                                                        </div>
-                                                        @if ($errors->has('pictures'))
-                                                            <span class="invalid-feedback" style="display: block;" role="alert">
-                                                                <strong>{{ $errors->first('pictures') }}</strong>
-                                                            </span>
-                                                        @endif
-                                                    </div>
-                                                    <div class="input-group mb-3">
-                                                                                                <div class="input-group-prepend">
-                                                                                                    <span class="input-group-text" id="inputGroupFileAddon01">Anexos</span>
-                                                                                                </div>
-                                                                                                <div class="custom-file">
-                                                                                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                                                                                        aria-describedby="inputGroupFileAddon01">
-                                                                                                    <label class="custom-file-label" for="inputGroupFile01">Selecionar
-                                                                                                        Arquivo(s)</label>
-                                                                                                </div>
-                                                                                            </div>-->
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text" id="pictures">Fotos</span>
+                                                                        </div>
+                                                                        <div class="custom-file">
+                                                                            <input type="file" class="custom-file-input" id="pictures"
+                                                                                aria-describedby="pictures" name="pictures[]" accept="image/*" multiple>
+                                                                            <label class="custom-file-label" for="pictures">Selecionar Foto(s)</label>
+                                                                        </div>
+                                                                        @if ($errors->has('pictures'))
+                                                                            <span class="invalid-feedback" style="display: block;" role="alert">
+                                                                                <strong>{{ $errors->first('pictures') }}</strong>
+                                                                            </span>
+                                                                        @endif
+                                                                    </div>
+                                                                    <div class="input-group mb-3">
+                                                                                                                <div class="input-group-prepend">
+                                                                                                                    <span class="input-group-text" id="inputGroupFileAddon01">Anexos</span>
+                                                                                                                </div>
+                                                                                                                <div class="custom-file">
+                                                                                                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                                                                                                        aria-describedby="inputGroupFileAddon01">
+                                                                                                                    <label class="custom-file-label" for="inputGroupFile01">Selecionar
+                                                                                                                        Arquivo(s)</label>
+                                                                                                                </div>
+                                                                                                            </div>-->
                             </div>
 
                             <hr>
@@ -399,49 +399,100 @@
                             <hr>
 
                             <div class="row">
+                                <label for="validationTextarea">Participações Societarias</label>
                                 <div class="col-lg-12">
-                                    <label for="validationTextarea">Participações Societarias</label>
-                                    <table class="table table-striped table-hover table-responsive">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Sócio</th>
-                                                <th scope="col">R$ Investido</th>
-                                                <th scope="col">Participação</th>
-                                                <th scope="col">Gestor</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($associates as $associate)
-                                                @if ($associate->status === 1)
-                                                    <tr>
-                                                        <th scope="row">{{ $associate->id }}</th>
-                                                        <td style="text-transform: uppercase">{{ $associate->name }}</td>
-                                                        <td>{{ $associate->email }}</td>
-                                                        <td>
-                                                            <div class="input-group mb-3">
-                                                                <div class="input-group-prepend">
-                                                                    <span class="input-group-text">R$</span>
-                                                                </div>
-                                                                <input type="number" class="form-control"
-                                                                    aria-label="Amount (to the nearest dollar)" id="currency">
-                                                                <div class="input-group-append">
-                                                                    <span class="input-group-text">.00</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <label class="custom-toggle">
-                                                                <input type="checkbox" checked>
-                                                                <span class="custom-toggle-slider rounded-circle"></span>
-                                                            </label>
-                                                            <span class="clearfix"></span>
-                                                        </td>
-                                                    </tr>
-                                                @endif
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                    <div class="row">
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#staticBackdrop">
+                                            Incluir Sócio & Participações
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="staticBackdrop" data-backdrop="static"
+                                            data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            {{-- <form class="form-inline my-2 my-lg-0">
+                                                                <input class="form-control mr-sm-2" type="search"
+                                                                    placeholder="Pesquisa de Ativos" aria-label="Search"
+                                                                    id="search">
+
+                                                                <button class="btn btn-outline-success my-2 my-sm-0"
+                                                                    type="submit"><i class="fas fa-search-location"></i>
+                                                                    Buscar</button>
+
+                                                            </form> --}}
+                                                        </div>
+                                                        <div class="row">
+                                                            <table class="table table-striped table-hover table-responsive">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope="col">#</th>
+                                                                        <th scope="col">Sócio</th>
+                                                                        <th scope="col">R$ Investido</th>
+                                                                        <th scope="col">Participação</th>
+                                                                        <th scope="col">Gestor</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @foreach ($partners as $partner)
+                                                                        @if ($partner->status === 1)
+                                                                            <tr>
+                                                                                <th scope="row">{{ $partner->id }}</th>
+                                                                                <td style="text-transform: uppercase">
+                                                                                    {{ $partner->name }}</td>
+                                                                                <td>{{ $partner->email }}</td>
+                                                                                <td>
+                                                                                    <div class="input-group mb-3">
+                                                                                        <div class="input-group-prepend">
+                                                                                            <span
+                                                                                                class="input-group-text">R$</span>
+                                                                                        </div>
+                                                                                        <input type="number"
+                                                                                            class="form-control"
+                                                                                            aria-label="Amount (to the nearest dollar)"
+                                                                                            id="currency">
+                                                                                        <div class="input-group-append">
+                                                                                            <span
+                                                                                                class="input-group-text">.00</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <label class="custom-toggle">
+                                                                                        <input type="checkbox" checked>
+                                                                                        <span
+                                                                                            class="custom-toggle-slider rounded-circle"></span>
+                                                                                    </label>
+                                                                                    <span class="clearfix"></span>
+                                                                                </td>
+                                                                            </tr>
+                                                                        @endif
+                                                                    @endforeach
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary">Understood</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                     </div>
