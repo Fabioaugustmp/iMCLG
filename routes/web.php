@@ -10,6 +10,7 @@ use App\Http\Controllers\StatusPropertiesController;
 use App\Http\Controllers\ExpenseTypeController;
 use App\Http\Controllers\ClassExpensesController;
 use App\Models\Construction;
+use App\Models\Expense;
 use App\Models\Properties;
 use App\Models\StatusProperties;
 use Illuminate\Support\Facades\Route;
@@ -66,7 +67,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('partner/create', [PartnerController::class, 'createPartner'])->name('partner.create');
 
 	Route::get('expense', [ExpensesController::class, 'listaAllExpenses'])->name('expense');
-	Route::get('expense/create', [ExpensesController::class, 'createExpense'])->name('expense.create');
+	Route::get('expense/create', [ExpensesController::class, 'showCreateExpense'])->name('expense.create');
+	Route::post('expense/create', [ExpensesController::class, 'createExpense'])->name('expense.create.post');
 
 	Route::get('realestate', [RealEstateController::class, 'listAllRealEstate'])->name('realestate');
 	Route::get('realestate/create', [RealEstateController::class, 'showRealEstate'])->name('realestate.create');

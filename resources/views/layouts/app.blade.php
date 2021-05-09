@@ -21,6 +21,8 @@
     <!-- Argon CSS -->
     <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">    
+    <!--<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">-->
 </head>
 
 <body class="{{ $class ?? '' }}">
@@ -40,14 +42,25 @@
         @include('layouts.footers.guest')
     @endguest
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
     <!--<script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>-->
     <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     @stack('js')
 
     <!-- Argon JS -->
-    <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
+    <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script> 
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+    <!--<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>-->
+
+    <script>
+         $(document).ready( function () {
+            $('#datatable').DataTable();
+        });
+
+    </script>
 </body>
 
 </html>

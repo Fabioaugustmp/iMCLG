@@ -36,4 +36,8 @@ class Properties extends Model
     public function associates(){
         return $this->belongsToMany(Partner::class, 'properties_associates', 'properties', 'associates');
     }
+
+    public function expenses(){
+        return $this->hasMany(Expense::class, 'id_propertie', 'id');
+    }
 }

@@ -13,9 +13,8 @@
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white border-0">
                         <div class="row justify-content-end">
-                            <a href="{{ route('partner.create') }}" class="btn btn-icon btn-3 btn-primary" type="button">
-                                <span class="btn-inner--icon"><i class="fas fa-plus-square"></i></span>
-                                <span class="btn-inner--text">Novo Sócio</span>
+                            <a href="{{ route('partner.create') }}" class="btn btn-icon btn-3 mr-4 btn-primary btn-outline-primary" type="button">
+                                <i class="fas fa-plus-square"></i> Novo Sócio
                             </a>
                         </div>
                     </div>

@@ -191,7 +191,7 @@
                  </li>
                  <li class="nav-item">
                      <a class="nav-link" href="{{ route('classexpenses') }}" style="color: #cfcfcf">
-                         <i class="fas fa-file-invoice-dollar"></i> Classe de Despesas
+                         <i class="fas fa-coins"></i> Classe de Despesas
                      </a>
                  </li>
                  <!--
