@@ -9,6 +9,7 @@ class Properties extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'name',
         'realestate',
         'statusproperties',
         'cep',

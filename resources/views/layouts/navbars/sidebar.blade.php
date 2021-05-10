@@ -7,6 +7,35 @@
          color: #cfcfcf;
      }
 
+     body::-webkit-scrollbar {
+         width: 12px;
+         /* width of the entire scrollbar */
+     }
+
+     body::-webkit-scrollbar-track {
+         background: whitesmoke;
+         color of the tracking area */
+     }
+
+     body::-webkit-scrollbar-thumb {
+         background-color: #1e1a55;
+         /* color of the scroll thumb */
+         border-radius: 20px;
+         /* roundness of the scroll thumb */
+         border: 3px solid whitesmoke;
+         /* creates padding around scroll thumb */
+     }
+
+     #sidenav-main::-webkit-scrollbar {
+         width: 5px;
+     }
+
+     #sidenav-main::-webkit-scrollbar-thumb {
+         background-color: whitesmoke;
+         border-radius: 12px;
+         border: 2px solid whitesmoke;
+     }
+
  </style>
 
  <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light navbar-bg" id="sidenav-main">
@@ -22,7 +51,7 @@
         </a>-->
          <a class="navbar-brand pt-0" href="{{ route('properties') }}">
              <h1 style="color: #cfcfcf; font-weight: 800; "><i class="fas fa-city"></i> iMCLG</h1>
-         </a>         
+         </a>
          <!--<div align="center">
              <div class="media align-items-center">
                  <span class="avatar avatar-sm rounded-circle">
@@ -54,7 +83,7 @@
                      <a href="#" class="dropdown-item">
                          <i class="ni ni-settings-gear-65"></i>
                          <span>{{ __('Configuracoes') }}</span>
-                     </a>                                     
+                     </a>
                  </div>
              </li>
          </ul>
@@ -65,7 +94,7 @@
                  <div class="row">
                      <div class="col-6 collapse-brand">
                          <a href="{{ route('home') }}">
-                            <h1 style="color: #1e1a55; font-weight: 800; "><i class="fas fa-city"></i> iMCLG</h1>
+                             <h1 style="color: #1e1a55; font-weight: 800; "><i class="fas fa-city"></i> iMCLG</h1>
                          </a>
                      </div>
                      <div class="col-6 collapse-close">
@@ -77,8 +106,8 @@
                          </button>
                      </div>
                  </div>
-             </div>            
-            
+             </div>
+
              <!-- Navigation -->
              <ul class="navbar-nav">
                  <!-- <li class="nav-item">

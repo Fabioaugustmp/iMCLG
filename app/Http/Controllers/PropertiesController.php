@@ -12,6 +12,7 @@ use App\Models\PropertiesImages;
 use App\Models\StatusProperties;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Expr\Isset_;
 
 class PropertiesController extends Controller
 {
@@ -36,8 +37,11 @@ class PropertiesController extends Controller
     public function showAddpartner(Properties $properties)
     {
 
+        $partners = Partner::all();
+
         return view('properties.properties-create-partner', [
-            "properties" => $properties
+            "properties" => $properties, 
+            "partners" => $partners
         ]);
     }
 
@@ -107,9 +111,10 @@ class PropertiesController extends Controller
     public function addProperties(Request $request)
     {
 
-        // dd($request, $request->hasFile('pictures'), $request->hasFile('files'));
+       // dd($request, $request->hasFile('pictures'), $request->hasFile('files'));
 
         $this->validate($request, [
+            'name' => 'required',
             'realestate' => 'required',
             'statusproperties' => 'required',
             'cep' => 'required|max:9',
@@ -123,12 +128,13 @@ class PropertiesController extends Controller
             'valordaaquisicao' => 'required|Integer',
             'valordevenda' => 'required|Integer',
             'construction' => 'required',
-            'feedback' => 'required|min:10'
+            'feedback' => 'required|min:10',            
         ]);
 
         //$request->file('pictures')->store('teste');
 
         $data = $request->only([
+            'name',
             'realestate',
             'statusproperties',
             'cep',
@@ -146,6 +152,8 @@ class PropertiesController extends Controller
         ]);
 
         $properties = Properties::create($data);
+
+        //dd($properties);
 
         if ($request->hasFile('pictures')) {
 
@@ -173,8 +181,9 @@ class PropertiesController extends Controller
                 $propertiesFiles->save();
                 unset($propertiesFiles);
             }
-        }
+        }      
 
-        return redirect('properties.show.partner');
-    }
+       return redirect()
+       ->route('properties.show.partner');  
+    }   
 }

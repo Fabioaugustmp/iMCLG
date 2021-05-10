@@ -31,10 +31,10 @@
 
     <style>
         /*!
-                 * bsStepper v{version} (https://github.com/Johann-S/bs-stepper)
-                 * Copyright 2018 - {year} Johann-S <johann.servoire@gmail.com>
-                 * Licensed under MIT (https://github.com/Johann-S/bs-stepper/blob/master/LICENSE)
-                 */
+                             * bsStepper v{version} (https://github.com/Johann-S/bs-stepper)
+                             * Copyright 2018 - {year} Johann-S <johann.servoire@gmail.com>
+                             * Licensed under MIT (https://github.com/Johann-S/bs-stepper/blob/master/LICENSE)
+                             */
 
         .bs-stepper .step-trigger {
             display: inline-flex;
@@ -215,9 +215,11 @@
                     <div class="card-header bg-white border-0">
                         <div class="row m-2">
                             <div class="col-6">
-                                <div class="row justify-content-start" >
+                                <div class="row justify-content-start">
                                     <h2><i class="fas fa-plus-square"></i> Cadastro de Ativo</h2>
-                                    <small data-toggle="tooltip" data-placement="top" title="Neste campo um ativo é cadastrado! Com todas as informações!"><i class="fas fa-info-circle"></i></small>
+                                    <small data-toggle="tooltip" data-placement="top"
+                                        title="Neste campo um ativo é cadastrado! Com todas as informações!"><i
+                                            class="fas fa-info-circle"></i></small>
 
                                 </div>
                             </div>
@@ -235,7 +237,7 @@
                         <form role="form" method="POST" action="{{ route('properties.create.post') }}"
                             enctype="multipart/form-data">
                             @csrf
-                            <div class="container">                               
+                            <div class="container">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="bs-stepper">
                                         <div class="bs-stepper-header" role="tablist">
@@ -249,17 +251,26 @@
                                             </div>
                                             <div class="line"></div>
                                             <div class="step" data-target="#information-part">
-                                                <a type="button" class="step-trigger" role="tab" href="{{route('properties.show.partner')}}"
+                                                <a type="button" class="step-trigger" role="tab"
+                                                    href="{{ route('properties.show.partner') }}"
                                                     aria-controls="information-part" id="information-part-trigger">
                                                     <span class="bs-stepper-circle">2</span>
                                                     <span class="bs-stepper-label">Inclusão de Sócios</span>
-                                            </a>
+                                                </a>
                                             </div>
                                             <div class="line"></div>
                                             <div class="step" data-target="#information-part">
                                                 <button type="button" class="step-trigger" role="tab"
                                                     aria-controls="information-part" id="information-part-trigger">
                                                     <span class="bs-stepper-circle">3</span>
+                                                    <span class="bs-stepper-label">Histórico de Despesas</span>
+                                                </button>
+                                            </div>
+                                            <div class="line"></div>
+                                            <div class="step" data-target="#information-part">
+                                                <button type="button" class="step-trigger" role="tab"
+                                                    aria-controls="information-part" id="information-part-trigger">
+                                                    <span class="bs-stepper-circle">4</span>
                                                     <span class="bs-stepper-label">Salvar Ativo</span>
                                                 </button>
                                             </div>
@@ -274,6 +285,18 @@
                                     </div>
                                 </div>
 
+                                <hr>
+
+                                <div class="form-group">
+                                    <label for="name">Nome do Ativo</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Insira o nome do ativo."
+                                        name="name" value="{{ old('name') }}">
+                                </div>
+                                @if ($errors->has('name'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
                                 <hr>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -565,8 +588,7 @@
                                                 </div>
                                                 <div class="modal-body">
 
-                                                    <input type='file' id="imgInp" name="files[]" accept="application/pdf"
-                                                        multiple />
+                                                    <input type='file' id="imgInp" name="files[]" multiple />
                                                     @if ($errors->has('files'))
                                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                                             <strong>{{ $errors->first('files') }}</strong>
@@ -588,31 +610,31 @@
 
                                 <div class="form-row">
                                     <!--  <div class="input-group mb-3">
-                                                                                                            <div class="input-group-prepend">
-                                                                                                                <span class="input-group-text" id="pictures">Fotos</span>
-                                                                                                            </div>
-                                                                                                            <div class="custom-file">
-                                                                                                                <input type="file" class="custom-file-input" id="pictures"
-                                                                                                                    aria-describedby="pictures" name="pictures[]" accept="image/*" multiple>
-                                                                                                                <label class="custom-file-label" for="pictures">Selecionar Foto(s)</label>
-                                                                                                            </div>
-                                                                                                            @if ($errors->has('pictures'))
-                                                                                                                <span class="invalid-feedback" style="display: block;" role="alert">
-                                                                                                                    <strong>{{ $errors->first('pictures') }}</strong>
-                                                                                                                </span>
-                                                                                                            @endif
-                                                                                                        </div>
-                                                                                                        <div class="input-group mb-3">
-                                                                                                                                                    <div class="input-group-prepend">
-                                                                                                                                                        <span class="input-group-text" id="inputGroupFileAddon01">Anexos</span>
-                                                                                                                                                    </div>
-                                                                                                                                                    <div class="custom-file">
-                                                                                                                                                        <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                                                                                                                                            aria-describedby="inputGroupFileAddon01">
-                                                                                                                                                        <label class="custom-file-label" for="inputGroupFile01">Selecionar
-                                                                                                                                                            Arquivo(s)</label>
-                                                                                                                                                    </div>
-                                                                                                                                                </div>-->
+                                                                                                                        <div class="input-group-prepend">
+                                                                                                                            <span class="input-group-text" id="pictures">Fotos</span>
+                                                                                                                        </div>
+                                                                                                                        <div class="custom-file">
+                                                                                                                            <input type="file" class="custom-file-input" id="pictures"
+                                                                                                                                aria-describedby="pictures" name="pictures[]" accept="image/*" multiple>
+                                                                                                                            <label class="custom-file-label" for="pictures">Selecionar Foto(s)</label>
+                                                                                                                        </div>
+                                                                                                                        @if ($errors->has('pictures'))
+                                                                                                                            <span class="invalid-feedback" style="display: block;" role="alert">
+                                                                                                                                <strong>{{ $errors->first('pictures') }}</strong>
+                                                                                                                            </span>
+                                                                                                                        @endif
+                                                                                                                    </div>
+                                                                                                                    <div class="input-group mb-3">
+                                                                                                                                                                <div class="input-group-prepend">
+                                                                                                                                                                    <span class="input-group-text" id="inputGroupFileAddon01">Anexos</span>
+                                                                                                                                                                </div>
+                                                                                                                                                                <div class="custom-file">
+                                                                                                                                                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                                                                                                                                                        aria-describedby="inputGroupFileAddon01">
+                                                                                                                                                                    <label class="custom-file-label" for="inputGroupFile01">Selecionar
+                                                                                                                                                                        Arquivo(s)</label>
+                                                                                                                                                                </div>
+                                                                                                                                                            </div>-->
                                 </div>
 
                                 <hr>
@@ -640,7 +662,7 @@
                             <div class="container">
                                 <div class="text-start">
                                     <button type="submit" class="btn btn-primary btn-outline-primary mt-4"><i
-                                            class="fa fa-save" aria-hidden="true"></i>
+                                            class="fas fa-check" aria-hidden="true"></i>
                                         {{ __(' Gravar Ativo') }}</button>
                                     <a href="{{ route('properties') }}" class="btn btn-primary btn-outline-primary mt-4"
                                         type="button">
