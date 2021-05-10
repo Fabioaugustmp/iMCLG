@@ -29,14 +29,14 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\PropertiesController::class, 'listaAllProperties'])->name('home');
-Auth::routes();
-
 //Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
-Route::get('/home', 'App\Http\Controllers\PropertiesController@listaAllProperties')->name('home');
+
 
 
 Route::group(['middleware' => 'auth'], function () {
+	Route::get('/home', 'App\Http\Controllers\PropertiesController@listaAllProperties')->name('home');
+
+	
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
@@ -99,6 +99,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('classexpenses/create', [ClassExpensesController::class, 'addClassExpenses'])->name('classexpenses.add');
 	Route::get('classexpenses/{classexpenses}', [ClassExpensesController::class, 'updateClassExpenses'])->name('classexpenses.show');
 	Route::put('classexpenses/{classexpenses}', [ClassExpensesController::class, 'editClassExpenses'])->name('classexpenses.edit');
+
+
 	
 });
 

@@ -96,7 +96,7 @@
                                                                 class="far fa-calendar-check"></i></span>
                                                     </div>
                                                     <input type="date" class="form-control" placeholder="Inclusao"
-                                                        aria-label="DtInclusao" aria-describedby="addon-wrapping" name="includedate">
+                                                        aria-label="DtInclusao" aria-describedby="addon-wrapping" name="includedate" value="{{ old('includedate')}}">
                                                 </div>
                                                 @if ($errors->has('includedate'))
                                                     <span class="invalid-feedback" style="display: block;" role="alert">

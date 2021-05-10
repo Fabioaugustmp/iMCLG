@@ -35,6 +35,8 @@
                                                 <th>Data Pagamento</th>
                                                 <th>Competencia</th>
                                                 <th>Valor</th>
+                                                <th>Visualizar</th>
+                                                <th>Editar</th>
                                             </tr>
                                         </thead>
                                         <tbody>                                               
@@ -48,6 +50,8 @@
                                                 <td>{{$expense->paymentdate}}</td>
                                                 <td>{{$expense->competence}}</td>
                                                 <td>R$ {{$expense->value}}</td>
+                                                <td class="justify-content-center"><a href="/expense/create"><i class="far fa-eye"></i></a> </td>
+                                                <td class="justify-content-center"><a href="/expense/create"><i class="far fa-edit"></i></a> </td>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -61,6 +65,8 @@
                                                 <th>Data Pagamento</th>
                                                 <th>Competencia</th>
                                                 <th>Valor</th>
+                                                <th>Visualizar</th>
+                                                <th>Editar</th>
                                             </tr>
                                         </tfoot>
                                     </table>
