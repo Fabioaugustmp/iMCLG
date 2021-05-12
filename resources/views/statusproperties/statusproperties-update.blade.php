@@ -14,26 +14,18 @@
                     <div class="card-body">
                         
                         <div class="card-body">
-                            <div class="card-header bg-white border-0">
-                                <div class="row align-items-center card-body">
-                                    <a href="{{ route('statusproperties') }}" class="btn btn-icon btn-3 btn-primary" type="button">
-                                        <span class="btn-inner--icon"><i class="fas fa-stream"></i></span>
-                                        <span class="btn-inner--text">Listar Status</span>
-                                    </a>
-                                </div>
-                            </div>
                             <form role="form" method="POST" action="{{ route('statuspropertie.edit', ['statusproperties' => $statusproperties->id]) }}">
                                 @csrf
                                 @method('PUT')
 
                                 <div class="form-group">
-                                    <label for="statusproperties">Nome do Ativo</label>
+                                    <label for="statusproperties">Nome do Status</label>
                                     <div class="input-group input-group-alternative mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-flag"></i></span>
                                         </div>
                                         <input class="form-control"
-                                            placeholder="{{ __('Tipo do Ativo') }}" type="text" name="name"
+                                            placeholder="{{ __('Status do Ativo') }}" type="text" name="name"
                                             value="{{ $statusproperties->name }}" required autofocus>
                                     </div>
                                     @if ($errors->has('statusproperties'))
@@ -44,7 +36,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="description">Descricao do Ativo</label>
+                                    <label for="description">Descricao</label>
                                     <textarea class="form-control {{ $errors->has('statusproperties') ? ' has-danger' : '' }}" id="description" rows="5" name="description"
                                         placeholder="Informe uma breve descricao do ativo ..." required>{{ $statusproperties->description }}</textarea>
                                     @if ($errors->has('description'))
@@ -55,9 +47,9 @@
                                 </div>
 
                                 <fieldset disabled>
-                                    <legend>Status do Ativo</legend>
+                                    <legend>Status</legend>
                                     <div class="form-group">
-                                      <label for="">Status Atual do Ativo</label>
+                                      <label for="">Status Atual</label>
                                       <input type="text" id="" value="{{ $statusproperties->status === 1 ? 'Ativo' : 'Inativo' }}" class="form-control" placeholder="Disabled input">
                                     </div>
                                 </fieldset>
@@ -78,9 +70,10 @@
                                 @endif
                                 </div>
 
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-plus"
-                                            aria-hidden="true"></i> {{ __(' Atualizar ativo') }}</button>
+                                <div class="text-left">
+                                    <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-save"
+                                            aria-hidden="true"></i> {{ __(' Atualizar') }}</button>
+                                    <a href="{{ route('statusproperties')}}" class="btn btn-primary mt-4"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
                                 </div>
                             </form>
                         </div>

@@ -24,7 +24,7 @@
                                             <span class="input-group-text"><i class="fas fa-flag"></i></span>
                                         </div>
                                         <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                            placeholder="{{ __('Construção') }}" type="text" name="name"
+                                            placeholder="{{ __('Tipo de Despesa') }}" type="text" name="name"
                                             value="{{ old('name') }}" required autofocus>
                                     </div>
                                     @if ($errors->has('name'))
@@ -37,7 +37,7 @@
                                 <div class="form-group">
                                     <label for="description">Descricao</label>
                                     <textarea class="form-control {{ $errors->has('description') ? ' has-danger' : '' }}" id="description" rows="5" name="description"
-                                        placeholder="Informe uma breve descricao da construção ..." required value="{{ old('description') }}"></textarea>
+                                        placeholder="Informe uma breve descricao do Tipo de Despesa ..." required value="{{ old('description') }}"></textarea>
                                     @if ($errors->has('description'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $errors->first('description') }}</strong>

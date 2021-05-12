@@ -70,7 +70,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="checkbox">Ativas Sócio</label>
+                                            <label for="checkbox">Ativar Sócio</label>
                                             <div>
                                                 <label class="custom-toggle" id="checkbox">
                                                     <input type="checkbox" name="status">

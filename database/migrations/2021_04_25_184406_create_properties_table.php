@@ -23,13 +23,14 @@ class CreatePropertiesTable extends Migration
             $table->string('bairro');
             $table->string('cidade');
             $table->string('uf');
-            $table->bigInteger('areatotal');
-            $table->bigInteger('areaconstruida');
-            $table->bigInteger('valorvenal');
-            $table->bigInteger('valordaaquisicao');
-            $table->bigInteger('valordevenda');
+            $table->string('areatotal');
+            $table->string('areaconstruida');
+            $table->string('valorvenal');
+            $table->string('valordaaquisicao');
+            $table->string('valordevenda')->nullable();
             $table->string('construction');
-            $table->text('feedback');
+            $table->string('company');
+            $table->text('feedback')->nullable();
             $table->timestamps();
         });
     }

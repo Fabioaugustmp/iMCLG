@@ -19,13 +19,13 @@
                                 @method('PUT')
 
                                 <div class="form-group">
-                                    <label for="construction">Nome do Ativo</label>
+                                    <label for="construction">Nome da Construção</label>
                                     <div class="input-group input-group-alternative mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-flag"></i></span>
                                         </div>
                                         <input readonly class="form-control"
-                                            placeholder="{{ __('Tipo do Ativo') }}" type="text" name="construction"
+                                            placeholder="{{ __('Tipo de Construção') }}" type="text" name="construction"
                                             value="{{ $construction->name }}" required autofocus>
                                     </div>
                                     @if ($errors->has('construction'))
@@ -36,7 +36,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="description">Descricao do Ativo</label>
+                                    <label for="description">Descricao</label>
                                     <textarea class="form-control {{ $errors->has('construction') ? ' has-danger' : '' }}" id="description" rows="5" name="description"
                                         placeholder="Informe uma breve descricao do ativo ..." required>{{ $construction->description }}</textarea>
                                     @if ($errors->has('description'))
@@ -47,9 +47,9 @@
                                 </div>
 
                                 <fieldset disabled>
-                                    <legend>Status do Ativo</legend>
+                                    <legend>Status</legend>
                                     <div class="form-group">
-                                      <label for="">Status Atual do Ativo</label>
+                                      <label for="">Status Atual</label>
                                       <input type="text" id="" value="{{ $construction->status === 1 ? 'Ativo' : 'Inativo' }}" class="form-control" placeholder="Disabled input">
                                     </div>
                                 </fieldset>
@@ -72,7 +72,7 @@
 
                                 <div class="text-left">
                                     <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-save"
-                                            aria-hidden="true"></i> {{ __(' Gravar') }}</button>
+                                            aria-hidden="true"></i> {{ __(' Atualizar') }}</button>
                                             <a href="{{ route('construction')}}" class="btn btn-primary mt-4"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
                                 </div>
                             </form>

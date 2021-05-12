@@ -64,6 +64,25 @@ class PropertiesController extends Controller
         ]);
     }
 
+    public function listaAllPropertiesList(Properties $properties)
+    {
+        $properties = Properties::all();
+
+        $propertiename = DB::table('properties')->get();
+
+        $propertienames = [];
+
+        foreach ($propertiename as $name) {
+
+            $propertienames[] = $name->name;
+        }
+
+        return view('properties.properties-list', [
+            'properties' => $properties,
+            'propertiesnames' => $propertienames
+        ]);
+    }    
+
     public function searchPropertie(Properties $properties, Request $request)
     {
 
@@ -122,13 +141,12 @@ class PropertiesController extends Controller
             'bairro' => 'required|min:5',
             'cidade' => 'required|min:5',
             'uf' => 'required|min:2',
-            'areatotal' => 'required|Integer',
-            'areaconstruida' => 'required|Integer',
-            'valorvenal' => 'required|Integer',
-            'valordaaquisicao' => 'required|Integer',
-            'valordevenda' => 'required|Integer',
+            'areatotal' => 'required',
+            'areaconstruida' => 'required',
+            'valorvenal' => 'required',
+            'valordaaquisicao' => 'required',            
             'construction' => 'required',
-            'feedback' => 'required|min:10',            
+            'company' => 'required',                        
         ]);
 
         //$request->file('pictures')->store('teste');
@@ -148,6 +166,7 @@ class PropertiesController extends Controller
             'valordaaquisicao',
             'valordevenda',
             'construction',
+            'company',
             'feedback'
         ]);
 
@@ -186,4 +205,16 @@ class PropertiesController extends Controller
        return redirect()
        ->route('properties.show.partner');  
     }   
+
+
+   public function showExpensePropertie(Properties $properties){
+
+    $expenses = $properties->expenses()->get();
+
+    return view('properties.properties-show-expenses', [
+        'expenses' => $expenses,
+        'properties' => $properties
+    ]);
+
+   }
 }

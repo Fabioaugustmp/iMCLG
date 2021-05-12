@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => __('Usuários')])
+@extends('layouts.app', ['title' => __('Tipos de Ativo')])
 
 @section('content')
     @include('users.partials.header-profile', [
@@ -35,7 +35,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="description">Descricao do Ativo</label>
+                                    <label for="description">Descricao</label>
                                     <textarea class="form-control {{ $errors->has('realestate') ? ' has-danger' : '' }}" id="description" rows="5" name="description"
                                         placeholder="Informe uma breve descricao do ativo ..." required>{{ $realestate->description }}</textarea>
                                     @if ($errors->has('description'))
@@ -46,9 +46,9 @@
                                 </div>
 
                                 <fieldset disabled>
-                                    <legend>Status do Ativo</legend>
+                                    <legend>Status</legend>
                                     <div class="form-group">
-                                      <label for="">Status Atual do Ativo</label>
+                                      <label for="">Status Atual</label>
                                       <input type="text" value="{{ $realestate->status === 1 ? 'Ativo' : 'Inativo' }}" class="form-control" placeholder="Disabled input">
                                     </div>
                                 </fieldset>
@@ -71,7 +71,7 @@
 
                                 <div class="text-start">
                                     <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-edit"
-                                            aria-hidden="true"></i> {{ __(' Atualizar ativo') }}</button>
+                                            aria-hidden="true"></i> {{ __(' Atualizar') }}</button>
                                             <a href="{{ route('realestate')}}" class="btn btn-primary mt-4"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
                                 </div>
                             </form>

@@ -52,15 +52,15 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('users/{user}', [UserController::class, 'updateUser'])->name('users.update');
 
 	Route::get('properties', [PropertiesController::class, 'listaAllProperties'])->name('properties');
+	Route::get('properties/list', [PropertiesController::class, 'listaAllPropertiesList'])->name('properties.list');
 	Route::get('properties/view/{properties}', [PropertiesController::class, 'showPropertie'])->name('propertie.show');
 	Route::get('properties/search', [PropertiesController::class, 'searchPropertie'])->name('search.propertie');	
 	Route::get('properties/create', [PropertiesController::class, 'createPropertie'])->name('properties.create');
 	Route::post('properties/create', [PropertiesController::class, 'addProperties'])->name('properties.create.post');
 	Route::get('properties/add/partner', [PropertiesController::class, 'showAddpartner'])->name('properties.show.partner');
 	//Route::get('properties/{properties}', [PropertiesController::class, 'updatePropertie'])->name('properties.update');
-	Route::put('properties/{properties}', [PropertiesController::class, 'editProperties'])->name('properties.edit');
-	
-	//https://stackoverflow.com/questions/51287100/laravel-ajax-search-in-bootstrap-modal
+	Route::put('properties/{properties}', [PropertiesController::class, 'editProperties'])->name('properties.edit');	
+	Route::get('expense/view/{properties}', [PropertiesController::class, 'showExpensePropertie'])->name('expense.show.propertie');
 
 	Route::get('partners', [PartnerController::class, 'listaAllPartner'])->name('partners');
 	Route::get('partner/create', [PartnerController::class, 'showCreatePartner'])->name('partner.showcreate');
@@ -68,7 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('expense', [ExpensesController::class, 'listaAllExpenses'])->name('expense');
 	Route::get('expense/create', [ExpensesController::class, 'showCreateExpense'])->name('expense.create');
-	Route::post('expense/create', [ExpensesController::class, 'createExpense'])->name('expense.create.post');
+	Route::post('expense/create', [ExpensesController::class, 'createExpense'])->name('expense.create.post');	
 
 	Route::get('realestate', [RealEstateController::class, 'listAllRealEstate'])->name('realestate');
 	Route::get('realestate/create', [RealEstateController::class, 'showRealEstate'])->name('realestate.create');

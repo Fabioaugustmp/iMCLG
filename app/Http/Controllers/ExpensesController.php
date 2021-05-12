@@ -33,11 +33,9 @@ class ExpensesController extends Controller
             'expensetype' => 'required',
             'classexpense' => 'required',
             'includedate' => 'required|date',
-            'expiredate' => 'required|date',
-            'paymentdate' => 'required|date',
+            'expiredate' => 'required|date',            
             'competence' => 'required',
-            'value' => 'required|numeric',
-            'observations' => 'required|min:10'
+            'value' => 'required|numeric',           
         ]);
 
         $data = $request->only([
@@ -59,13 +57,29 @@ class ExpensesController extends Controller
         ->with('success', 'Despesa de(a) ' . $expense->name . 'criado com sucesso!');
     }
 
-    public function listaAllExpenses()
+    public function listaAllExpenses(Expense $expenses)
     {
 
         $expenses = Expense::all();
 
+       // $properties = $expenses->propertie()->first();
+
         return view('expenses.expenses', [
-            'expenses' => $expenses
+            'expenses' => $expenses            
         ]);
     }
+
+   public function showExpensePropertie(Properties $properties){
+
+    $properties = Properties::where('id', $properties->id)->first();
+
+    $expenses = $properties->expenses()->get();
+
+
+    dd($expenses);
+
+    return view();
+
+   }
+
 }

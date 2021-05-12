@@ -25,7 +25,7 @@
                                             <span class="input-group-text"><i class="fas fa-flag"></i></span>
                                         </div>
                                         <input class="form-control"
-                                            placeholder="{{ __('Tipo do Ativo') }}" type="text" name="name"
+                                            placeholder="{{ __('Tipo de despesa') }}" type="text" name="name"
                                             value="{{ $expensetype->name }}" required autofocus>
                                     </div>
                                     @if ($errors->has('name'))
@@ -36,7 +36,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="description">Descricao do Ativo</label>
+                                    <label for="description">Descricao</label>
                                     <textarea class="form-control {{ $errors->has('expensetype') ? ' has-danger' : '' }}" id="description" rows="5" name="description"
                                         placeholder="Informe uma breve descricao do ativo ..." required>{{ $expensetype->description }}</textarea>
                                     @if ($errors->has('description'))
@@ -47,9 +47,9 @@
                                 </div>
 
                                 <fieldset disabled>
-                                    <legend>Status do Ativo</legend>
+                                    <legend>Status</legend>
                                     <div class="form-group">
-                                      <label for="">Status Atual do Ativo</label>
+                                      <label for="">Status Atual</label>
                                       <input type="text" id="" value="{{ $expensetype->status === 1 ? 'Ativo' : 'Inativo' }}" class="form-control" placeholder="Disabled input">
                                     </div>
                                 </fieldset>
@@ -72,7 +72,7 @@
 
                                 <div class="text-left">
                                     <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-save"
-                                            aria-hidden="true"></i> {{ __(' Gravar') }}</button>
+                                            aria-hidden="true"></i> {{ __(' Atualizar') }}</button>
                                     <a href="{{ route('expensetype')}}" class="btn btn-primary mt-4"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
                                 </div>
                             </form>

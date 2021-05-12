@@ -22,7 +22,7 @@
                                 <a href="{{ route('construction.create') }}" class="btn btn-icon btn-3 btn-primary"
                                     type="button">
                                     <span class="btn-inner--icon"><i class="fas fa-plus-square"></i></span>
-                                    <span class="btn-inner--text">Novo Tipo</span>
+                                    <span class="btn-inner--text">Novo</span>
                                 </a>
                             </div>
                         </div>
@@ -33,9 +33,9 @@
                                     <tr>
                                         <th scope="col" class="sort" data-sort="name">ID #</th>
                                         <th scope="col" class="sort" data-sort="name">Tipo de Construção</th>
-                                        <th scope="col" class="sort" data-sort="budget">Descricao</th>
+                                        <th scope="col" class="sort" data-sort="budget">Descrição</th>
                                         <th scope="col" class="sort" data-sort="status">Status</th>
-                                        <th scope="col" class="sort">Acoes</th>
+                                        <th scope="col" class="sort">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody class="list">
@@ -76,18 +76,8 @@
                                                 </td>
                                             @endif
 
-                                            <td class="text-right">
-                                                <div class="dropdown">
-                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button"
-                                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" href="{{ route('construction.show' , $construction->id ) }}"><i class="fas fa-user-edit"></i>
-                                                            Editar
-
-                                                    </div>
-                                                </div>
+                                            <td class="justify-content-center">
+                                                <a class="dropdown-item" href="{{ route('construction.show' , $construction->id ) }}"><i class="fas fa-user-edit"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

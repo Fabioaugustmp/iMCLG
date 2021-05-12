@@ -23,6 +23,7 @@ class Properties extends Model
         'valordaaquisicao',
         'valordevenda',
         'construction',
+        'company',
         'feedback'
     ];
 

@@ -21,10 +21,10 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-home"></i></span>
                                             </div>
-                                            <select class="form-control" name="id_propertie">
+                                            <select class="form-control" name="id_propertie" style="text-transform: uppercase">
                                                 
                                                 @foreach ($properties as $propertie)
-                                                    <option value="{{ $propertie->id }}">{{ $propertie->realestate }}
+                                                    <option value="{{ $propertie->id }}">{{ $propertie->name }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -114,7 +114,7 @@
                                                                 class="far fa-calendar-times"></i></span>
                                                     </div>
                                                     <input type="date" class="form-control" placeholder="Vencimento"
-                                                        aria-label="DtVencimento" aria-describedby="addon-wrapping" name="expiredate">
+                                                        aria-label="DtVencimento" aria-describedby="addon-wrapping" name="expiredate" value="{{ old('expiredate') }}">
                                                     </select>
                                                 </div>
                                                 @if ($errors->has('expiredate'))
@@ -135,7 +135,7 @@
                                                                 class="far fa-calendar-minus"></i></span>
                                                     </div>
                                                     <input type="date" class="form-control" placeholder="Inclusao"
-                                                        aria-label="DtInclusao" aria-describedby="addon-wrapping" name="paymentdate">
+                                                        aria-label="DtInclusao" aria-describedby="addon-wrapping" name="paymentdate" value="{{ old('paymentdate') }}">
                                                 </div>
                                                 @if ($errors->has('paymentdate'))
                                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -154,7 +154,7 @@
                                                                 class="far fa-calendar"></i></span>
                                                     </div>
                                                     <input type="date" class="form-control" placeholder="Competência"
-                                                        aria-label="" aria-describedby="addon-wrapping" name="competence">
+                                                        aria-label="" aria-describedby="addon-wrapping" name="competence" value="{{ old('competence') }}">
                                                 </div>
                                                 @if ($errors->has('competence'))
                                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -171,7 +171,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-money-bill-wave"></i></span>
                                             </div>
-                                            <input type="number" class="form-control" placeholder="Valor da Despesa" name="value">
+                                            <input type="number" class="form-control" placeholder="Valor da Despesa" name="value" value="{{ old('value') }}">
                                         </div>
                                         @if ($errors->has('value'))
                                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -182,11 +182,11 @@
                                     <div class="form-group">
                                         <label for="partner">Observações
                                         </label>
-                                        <div class="input-group mb-4" id="partner">
+                                        <div class="input-group mb-4" id="observations">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-stream"></i></span>
                                             </div>
-                                            <textarea class="form-control" placeholder="Observações gerais da despesa..." name="observations"></textarea>
+                                            <textarea class="form-control" placeholder="Observações gerais da despesa..." name="observations" value="{{ old('observations') }}"></textarea>
                                         </div>
                                         @if ($errors->has('observations'))
                                             <span class="invalid-feedback" styl  e="display: block;" role="alert">

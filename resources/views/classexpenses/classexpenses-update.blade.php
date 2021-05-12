@@ -1,9 +1,9 @@
-@extends('layouts.app', ['title' => __('Tipos de Despesa')])
+@extends('layouts.app', ['title' => __('Classes de Despesa')])
 
 @section('content')
     @include('users.partials.header-profile', [
-    'title' => __('Tipos de Despesa'),
-    'description' => __('Atualizar Tipo de Despesa'),
+    'title' => __('Classes de Despesa'),
+    'description' => __('Atualizar Classe de Despesa'),
     'class' => 'col-lg-12'
     ])
 
@@ -19,13 +19,13 @@
                                 @method('PUT')
 
                                 <div class="form-group">
-                                    <label for="name">Tipo de Despesa</label>
+                                    <label for="name">Classe de Despesa</label>
                                     <div class="input-group input-group-alternative mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-flag"></i></span>
                                         </div>
                                         <input class="form-control"
-                                            placeholder="{{ __('Tipo do Ativo') }}" type="text" name="name"
+                                            placeholder="{{ __('Classe da Despesa') }}" type="text" name="name"
                                             value="{{ $classexpenses->name }}" required autofocus>
                                     </div>
                                     @if ($errors->has('name'))
@@ -36,9 +36,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="description">Descricao do Ativo</label>
+                                    <label for="description">Descricao</label>
                                     <textarea class="form-control {{ $errors->has('classexpenses') ? ' has-danger' : '' }}" id="description" rows="5" name="description"
-                                        placeholder="Informe uma breve descricao do ativo ..." required>{{ $classexpenses->description }}</textarea>
+                                        placeholder="Informe uma breve descricao da classe ..." required>{{ $classexpenses->description }}</textarea>
                                     @if ($errors->has('description'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $errors->first('description') }}</strong>
@@ -47,9 +47,9 @@
                                 </div>
 
                                 <fieldset disabled>
-                                    <legend>Status do Ativo</legend>
+                                    <legend>Status</legend>
                                     <div class="form-group">
-                                      <label for="">Status Atual do Ativo</label>
+                                      <label for="">Status Atual</label>
                                       <input type="text" id="" value="{{ $classexpenses->status === 1 ? 'Ativo' : 'Inativo' }}" class="form-control" placeholder="Disabled input">
                                     </div>
                                 </fieldset>
@@ -72,7 +72,7 @@
 
                                 <div class="text-left">
                                     <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-save"
-                                            aria-hidden="true"></i> {{ __(' Gravar') }}</button>
+                                            aria-hidden="true"></i> {{ __(' Atualizar') }}</button>
                                     <a href="{{ route('classexpenses')}}" class="btn btn-primary mt-4"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
                                 </div>
                             </form>

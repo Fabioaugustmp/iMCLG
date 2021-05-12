@@ -35,7 +35,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="description">Descricao do Status</label>
+                                    <label for="description">Descricao</label>
                                     <textarea class="form-control {{ $errors->has('description') ? ' has-danger' : '' }}" id="description" rows="5" name="description"
                                         placeholder="Informe uma breve descricao do ativo ..." required value="{{ old('description') }}"></textarea>
                                     @if ($errors->has('description'))

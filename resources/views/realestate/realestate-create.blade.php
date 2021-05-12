@@ -35,7 +35,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="description">Descricao do Ativo</label>
+                                    <label for="description">Descricao</label>
                                     <textarea class="form-control {{ $errors->has('realestate') ? ' has-danger' : '' }}" id="description" rows="5" name="description"
                                         placeholder="Informe uma breve descricao do ativo ..." required value="{{ old('realestate') }}"></textarea>
                                     @if ($errors->has('description'))
@@ -46,7 +46,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="status">Status do Ativo</label>
+                                    <label for="status">Status</label>
                                     <div>
                                         <select class="custom-select" id="status" name="status">
                                             <option selected disabled value="">Selecione...</option>
@@ -63,7 +63,7 @@
 
                                 <div class="text-start">
                                     <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-plus"
-                                            aria-hidden="true"></i> {{ __(' Cadastrar ativo') }}</button>
+                                            aria-hidden="true"></i> {{ __(' Gravar') }}</button>
                                     <a href="{{ route('realestate')}}" class="btn btn-primary mt-4"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
                                 </div>
                             </form>

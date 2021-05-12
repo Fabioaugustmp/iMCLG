@@ -20,4 +20,8 @@ class Expense extends Model
         'value',
         'observations'
     ];
+
+    public function propertie(){
+        return $this->belongsTo(Properties::class, 'id_propertie', 'id');
+    }
 }

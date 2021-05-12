@@ -1,9 +1,9 @@
-@extends('layouts.app', ['title' => __('Tipos de Despesa')])
+@extends('layouts.app', ['title' => __('Classe de Despesa')])
 
 @section('content')
     @include('users.partials.header-profile', [
-    'title' => __('Tipos de Despesa'),
-    'description' => __('Criar Tipo de Despesa'),
+    'title' => __('Classe de Despesa'),
+    'description' => __('Criar Classe de Despesa'),
     'class' => 'col-lg-12'
     ])
 
@@ -18,13 +18,13 @@
                                 @csrf
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                    <label for="name">Tipo de Despesa</label>
+                                    <label for="name">Classe de Despesa</label>
                                     <div class="input-group input-group-alternative mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-flag"></i></span>
                                         </div>
                                         <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                            placeholder="{{ __('Construção') }}" type="text" name="name"
+                                            placeholder="{{ __('Classe') }}" type="text" name="name"
                                             value="{{ old('name') }}" required autofocus>
                                     </div>
                                     @if ($errors->has('name'))
@@ -37,7 +37,7 @@
                                 <div class="form-group">
                                     <label for="description">Descricao</label>
                                     <textarea class="form-control {{ $errors->has('description') ? ' has-danger' : '' }}" id="description" rows="5" name="description"
-                                        placeholder="Informe uma breve descricao da construção ..." required value="{{ old('description') }}"></textarea>
+                                        placeholder="Informe uma breve descricao da classe de despesa ..." required value="{{ old('description') }}"></textarea>
                                     @if ($errors->has('description'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $errors->first('description') }}</strong>

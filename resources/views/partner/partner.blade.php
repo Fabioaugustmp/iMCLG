@@ -25,10 +25,10 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col" class="sort" data-sort="name">ID #</th>
-                                        <th scope="col" class="sort" data-sort="name">Tipo de Despesa</th>
-                                        <th scope="col" class="sort" data-sort="budget">Descricao</th>
+                                        <th scope="col" class="sort" data-sort="name">Nome do Sócio</th>
+                                        <th scope="col" class="sort" data-sort="budget">Email</th>
                                         <th scope="col" class="sort" data-sort="status">Status</th>
-                                        <th scope="col" class="sort">Acoes</th>
+                                        <th scope="col" class="sort">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody class="list">
@@ -69,21 +69,8 @@
                                                 </td>
                                             @endif
 
-                                            <td class="text-right">
-                                                <div class="dropdown">
-                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button"
-                                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" href=""><i class="fas fa-user-edit"></i>
-                                                            Editar
-                                                            <a class="dropdown-item" href=""><i
-                                                                    class="fas fa-user-times"></i>
-                                                                Excluir
-
-                                                    </div>
-                                                </div>
+                                            <td class="justify-content-center">
+                                                <a class="dropdown-item" href=""><i class="fas fa-user-edit"></i>
                                             </td>
                                         </tr>
                                     @endforeach

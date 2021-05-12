@@ -29,12 +29,14 @@
 
     </script>
 
+
+
     <style>
         /*!
-                             * bsStepper v{version} (https://github.com/Johann-S/bs-stepper)
-                             * Copyright 2018 - {year} Johann-S <johann.servoire@gmail.com>
-                             * Licensed under MIT (https://github.com/Johann-S/bs-stepper/blob/master/LICENSE)
-                             */
+                                         * bsStepper v{version} (https://github.com/Johann-S/bs-stepper)
+                                         * Copyright 2018 - {year} Johann-S <johann.servoire@gmail.com>
+                                         * Licensed under MIT (https://github.com/Johann-S/bs-stepper/blob/master/LICENSE)
+                                         */
 
         .bs-stepper .step-trigger {
             display: inline-flex;
@@ -224,12 +226,12 @@
                                 </div>
                             </div>
                             <div class="col-6">
-                                <div class="row justify-content-end">
-                                    <a href="{{ '/expense' }}" class="btn btn-icon btn-3 btn-primary btn-outline-primary"
-                                        type="button">
-                                        <i class="fas fa-coins"></i> Histórico de Despesas
-                                    </a>
-                                </div>
+                                <!--<div class="row justify-content-end">
+                                        <a href="{{ '/expense' }}" class="btn btn-icon btn-3 btn-primary btn-outline-primary"
+                                            type="button">
+                                            <i class="fas fa-coins"></i> Histórico de Despesas
+                                        </a>
+                                    </div>-->
                             </div>
                         </div>
                     </div>
@@ -300,6 +302,25 @@
                                 <hr>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
+                                        <label class="input-group-text" for="company">
+                                            Empresa</label>
+                                    </div>
+                                    <select class="custom-select" id="company" name="company">
+                                        <option selected>Selecione</option>
+                                        <option value="MCLG">MCLG</option>
+                                        <option value="MARCELO LIMIRIO">Marcelo Limirio</option>
+                                        <option value="CLEONICE LIMIRIO">Cleonice Limirio</option>
+                                        <option value="NEO AVIACAO">Neo Aviação</option>
+                                        <option value="AGROPECUARIA">Agropecuária</option>
+                                    </select>
+                                    @if ($errors->has('company'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('company') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
                                         <label class="input-group-text" for="realestate">
                                             Tipo do Ativo</label>
                                     </div>
@@ -345,7 +366,11 @@
                                             <label for="cep">CEP</label>
                                             <input type="text" class="form-control" maxlength="9" id="cep" placeholder="CEP"
                                                 name="cep" value="{{ old('cep') }}">
+                                            <span class="invalid-feedback" style="display: block;" role="alert">
+                                                <strong id="resultado"></strong>
+                                            </span>
                                         </div>
+
                                         @if ($errors->has('cep'))
                                             <span class="invalid-feedback" style="display: block;" role="alert">
                                                 <strong>{{ $errors->first('cep') }}</strong>
@@ -411,7 +436,8 @@
                                 <div class="form-row">
                                     <div class="col-md-6 mb-3">
                                         <label for="areatotal">Área Total</label>
-                                        <input type="number" class="form-control" id="areatotal" name="areatotal"
+                                        <input type="text" class="form-control" id="areatotal" name="areatotal" data-affixes-stay="true" " data-thousands="."
+                                        data-decimal=","
                                             value="{{ old('areatotal') }}">
                                     </div>
                                     @if ($errors->has('areatotal'))
@@ -421,8 +447,9 @@
                                     @endif
                                     <div class="col-md-6 mb-3">
                                         <label for="validationDefault02">Área Construída</label>
-                                        <input type="number" class="form-control" id="areaconstruida" name="areaconstruida"
-                                            value="{{ old('areaconstruida') }}">
+                                        <input type="text" class="form-control" id="areaconstruida" name="areaconstruida"
+                                            value="{{ old('areaconstruida') }}" data-affixes-stay="true" " data-thousands="."
+                                            data-decimal=",">
                                     </div>
                                     @if ($errors->has('areaconstruida'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
@@ -439,10 +466,11 @@
                                         <div class="input-group mb-3">
 
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">R$</span>
+                                                <span class="input-group-text"><i class="fas fa-coins"></i></span>
                                             </div>
-                                            <input type="number" class="form-control" aria-label="Amount" name="valorvenal"
-                                                value="{{ old('valorvenal') }}">
+                                            <input type="text" data-affixes-stay="true" data-prefix="R$ " data-thousands="."
+                                                data-decimal="," class="form-control" aria-label="Amount" name="valorvenal"
+                                                id="valorvenal" value="{{ old('valorvenal') }}">
                                         </div>
                                         @if ($errors->has('valorvenal'))
                                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -455,10 +483,12 @@
                                         <div class="input-group mb-3">
 
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">R$</span>
+                                                <span class="input-group-text"><i class="fas fa-money-bill"></i></span>
                                             </div>
-                                            <input type="number" class="form-control" aria-label="Amount"
-                                                name="valordaaquisicao" value="{{ old('valordaaquisicao') }}">
+                                            <input type="text" data-affixes-stay="true" data-prefix="R$ " data-thousands="."
+                                                data-decimal="," class="form-control" aria-label="Amount"
+                                                name="valordaaquisicao" id="valordaaquisicao"
+                                                value="{{ old('valordaaquisicao') }}">
                                         </div>
                                         @if ($errors->has('valordaaquisicao'))
                                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -471,10 +501,12 @@
                                         <div class="input-group mb-3">
 
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">R$</span>
+                                                <span class="input-group-text"><i
+                                                        class="fas fa-hand-holding-usd"></i></span>
                                             </div>
-                                            <input type="number" class="form-control" aria-label="Amount"
-                                                name="valordevenda" value="{{ old('valordevenda') }}">
+                                            <input type="text" data-affixes-stay="true" data-prefix="R$ " data-thousands="."
+                                                data-decimal="," class="form-control" aria-label="Amount"
+                                                name="valordevenda" id="valordevenda" value="{{ old('valordevenda') }}">
                                         </div>
                                         @if ($errors->has('valordevenda'))
                                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -610,31 +642,31 @@
 
                                 <div class="form-row">
                                     <!--  <div class="input-group mb-3">
-                                                                                                                        <div class="input-group-prepend">
-                                                                                                                            <span class="input-group-text" id="pictures">Fotos</span>
-                                                                                                                        </div>
-                                                                                                                        <div class="custom-file">
-                                                                                                                            <input type="file" class="custom-file-input" id="pictures"
-                                                                                                                                aria-describedby="pictures" name="pictures[]" accept="image/*" multiple>
-                                                                                                                            <label class="custom-file-label" for="pictures">Selecionar Foto(s)</label>
-                                                                                                                        </div>
-                                                                                                                        @if ($errors->has('pictures'))
-                                                                                                                            <span class="invalid-feedback" style="display: block;" role="alert">
-                                                                                                                                <strong>{{ $errors->first('pictures') }}</strong>
-                                                                                                                            </span>
-                                                                                                                        @endif
-                                                                                                                    </div>
-                                                                                                                    <div class="input-group mb-3">
-                                                                                                                                                                <div class="input-group-prepend">
-                                                                                                                                                                    <span class="input-group-text" id="inputGroupFileAddon01">Anexos</span>
-                                                                                                                                                                </div>
-                                                                                                                                                                <div class="custom-file">
-                                                                                                                                                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                                                                                                                                                        aria-describedby="inputGroupFileAddon01">
-                                                                                                                                                                    <label class="custom-file-label" for="inputGroupFile01">Selecionar
-                                                                                                                                                                        Arquivo(s)</label>
-                                                                                                                                                                </div>
-                                                                                                                                                            </div>-->
+                                                                                                                                    <div class="input-group-prepend">
+                                                                                                                                        <span class="input-group-text" id="pictures">Fotos</span>
+                                                                                                                                    </div>
+                                                                                                                                    <div class="custom-file">
+                                                                                                                                        <input type="file" class="custom-file-input" id="pictures"
+                                                                                                                                            aria-describedby="pictures" name="pictures[]" accept="image/*" multiple>
+                                                                                                                                        <label class="custom-file-label" for="pictures">Selecionar Foto(s)</label>
+                                                                                                                                    </div>
+                                                                                                                                    @if ($errors->has('pictures'))
+                                                                                                                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                                                                                                                            <strong>{{ $errors->first('pictures') }}</strong>
+                                                                                                                                        </span>
+                                                                                                                                    @endif
+                                                                                                                                </div>
+                                                                                                                                <div class="input-group mb-3">
+                                                                                                                                                                            <div class="input-group-prepend">
+                                                                                                                                                                                <span class="input-group-text" id="inputGroupFileAddon01">Anexos</span>
+                                                                                                                                                                            </div>
+                                                                                                                                                                            <div class="custom-file">
+                                                                                                                                                                                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                                                                                                                                                                    aria-describedby="inputGroupFileAddon01">
+                                                                                                                                                                                <label class="custom-file-label" for="inputGroupFile01">Selecionar
+                                                                                                                                                                                    Arquivo(s)</label>
+                                                                                                                                                                            </div>
+                                                                                                                                                                        </div>-->
                                 </div>
 
                                 <hr>
@@ -677,6 +709,7 @@
                 </div>
             </div>
         </div>
+
         @include('layouts.footers.auth')
     </div>
     <script>
@@ -698,11 +731,26 @@
                 cache: 'default'
             }
 
+            const resultado = document.getElementById('resultado')
+
             fetch(`https://viacep.com.br/ws/${search}/json/`, options)
                 .then(response => {
                     response.json().then(data => showData(data))
                 })
-                .catch(e => console.log('Deu Erro: ' + e, message))
+                .catch(e => {
+                    resultado.innerHTML = "CEP inválido ou inexistente!",
+                    console.log('Deu Erro: ' + e.message)
+                })
+        })
+
+    </script> 
+    <script>
+        $(function() {
+            $('#valorvenal').maskMoney();
+            $('#valordaaquisicao').maskMoney();
+            $('#valordevenda').maskMoney();
+            $('#areatotal').maskMoney();
+            $('#areaconstruida').maskMoney();
         })
 
     </script>

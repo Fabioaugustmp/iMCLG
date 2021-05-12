@@ -28,10 +28,10 @@ class CreateExpensesTable extends Migration
             $table->string('classexpense');
             $table->date('includedate');
             $table->date('expiredate');
-            $table->date('paymentdate');
+            $table->date('paymentdate')->nullable();
             $table->date('competence');
             $table->bigInteger('value');
-            $table->text('observations');
+            $table->text('observations')->nullable();
             $table->timestamps();
 
             $table->foreign('id_propertie')->references('id')->on('properties');

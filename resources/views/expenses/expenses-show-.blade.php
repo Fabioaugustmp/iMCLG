@@ -1,9 +1,9 @@
-@extends('layouts.app', ['title' => __('Usuários')])
+@extends('layouts.app', ['title' => __('Despesas')])
 
 @section('content')
     @include('properties.partials.header-profile', [
-    'title' => __('Ativos'),
-    'description' => __('Criar Ativo'),
+    'title' => __('Despesas'),
+    'description' => __('Listar Despesas'),
     'class' => 'col-lg-12'
     ])
 
@@ -17,7 +17,7 @@
                                 <div class="row justify-content-start">
                                     <a href="{{ route('properties') }}"
                                         class="btn btn-icon btn-3 btn-primary btn-outline-primary" type="button">
-                                        <i class="fas fa-grip-horizontal"></i> Ativos
+                                        <i class="far fa-eye"></i> Ativos
                                     </a>
                                 </div>
                             </div>
