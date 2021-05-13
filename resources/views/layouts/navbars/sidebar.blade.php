@@ -14,7 +14,7 @@
 
      body::-webkit-scrollbar-track {
          background: whitesmoke;
-         color of the tracking area */
+         /*color of the tracking area */
      }
 
      body::-webkit-scrollbar-thumb {
