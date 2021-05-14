@@ -82,4 +82,12 @@ class ExpensesController extends Controller
 
    }
 
+   public function showExpensesUnique(Expense $expenses){
+       
+
+    return view('expenses.expenses-show-unique', [
+        'expenses' => $expenses
+    ]);
+   }
+
 }

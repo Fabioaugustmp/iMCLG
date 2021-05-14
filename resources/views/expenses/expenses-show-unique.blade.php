@@ -17,73 +17,41 @@
                             <div class="card-header bg-white border-0">
                                 <div class="container">
                                     <div class="form-group">
-                                        <label for="partner">Ativos</label>
-                                        <div class="input-group mb-4" id="partner">
+                                        <label for="id_propertie">Ativo</label>
+                                        <div class="input-group mb-4" id="id_propertie">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-home"></i></span>
+                                                <span class="input-group-text"><i
+                                                        class="far fa-home"></i></span>
                                             </div>
-                                            <select class="form-control" name="id_propertie" style="text-transform: uppercase">
-                                                
-                                                @foreach ($properties as $propertie)
-                                                    <option value="{{ $propertie->id }}">{{ $propertie->name }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        @if ($errors->has('id_propertie'))
-                                            <span class="invalid-feedback" style="display: block;" role="alert">
-                                                <strong>{{ $errors->first('id_propertie') }}</strong>
-                                            </span>
-                                        @endif
+                                            <input type="text" class="form-control" placeholder="Inclusao"
+                                                 name="id_propertie" value="{{ $expenses->id_propertie }}" readonly>
+                                        </div>                              
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
                                                 <label for="partner">Tipo de Despesa</label>
-                                                <div class="input-group mb-4" id="partner">
+                                                <div class="input-group mb-4" id="id_propertie">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i
                                                                 class="ni ni-money-coins"></i></span>
                                                     </div>
-                                                    <select class="form-control"  name="expensetype">                                                        
-                                                        @foreach ($expensetypes as $expensetype)                                                      
-                                                            @if ($expensetype->status === 1)
-                                                                <option value="{{ $expensetype->name }}">
-                                                                    {{ $expensetype->name }}
-                                                                </option>
-                                                            @endif
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                @if ($errors->has('expensetype'))
-                                                    <span class="invalid-feedback" style="display: block;" role="alert">
-                                                        <strong>{{ $errors->first('expensetype') }}</strong>
-                                                    </span>
-                                                @endif
+                                                    <input type="text" class="form-control" placeholder="Inclusao"
+                                                        name="id_propertie" value="{{ $expenses->expensetype }}" readonly>
+                                                </div>                                                      
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
                                                 <label for="partner">Classe de Despesa</label>
-                                                <div class="input-group mb-4" id="partner">
+                                                <div class="input-group mb-4" id="id_propertie">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i class="fas fa-coins"></i></span>
+                                                        <span class="input-group-text"><i
+                                                                class="ni ni-money-coins"></i></span>
                                                     </div>
-                                                    <select class="form-control" name="classexpense">                                                          
-                                                        @foreach ($classexpenses as $classexpense)
-                                                            @if ($classexpense->status === 1)
-                                                                <option value="{{ $classexpense->name }}">
-                                                                    {{ $classexpense->name }}
-                                                                </option>
-                                                            @endif
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                @if ($errors->has('classexpense'))
-                                                    <span class="invalid-feedback" style="display: block;" role="alert">
-                                                        <strong>{{ $errors->first('classexpense') }}</strong>
-                                                    </span>
-                                                @endif
+                                                    <input type="text" class="form-control" placeholder="Inclusao"
+                                                        name="id_propertie" value="{{ $expenses->classexpense }}" readonly>
+                                                </div>                                                  
                                             </div>
                                         </div>
                                     </div>
@@ -97,7 +65,7 @@
                                                                 class="far fa-calendar-check"></i></span>
                                                     </div>
                                                     <input type="date" class="form-control" placeholder="Inclusao"
-                                                        aria-label="DtInclusao" aria-describedby="addon-wrapping" name="includedate" value="{{ old('includedate')}}">
+                                                        aria-label="DtInclusao" aria-describedby="addon-wrapping" name="includedate" value="{{ $expenses->includedate}}" readonly>
                                                 </div>
                                                 @if ($errors->has('includedate'))
                                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -115,7 +83,7 @@
                                                                 class="far fa-calendar-times"></i></span>
                                                     </div>
                                                     <input type="date" class="form-control" placeholder="Vencimento"
-                                                        aria-label="DtVencimento" aria-describedby="addon-wrapping" name="expiredate" value="{{ old('expiredate') }}">
+                                                        aria-label="DtVencimento" aria-describedby="addon-wrapping" name="expiredate" value="{{  $expenses->expiredate }}" readonly>
                                                     </select>
                                                 </div>
                                                 @if ($errors->has('expiredate'))
@@ -136,7 +104,7 @@
                                                                 class="far fa-calendar-minus"></i></span>
                                                     </div>
                                                     <input type="date" class="form-control" placeholder="Inclusao"
-                                                        aria-label="DtInclusao" aria-describedby="addon-wrapping" name="paymentdate" value="{{ old('paymentdate') }}">
+                                                        aria-label="DtInclusao" aria-describedby="addon-wrapping" name="paymentdate" value="{{ $expenses->paymentdate }}" readonly>
                                                 </div>
                                                 @if ($errors->has('paymentdate'))
                                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -155,7 +123,7 @@
                                                                 class="far fa-calendar"></i></span>
                                                     </div>
                                                     <input type="date" class="form-control" placeholder="Competência"
-                                                        aria-label="" aria-describedby="addon-wrapping" name="competence" value="{{ old('competence') }}">
+                                                        aria-label="" aria-describedby="addon-wrapping" name="competence" value="{{ $expenses->competence }}" readonly>
                                                 </div>
                                                 @if ($errors->has('competence'))
                                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -172,8 +140,8 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-money-bill-wave"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Valor da Despesa" name="value" value="{{ old('value') }}" type="text" data-affixes-stay="true" data-prefix="R$ " data-thousands="."
-                                            data-decimal="," class="form-control" aria-label="Amount" id="valor">
+                                            <input type="text" class="form-control" placeholder="Valor da Despesa" name="value" value="{{$expenses->value }}" type="text" data-affixes-stay="true" data-prefix="R$ " data-thousands="."
+                                            data-decimal="," class="form-control" aria-label="Amount" id="valor" readonly>
                                         </div>
                                         @if ($errors->has('value'))
                                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -188,13 +156,8 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-stream"></i></span>
                                             </div>
-                                            <textarea class="form-control" placeholder="Observações gerais da despesa..." name="observations" value="{{ old('observations') }}"></textarea>
-                                        </div>
-                                        @if ($errors->has('observations'))
-                                            <span class="invalid-feedback" styl  e="display: block;" role="alert">
-                                                <strong>{{ $errors->first('observations') }}</strong>
-                                            </span>
-                                        @endif
+                                            <textarea class="form-control" placeholder="Observações gerais da despesa..." name="observations" readonly>{{$expenses->observations }}</textarea>
+                                        </div>                                      
                                     </div>
                                     <div class="text-start">
                                         <button type="submit" class="btn btn-primary btn-outline-primary mt-4"><i class="fa fa-save"

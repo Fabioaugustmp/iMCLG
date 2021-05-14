@@ -221,6 +221,16 @@ class PropertiesController extends Controller
 
    }
 
+   public function showUniqueExpensePropertie(Properties $properties){
+       
+    $expenses = $properties->expenses()->get();
+
+    return view('expenses.expenses-show-unique.blade.php', [
+
+    ]);
+
+   }
+
    public function addPartner(Request $request){
        dd($request);
    }

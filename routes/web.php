@@ -62,6 +62,7 @@ Route::group(['middleware' => 'auth'], function () {
 	//Route::get('properties/{properties}', [PropertiesController::class, 'updatePropertie'])->name('properties.update');
 	Route::put('properties/{properties}', [PropertiesController::class, 'editProperties'])->name('properties.edit');	
 	Route::get('expense/view/{properties}', [PropertiesController::class, 'showExpensePropertie'])->name('expense.show.propertie');
+	//Route::get('expense/view/{properties}/unique', [PropertiesController::class, 'showUniqueExpensePropertie'])->name('expense.show.propertie.unique');
 
 	Route::get('partners', [PartnerController::class, 'listaAllPartner'])->name('partners');
 	Route::get('partner/create', [PartnerController::class, 'showCreatePartner'])->name('partner.showcreate');
@@ -70,6 +71,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('expense', [ExpensesController::class, 'listaAllExpenses'])->name('expense');
 	Route::get('expense/create', [ExpensesController::class, 'showCreateExpense'])->name('expense.create');
 	Route::post('expense/create', [ExpensesController::class, 'createExpense'])->name('expense.create.post');	
+	Route::post('expense/create', [ExpensesController::class, 'createExpense'])->name('expense.create.post');	
+	Route::get('expense/view/unique/{expenses}', [ExpensesController::class, 'showExpensesUnique'])->name('expense.show.unique');	
+
 
 	Route::get('realestate', [RealEstateController::class, 'listAllRealEstate'])->name('realestate');
 	Route::get('realestate/create', [RealEstateController::class, 'showRealEstate'])->name('realestate.create');

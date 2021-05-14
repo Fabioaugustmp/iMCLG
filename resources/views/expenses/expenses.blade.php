@@ -50,7 +50,7 @@
                                                 <td>{{$expense->paymentdate}}</td>
                                                 <td>{{$expense->competence}}</td>
                                                 <td>R$ {{$expense->value}}</td>
-                                                <td class="justify-content-center"><a href="/expense/create"><i class="far fa-eye"></i></a> </td>
+                                                <td class="justify-content-center"><a href="{{ route('expense.show.unique', $expense->id)}}"><i class="far fa-eye"></i></a> </td>
                                                 <td class="justify-content-center"><a href="/expense/create"><i class="far fa-edit"></i></a> </td>
                                             </tr>
                                             @endforeach
