@@ -31,10 +31,10 @@
 
     <style>
         /*!
-                             * bsStepper v{version} (https://github.com/Johann-S/bs-stepper)
-                             * Copyright 2018 - {year} Johann-S <johann.servoire@gmail.com>
-                             * Licensed under MIT (https://github.com/Johann-S/bs-stepper/blob/master/LICENSE)
-                             */
+                                         * bsStepper v{version} (https://github.com/Johann-S/bs-stepper)
+                                         * Copyright 2018 - {year} Johann-S <johann.servoire@gmail.com>
+                                         * Licensed under MIT (https://github.com/Johann-S/bs-stepper/blob/master/LICENSE)
+                                         */
 
         .bs-stepper .step-trigger {
             display: inline-flex;
@@ -289,17 +289,17 @@
                                 <div class="row">
                                     <div class="col-lg-8 col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            <label for="partner">Nome do Ativo</label>
-                                            <div class="input-group mb-4" id="partner">
+                                            <label for="name">Nome do Ativo</label>
+                                            <div class="input-group mb-4" id="name">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+                                                    <span class="input-group-text"><i class="fas fa-home"></i></span>
                                                 </div>
                                                 <input class="form-control" placeholder="Nome do Ativo" type="text"
-                                                    name="email" value="{{ old('email') }}">
+                                                    name="name" value="{{ $properties->name }}" readonly>
                                             </div>
-                                            @if ($errors->has('email'))
+                                            @if ($errors->has('name'))
                                                 <span class="invalid-feedback" style="display: block;" role="alert">
-                                                    <strong>{{ $errors->first('email') }}</strong>
+                                                    <strong>{{ $errors->first('name') }}</strong>
                                                 </span>
                                             @endif
                                         </div>
@@ -307,16 +307,17 @@
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <div class="form-group">
                                             <label for="partner">Valor da Aquisição</label>
-                                            <div class="input-group mb-4" id="partner">
+                                            <div class="input-group mb-4" id="valordaaquisicao">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-coins"></i></span>
                                                 </div>
-                                                <input class="form-control" placeholder="Valor da Aquisição" type="numer"
-                                                    maxlength="11" name="cpf" value="{{ old('cpf') }}">
+                                                <input class="form-control" placeholder="Valor da Aquisição" type="text"
+                                                    name="valordaaquisicao" value="{{ $properties->valordaaquisicao }}"
+                                                    readonly>
                                             </div>
-                                            @if ($errors->has('cpf'))
+                                            @if ($errors->has('valordaaquisicao'))
                                                 <span class="invalid-feedback" style="display: block;" role="alert">
-                                                    <strong>{{ $errors->first('cpf') }}</strong>
+                                                    <strong>{{ $errors->first('valordaaquisicao') }}</strong>
                                                 </span>
                                             @endif
                                         </div>
@@ -338,14 +339,19 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($partners as $partner)
-                                                <tr>
-                                                    <td>{{ $partner->name }}</td>
-                                                    <td>{{ $partner->cpf }}</td>
-                                                    <td>{{ $partner->email }}</td>
-                                                    <td><a href=""><i class="fas fa-plus"></i></a></td>
-                                                </tr>
-                                            @endforeach
+
+                                            
+                                                @foreach ($partners as $partner)
+                                                    <tr align="center">
+                                                        <td>{{ $partner->name }}</td>
+                                                        <td>{{ $partner->cpf }}</td>
+                                                        <td>{{ $partner->email }}</td>
+                                                        <td><a class="btn" type="submit"><i class="fas fa-plus"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            
+
                                         </tbody>
                                         <tfoot>
                                             <tr>
@@ -399,7 +405,7 @@
                                     </div>
                                     <div class="col-lg-8 col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            
+
                                             <div class="input-group mb-4" id="partner">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
@@ -416,7 +422,7 @@
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <div class="form-group">
-                                           
+
                                             <div class="input-group mb-4" id="partner">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-coins"></i></span>
@@ -433,7 +439,7 @@
                                     </div>
                                     <div class="col-lg-8 col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            
+
                                             <div class="input-group mb-4" id="partner">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
@@ -450,7 +456,7 @@
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <div class="form-group">
-                                           
+
                                             <div class="input-group mb-4" id="partner">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-coins"></i></span>
@@ -503,31 +509,4 @@
     </div>
     @include('layouts.footers.auth')
     </div>
-    <script>
-        const cep = document.querySelector("#cep")
-
-        const showData = (result) => {
-            for (const campo in result) {
-                if (document.querySelector("#" + campo)) {
-                    document.querySelector("#" + campo).value = result[campo]
-                }
-            }
-        }
-
-        cep.addEventListener("blur", (e) => {
-            let search = cep.value.replace("-", "")
-            const options = {
-                method: 'GET',
-                mode: 'cors', //Alterar para cors posteriorment
-                cache: 'default'
-            }
-
-            fetch(`https://viacep.com.br/ws/${search}/json/`, options)
-                .then(response => {
-                    response.json().then(data => showData(data))
-                })
-                .catch(e => console.log('Deu Erro: ' + e, message))
-        })
-
-    </script>
 @endsection

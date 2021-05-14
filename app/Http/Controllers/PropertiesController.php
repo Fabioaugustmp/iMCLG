@@ -130,6 +130,8 @@ class PropertiesController extends Controller
     public function addProperties(Request $request)
     {
 
+        $partners = Partner::all();
+
        // dd($request, $request->hasFile('pictures'), $request->hasFile('files'));
 
         $this->validate($request, [
@@ -141,8 +143,7 @@ class PropertiesController extends Controller
             'bairro' => 'required|min:5',
             'cidade' => 'required|min:5',
             'uf' => 'required|min:2',
-            'areatotal' => 'required',
-            'areaconstruida' => 'required',
+            'areatotal' => 'required',            
             'valorvenal' => 'required',
             'valordaaquisicao' => 'required',            
             'construction' => 'required',
@@ -202,8 +203,10 @@ class PropertiesController extends Controller
             }
         }      
 
-       return redirect()
-       ->route('properties.show.partner');  
+       return view('properties.properties-create-partner', [
+            'properties' => $properties,
+            'partners' => $partners
+       ]);            
     }   
 
 
@@ -216,5 +219,9 @@ class PropertiesController extends Controller
         'properties' => $properties
     ]);
 
+   }
+
+   public function addPartner(Request $request){
+       dd($request);
    }
 }
