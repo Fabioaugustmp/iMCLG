@@ -30,7 +30,7 @@ class CreateExpensesTable extends Migration
             $table->date('expiredate');
             $table->date('paymentdate')->nullable();
             $table->date('competence');
-            $table->bigInteger('value');
+            $table->string('value');
             $table->text('observations')->nullable();
             $table->timestamps();
 

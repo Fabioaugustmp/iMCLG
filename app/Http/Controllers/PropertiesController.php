@@ -168,7 +168,9 @@ class PropertiesController extends Controller
             'valordevenda',
             'construction',
             'company',
-            'feedback'
+            'feedback', 
+            'latitude', 
+            'longitude'
         ]);
 
         $properties = Properties::create($data);

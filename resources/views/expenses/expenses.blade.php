@@ -41,7 +41,7 @@
                                         </thead>
                                         <tbody>                                               
                                             @foreach ($expenses as $expense)
-                                            <tr>
+                                            <tr align="center">
                                                 <td>{{$expense->id_propertie}}</td>
                                                 <td>{{$expense->classexpense}}</td>
                                                 <td>{{$expense->expensetype}}</td>
@@ -51,7 +51,7 @@
                                                 <td>{{$expense->competence}}</td>
                                                 <td>R$ {{$expense->value}}</td>
                                                 <td class="justify-content-center"><a href="{{ route('expense.show.unique', $expense->id)}}"><i class="far fa-eye"></i></a> </td>
-                                                <td class="justify-content-center"><a href="/expense/create"><i class="far fa-edit"></i></a> </td>
+                                                <td class="justify-content-center"><a href="{{ route('expense.edit', $expense->id) }}"><i class="far fa-edit"></i></a> </td>
                                             </tr>
                                             @endforeach
                                         </tbody>

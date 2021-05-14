@@ -31,6 +31,8 @@ class CreatePropertiesTable extends Migration
             $table->string('construction');
             $table->string('company');
             $table->text('feedback')->nullable();
+            $table->text('latitude')->nullable();
+            $table->text('longitude')->nullable();
             $table->timestamps();
         });
     }

@@ -24,22 +24,28 @@ class Properties extends Model
         'valordevenda',
         'construction',
         'company',
-        'feedback'
+        'feedback',
+        'latitude',
+        'longitude'
     ];
 
-    public function images(){
+    public function images()
+    {
         return $this->hasMany(PropertiesImages::class, 'id_properties', 'id');
     }
 
-    public function files(){
+    public function files()
+    {
         return $this->hasMany(PropertiesFiles::class, 'id_properties', 'id');
     }
 
-    public function associates(){
+    public function associates()
+    {
         return $this->belongsToMany(Partner::class, 'properties_associates', 'properties', 'associates');
     }
 
-    public function expenses(){
+    public function expenses()
+    {
         return $this->hasMany(Expense::class, 'id_propertie', 'id');
     }
 }

@@ -33,9 +33,9 @@ class ExpensesController extends Controller
             'expensetype' => 'required',
             'classexpense' => 'required',
             'includedate' => 'required|date',
-            'expiredate' => 'required|date',            
+            'expiredate' => 'required|date',
             'competence' => 'required',
-            'value' => 'required|numeric',           
+            'value' => 'required',
         ]);
 
         $data = $request->only([
@@ -53,8 +53,8 @@ class ExpensesController extends Controller
         $expense = Expense::create($data);
 
         return redirect()
-        ->route('expense')
-        ->with('success', 'Despesa de(a) ' . $expense->name . 'criado com sucesso!');
+            ->route('expense')
+            ->with('success', 'Despesa de(a) ' . $expense->name . 'criado com sucesso!');
     }
 
     public function listaAllExpenses(Expense $expenses)
@@ -62,32 +62,71 @@ class ExpensesController extends Controller
 
         $expenses = Expense::all();
 
-       // $properties = $expenses->propertie()->first();
+        // $properties = $expenses->propertie()->first();
 
         return view('expenses.expenses', [
-            'expenses' => $expenses            
+            'expenses' => $expenses
         ]);
     }
 
-   public function showExpensePropertie(Properties $properties){
+    public function showExpensePropertie(Properties $properties)
+    {
 
-    $properties = Properties::where('id', $properties->id)->first();
+        $properties = Properties::where('id', $properties->id)->first();
 
-    $expenses = $properties->expenses()->get();
+        $expenses = $properties->expenses()->get();
 
 
-    dd($expenses);
+        dd($expenses);
 
-    return view();
+        return view();
+    }
 
-   }
+    public function showExpensesUnique(Expense $expenses)
+    {
+        return view('expenses.expenses-show-unique', [
+            'expenses' => $expenses
+        ]);
+    }
 
-   public function showExpensesUnique(Expense $expenses){
-       
+    public function editExpense(Expense $expenses)
+    {
+        $expensestypes = ExpenseType::all();
+        $classexpenses = ClassExpenses::all();
 
-    return view('expenses.expenses-show-unique', [
-        'expenses' => $expenses
-    ]);
-   }
+        return view('expenses.expense-edit', [
+            'expensetypes' => $expensestypes,
+            'classexpenses' => $classexpenses,
+            'expenses' => $expenses,             
+        ]);
+    }
 
+    public function editExpensePut(Expense $expense, Request $request){
+
+        $request->validate([
+            'id_propertie' => 'required',
+            'expensetype' => 'required',
+            'classexpense' => 'required',
+            'includedate' => 'required|date',
+            'expiredate' => 'required|date',
+            'competence' => 'required',
+            'value' => 'required',
+        ]);
+
+
+        $expense->id_propertie = $request->id_propertie;
+        $expense->expensetype = $request->expensetype;
+        $expense->classexpense = $request->classexpense;
+        $expense->includedate = $request->includedate;
+        $expense->expiredate = $request->expiredate;
+        $expense->competence = $request->competence;
+        $expense->value = $request->value;
+
+        $expense->save();
+
+        return redirect()
+        ->route('expense');
+        //->with('success', 'Ativo atualizado com sucesso!');   
+
+    }
 }

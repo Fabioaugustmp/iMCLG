@@ -94,7 +94,7 @@
 
                                 {{ $propertie->realestate }} <br>
                                 {{ $propertie->statusproperties }} <br>
-                                {{ $propertie->valorvenal }} R$<br>
+                                {{ $propertie->valorvenal }}<br>
                                 {{ $propertie->areatotal }}<br>
                                 {{ $propertie->logradouro }}<br>
                                 {{ $propertie->bairro }}<br>

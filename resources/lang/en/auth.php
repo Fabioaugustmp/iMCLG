@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'As credenciais informadas são inválidas inválidas.',
+    'failed' => 'As credenciais informadas são inválidas.',
     'password' => 'As credenciais informadas são inválidas.',
     'throttle' => 'Você excedeu o maximo de tentativa de login. Tente novamente em :seconds segundos.',
 

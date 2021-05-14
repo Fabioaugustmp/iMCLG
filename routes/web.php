@@ -72,6 +72,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('expense/create', [ExpensesController::class, 'showCreateExpense'])->name('expense.create');
 	Route::post('expense/create', [ExpensesController::class, 'createExpense'])->name('expense.create.post');	
 	Route::post('expense/create', [ExpensesController::class, 'createExpense'])->name('expense.create.post');	
+	Route::get('expense/edit/{expenses}', [ExpensesController::class, 'editExpense'])->name('expense.edit');	
+	Route::put('expense/edit/{expenses}', [ExpensesController::class, 'editExpensePut'])->name('expense.edit.put');
 	Route::get('expense/view/unique/{expenses}', [ExpensesController::class, 'showExpensesUnique'])->name('expense.show.unique');	
 
 
