@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePropertiesAssociatesTable extends Migration
+class CreatePropertiesPartnersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,18 @@ class CreatePropertiesAssociatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('properties_associates', function (Blueprint $table) {
+        Schema::create('properties_partners', function (Blueprint $table) {
             $table->id();
             /*$table->foreignId('associate_id')->constrained();
             $table->foreignId('propertie_id')->constrained();
             $table->string('partial_value');*/            
             $table->unsignedBigInteger('properties');
-            $table->unsignedBigInteger('associates');
+            $table->unsignedBigInteger('partners');
             $table->bigInteger('partial_value');
             $table->boolean('manager');
 
             $table->foreign('properties')->references('id')->on('properties');
-            $table->foreign('associates')->references('id')->on('associates');
+            $table->foreign('partners')->references('id')->on('partners');
             $table->timestamps();
         });
     }
@@ -36,6 +36,6 @@ class CreatePropertiesAssociatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('properties_associates');
+        Schema::dropIfExists('properties_partners');
     }
 }

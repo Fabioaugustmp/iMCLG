@@ -7,34 +7,12 @@
     'class' => 'col-lg-12'
     ])
 
-    <!--https://stackoverflow.com/questions/51287100/laravel-ajax-search-in-bootstrap-modal-->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
-                    $('#blah').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(input.files[0]); // convert to base64 string
-            }
-        }
-
-        $("#imgInp").change(function() {
-            readURL(this);
-        });
-
-    </script>
-
     <style>
         /*!
-                                                 * bsStepper v{version} (https://github.com/Johann-S/bs-stepper)
-                                                 * Copyright 2018 - {year} Johann-S <johann.servoire@gmail.com>
-                                                 * Licensed under MIT (https://github.com/Johann-S/bs-stepper/blob/master/LICENSE)
-                                                 */
+                                                                                                 * bsStepper v{version} (https://github.com/Johann-S/bs-stepper)
+                                                                                                 * Copyright 2018 - {year} Johann-S <johann.servoire@gmail.com>
+                                                                                                 * Licensed under MIT (https://github.com/Johann-S/bs-stepper/blob/master/LICENSE)
+                                                                                                 */
 
         .bs-stepper .step-trigger {
             display: inline-flex;
@@ -222,18 +200,18 @@
                                             class="fas fa-info-circle"></i></small>
                                 </div>
                             </div>
-                           <!-- <div class="col-6">
-                                <div class="row justify-content-end">
-                                    <a href="{{ '/expense' }}" class="btn btn-icon btn-3 btn-primary btn-outline-primary"
-                                        type="button">
-                                        <i class="fas fa-coins"></i> Histórico de Despesas
-                                    </a>
-                                </div>
-                            </div>-->
+                            <!--<div class="col-6">
+                                                                                        <div class="row justify-content-end">
+                                                                                            <a href="{{ '/expense' }}" class="btn btn-icon btn-3 btn-primary btn-outline-primary"
+                                                                                                type="button">
+                                                                                                <i class="fas fa-coins"></i> Histórico de Despesas
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div> -->
                         </div>
                     </div>
                     <div class="card-body">
-                        <form role="form" method="POST" action="{{ route('properties.create.post') }}"
+                        <form role="form" method="POST" action="{{ route('properties.add.partner.post') }}"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="container">
@@ -258,14 +236,14 @@
                                                 <span class="bs-stepper-label text-primary">Inclusão de Sócios</span>
                                             </button>
                                         </div>
-                                        <div class="line"></div>
-                                        <!--<div class="step" data-target="#information-part">
-                                            <button type="button" class="step-trigger" role="tab"
-                                                aria-controls="information-part" id="information-part-trigger">
-                                                <span class="bs-stepper-circle">3</span>
-                                                <span class="bs-stepper-label">Histórico de Despesas</span>
-                                            </button>
-                                        </div>-->!
+                                        <!--    <div class="line"></div>
+                                                                                                <div class="step" data-target="#information-part">
+                                                                                                    <button type="button" class="step-trigger" role="tab"
+                                                                                                        aria-controls="information-part" id="information-part-trigger">
+                                                                                                        <span class="bs-stepper-circle">3</span>
+                                                                                                        <span class="bs-stepper-label">Histórico de Despesas</span>
+                                                                                                    </button>
+                                                                                                </div> -->
                                         <div class="line"></div>
                                         <div class="step" data-target="#information-part">
                                             <button type="button" class="step-trigger" role="tab"
@@ -287,6 +265,31 @@
                                 <hr>
 
                                 <div class="row">
+                                    <div class="col-12">
+                                        @if ($errors->has('properties'))
+                                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                                <h4 class="alert-heading"><i class="fas fa-exclamation-triangle"></i>
+                                                    Atenção!</h4>
+                                                <p>
+                                                    Para realizar o cadastro de sócios, é nescessário cadastrar um ativo,
+                                                    volte ao primeiro passo!
+                                                </p>
+                                                <p>
+                                                    Ou <a href="{{ route('properties.create') }}">clique aqui.</a>
+                                                </p>
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <hr>
+                                        @endif
+                                    </div>
+
+
+                                </div>
+
+                                <div class="row">
+
                                     <div class="col-lg-8 col-md-6 col-sm-6">
                                         <div class="form-group">
                                             <label for="name">Nome do Ativo</label>
@@ -294,14 +297,10 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-home"></i></span>
                                                 </div>
+                                                <input type="hidden" value="{{ $properties->id }}" name="properties">
                                                 <input class="form-control" placeholder="Nome do Ativo" type="text"
                                                     name="name" value="{{ $properties->name }}" readonly>
                                             </div>
-                                            @if ($errors->has('name'))
-                                                <span class="invalid-feedback" style="display: block;" role="alert">
-                                                    <strong>{{ $errors->first('name') }}</strong>
-                                                </span>
-                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
@@ -324,32 +323,6 @@
                                     </div>
                                 </div>
 
-                                <hr>                            
-                                
-
-                                <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text" for="realestate">
-                                                Tipo do Ativo</label>
-                                        </div>
-                                        <select class="custom-select" id="realestate" name="realestate">
-                                            <!--<option selected>Selecione</option>-->
-                                            @foreach ($realestate as $estate)
-                                                @if ($estate->status === 1)
-                                                    <option value="{{ $estate->realestate }}">{{ $estate->realestate }}
-                                                    </option>
-                                                @endif
-                                            @endforeach
-                                        </select>
-                                        @if ($errors->has('realestate'))
-                                            <span class="invalid-feedback" style="display: block;" role="alert">
-                                                <strong>{{ $errors->first('realestate') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-
-                                
-
                                 <hr>
 
                                 <label for="partner">Lista de Socios</label>
@@ -358,13 +331,17 @@
                                     <div class="col-lg-8 col-md-6 col-sm-6">
                                         <div class="form-group">
                                             <label for="partner">Nome do Socio</label>
-                                            <div class="input-group mb-4" id="partner">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+                                            @foreach ($partners as $partner)
+                                                <div class="input-group mb-4" id="partner">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i
+                                                                class="fas fa-user-tie"></i></span>
+                                                    </div>
+                                                    <input class="form-control" placeholder="Nome do Ativo" type="text"
+                                                        name="email" value="{{ $partner->name }}" readonly
+                                                        style="text-transform: uppercase">
                                                 </div>
-                                                <input class="form-control" placeholder="Nome do Ativo" type="text"
-                                                    name="email" value="Raony Nogueira" readonly>
-                                            </div>
+                                            @endforeach
                                             @if ($errors->has('email'))
                                                 <span class="invalid-feedback" style="display: block;" role="alert">
                                                     <strong>{{ $errors->first('email') }}</strong>
@@ -372,61 +349,34 @@
                                             @endif
                                         </div>
                                     </div>
-
                                     <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <div class="form-group">
-
-                                            <div class="input-group mb-4" id="partner">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="fas fa-coins"></i></span>
-                                                </div>
-                                                <input class="form-control" placeholder="Valor da Aquisição" type="numer"
-                                                    maxlength="11" name="cpf" value="{{ old('cpf') }}">
-                                            </div>
-                                            @if ($errors->has('cpf'))
-                                                <span class="invalid-feedback" style="display: block;" role="alert">
-                                                    <strong>{{ $errors->first('cpf') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8 col-md-6 col-sm-6">
-                                        <div class="form-group">
-
-                                            <div class="input-group mb-4" id="partner">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
-                                                </div>
-                                                <input class="form-control" placeholder="Nome do Ativo" type="text"
-                                                    name="email" value="Raony Nogueira" readonly>
-                                            </div>
-                                            @if ($errors->has('email'))
-                                                <span class="invalid-feedback" style="display: block;" role="alert">
-                                                    <strong> {{ $errors->first('email') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <div class="form-group">
-
-                                            <div class="input-group mb-4" id="partner">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="fas fa-coins"></i></span>
-                                                </div>
-                                                <input class="form-control" placeholder="Valor da Aquisição" type="numer"
-                                                    maxlength="11" name="cpf" value="{{ old('cpf') }}">
-                                            </div>
-                                            @if ($errors->has('cpf'))
-                                                <span class="invalid-feedback" style="display: block;" role="alert">
-                                                    <strong>{{ $errors->first('cpf') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
                                             <label for="partner">Valor da Aquisição</label>
+                                            @foreach ($partners as $partner)
+                                                <div class="input-group mb-4" id="partner">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="fas fa-coins"></i></span>
+                                                    </div>
+                                                    <input class="form-control" placeholder="Valor da Aquisição"
+                                                        id="partial_value_{{ $partner->id }}" type="text" maxlength="11"
+                                                        name="partial_value_{{ $partner->id }}" onblur="calcular();">
+                                                </div>
+                                            @endforeach
+                                            @if ($errors->has('cpf'))
+                                                <span class="invalid-feedback" style="display: block;" role="alert">
+                                                    <strong>{{ $errors->first('cpf') }}</strong>
+                                                </span>
+                                            @endif
+                                            <input id="txt1" type="text" value="1" onfocus="calcular()" />
+                                            <input id="txt2" type="text" value="1" onblur="calcular()" />
+
+                                            <input id="result" type="text" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <label for="partner">Somatória valor da aquisição</label>
                                             <div class="input-group mb-4" id="partner">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-coins"></i></span>
@@ -434,6 +384,7 @@
                                                 <input class="form-control" placeholder="Valor da Aquisição" type="numer"
                                                     maxlength="11" name="cpf" value="{{ old('cpf') }}">
                                             </div>
+                                            <span id="resultado"></span>
                                             @if ($errors->has('cpf'))
                                                 <span class="invalid-feedback" style="display: block;" role="alert">
                                                     <strong>{{ $errors->first('cpf') }}</strong>
@@ -443,23 +394,22 @@
                                     </div>
 
                                 </div>
-                            </div>
 
+                        </form>
+                        <hr class="my-4" />
                     </div>
-                    <div class="text-start">
-                        <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-save" aria-hidden="true"></i>
-                            {{ __(' Gravar Ativo') }}</button>
-                        <a href="{{ route('properties') }}" class="btn btn-primary mt-4" type="button">
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                            <span class="btn-inner--text">Cancelar</span>
-                        </a>
-                    </div>
-                    </form>
-                    <hr class="my-4" />
                 </div>
             </div>
         </div>
+        @include('layouts.footers.auth')
     </div>
-    @include('layouts.footers.auth')
-    </div>
+
+    <script>
+        function calcular() {            
+            var valor1 = parseInt(document.getElementById('txt1').value, 10);
+            var valor2 = parseInt(document.getElementById('txt2').value, 10);
+            document.getElementById('result').value = valor1 + valor2;
+        }
+
+    </script>
 @endsection

@@ -260,19 +260,19 @@
                                                     <span class="bs-stepper-label">Inclusão de Sócios</span>
                                                 </a>
                                             </div>
-                                            <div class="line"></div>
+                                        <!--   <div class="line"></div>
                                             <div class="step" data-target="#information-part">
                                                 <button type="button" class="step-trigger" role="tab"
                                                     aria-controls="information-part" id="information-part-trigger">
                                                     <span class="bs-stepper-circle">3</span>
                                                     <span class="bs-stepper-label">Histórico de Despesas</span>
                                                 </button>
-                                            </div>
+                                            </div> -->
                                             <div class="line"></div>
                                             <div class="step" data-target="#information-part">
                                                 <button type="button" class="step-trigger" role="tab"
                                                     aria-controls="information-part" id="information-part-trigger">
-                                                    <span class="bs-stepper-circle">4</span>
+                                                    <span class="bs-stepper-circle">3</span>
                                                     <span class="bs-stepper-label">Salvar Ativo</span>
                                                 </button>
                                             </div>

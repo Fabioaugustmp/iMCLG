@@ -70,7 +70,7 @@
                                             @endif
 
                                             <td class="justify-content-center">
-                                                <a class="dropdown-item" href=""><i class="fas fa-user-edit"></i>
+                                                <a class="dropdown-item" href="{{ route('partner.edit' , $partners->id ) }}"><i class="fas fa-user-edit"></i>
                                             </td>
                                         </tr>
                                     @endforeach

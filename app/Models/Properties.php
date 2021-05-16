@@ -39,9 +39,11 @@ class Properties extends Model
         return $this->hasMany(PropertiesFiles::class, 'id_properties', 'id');
     }
 
-    public function associates()
+    public function partners()
     {
-        return $this->belongsToMany(Partner::class, 'properties_associates', 'properties', 'associates');
+        return $this->belongsToMany(Partner::class, 'properties_partners', 'properties', 'partners')->withTimestamps();
+
+        //return $this->belongsToMany(Associate::class)->withTimestamps()->withPivot(['partial_value']);
     }
 
     public function expenses()

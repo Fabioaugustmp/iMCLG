@@ -27,7 +27,7 @@
                                         type="button">
                                         <i class="fas fa-coins"></i> Histórico de Despesas
                                     </a>
-                                    <a href="{{ '/expense' }}" class="btn btn-icon btn-3 btn-primary btn-outline-primary"
+                                    <a href="{{ route('propertie.show', $properties->id) }}" class="btn btn-icon btn-3 btn-primary btn-outline-primary"
                                         type="button">
                                         <i class="far fa-edit"></i> Editar Ativo
                                     </a>
@@ -324,22 +324,22 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($associates as $associate)
+                                                @foreach ($partners as $partner)
                                                     <tr>
-                                                        <th scope="row">{{ $associate->id }}</th>
-                                                        <td style="text-transform: uppercase">{{ $associate->name }}</td>
-                                                        <td>{{ $associate->email }}</td>
+                                                        <th scope="row">{{ $partner->id }}</th>
+                                                        <td style="text-transform: uppercase">{{ $partner->name }}</td>
+                                                        <td>{{ $partner->email }}</td>
                                                         <td class="align-items-center">
                                                             <div class="input-group mb-3">
                                                                 <div class="input-group-prepend">
                                                                     <span class="input-group-text">R$</span>
                                                                 </div>
                                                                 <input type="number" class="form-control"
-                                                                    value="{{ $associate->partial_value }}" readonly>
+                                                                    value="{{ $partner->partial_value }}" readonly>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            @if ($associate->manager === 1)
+                                                            @if ($partner->manager === 1)
                                                                 <i class="fas fa-user-check"></i>
                                                             @endif
                                                         </td>

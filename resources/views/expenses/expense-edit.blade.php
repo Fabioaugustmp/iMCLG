@@ -3,7 +3,7 @@
 @section('content')
     @include('users.partials.header-profile', [
     'title' => __('Despesas'),
-    'description' => __('Incluir Despesa'),
+    'description' => __('Editar Despesa'),
     'class' => 'col-lg-12'
     ])
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

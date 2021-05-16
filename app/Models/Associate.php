@@ -16,7 +16,9 @@ class Associate extends Model
         'status',
     ];
 
-    public function properties(){
-        return $this->belongsToMany(Properties::class, 'properties_associates', 'associates', 'properties');
-    }
+   // public function properties(){
+     //   return $this->belongsToMany(Properties::class, 'properties_associates', 'associates', 'properties');
+
+        //return $this->belongsToMany(Properties::class)->withTimestamps();
+    //}
 }

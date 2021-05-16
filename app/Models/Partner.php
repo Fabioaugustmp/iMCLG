@@ -17,7 +17,7 @@ class Partner extends Model
     ];
 
     public function properties(){
-        return $this->belongsToMany(Properties::class, 'properties_associates', 'associates', 'properties');
+        return $this->belongsToMany(Properties::class, 'properties_partners', 'partners', 'properties')->withTimestamps();
     }
 
 

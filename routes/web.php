@@ -59,6 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('properties/create', [PropertiesController::class, 'addProperties'])->name('properties.create.post');
 	Route::get('properties/add/partner', [PropertiesController::class, 'showAddpartner'])->name('properties.show.partner');
 	Route::post('properties/add/partner', [PropertiesController::class, 'addPartner'])->name('properties.add.partner.post');
+	Route::get('properties/add/partner/value/propertie', [PropertiesController::class, 'addPartnerValuePropertie'])->name('properties.add.partner.value');
 	//Route::get('properties/{properties}', [PropertiesController::class, 'updatePropertie'])->name('properties.update');
 	Route::put('properties/{properties}', [PropertiesController::class, 'editProperties'])->name('properties.edit');	
 	Route::get('expense/view/{properties}', [PropertiesController::class, 'showExpensePropertie'])->name('expense.show.propertie');
@@ -67,6 +68,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('partners', [PartnerController::class, 'listaAllPartner'])->name('partners');
 	Route::get('partner/create', [PartnerController::class, 'showCreatePartner'])->name('partner.showcreate');
 	Route::post('partner/create', [PartnerController::class, 'createPartner'])->name('partner.create');
+	Route::get('partner/edit/{partners}', [PartnerController::class, 'editPartner'])->name('partner.edit');	
+	Route::put('partner/edit/{partners}', [PartnerController::class, 'editPartnetPut'])->name('partner.edit.put');
 
 	Route::get('expense', [ExpensesController::class, 'listaAllExpenses'])->name('expense');
 	Route::get('expense/create', [ExpensesController::class, 'showCreateExpense'])->name('expense.create');

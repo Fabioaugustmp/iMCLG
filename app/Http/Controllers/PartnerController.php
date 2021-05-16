@@ -52,4 +52,36 @@ class PartnerController extends Controller
             'partners' => $partners
         ]);
     }
+
+    public function editPartner(Partner $partner)
+    {
+        $partner = Partner::all();
+
+        return view('partner.partner-edit', [
+            'partner' => $partner,             
+        ]);
+    }
+
+    public function editPartnerPut(Partner $partner, Request $request){
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'cpf' => 'required',
+            'status' => 'required',
+        ]);
+
+
+        $partner->name = $request->name;
+        $partner->email = $request->email;
+        $partner->cpf = $request->cpf;
+        $partner->status = $request->status;
+
+        $partner->save();
+
+        return redirect()
+        ->route('partner');
+        //->with('success', 'Ativo atualizado com sucesso!');   
+
+    }
 }

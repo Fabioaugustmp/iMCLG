@@ -7,6 +7,7 @@ use App\Models\RealEstate;
 use App\Models\Construction;
 use App\Models\Partner;
 use App\Models\Properties;
+use App\Models\PropertiesAssociate;
 use App\Models\PropertiesFiles;
 use App\Models\PropertiesImages;
 use App\Models\StatusProperties;
@@ -16,34 +17,7 @@ use PhpParser\Node\Expr\Isset_;
 
 class PropertiesController extends Controller
 {
-    //
-
-    public function createPropertie(Properties $properties)
-    {
-
-        $realestate = RealEstate::all();
-        $constructions = Construction::all();
-        $statusproperties = StatusProperties::all();
-        $partners = Partner::all();
-
-        return view('properties.properties-create', [
-            'realestate' => $realestate,
-            'constructions' => $constructions,
-            'statusproperties' => $statusproperties,
-            'partners' => $partners
-        ]);
-    }
-
-    public function showAddpartner(Properties $properties)
-    {
-
-        $partners = Partner::all();
-
-        return view('properties.properties-create-partner', [
-            "properties" => $properties, 
-            "partners" => $partners
-        ]);
-    }
+    //    
 
     public function listaAllProperties(Properties $properties)
     {
@@ -81,7 +55,7 @@ class PropertiesController extends Controller
             'properties' => $properties,
             'propertiesnames' => $propertienames
         ]);
-    }    
+    }
 
     public function searchPropertie(Properties $properties, Request $request)
     {
@@ -103,9 +77,8 @@ class PropertiesController extends Controller
         if (is_null($properties) || $properties->count() == 0) {
 
             $view = redirect()
-            ->route('search.propertie')
-            ->with('warning', 'Nenhum ativo encontrado com a seguinte descricao: ' . $search);
-                
+                ->route('search.propertie')
+                ->with('warning', 'Nenhum ativo encontrado com a seguinte descricao: ' . $search);
         } else {
             $view = view('properties.properties-search', [
                 'properties' => $properties
@@ -113,16 +86,21 @@ class PropertiesController extends Controller
         }
 
         return $view;
-    }
+    }   
 
-    public function showPropertie(Properties $properties)
+    public function createPropertie()
     {
 
-        $associates = $properties->associates()->get();
+        $realestate = RealEstate::all();
+        $constructions = Construction::all();
+        $statusproperties = StatusProperties::all();
+        $partners = Partner::all();
 
-        return view('properties.properties-show', [
-            'properties' => $properties,
-            'associates' => $associates
+        return view('properties.properties-create', [
+            'realestate' => $realestate,
+            'constructions' => $constructions,
+            'statusproperties' => $statusproperties,
+            'partners' => $partners
         ]);
     }
 
@@ -132,7 +110,7 @@ class PropertiesController extends Controller
 
         $partners = Partner::all();
 
-       // dd($request, $request->hasFile('pictures'), $request->hasFile('files'));
+        // dd($request, $request->hasFile('pictures'), $request->hasFile('files'));
 
         $this->validate($request, [
             'name' => 'required',
@@ -143,11 +121,11 @@ class PropertiesController extends Controller
             'bairro' => 'required|min:5',
             'cidade' => 'required|min:5',
             'uf' => 'required|min:2',
-            'areatotal' => 'required',            
+            'areatotal' => 'required',
             'valorvenal' => 'required',
-            'valordaaquisicao' => 'required',            
+            'valordaaquisicao' => 'required',
             'construction' => 'required',
-            'company' => 'required',                        
+            'company' => 'required',
         ]);
 
         //$request->file('pictures')->store('teste');
@@ -168,8 +146,8 @@ class PropertiesController extends Controller
             'valordevenda',
             'construction',
             'company',
-            'feedback', 
-            'latitude', 
+            'feedback',
+            'latitude',
             'longitude'
         ]);
 
@@ -203,37 +181,87 @@ class PropertiesController extends Controller
                 $propertiesFiles->save();
                 unset($propertiesFiles);
             }
-        }      
+        }
 
-       return view('properties.properties-create-partner', [
+        return view('properties.properties-create-partner', [
             'properties' => $properties,
             'partners' => $partners
-       ]);            
-    }   
+        ]);
+    }
+
+    public function showPropertie(Properties $properties)
+    {
+
+        $partners = $properties->partners()->get();
+
+        return view('properties.properties-show', [
+            'properties' => $properties,
+            'partners' => $partners
+        ]);
+    }
+
+    public function showExpensePropertie(Properties $properties)
+    {
+
+        $expenses = $properties->expenses()->get();
+
+        return view('properties.properties-show-expenses', [
+            'expenses' => $expenses,
+            'properties' => $properties
+        ]);
+    }
+
+    public function showUniqueExpensePropertie(Properties $properties)
+    {
+
+        $expenses = $properties->expenses()->get();
+
+        return view('expenses.expenses-show-unique.blade.php', []);
+    }
+
+    public function showAddpartner(Properties $properties)
+    {
+
+        $partners = Partner::all();
+
+        return view('properties.properties-create-partner', [
+            "properties" => $properties,
+            "partners" => $partners
+        ]);
+    }
+
+    public function addPartner(Request $request)
+    {
+
+        $this->validate($request, [
+            'properties' => 'required'
+        ]);
+
+        $properties = Properties::find($request->properties);
+
+        foreach ($request->partners as $partner) {
+
+            $partnerAtt = Partner::find($partner);
+
+            //Adiciona diretamente sem validar se existe ou nao a relacao
+            //$properties->partners()->sync($partnerAtt); Sincroniza o elemento
+            $properties->partners()->attach($partnerAtt);            
+        }
+
+        $partners = $properties->partners()->get();
+
+            //return view('properties.properties-add-partner-value', [
+              //  "properties" => $properties,
+                //"partners" => $partners
+            //]);
+
+        return redirect()->route('properties');
+    }
+
+    public function addPartnerValuePropertie(){
 
 
-   public function showExpensePropertie(Properties $properties){
+        return view('properties.properties-add-partner-value');
 
-    $expenses = $properties->expenses()->get();
-
-    return view('properties.properties-show-expenses', [
-        'expenses' => $expenses,
-        'properties' => $properties
-    ]);
-
-   }
-
-   public function showUniqueExpensePropertie(Properties $properties){
-       
-    $expenses = $properties->expenses()->get();
-
-    return view('expenses.expenses-show-unique.blade.php', [
-
-    ]);
-
-   }
-
-   public function addPartner(Request $request){
-       dd($request);
-   }
+    }
 }
