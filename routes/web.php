@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\UserController;
@@ -33,10 +34,12 @@ Auth::routes();
 
 
 
-Route::group(['middleware' => 'auth'], function () {
-	Route::get('/home', 'App\Http\Controllers\PropertiesController@listaAllProperties')->name('home');
+Route::group(['middleware' => 'auth'], function () {	
 
-	
+	Route::get('/', 'App\Http\Controllers\PropertiesController@listaAllProperties')->name('home');
+
+	//Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
@@ -60,6 +63,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('properties/add/partner', [PropertiesController::class, 'showAddpartner'])->name('properties.show.partner');
 	Route::post('properties/add/partner', [PropertiesController::class, 'addPartner'])->name('properties.add.partner.post');
 	Route::get('properties/add/partner/value/propertie', [PropertiesController::class, 'addPartnerValuePropertie'])->name('properties.add.partner.value');
+	Route::get('properties/edit/{properties}', [PropertiesController::class, 'showEditPropertie'])->name('propertie.edit');
 	//Route::get('properties/{properties}', [PropertiesController::class, 'updatePropertie'])->name('properties.update');
 	Route::put('properties/{properties}', [PropertiesController::class, 'editProperties'])->name('properties.edit');	
 	Route::get('expense/view/{properties}', [PropertiesController::class, 'showExpensePropertie'])->name('expense.show.propertie');
@@ -68,8 +72,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('partners', [PartnerController::class, 'listaAllPartner'])->name('partners');
 	Route::get('partner/create', [PartnerController::class, 'showCreatePartner'])->name('partner.showcreate');
 	Route::post('partner/create', [PartnerController::class, 'createPartner'])->name('partner.create');
-	Route::get('partner/edit/{partners}', [PartnerController::class, 'editPartner'])->name('partner.edit');	
-	Route::put('partner/edit/{partners}', [PartnerController::class, 'editPartnetPut'])->name('partner.edit.put');
+	Route::get('partner/edit/{partner}', [PartnerController::class, 'editPartner'])->name('partner.edit');	
+	Route::put('partner/edit/{partner}', [PartnerController::class, 'editPartnerPut'])->name('partner.edit.put');
 
 	Route::get('expense', [ExpensesController::class, 'listaAllExpenses'])->name('expense');
 	Route::get('expense/create', [ExpensesController::class, 'showCreateExpense'])->name('expense.create');

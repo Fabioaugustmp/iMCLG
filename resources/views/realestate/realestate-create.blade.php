@@ -1,8 +1,8 @@
-@extends('layouts.app', ['title' => __('Usuários')])
+@extends('layouts.app', ['title' => __('Tipos de Ativos')])
 
 @section('content')
-    @include('users.partials.header-profile', [
-    'title' => __('Tipo de Ativos'),
+    @include('realestate.partials.header-profile', [
+    'title' => __('Tipos de Ativos'),
     'description' => __('Criar Ativo'),
     'class' => 'col-lg-12'
     ])

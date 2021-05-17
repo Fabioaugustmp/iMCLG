@@ -57,7 +57,5 @@ class ClassExpensesController extends Controller
         ->route('classexpenses')
         ->with('success', $classexpenses->name . ' atualizado com sucesso!');
 
-        
-
     }
 }

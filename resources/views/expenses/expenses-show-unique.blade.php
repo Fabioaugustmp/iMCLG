@@ -1,9 +1,9 @@
-@extends('layouts.app', ['title' => __('Usuários')])
+@extends('layouts.app', ['title' => __('Despesas')])
 
 @section('content')
-    @include('users.partials.header-profile', [
+    @include('expenses.partials.header-profile', [
     'title' => __('Despesas'),
-    'description' => __('Incluir Despesa'),
+    'description' => __('Visualizar Despesa'),
     'class' => 'col-lg-12'
     ])
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

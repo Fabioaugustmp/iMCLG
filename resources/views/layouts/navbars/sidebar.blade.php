@@ -131,14 +131,15 @@
                              style="color: #cfcfcf;">{{ __('Sócios e Participações') }}</span>
                      </a>
                  </li>
-                 <li class="nav-item">
+                 <!--
+                    <li class="nav-item">
                      <a class="nav-link active" href="{{ route('expense') }}" role="button" aria-expanded="true"
                          aria-controls="despesas-ativos-imobiliarios">
                          <i class="fas fa-hand-holding-usd" style="color: #cfcfcf;"></i>
                          <span class="nav-link-text"
                              style="color: #cfcfcf;">{{ __('Despesas dos Ativos Imobiliários') }}</span>
                      </a>
-                 </li>
+                 </li> --> 
 
                  {{-- <li class="nav-item">
                     <a class="nav-link" href="{{ route('icons') }}">

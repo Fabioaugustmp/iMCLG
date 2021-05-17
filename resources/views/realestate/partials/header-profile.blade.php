@@ -14,7 +14,7 @@
                                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                     <li class="breadcrumb-item"><a href="{{ route('home') }}"><i
                                                 class="fas fa-home"></i></a></li>
-                                    <li class="breadcrumb-item"><a href="{{ route('users') }}">{{ $title }}</a>
+                                    <li class="breadcrumb-item"><a href="{{ route('realestate') }}">{{ $title }}</a>
                                     </li>
                                     @if (isset($description) && $description)
                                         <li class="breadcrumb-item active" aria-current="page">{{ $description }}</li>

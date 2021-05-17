@@ -189,6 +189,23 @@ class PropertiesController extends Controller
         ]);
     }
 
+    public function showEditPropertie(Properties $properties){
+
+        $realestate = RealEstate::all();
+        $constructions = Construction::all();
+        $statusproperties = StatusProperties::all();
+        $partners = Partner::all();
+
+        return view('properties.properties-edit', [
+            'properties' => $properties,
+            'realestate' => $realestate,
+            'constructions' => $constructions,
+            'statusproperties' => $statusproperties,
+            'partners' => $partners
+        ]);
+
+    }
+
     public function showPropertie(Properties $properties)
     {
 
@@ -260,8 +277,6 @@ class PropertiesController extends Controller
 
     public function addPartnerValuePropertie(){
 
-
         return view('properties.properties-add-partner-value');
-
     }
 }

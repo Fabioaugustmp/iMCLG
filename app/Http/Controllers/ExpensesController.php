@@ -101,7 +101,7 @@ class ExpensesController extends Controller
         ]);
     }
 
-    public function editExpensePut(Expense $expense, Request $request){
+    public function editExpensePut(Expense $expenses, Request $request){
 
         $request->validate([
             'id_propertie' => 'required',
@@ -114,19 +114,19 @@ class ExpensesController extends Controller
         ]);
 
 
-        $expense->id_propertie = $request->id_propertie;
-        $expense->expensetype = $request->expensetype;
-        $expense->classexpense = $request->classexpense;
-        $expense->includedate = $request->includedate;
-        $expense->expiredate = $request->expiredate;
-        $expense->competence = $request->competence;
-        $expense->value = $request->value;
+        $expenses->id_propertie = $request->id_propertie;
+        $expenses->expensetype = $request->expensetype;
+        $expenses->classexpense = $request->classexpense;
+        $expenses->includedate = $request->includedate;
+        $expenses->expiredate = $request->expiredate;
+        $expenses->competence = $request->competence;
+        $expenses->value = $request->value;
 
-        $expense->save();
+        $expenses->save();
 
         return redirect()
-        ->route('expense');
-        //->with('success', 'Ativo atualizado com sucesso!');   
+        ->route('expense')
+        ->with('success', 'Despesa atualizada com sucesso!');   
 
     }
 }

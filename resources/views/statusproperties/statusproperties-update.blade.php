@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => __('Status de Ativos')])
 
 @section('content')
-    @include('users.partials.header-profile', [
+    @include('statusproperties.partials.header-profile', [
     'title' => __('Status de Ativos'),
     'description' => __('Atualizar Status'),
     'class' => 'col-lg-12'

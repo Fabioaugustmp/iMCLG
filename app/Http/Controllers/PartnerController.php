@@ -54,8 +54,7 @@ class PartnerController extends Controller
     }
 
     public function editPartner(Partner $partner)
-    {
-        $partner = Partner::all();
+    {       
 
         return view('partner.partner-edit', [
             'partner' => $partner,             
@@ -66,11 +65,15 @@ class PartnerController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'cpf' => 'required',
-            'status' => 'required',
+            'email' => 'required|email',
+            'cpf' => 'required|numeric'            
         ]);
 
+        if (!isset($request->status)) {
+            $request->status = 0;
+        } else {
+            $request->status = 1;
+        }
 
         $partner->name = $request->name;
         $partner->email = $request->email;
@@ -80,8 +83,8 @@ class PartnerController extends Controller
         $partner->save();
 
         return redirect()
-        ->route('partner');
-        //->with('success', 'Ativo atualizado com sucesso!');   
+        ->route('partners')
+        ->with('success', 'Socio '. $partner->name .' atualizado com sucesso!');   
 
     }
 }

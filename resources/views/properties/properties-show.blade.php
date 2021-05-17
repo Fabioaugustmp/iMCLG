@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => __('Usuários')])
+@extends('layouts.app', ['title' => __('Ativos')])
 
 @section('content')
     @include('properties.partials.header-profile', [
@@ -27,7 +27,7 @@
                                         type="button">
                                         <i class="fas fa-coins"></i> Histórico de Despesas
                                     </a>
-                                    <a href="{{ route('propertie.show', $properties->id) }}" class="btn btn-icon btn-3 btn-primary btn-outline-primary"
+                                    <a href="{{ route('propertie.edit', $properties->id) }}" class="btn btn-icon btn-3 btn-primary btn-outline-primary"
                                         type="button">
                                         <i class="far fa-edit"></i> Editar Ativo
                                     </a>
@@ -100,7 +100,11 @@
                                     <input type="text" class="form-control" id="realestate"
                                         value="{{ $properties->name }}" readonly>
                                 </div>
-
+                                <div class="form-group has-success">
+                                    <label for="realestate">Empresa</label>
+                                    <input type="text" class="form-control" id="realestate"
+                                        value="{{ $properties->company }}" readonly>
+                                </div>
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4 col-sm-6">
                                         <div class="form-group has-success">

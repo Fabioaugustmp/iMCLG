@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => __('Usuários')])
+@extends('layouts.app', ['title' => __('Ativos')])
 
 @section('content')
     @include('properties.partials.header-profile', [
@@ -92,6 +92,7 @@
                             <h3 class="card-title">{{ $propertie->name }}</h3>
                             <p class="card-text">
 
+                                {{ $propertie->company }} <br>
                                 {{ $propertie->realestate }} <br>
                                 {{ $propertie->statusproperties }} <br>
                                 {{ $propertie->valorvenal }}<br>

@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => __('Usuários')])
+@extends('layouts.app', ['title' => __('Ativos')])
 
 @section('content')
     @include('properties.partials.header-profile', [
@@ -218,21 +218,13 @@
                         <div class="row m-2">
                             <div class="col-6">
                                 <div class="row justify-content-start">
-                                    <h2><i class="fas fa-plus-square"></i> Cadastro de Ativo</h2>
+                                    <h2><i class="far fa-edit"></i> Edicao do Ativo {{$properties->name}}</h2>
                                     <small data-toggle="tooltip" data-placement="top"
-                                        title="Neste campo um ativo é cadastrado! Com todas as informações!"><i
+                                        title="Neste campo um ativo pode ser atualizado! Com todas as informações!"><i
                                             class="fas fa-info-circle"></i></small>
 
                                 </div>
-                            </div>
-                            <div class="col-6">
-                                <!--<div class="row justify-content-end">
-                                        <a href="{{ '/expense' }}" class="btn btn-icon btn-3 btn-primary btn-outline-primary"
-                                            type="button">
-                                            <i class="fas fa-coins"></i> Histórico de Despesas
-                                        </a>
-                                    </div>-->
-                            </div>
+                            </div>                            
                         </div>
                     </div>
                     <div class="card-body">

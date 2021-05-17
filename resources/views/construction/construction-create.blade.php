@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => __('Tipos de Construção')])
 
 @section('content')
-    @include('users.partials.header-profile', [
+    @include('construction.partials.header-profile', [
     'title' => __('Tipos de Construção'),
     'description' => __('Criar Tipo de Construção'),
     'class' => 'col-lg-12'

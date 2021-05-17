@@ -1,7 +1,7 @@
-@extends('layouts.app', ['title' => __('Tipos Despesa')])
+@extends('layouts.app', ['title' => __('Tipos de Despesa')])
 
 @section('content')
-    @include('users.partials.header-profile', [
+    @include('expensetype.partials.header-profile', [
     'title' => __('Tipos de Despesa'),
     'description' => __('Listar Tipos de Despesa'),
     'class' => 'col-lg-12'

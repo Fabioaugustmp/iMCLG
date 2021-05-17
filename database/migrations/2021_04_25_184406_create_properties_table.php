@@ -24,7 +24,7 @@ class CreatePropertiesTable extends Migration
             $table->string('cidade');
             $table->string('uf');
             $table->string('areatotal');
-            $table->string('areaconstruida');
+            $table->string('areaconstruida')->nullable();
             $table->string('valorvenal');
             $table->string('valordaaquisicao');
             $table->string('valordevenda')->nullable();

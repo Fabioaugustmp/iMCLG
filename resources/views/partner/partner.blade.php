@@ -1,7 +1,7 @@
-@extends('layouts.app', ['title' => __('Usuários')])
+@extends('layouts.app', ['title' => __('Sócios')])
 
 @section('content')
-    @include('users.partials.header-profile', [
+    @include('partner.partials.header-profile', [
     'title' => __('Sócios'),
     'description' => __('Lista Sócios'),
     'class' => 'col-lg-12'
@@ -19,6 +19,11 @@
                         </div>
                     </div>
                     
+                    <main role="main" class="container">
+                        @include('partials.alerts')
+                        @yield('content')
+                    </main>
+
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table align-items-center table-flush table-striped table-hover">

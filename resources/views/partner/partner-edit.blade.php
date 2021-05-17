@@ -1,7 +1,7 @@
-    @extends('layouts.app', ['title' => __('Usuários')])
+    @extends('layouts.app', ['title' => __('Sócios')])
 
     @section('content')
-        @include('users.partials.header-profile', [
+        @include('partner.partials.header-profile', [
         'title' => __('Sócios'),
         'description' => __('Editar Sócio'),
         'class' => 'col-lg-12'
@@ -24,7 +24,7 @@
                                                     <span class="input-group-text"><i class="fas fa-signature"></i></span>
                                                 </div>
                                                 <input class="form-control" placeholder="Nome do Sócio" type="text"
-                                                    name="name" value="{{ old('name') }}">
+                                                    name="name" value="{{ $partner->name }}">
                                             </div>
                                             @if ($errors->has('name'))
                                                 <span class="invalid-feedback" style="display: block;" role="alert">
@@ -42,7 +42,7 @@
                                                                     class="far fa-envelope-open"></i></span>
                                                         </div>
                                                         <input class="form-control" placeholder="Email do Sócio" type="text"
-                                                            name="email" value="{{ old('email') }}">
+                                                            name="email" value="{{ $partner->email }}" readonly>
                                                     </div>
                                                     @if ($errors->has('email'))
                                                         <span class="invalid-feedback" style="display: block;" role="alert">
@@ -60,7 +60,7 @@
                                                                     class="far fa-address-card"></i></span>
                                                         </div>
                                                         <input class="form-control" placeholder="CPF do Sócio" type="numer"
-                                                            maxlength="11" name="cpf" value="{{ old('cpf') }}">
+                                                            maxlength="11" name="cpf" value="{{ $partner->cpf }}" readonly>
                                                     </div>
                                                     @if ($errors->has('cpf'))
                                                         <span class="invalid-feedback" style="display: block;" role="alert">
@@ -74,16 +74,18 @@
                                             <label for="checkbox">Ativar Sócio</label>
                                             <div>
                                                 <label class="custom-toggle" id="checkbox">
-                                                    <input type="checkbox" name="status">
+                                                    <input type="checkbox" name="status" @if ($partner->status === 1)
+                                                        checked
+                                                    @endif>
                                                     <span class="custom-toggle-slider rounded-circle"></span>
                                                 </label>
                                                 <span class="clearfix"></span>
                                             </div>
                                         </div>
                                         <div class="text-start">
-                                            <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-save"
-                                                    aria-hidden="true"></i> {{ __(' Gravar Sócio') }}</button>
-                                            <a href="{{ route('partners') }}" class="btn btn-primary mt-4" type="button">
+                                            <button type="submit" class="btn btn-primary btn-outline-primary mt-4"><i class="far fa-edit"
+                                                    aria-hidden="true"></i> {{ __(' Atualizar Sócio') }}</button>
+                                            <a href="{{ route('partners') }}" class="btn btn-primary btn-outline-primary mt-4" type="button">
                                                 <i class="fa fa-times" aria-hidden="true"></i>
                                                 <span class="btn-inner--text">Cancelar</span>
                                             </a>

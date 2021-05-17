@@ -1,7 +1,7 @@
-    @extends('layouts.app', ['title' => __('Usuários')])
+    @extends('layouts.app', ['title' => __('Sócios')])
 
     @section('content')
-        @include('users.partials.header-profile', [
+        @include('partner.partials.header-profile', [
         'title' => __('Sócios'),
         'description' => __('Incluir Sócio'),
         'class' => 'col-lg-12'

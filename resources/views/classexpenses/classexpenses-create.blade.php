@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => __('Classe de Despesa')])
 
 @section('content')
-    @include('users.partials.header-profile', [
+    @include('classexpenses.partials.header-profile', [
     'title' => __('Classe de Despesa'),
     'description' => __('Criar Classe de Despesa'),
     'class' => 'col-lg-12'

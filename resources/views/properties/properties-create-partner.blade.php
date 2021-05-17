@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => __('Usuários')])
+@extends('layouts.app', ['title' => __('Ativos')])
 
 @section('content')
     @include('properties.partials.header-profile', [
