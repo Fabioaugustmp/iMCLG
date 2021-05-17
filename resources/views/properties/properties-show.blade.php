@@ -260,7 +260,7 @@
                                                             {{ $properties->realestate }}
                                                         </td>
                                                         <td><a href="" type="button" data-toggle="modal"
-                                                                data-target="#arquivoModal"><i class="fa fa-eye"
+                                                                data-target="#arquivoModal{{ $file->id }}"><i class="fa fa-eye"
                                                                     aria-hidden="true"></i></a></td>
                                                         <td><a href="{{ env('APP_URL') }}/storage/{{ $file->path }}"
                                                                 target="_blank"><i class="fa fa-download"
@@ -268,14 +268,14 @@
                                                     </tr>
 
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="arquivoModal" data-backdrop="static"
+                                                    <div class="modal fade" id="arquivoModal{{ $file->id }}" data-backdrop="static"
                                                         data-keyboard="false" tabindex="-1"
-                                                        aria-labelledby="arquivoModalLabel" aria-hidden="true">
+                                                        aria-labelledby="arquivoModalLabel{{ $file->id }}" aria-hidden="true">
                                                         <div
                                                             class="modal-dialog modal-dialog-centered modal-dialog modal-lg">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h3 class="modal-title" id="arquivoModalLabel">
+                                                                    <h3 class="modal-title" id="arquivoModalLabel{{ $file->id }}">
                                                                         {{ $file->id }} - Arquivo -
                                                                         {{ $properties->realestate }}</h3>
                                                                     <button type="button" class="close" data-dismiss="modal"

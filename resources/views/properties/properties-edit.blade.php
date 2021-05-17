@@ -284,7 +284,7 @@
                                 <div class="form-group">
                                     <label for="name">Nome do Ativo</label>
                                     <input type="text" class="form-control" id="name" placeholder="Insira o nome do ativo."
-                                        name="name" value="{{ old('name') }}">
+                                        name="name" value="{{ $properties->name }}">
                                 </div>
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -298,7 +298,7 @@
                                             Empresa</label>
                                     </div>
                                     <select class="custom-select" id="company" name="company">
-                                        <option selected>Selecione</option>
+                                        <option selected>{{$properties->company}}</option>
                                         <option value="MCLG">MCLG</option>
                                         <option value="MARCELO LIMIRIO">Marcelo Limirio</option>
                                         <option value="CLEONICE LIMIRIO">Cleonice Limirio</option>
@@ -317,7 +317,7 @@
                                             Tipo do Ativo</label>
                                     </div>
                                     <select class="custom-select" id="realestate" name="realestate">
-                                        <!--<option selected>Selecione</option>-->
+                                        <option selected>{{$properties->$realestate}}</option>
                                         @foreach ($realestate as $estate)
                                             @if ($estate->status === 1)
                                                 <option value="{{ $estate->realestate }}">{{ $estate->realestate }}
@@ -338,7 +338,7 @@
                                             Status do Ativos</label>
                                     </div>
                                     <select class="custom-select" id="statusproperties" name="statusproperties">
-                                        <!--<option selected>Selecione</option>-->
+                                        <option selected>{{$properties->statusproperties}}</option>
                                         @foreach ($statusproperties as $status)
                                             @if ($status->status === 1)
                                                 <option value="{{ $status->name }}">{{ $status->name }}</option>
@@ -357,7 +357,7 @@
                                         <div class="form-group">
                                             <label for="cep">CEP</label>
                                             <input type="text" class="form-control" maxlength="9" id="cep" placeholder="CEP"
-                                                name="cep" value="{{ old('cep') }}">
+                                                name="cep" value="{{ $properties->cep }}">
                                             <span class="invalid-feedback" style="display: block;" role="alert">
                                                 <strong id="resultado"></strong>
                                             </span>
@@ -375,7 +375,7 @@
                                             <label for="logradouro">Logradouro/Rua</label>
                                             <input type="text" class="form-control" id="logradouro"
                                                 placeholder="Logradouro / Rua" name="logradouro"
-                                                value="{{ old('logradouro') }}">
+                                                value="{{ $properties->logradouro }}">
                                         </div>
                                         @if ($errors->has('logradouro'))
                                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -389,7 +389,7 @@
                                         <div class="form-group">
                                             <label for="bairro">Bairro</label>
                                             <input type="text" class="form-control" id="bairro" placeholder="Bairro"
-                                                name="bairro" value="{{ old('bairro') }}">
+                                                name="bairro" value="{{ $properties->bairro }}">
                                         </div>
                                         @if ($errors->has('logradouro'))
                                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -403,7 +403,7 @@
                                             <label for="localidade">Cidade / Localidade</label>
                                             <input type="text" class="form-control" id="localidade"
                                                 placeholder="Cidade / Localidade" name="cidade"
-                                                value="{{ old('cidade') }}">
+                                                value="{{ $properties->cidade }}">
                                         </div>
                                         @if ($errors->has('cidade'))
                                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -415,7 +415,7 @@
                                         <div class="form-group">
                                             <label for="uf">Estado</label>
                                             <input type="text" class="form-control" id="uf" placeholder="Estado / UF"
-                                                name="uf" value="{{ old('uf') }}">
+                                                name="uf" value="{{ $properties->uf }}">
                                         </div>
                                     </div>
                                     @if ($errors->has('uf'))
@@ -430,7 +430,7 @@
                                         <label for="localidade">Latitude</label>
                                         <input type="text" class="form-control" id="latitude"
                                             placeholder="Latitude" name="latitude"
-                                            value="{{ old('Latitude') }}">
+                                            value="{{ $properties->latitude }}">
                                     </div>
                                     @if ($errors->has('latitude'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -441,7 +441,7 @@
                                         <label for="localidade">Longitude</label>
                                         <input type="text" class="form-control" id="longitude"
                                             placeholder="Longitude" name="longitude"
-                                            value="{{ old('longitude') }}">
+                                            value="{{ $properties->longitude }}">
                                     </div>
                                     @if ($errors->has('longitude'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -455,7 +455,7 @@
                                         <label for="areatotal">Área Total</label>
                                         <input type="text" class="form-control" id="areatotal" name="areatotal" data-affixes-stay="true" " data-thousands="."
                                         data-decimal=","
-                                            value="{{ old('areatotal') }}">
+                                            value="{{ $properties->areatotal }}">
                                     </div>
                                     @if ($errors->has('areatotal'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
@@ -465,7 +465,7 @@
                                     <div class="col-md-6 mb-3">
                                         <label for="validationDefault02">Área Construída</label>
                                         <input type="text" class="form-control" id="areaconstruida" name="areaconstruida"
-                                            value="{{ old('areaconstruida') }}" data-affixes-stay="true" " data-thousands="."
+                                            value="{{ $properties->areaconstruida }}" data-affixes-stay="true" " data-thousands="."
                                             data-decimal=",">
                                     </div>
                                     @if ($errors->has('areaconstruida'))
@@ -487,7 +487,7 @@
                                             </div>
                                             <input type="text" data-affixes-stay="true" data-prefix="R$ " data-thousands="."
                                                 data-decimal="," class="form-control" aria-label="Amount" name="valorvenal"
-                                                id="valorvenal" value="{{ old('valorvenal') }}">
+                                                id="valorvenal" value="{{ $properties->valorvenal }}">
                                         </div>
                                         @if ($errors->has('valorvenal'))
                                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -505,7 +505,7 @@
                                             <input type="text" data-affixes-stay="true" data-prefix="R$ " data-thousands="."
                                                 data-decimal="," class="form-control" aria-label="Amount"
                                                 name="valordaaquisicao" id="valordaaquisicao"
-                                                value="{{ old('valordaaquisicao') }}">
+                                                value="{{ $properties->valordaaquisicao }}">
                                         </div>
                                         @if ($errors->has('valordaaquisicao'))
                                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -523,7 +523,7 @@
                                             </div>
                                             <input type="text" data-affixes-stay="true" data-prefix="R$ " data-thousands="."
                                                 data-decimal="," class="form-control" aria-label="Amount"
-                                                name="valordevenda" id="valordevenda" value="{{ old('valordevenda') }}">
+                                                name="valordevenda" id="valordevenda" value="{{ $properties->valordevenda }}">
                                         </div>
                                         @if ($errors->has('valordevenda'))
                                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -543,6 +543,7 @@
                                     <div class="col-sm-12">
                                         <select class="custom-select form-control" id="construction" required
                                             name="construction">
+                                            <option value="{{$properties->constructions}}" selected>{{$properties->constructions}}</option>
                                             @foreach ($constructions as $construction)
                                                 @if ($construction->status === 1)
                                                     <option value="{{ $construction->name }}">
@@ -684,6 +685,154 @@
                                                                                                                                                                                     Arquivo(s)</label>
                                                                                                                                                                             </div>
                                                                                                                                                                         </div>-->
+                                </div>
+
+                                <hr>
+
+                                <h3><i class="far fa-images"></i> Imagens</h3>
+                                <br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <table class="table table-hover table-responsive">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Nome do Arquivo</th>
+                                                    <th scope="col">Visualizar</th>
+                                                    <th scope="col">Download</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($properties->images as $image)
+                                                    <tr>
+                                                        <th scope="row">{{ $image->id }}</th>
+                                                        <td>{{ $image->id }} - Arquivo -
+                                                            {{ $properties->realestate }}
+                                                        </td>
+                                                        <td><a href="" type="button" data-toggle="modal"
+                                                                data-target="#arquivoModal"><i class="fa fa-eye"
+                                                                    aria-hidden="true"></i></a></td>
+                                                        <td><a href="{{ env('APP_URL') }}/storage/{{ $image->path }}"
+                                                                target="_blank"><i class="fa fa-download"
+                                                                    aria-hidden="true"></i></a></td>
+                                                    </tr>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="arquivoModal" data-backdrop="static"
+                                                        data-keyboard="false" tabindex="-1"
+                                                        aria-labelledby="arquivoModalLabel" aria-hidden="true">
+                                                        <div
+                                                            class="modal-dialog modal-dialog-centered modal-dialog modal-lg">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h3 class="modal-title" id="arquivoModalLabel">
+                                                                        {{ $image->id }} - Imagem -
+                                                                        {{ $properties->realestate }}</h3>
+                                                                    <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="container">
+
+                                                                        <object class="PDFdoc" width="100%" height="500px"
+                                                                            type="application/pdf"
+                                                                            data="{{ env('APP_URL') }}/storage/{{ $image->path }}"></object>
+
+
+                                                                    </div>
+                                                                    <div class=" modal-footer">
+                                                                        <button type="button" class="btn btn-secondary btn-outline-primary"
+                                                                            data-dismiss="modal"><i
+                                                                                class="far fa-times-circle"></i> Fechar</button>
+                                                                        <a type="button" class="btn btn-primary btn-outline-primary"
+                                                                            href="{{ env('APP_URL') }}/storage/{{ $image->path }}"
+                                                                            target="_blank"><i class="fas fa-times"></i>
+                                                                            Excluir Imagem</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <h3><i class="fas fa-stream"></i> Arquivos</h3>
+                                <br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <table class="table table-hover table-responsive">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Nome do Arquivo</th>
+                                                    <th scope="col">Visualizar</th>
+                                                    <th scope="col">Download</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($properties->files as $file)
+                                                    <tr>
+                                                        <th scope="row">{{ $file->id }}</th>
+                                                        <td>{{ $file->id }} - Arquivo -
+                                                            {{ $properties->realestate }}
+                                                        </td>
+                                                        <td><a href="" type="button" data-toggle="modal"
+                                                                data-target="#arquivoFiles{{ $file->id }}"><i class="fa fa-eye"
+                                                                    aria-hidden="true"></i></a></td>
+                                                        <td><a href="{{ env('APP_URL') }}/storage/{{ $file->path }}"
+                                                                target="_blank"><i class="fa fa-download"
+                                                                    aria-hidden="true"></i></a></td>
+                                                    </tr>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="arquivoFiles{{ $file->id }}" data-backdrop="static"
+                                                        data-keyboard="false" tabindex="-1"
+                                                        aria-labelledby="arquivoFiles{{ $file->id }}Label" aria-hidden="true">
+                                                        <div
+                                                            class="modal-dialog modal-dialog-centered modal-dialog modal-lg">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h3 class="modal-title" id="arquivoFiles{{ $file->id }}Label">
+                                                                        {{ $file->id }} - Arquivo -
+                                                                        {{ $properties->realestate }}</h3>
+                                                                    <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="container">
+
+                                                                        <object class="PDFdoc" width="100%" height="500px"
+                                                                            type="application/pdf"
+                                                                            data="{{ env('APP_URL') }}/storage/{{ $file->path }}"></object>
+
+
+                                                                    </div>
+                                                                    <div class=" modal-footer">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal"><i
+                                                                                class="fas fa-times"></i> Fechar</button>
+                                                                        <a type="button" class="btn btn-primary"
+                                                                            href="{{ env('APP_URL') }}/storage/{{ $file->path }}"
+                                                                            target="_blank"><i class="fas fa-download"></i>
+                                                                            Download</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
 
                                 <hr>
