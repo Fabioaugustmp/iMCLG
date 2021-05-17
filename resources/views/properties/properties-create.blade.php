@@ -307,11 +307,13 @@
                                     </div>
                                     <select class="custom-select" id="company" name="company">
                                         <option selected>Selecione</option>
-                                        <option value="MCLG">MCLG</option>
-                                        <option value="MARCELO LIMIRIO">Marcelo Limirio</option>
-                                        <option value="CLEONICE LIMIRIO">Cleonice Limirio</option>
+                                        <option value="MCLG">MCLG Empreendimentos e Participações LTDA</option>
+                                        <option value="MARCELO LIMIRIO">Marcelo Henrique Limirio Gonçalves
+                                        </option>
+                                        <option value="CLEONICE LIMIRIO">Cleonice Barbosa Limirio Gonçalves
+                                        </option>
                                         <option value="NEO AVIACAO">Neo Aviação</option>
-                                        <option value="AGROPECUARIA">Agropecuária</option>
+                                        <option value="AGROPECUARIA">Agropecuária Limirio</option>
                                     </select>
                                     @if ($errors->has('company'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">

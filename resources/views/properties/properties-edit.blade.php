@@ -33,10 +33,10 @@
 
     <style>
         /*!
-                                         * bsStepper v{version} (https://github.com/Johann-S/bs-stepper)
-                                         * Copyright 2018 - {year} Johann-S <johann.servoire@gmail.com>
-                                         * Licensed under MIT (https://github.com/Johann-S/bs-stepper/blob/master/LICENSE)
-                                         */
+                                                 * bsStepper v{version} (https://github.com/Johann-S/bs-stepper)
+                                                 * Copyright 2018 - {year} Johann-S <johann.servoire@gmail.com>
+                                                 * Licensed under MIT (https://github.com/Johann-S/bs-stepper/blob/master/LICENSE)
+                                                 */
 
         .bs-stepper .step-trigger {
             display: inline-flex;
@@ -218,19 +218,20 @@
                         <div class="row m-2">
                             <div class="col-6">
                                 <div class="row justify-content-start">
-                                    <h2><i class="far fa-edit"></i> Edicao do Ativo {{$properties->name}}</h2>
+                                    <h2><i class="far fa-edit"></i> Edicao do Ativo {{ $properties->name }}</h2>
                                     <small data-toggle="tooltip" data-placement="top"
                                         title="Neste campo um ativo pode ser atualizado! Com todas as informações!"><i
                                             class="fas fa-info-circle"></i></small>
 
                                 </div>
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form role="form" method="POST" action="{{ route('properties.create.post') }}"
+                        <form role="form" method="POST" action="{{ route('propertie.edit.put', ['properties' => $properties->id]) }}"
                             enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="container">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="bs-stepper">
@@ -298,7 +299,7 @@
                                             Empresa</label>
                                     </div>
                                     <select class="custom-select" id="company" name="company">
-                                        <option selected>{{$properties->company}}</option>
+                                        <option selected>{{ $properties->company }}</option>
                                         <option value="MCLG">MCLG</option>
                                         <option value="MARCELO LIMIRIO">Marcelo Limirio</option>
                                         <option value="CLEONICE LIMIRIO">Cleonice Limirio</option>
@@ -317,7 +318,7 @@
                                             Tipo do Ativo</label>
                                     </div>
                                     <select class="custom-select" id="realestate" name="realestate">
-                                        <option selected>{{$properties->$realestate}}</option>
+                                        <option selected>{{ $properties->realestate }}</option>
                                         @foreach ($realestate as $estate)
                                             @if ($estate->status === 1)
                                                 <option value="{{ $estate->realestate }}">{{ $estate->realestate }}
@@ -338,7 +339,7 @@
                                             Status do Ativos</label>
                                     </div>
                                     <select class="custom-select" id="statusproperties" name="statusproperties">
-                                        <option selected>{{$properties->statusproperties}}</option>
+                                        <option selected>{{ $properties->statusproperties }}</option>
                                         @foreach ($statusproperties as $status)
                                             @if ($status->status === 1)
                                                 <option value="{{ $status->name }}">{{ $status->name }}</option>
@@ -424,37 +425,35 @@
                                         </span>
                                     @endif
                                 </div>
-                              
+
                                 <div class="form-row">
                                     <div class="col-md-6 mb-3">
                                         <label for="localidade">Latitude</label>
-                                        <input type="text" class="form-control" id="latitude"
-                                            placeholder="Latitude" name="latitude"
-                                            value="{{ $properties->latitude }}">
+                                        <input type="text" class="form-control" id="latitude" placeholder="Latitude"
+                                            name="latitude" value="{{ $properties->latitude }}">
                                     </div>
                                     @if ($errors->has('latitude'))
-                                    <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('latitude') }}</strong>
-                                    </span>
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('latitude') }}</strong>
+                                        </span>
                                     @endif
                                     <div class="col-md-6 mb-3">
                                         <label for="localidade">Longitude</label>
-                                        <input type="text" class="form-control" id="longitude"
-                                            placeholder="Longitude" name="longitude"
-                                            value="{{ $properties->longitude }}">
+                                        <input type="text" class="form-control" id="longitude" placeholder="Longitude"
+                                            name="longitude" value="{{ $properties->longitude }}">
                                     </div>
                                     @if ($errors->has('longitude'))
-                                    <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('longitude') }}</strong>
-                                    </span>
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('longitude') }}</strong>
+                                        </span>
                                     @endif
                                 </div>
                                 <hr>
                                 <div class="form-row">
                                     <div class="col-md-6 mb-3">
                                         <label for="areatotal">Área Total</label>
-                                        <input type="text" class="form-control" id="areatotal" name="areatotal" data-affixes-stay="true" " data-thousands="."
-                                        data-decimal=","
+                                        <input type="text" class="form-control" id="areatotal" name="areatotal"
+                                            data-affixes-stay="true" " data-thousands=" ." data-decimal=","
                                             value="{{ $properties->areatotal }}">
                                     </div>
                                     @if ($errors->has('areatotal'))
@@ -465,8 +464,8 @@
                                     <div class="col-md-6 mb-3">
                                         <label for="validationDefault02">Área Construída</label>
                                         <input type="text" class="form-control" id="areaconstruida" name="areaconstruida"
-                                            value="{{ $properties->areaconstruida }}" data-affixes-stay="true" " data-thousands="."
-                                            data-decimal=",">
+                                            value="{{ $properties->areaconstruida }}"
+                                            data-affixes-stay="true" " data-thousands=" ." data-decimal=",">
                                     </div>
                                     @if ($errors->has('areaconstruida'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
@@ -523,7 +522,8 @@
                                             </div>
                                             <input type="text" data-affixes-stay="true" data-prefix="R$ " data-thousands="."
                                                 data-decimal="," class="form-control" aria-label="Amount"
-                                                name="valordevenda" id="valordevenda" value="{{ $properties->valordevenda }}">
+                                                name="valordevenda" id="valordevenda"
+                                                value="{{ $properties->valordevenda }}">
                                         </div>
                                         @if ($errors->has('valordevenda'))
                                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -543,7 +543,7 @@
                                     <div class="col-sm-12">
                                         <select class="custom-select form-control" id="construction" required
                                             name="construction">
-                                            <option value="{{$properties->constructions}}" selected>{{$properties->constructions}}</option>
+                                            <option selected>{{ $properties->construction }}</option>
                                             @foreach ($constructions as $construction)
                                                 @if ($construction->status === 1)
                                                     <option value="{{ $construction->name }}">
@@ -563,29 +563,7 @@
 
                                 <hr>
 
-                                <div class="form-row">
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary btn-outline-primary" data-toggle="modal"
-                                        data-target="#exampleModal">
-                                        <i class="fas fa-upload"></i> Upload de Imagens
-                                    </button>
-
-                                    @if ($errors->has('pictures'))
-                                        <span class="invalid-feedback" style="display: block;" role="alert">
-                                            <strong>{{ $errors->first('pictures') }}</strong>
-                                        </span>
-                                    @endif
-
-                                    <button type="button" class="btn btn-primary btn-outline-primary" data-toggle="modal"
-                                        data-target="#filesModal">
-                                        <i class="fas fa-folder-plus"></i> Upload de Arquivos
-                                    </button>
-
-                                    @if ($errors->has('files'))
-                                        <span class="invalid-feedback" style="display: block;" role="alert">
-                                            <strong>{{ $errors->first('files') }}</strong>
-                                        </span>
-                                    @endif
+                                <div class="form-row">                                 
 
                                     <!-- Modal Images-->
                                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
@@ -658,106 +636,55 @@
                                     </div>
                                 </div>
 
+                                <!-- Modais imagens e arquivos do ativo -->
                                 <div class="form-row">
                                     <!--  <div class="input-group mb-3">
-                                                                                                                                    <div class="input-group-prepend">
-                                                                                                                                        <span class="input-group-text" id="pictures">Fotos</span>
-                                                                                                                                    </div>
-                                                                                                                                    <div class="custom-file">
-                                                                                                                                        <input type="file" class="custom-file-input" id="pictures"
-                                                                                                                                            aria-describedby="pictures" name="pictures[]" accept="image/*" multiple>
-                                                                                                                                        <label class="custom-file-label" for="pictures">Selecionar Foto(s)</label>
-                                                                                                                                    </div>
-                                                                                                                                    @if ($errors->has('pictures'))
-                                                                                                                                        <span class="invalid-feedback" style="display: block;" role="alert">
-                                                                                                                                            <strong>{{ $errors->first('pictures') }}</strong>
-                                                                                                                                        </span>
-                                                                                                                                    @endif
-                                                                                                                                </div>
-                                                                                                                                <div class="input-group mb-3">
-                                                                                                                                                                            <div class="input-group-prepend">
-                                                                                                                                                                                <span class="input-group-text" id="inputGroupFileAddon01">Anexos</span>
-                                                                                                                                                                            </div>
-                                                                                                                                                                            <div class="custom-file">
-                                                                                                                                                                                <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                                                                                                                                                                    aria-describedby="inputGroupFileAddon01">
-                                                                                                                                                                                <label class="custom-file-label" for="inputGroupFile01">Selecionar
-                                                                                                                                                                                    Arquivo(s)</label>
-                                                                                                                                                                            </div>
-                                                                                                                                                                        </div>-->
+                                                                                                                                            <div class="input-group-prepend">
+                                                                                                                                                <span class="input-group-text" id="pictures">Fotos</span>
+                                                                                                                                            </div>
+                                                                                                                                            <div class="custom-file">
+                                                                                                                                                <input type="file" class="custom-file-input" id="pictures"
+                                                                                                                                                    aria-describedby="pictures" name="pictures[]" accept="image/*" multiple>
+                                                                                                                                                <label class="custom-file-label" for="pictures">Selecionar Foto(s)</label>
+                                                                                                                                            </div>
+                                                                                                                                            @if ($errors->has('pictures'))
+                                                                                                                                                <span class="invalid-feedback" style="display: block;" role="alert">
+                                                                                                                                                    <strong>{{ $errors->first('pictures') }}</strong>
+                                                                                                                                                </span>
+                                                                                                                                            @endif
+                                                                                                                                        </div>
+                                                                                                                                        <div class="input-group mb-3">
+                                                                                                                                                                                    <div class="input-group-prepend">
+                                                                                                                                                                                        <span class="input-group-text" id="inputGroupFileAddon01">Anexos</span>
+                                                                                                                                                                                    </div>
+                                                                                                                                                                                    <div class="custom-file">
+                                                                                                                                                                                        <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                                                                                                                                                                            aria-describedby="inputGroupFileAddon01">
+                                                                                                                                                                                        <label class="custom-file-label" for="inputGroupFile01">Selecionar
+                                                                                                                                                                                            Arquivo(s)</label>
+                                                                                                                                                                                    </div>
+                                                                                                                                                                                </div>-->
                                 </div>
-
-                                <hr>
 
                                 <h3><i class="far fa-images"></i> Imagens</h3>
                                 <br>
                                 <div class="row">
                                     <div class="col-12">
-                                        <table class="table table-hover table-responsive">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">Nome do Arquivo</th>
-                                                    <th scope="col">Visualizar</th>
-                                                    <th scope="col">Download</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($properties->images as $image)
-                                                    <tr>
-                                                        <th scope="row">{{ $image->id }}</th>
-                                                        <td>{{ $image->id }} - Arquivo -
-                                                            {{ $properties->realestate }}
-                                                        </td>
-                                                        <td><a href="" type="button" data-toggle="modal"
-                                                                data-target="#arquivoModal"><i class="fa fa-eye"
-                                                                    aria-hidden="true"></i></a></td>
-                                                        <td><a href="{{ env('APP_URL') }}/storage/{{ $image->path }}"
-                                                                target="_blank"><i class="fa fa-download"
-                                                                    aria-hidden="true"></i></a></td>
-                                                    </tr>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary btn-outline-primary"
+                                            data-toggle="modal" data-target="#exampleModal">
+                                            <i class="fas fa-upload"></i> Upload de Imagens
+                                        </button>
 
-                                                    <!-- Modal -->
-                                                    <div class="modal fade" id="arquivoModal" data-backdrop="static"
-                                                        data-keyboard="false" tabindex="-1"
-                                                        aria-labelledby="arquivoModalLabel" aria-hidden="true">
-                                                        <div
-                                                            class="modal-dialog modal-dialog-centered modal-dialog modal-lg">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h3 class="modal-title" id="arquivoModalLabel">
-                                                                        {{ $image->id }} - Imagem -
-                                                                        {{ $properties->realestate }}</h3>
-                                                                    <button type="button" class="close" data-dismiss="modal"
-                                                                        aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <div class="container">
-
-                                                                        <object class="PDFdoc" width="100%" height="500px"
-                                                                            type="application/pdf"
-                                                                            data="{{ env('APP_URL') }}/storage/{{ $image->path }}"></object>
-
-
-                                                                    </div>
-                                                                    <div class=" modal-footer">
-                                                                        <button type="button" class="btn btn-secondary btn-outline-primary"
-                                                                            data-dismiss="modal"><i
-                                                                                class="far fa-times-circle"></i> Fechar</button>
-                                                                        <a type="button" class="btn btn-primary btn-outline-primary"
-                                                                            href="{{ env('APP_URL') }}/storage/{{ $image->path }}"
-                                                                            target="_blank"><i class="fas fa-times"></i>
-                                                                            Excluir Imagem</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
+                                        @if ($errors->has('pictures'))
+                                            <span class="invalid-feedback" style="display: block;" role="alert">
+                                                <strong>{{ $errors->first('pictures') }}</strong>
+                                            </span>
+                                        @endif
+                                        <button type="button" class="btn btn-primary btn-outline-primary"
+                                            data-toggle="modal" data-target="#filesModal">
+                                            <i class="far fa-edit"></i> Editar Imagens
+                                        </button>
                                     </div>
                                 </div>
 
@@ -767,68 +694,64 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <button type="button" class="btn btn-primary btn-outline-primary" data-toggle="modal"
+                                                data-target="#filesModal">
+                                                <i class="fas fa-file-upload"></i> Upload de Arquivos
+                                            </button>
+        
+                                            @if ($errors->has('files'))
+                                                <span class="invalid-feedback" style="display: block;" role="alert">
+                                                    <strong>{{ $errors->first('files') }}</strong>
+                                                </span>
+                                            @endif
+                                                <button type="button" class="btn btn-primary btn-outline-primary"
+                                                    data-toggle="modal" data-target="#filesModal">
+                                                    <i class="far fa-edit"></i> Editar Arquivos
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <h3><i class="fas fa-user-shield"></i> Sócios do Ativo</h3>
+                                <br>
+                                <div class="row">
+                                    <div class="col-12">
                                         <table class="table table-hover table-responsive">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Nome do Arquivo</th>
-                                                    <th scope="col">Visualizar</th>
-                                                    <th scope="col">Download</th>
+                                                    <th scope="col">Nome do Sócio</th>
+                                                    <th scope="col">Email</th>
+                                                    <th scope="col">Valor Investido</th>
+                                                    <th scope="col">Gestor do Ativo</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($properties->files as $file)
+                                                @foreach ($partners as $partner)
                                                     <tr>
-                                                        <th scope="row">{{ $file->id }}</th>
-                                                        <td>{{ $file->id }} - Arquivo -
-                                                            {{ $properties->realestate }}
-                                                        </td>
-                                                        <td><a href="" type="button" data-toggle="modal"
-                                                                data-target="#arquivoFiles{{ $file->id }}"><i class="fa fa-eye"
-                                                                    aria-hidden="true"></i></a></td>
-                                                        <td><a href="{{ env('APP_URL') }}/storage/{{ $file->path }}"
-                                                                target="_blank"><i class="fa fa-download"
-                                                                    aria-hidden="true"></i></a></td>
-                                                    </tr>
-
-                                                    <!-- Modal -->
-                                                    <div class="modal fade" id="arquivoFiles{{ $file->id }}" data-backdrop="static"
-                                                        data-keyboard="false" tabindex="-1"
-                                                        aria-labelledby="arquivoFiles{{ $file->id }}Label" aria-hidden="true">
-                                                        <div
-                                                            class="modal-dialog modal-dialog-centered modal-dialog modal-lg">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h3 class="modal-title" id="arquivoFiles{{ $file->id }}Label">
-                                                                        {{ $file->id }} - Arquivo -
-                                                                        {{ $properties->realestate }}</h3>
-                                                                    <button type="button" class="close" data-dismiss="modal"
-                                                                        aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
+                                                        <th scope="row">{{ $partner->id }}</th>
+                                                        <td style="text-transform: uppercase">{{ $partner->name }}</td>
+                                                        <td>{{ $partner->email }}</td>
+                                                        <td class="align-items-center">
+                                                            <div class="input-group mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">R$</span>
                                                                 </div>
-                                                                <div class="modal-body">
-                                                                    <div class="container">
-
-                                                                        <object class="PDFdoc" width="100%" height="500px"
-                                                                            type="application/pdf"
-                                                                            data="{{ env('APP_URL') }}/storage/{{ $file->path }}"></object>
-
-
-                                                                    </div>
-                                                                    <div class=" modal-footer">
-                                                                        <button type="button" class="btn btn-secondary"
-                                                                            data-dismiss="modal"><i
-                                                                                class="fas fa-times"></i> Fechar</button>
-                                                                        <a type="button" class="btn btn-primary"
-                                                                            href="{{ env('APP_URL') }}/storage/{{ $file->path }}"
-                                                                            target="_blank"><i class="fas fa-download"></i>
-                                                                            Download</a>
-                                                                    </div>
-                                                                </div>
+                                                                <input type="number" class="form-control"
+                                                                    value="{{ $partner->partial_value }}" readonly>
                                                             </div>
-                                                        </div>
-                                                    </div>
+                                                        </td>
+                                                        <td>
+                                                            @if ($partner->manager === 1)
+                                                                <i class="fas fa-user-check"></i>
+                                                            @endif
+                                                        </td>
+                                                    </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
@@ -905,11 +828,11 @@
                 })
                 .catch(e => {
                     resultado.innerHTML = "CEP inválido ou inexistente!",
-                    console.log('Deu Erro: ' + e.message)
+                        console.log('Deu Erro: ' + e.message)
                 })
         })
 
-    </script> 
+    </script>
     <script>
         $(function() {
             $('#valorvenal').maskMoney();

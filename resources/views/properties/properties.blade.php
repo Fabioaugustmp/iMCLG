@@ -15,17 +15,45 @@
                         <div class="row mx-2 px-2">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="row justify-content-start">
-                                    <form class="form-inline my-2 my-lg-0" action="{{ route('search.propertie') }}"
-                                        method="GET" role="search">
-                                        @csrf
-                                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisa de Ativos"
-                                            aria-label="Search" id="search" name="search">
+                                    <div class="row">
+                                        <form class="form-inline my-2 my-lg-0" action="{{ route('search.propertie') }}"
+                                            method="GET" role="search">
+                                            @csrf
+                                            <input class="form-control mr-sm-2" type="search"
+                                                placeholder="Pesquisa de Ativos" aria-label="Search" id="search"
+                                                name="search">
 
-                                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i
-                                                class="fas fa-search-location"></i> Buscar</button>
+                                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i
+                                                    class="fas fa-search-location"></i> Buscar</button>
 
-                                    </form>
-
+                                        </form>
+                                    </div>
+                                    <div class="row">
+                                        <form class="form-inline my-2 my-lg-0" action="{{ route('search.propertie') }}"
+                                            method="GET" role="search">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <label class="input-group-text" for="company">
+                                                        Empresa</label>
+                                                </div>
+                                                <select class="custom-select" id="company" name="company">
+                                                    <option selected>Selecione</option>
+                                                    <option value="MCLG">MCLG Empreendimentos e Participações LTDA</option>
+                                                    <option value="MARCELO LIMIRIO">Marcelo Henrique Limirio Gonçalves
+                                                    </option>
+                                                    <option value="CLEONICE LIMIRIO">Cleonice Barbosa Limirio Gonçalves
+                                                    </option>
+                                                    <option value="NEO AVIACAO">Neo Aviação</option>
+                                                    <option value="AGROPECUARIA">Agropecuária Limirio</option>
+                                                </select>
+                                                @if ($errors->has('company'))
+                                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                                        <strong>{{ $errors->first('company') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
 
@@ -48,11 +76,11 @@
                     </div>
                     <div class="card-header bg-white border-0">
                         <!--<div class="row align-items-center">
-                                                                                                                        <a href="{{ '/users/create' }}" class="btn btn-icon btn-3 btn-primary" type="button">
-                                                                                                                            <span class="btn-inner--icon"><i class="fas fa-coins"></i></span>
-                                                                                                                            <span class="btn-inner--text">Histórico de Despesas</span>
-                                                                                                                        </a>
-                                                                                                                    </div>-->
+                                                                                                                                <a href="{{ '/users/create' }}" class="btn btn-icon btn-3 btn-primary" type="button">
+                                                                                                                                    <span class="btn-inner--icon"><i class="fas fa-coins"></i></span>
+                                                                                                                                    <span class="btn-inner--text">Histórico de Despesas</span>
+                                                                                                                                </a>
+                                                                                                                            </div>-->
                     </div>
                     <div class="card-body">
 
@@ -61,7 +89,7 @@
                                 @foreach ($properties as $propertie)
                                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 p-2">
                                         <div class="card" style="width: 16rem;">
-                                            <div id="{{$propertie->id}}" class="carousel slide carousel-fade"
+                                            <div id="{{ $propertie->id }}" class="carousel slide carousel-fade"
                                                 data-ride="carousel">
                                                 <div class="carousel-inner">
                                                     @foreach ($propertie->images as $picture)
@@ -78,11 +106,13 @@
                                 @endforeach
 
                             </div>
-                            <a class="carousel-control-prev" href="#{{$propertie->id}}" role="button" data-slide="prev">
+                            <a class="carousel-control-prev" href="#{{ $propertie->id }}" role="button"
+                                data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>
                             </a>
-                            <a class="carousel-control-next" href="#{{$propertie->id}}" role="button" data-slide="next">
+                            <a class="carousel-control-next" href="#{{ $propertie->id }}" role="button"
+                                data-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
                             </a>

@@ -194,7 +194,7 @@ class PropertiesController extends Controller
         $realestate = RealEstate::all();
         $constructions = Construction::all();
         $statusproperties = StatusProperties::all();
-        $partners = Partner::all();
+        $partners = $properties->partners()->get();
 
         return view('properties.properties-edit', [
             'properties' => $properties,
@@ -203,6 +203,51 @@ class PropertiesController extends Controller
             'statusproperties' => $statusproperties,
             'partners' => $partners
         ]);
+
+    }
+
+    public function showEditImages(Properties $properties){
+
+
+        return view('properties.uploads.images');
+
+    }
+
+    public function putEditPropertie(Properties $properties, Request $request){     
+        
+        $this->validate($request, [
+            'name' => 'required',
+            'realestate' => 'required',
+            'statusproperties' => 'required',
+            'cep' => 'required|max:9',
+            'logradouro' => 'required|min:5',
+            'bairro' => 'required|min:5',
+            'cidade' => 'required|min:5',
+            'uf' => 'required|min:2',
+            'areatotal' => 'required',
+            'valorvenal' => 'required',
+            'valordaaquisicao' => 'required',
+            'construction' => 'required',
+            'company' => 'required',
+        ]);
+
+        $properties->name = $request->name;
+        $properties->realestate = $request->realestate;
+        $properties->statusproperties = $request->statusproperties;
+        $properties->cep = $request->cep;
+        $properties->logradouro = $request->logradouro; 
+        $properties->bairro = $request->bairro;
+        $properties->cidade = $request->cidade;
+        $properties->uf = $request->uf;
+        $properties->areatotal = $request->areatotal;
+        $properties->valorvenal = $request->valorvenal;
+        $properties->valordaaquisicao = $request->valordaaquisicao;
+        $properties->construction = $request->construction;
+        $properties->company = $request->company;        
+
+        $properties->save();
+
+        return redirect('properties');
 
     }
 
