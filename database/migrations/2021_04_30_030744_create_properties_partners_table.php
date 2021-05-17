@@ -20,8 +20,8 @@ class CreatePropertiesPartnersTable extends Migration
             $table->string('partial_value');*/            
             $table->unsignedBigInteger('properties');
             $table->unsignedBigInteger('partners');
-            $table->bigInteger('partial_value');
-            $table->boolean('manager');
+            $table->bigInteger('partial_value')->nullable();
+            $table->boolean('manager')->nullable();
 
             $table->foreign('properties')->references('id')->on('properties');
             $table->foreign('partners')->references('id')->on('partners');
