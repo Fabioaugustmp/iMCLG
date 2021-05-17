@@ -6,6 +6,7 @@
     'description' => __('Adicionar Participação Societária'),
     'class' => 'col-lg-12'
     ])
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -130,7 +131,15 @@
                                                         id="partial_value_{{ count($partners) }}" type="text" maxlength="11"
                                                         name="partial_value_{{ count($partners) }}" data-affixes-stay="true" data-prefix="R$ " data-thousands="."
                                                         data-decimal="," aria-label="Amount">
-                                                </div>
+                                                        
+                                                </div>                                                
+                                                <script>
+                                                    $(function() {
+                                                        $("#partial_value_{{ count($partners) }}").maskMoney();                                                        
+                                                        $("#valordevenda").maskMoney();   
+                                                    })
+                                            
+                                                </script>
                                             @endforeach
                                             @if ($errors->has('cpf'))
                                                 <span class="invalid-feedback" style="display: block;" role="alert">
@@ -186,5 +195,5 @@
             document.getElementById('result').value = valor1 + valor2;
         }
 
-    </script>
+    </script>     
 @endsection
