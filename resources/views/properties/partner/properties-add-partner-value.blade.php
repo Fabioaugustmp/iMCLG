@@ -128,7 +128,7 @@
                                                         <span class="input-group-text"><i class="fas fa-coins"></i></span>
                                                     </div>
                                                     <input class="form-control" placeholder="Valor da Aquisição"
-                                                        id="partial_value_{{ count($partners) }}" type="text" maxlength="11"
+                                                        id="partial_value_{{ count($partners) }}" type="text"
                                                         name="partial_value_{{ count($partners) }}" data-affixes-stay="true" data-prefix="R$ " data-thousands="."
                                                         data-decimal="," aria-label="Amount">
                                                         
