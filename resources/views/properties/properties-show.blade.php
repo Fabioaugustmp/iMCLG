@@ -1,11 +1,14 @@
 @extends('layouts.app', ['title' => __('Ativos')])
 
+
 @section('content')
     @include('properties.partials.header-profile', [
     'title' => __('Ativos'),
-    'description' => __('Criar Ativo'),
+    'description' => __('Listar Ativos'),
     'class' => 'col-lg-12'
     ])
+
+<style> #map {position: absolute;top: 0, bottom: 0, left: 0, right: 0, height: 512px }  </style>
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -192,6 +195,14 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div id="map"></div>
+                                <script>
+                                    var mymap = L.map('map').setView([0, 0], 1);
+                                    L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=AGiqVMqnAryGntB34DW1',{
+                                    attribuition:'<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+                                    }).addTo(map);
+                                    var marker = L.marker([51,5, -0,09]).addTo(map);
+                                </script>
 
                                 <h3><i class="fas fa-funnel-dollar"></i> Valores do Imóvel</h3>
 
@@ -370,5 +381,8 @@
         </div>
     </div>
 
+    
+
     @include('layouts.footers.auth')
+
 @endsection
