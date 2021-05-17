@@ -3,7 +3,7 @@
 @section('content')
     @include('properties.partials.header-profile', [
     'title' => __('Ativos'),
-    'description' => __('Adicionar Sócios'),
+    'description' => __('Adicionar Participação Societária'),
     'class' => 'col-lg-12'
     ])
 
@@ -72,12 +72,12 @@
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            <label for="partner">Valor da Aquisição</label>
+                                            <label for="partner">Valor Societário</label>
                                             <div class="input-group mb-4" id="valordaaquisicao">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-coins"></i></span>
                                                 </div>
-                                                <input class="form-control" placeholder="Valor da Aquisição" type="text"
+                                                <input class="form-control" placeholder="Valor societário" type="text"
                                                     name="valordaaquisicao" value="{{ $properties->valordaaquisicao }}"
                                                     readonly>
                                             </div>
@@ -105,7 +105,7 @@
                                                                 class="fas fa-user-tie"></i></span>
                                                     </div>
 
-                                                    <input type="hidden" value="{{ $partner->id }}" name="partner{{count($partners)}}">
+                                                    <input type="hidden" value="{{ count($partners) }}" name="partner{{count($partners)}}">
                                                     <input class="form-control" placeholder="Nome do Ativo" type="text"
                                                         name="partnerName{{$partner->id}}" value="{{ $partner->name }}" readonly
                                                         style="text-transform: uppercase">
@@ -140,7 +140,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                   <!-- <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
                                             <label for="partner">Somatória valor da aquisição</label>
                                             <div class="input-group mb-4" id="partner">
@@ -157,12 +157,12 @@
                                                 </span>
                                             @endif
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
                                 <div class="text-start">
                                     <button type="submit" class="btn btn-primary btn-outline-primary mt-4"><i
                                             class="fas fa-user-plus" aria-hidden="true"></i>
-                                        {{ __(' Inserir Sócios ') }}</button>
+                                        {{ __(' Inserir Participação ') }}</button>
                                     <a href="{{ route('properties') }}" class="btn btn-primary btn-outline-primary mt-4"
                                         type="button">
                                         <i class="fa fa-times" aria-hidden="true"></i>

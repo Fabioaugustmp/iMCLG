@@ -5,7 +5,7 @@
     'title' => __('Ativos'),
     'description' => __(''),
     'class' => 'col-lg-12'
-    ])     
+    ])
     <div class="container-fluid mt--7">
         <div class="row">
             <div class="col-xl-12 order-xl-1">
@@ -26,31 +26,34 @@
 
                                     </form>
                                     <form class="form-inline ml-2 my-2 my-lg-0"
-                                            action="{{ route('search.propertie.company') }}" method="GET" role="search">
-                                            <div class="input-group mb-3">
-                                                <div class="input-group-prepend">
-                                                    <label class="input-group-text" for="company">
-                                                        Empresa</label>
-                                                </div>
-                                                <select class="custom-select" id="company" name="company">
-                                                    <option selected>{{ $searchC }}</option>
-                                                    <option value="MCLG">MCLG Empreendimentos e Participações LTDA</option>
-                                                    <option value="MARCELO LIMIRIO">Marcelo Henrique Limirio Gonçalves
-                                                    </option>
-                                                    <option value="CLEONICE LIMIRIO">Cleonice Barbosa Limirio Gonçalves
-                                                    </option>
-                                                    <option value="NEO AVIACAO">Neo Aviação</option>
-                                                    <option value="AGROPECUARIA">Agropecuária Limirio</option>
-                                                </select>
-                                                @if ($errors->has('company'))
-                                                    <span class="invalid-feedback" style="display: block;" role="alert">
-                                                        <strong>{{ $errors->first('company') }}</strong>
-                                                    </span>
-                                                @endif
-                                                <button class="btn btn-outline-success ml-2 my-2 my-sm-0" type="submit"><i
-                                                        class="fas fa-search-location"></i> Buscar</button>
+                                        action="{{ route('search.propertie.company') }}" method="GET" role="search">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="company">
+                                                    Empresa</label>
                                             </div>
-                                        </form>
+                                            <select class="custom-select" id="company" name="company">
+                                                @isset($searchC)
+                                                    <option selected>{{ $searchC }}</option>
+                                                @endisset
+
+                                                <option value="MCLG">MCLG Empreendimentos e Participações LTDA</option>
+                                                <option value="MARCELO LIMIRIO">Marcelo Henrique Limirio Gonçalves
+                                                </option>
+                                                <option value="CLEONICE LIMIRIO">Cleonice Barbosa Limirio Gonçalves
+                                                </option>
+                                                <option value="NEO AVIACAO">Neo Aviação</option>
+                                                <option value="AGROPECUARIA">Agropecuária Limirio</option>
+                                            </select>
+                                            @if ($errors->has('company'))
+                                                <span class="invalid-feedback" style="display: block;" role="alert">
+                                                    <strong>{{ $errors->first('company') }}</strong>
+                                                </span>
+                                            @endif
+                                            <button class="btn btn-outline-success ml-2 my-2 my-sm-0" type="submit"><i
+                                                    class="fas fa-search-location"></i> Buscar</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
 
@@ -70,11 +73,11 @@
                     </div>
                     <div class="card-header bg-white border-0">
                         <!--<div class="row align-items-center">
-                                                                                                                            <a href="{{ '/users/create' }}" class="btn btn-icon btn-3 btn-primary" type="button">
-                                                                                                                                <span class="btn-inner--icon"><i class="fas fa-coins"></i></span>
-                                                                                                                                <span class="btn-inner--text">Histórico de Despesas</span>
-                                                                                                                            </a>
-                                                                                                                        </div>-->
+                                                                                                                                <a href="{{ '/users/create' }}" class="btn btn-icon btn-3 btn-primary" type="button">
+                                                                                                                                    <span class="btn-inner--icon"><i class="fas fa-coins"></i></span>
+                                                                                                                                    <span class="btn-inner--text">Histórico de Despesas</span>
+                                                                                                                                </a>
+                                                                                                                            </div>-->
                     </div>
                     <div class="card-body">
 
@@ -149,5 +152,5 @@
             </div>
 
             @include('layouts.footers.auth')
-        </div>       
+        </div>
     @endsection

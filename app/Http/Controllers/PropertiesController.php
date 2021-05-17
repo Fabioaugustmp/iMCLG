@@ -480,7 +480,7 @@ class PropertiesController extends Controller
 
         for ($i=1; $i < count($propertiesArray) ; $i++) {          
 
-            $properties->partners()->sync([
+            $properties->partners()->attach([
                 $request->partner.$i => [
                     'partial_value' => $request->partial_value_.$i
                 ]
