@@ -37,7 +37,8 @@
                                                         <span class="input-group-text"><i
                                                                 class="ni ni-money-coins"></i></span>
                                                     </div>
-                                                    <select class="form-control"  name="expensetype">                                                        
+                                                    <select class="form-control"  name="expensetype">  
+                                                        <option selected>{{$expenses->expensetype}}</option>                                                      
                                                         @foreach ($expensetypes as $expensetype)                                                      
                                                             @if ($expensetype->status === 1)
                                                                 <option value="{{ $expensetype->name }}">
@@ -61,7 +62,8 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="fas fa-coins"></i></span>
                                                     </div>
-                                                    <select class="form-control" name="classexpense">                                                          
+                                                    <select class="form-control" name="classexpense">
+                                                        <option selected>{{$expenses->classexpense}}</option>                                                                                                                
                                                         @foreach ($classexpenses as $classexpense)
                                                             @if ($classexpense->status === 1)
                                                                 <option value="{{ $classexpense->name }}">
