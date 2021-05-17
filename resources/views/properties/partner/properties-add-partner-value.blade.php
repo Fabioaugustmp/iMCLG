@@ -128,7 +128,8 @@
                                                     </div>
                                                     <input class="form-control" placeholder="Valor da Aquisição"
                                                         id="partial_value_{{ count($partners) }}" type="text" maxlength="11"
-                                                        name="partial_value_{{ count($partners) }}">
+                                                        name="partial_value_{{ count($partners) }}" data-affixes-stay="true" data-prefix="R$ " data-thousands="."
+                                                        data-decimal="," aria-label="Amount">
                                                 </div>
                                             @endforeach
                                             @if ($errors->has('cpf'))

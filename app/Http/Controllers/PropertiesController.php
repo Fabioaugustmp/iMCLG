@@ -490,7 +490,7 @@ class PropertiesController extends Controller
             $partialRequestTotal = 'partial_value_'.$partialRequest;
             $partialValue = $request->$partialRequestTotal;
             
-            $properties->partners()->syncWithoutDetaching([
+            $properties->partners()->sync([
                 $request->partner.$i => [
                     'partial_value' => $partialValue
                 ]
