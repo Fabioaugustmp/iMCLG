@@ -27,11 +27,10 @@
                                                     class="fas fa-search-location"></i> Buscar</button>
 
                                         </form>
-                                    </div>
-                                    <div class="row">
-                                        <form class="form-inline my-2 my-lg-0" action="{{ route('search.propertie') }}"
-                                            method="GET" role="search">
-                                            <div class="input-group mb-3">
+                                        
+                                        <form class="form-inline ml-2 my-2 my-lg-0"
+                                            action="{{ route('search.propertie.company') }}" method="GET" role="search">
+                                            <div class="input-group mr-sm-2">
                                                 <div class="input-group-prepend">
                                                     <label class="input-group-text" for="company">
                                                         Empresa</label>
@@ -51,9 +50,11 @@
                                                         <strong>{{ $errors->first('company') }}</strong>
                                                     </span>
                                                 @endif
+                                                <button class="btn btn-outline-success ml-2 my-2 my-sm-0" type="submit"><i
+                                                        class="fas fa-search-location"></i> Buscar</button>
                                             </div>
                                         </form>
-                                    </div>
+                                    </div>                                    
                                 </div>
                             </div>
 
@@ -76,11 +77,11 @@
                     </div>
                     <div class="card-header bg-white border-0">
                         <!--<div class="row align-items-center">
-                                                                                                                                <a href="{{ '/users/create' }}" class="btn btn-icon btn-3 btn-primary" type="button">
-                                                                                                                                    <span class="btn-inner--icon"><i class="fas fa-coins"></i></span>
-                                                                                                                                    <span class="btn-inner--text">Histórico de Despesas</span>
-                                                                                                                                </a>
-                                                                                                                            </div>-->
+                                                                                                                                    <a href="{{ '/users/create' }}" class="btn btn-icon btn-3 btn-primary" type="button">
+                                                                                                                                        <span class="btn-inner--icon"><i class="fas fa-coins"></i></span>
+                                                                                                                                        <span class="btn-inner--text">Histórico de Despesas</span>
+                                                                                                                                    </a>
+                                                                                                                                </div>-->
                     </div>
                     <div class="card-body">
 

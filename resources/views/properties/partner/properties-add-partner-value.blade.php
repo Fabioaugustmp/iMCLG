@@ -105,7 +105,7 @@
                                                                 class="fas fa-user-tie"></i></span>
                                                     </div>
 
-                                                    <input type="hidden" value="{{ count($partners) }}" name="partner{{count($partners)}}">
+                                                    <input type="hidden" value="{{ $partner->id }}" name="partner{{count($partners)}}">
                                                     <input class="form-control" placeholder="Nome do Ativo" type="text"
                                                         name="partnerName{{$partner->id}}" value="{{ $partner->name }}" readonly
                                                         style="text-transform: uppercase">

@@ -61,18 +61,21 @@ class PropertiesController extends Controller
     {
 
         $search = $request->get('search');
+        $searchC = $request->get('company');
 
         // $properties = DB::table('properties')->where('name', 'like', '%'.$search. '%');
         //  $properties = $properties->find($search)->images;
 
         $properties = DB::table('properties')
-            ->where('realestate', 'like', '%' . $search . '%')
+            ->where('name', 'like', '%' . $search . '%')
+            ->where('company', 'like', '%' . $searchC . '%')
             ->orWhere('statusproperties', 'like', '%' . $search . '%')
             ->orWhere('cep', 'like', '%' . $search . '%')
             ->orWhere('logradouro', 'like', '%' . $search . '%')
             ->orWhere('cidade', 'like', '%' . $search . '%')
-            ->orWhere('uf', 'like', '%' . $search . '%')
+            ->orWhere('uf', 'like', '%' . $search . '%')            
             ->get();
+        
 
         if (is_null($properties) || $properties->count() == 0) {
 
@@ -81,7 +84,34 @@ class PropertiesController extends Controller
                 ->with('warning', 'Nenhum ativo encontrado com a seguinte descricao: ' . $search);
         } else {
             $view = view('properties.properties-search', [
-                'properties' => $properties
+                'properties' => $properties,
+                'search' => $search
+            ]);
+        }
+
+        return $view;
+    }   
+
+    public function searchPropertieCompany(Properties $properties, Request $request)
+    {       
+        $searchC = $request->get('company');
+
+        // $properties = DB::table('properties')->where('name', 'like', '%'.$search. '%');
+        //  $properties = $properties->find($search)->images;
+
+        $properties = DB::table('properties')
+            ->where('company', 'like', '%' . $searchC . '%')           
+            ->get();
+        
+        if (is_null($properties) || $properties->count() == 0) {
+
+            $view = redirect()
+                ->route('search.propertie')
+                ->with('warning', 'Nenhum ativo encontrado com a seguinte descricao: ' . $searchC);
+        } else {
+            $view = view('properties.properties-search', [
+                'properties' => $properties, 
+                'searchC' => $searchC
             ]);
         }
 
@@ -439,8 +469,6 @@ class PropertiesController extends Controller
 
     public function partnerAddValue(Request $request, Properties $properties){
 
-       
-
         $this->validate($request, [
             'properties' => 'required'
         ]);
@@ -451,7 +479,7 @@ class PropertiesController extends Controller
 
         for ($i=1; $i < count($propertiesArray) ; $i++) {          
 
-            $properties->partners()->syncWithoutDetaching([
+            $properties->partners()->sync([
                 $request->partner.$i => [
                     'partial_value' => $request->partial_value_.$i
                 ]
@@ -459,7 +487,7 @@ class PropertiesController extends Controller
             
         }
 
-        return redirect('properties.show', $properties->id);
+        return redirect('properties');
     }
 
     

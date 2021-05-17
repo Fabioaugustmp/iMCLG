@@ -25,7 +25,32 @@
                                                 class="fas fa-search-location"></i> Buscar</button>
 
                                     </form>
-
+                                    <form class="form-inline ml-2 my-2 my-lg-0"
+                                            action="{{ route('search.propertie.company') }}" method="GET" role="search">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <label class="input-group-text" for="company">
+                                                        Empresa</label>
+                                                </div>
+                                                <select class="custom-select" id="company" name="company">
+                                                    <option selected>{{ $searchC }}</option>
+                                                    <option value="MCLG">MCLG Empreendimentos e Participações LTDA</option>
+                                                    <option value="MARCELO LIMIRIO">Marcelo Henrique Limirio Gonçalves
+                                                    </option>
+                                                    <option value="CLEONICE LIMIRIO">Cleonice Barbosa Limirio Gonçalves
+                                                    </option>
+                                                    <option value="NEO AVIACAO">Neo Aviação</option>
+                                                    <option value="AGROPECUARIA">Agropecuária Limirio</option>
+                                                </select>
+                                                @if ($errors->has('company'))
+                                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                                        <strong>{{ $errors->first('company') }}</strong>
+                                                    </span>
+                                                @endif
+                                                <button class="btn btn-outline-success ml-2 my-2 my-sm-0" type="submit"><i
+                                                        class="fas fa-search-location"></i> Buscar</button>
+                                            </div>
+                                        </form>
                                 </div>
                             </div>
 
@@ -94,14 +119,16 @@
                                                 </div>
 
                                                 <div class="card-body">
-                                                    <h3 class="card-title">{{ $propertie->realestate }}</h3>
+                                                    <h3 class="card-title">{{ $propertie->name }}</h3>
                                                     <p class="card-text">
 
+                                                        {{ $propertie->realestate }} <br>
+                                                        {{ $propertie->company }} <br>
                                                         {{ $propertie->statusproperties }} <br>
-                                                        {{ $propertie->valorvenal }} R$<br>
-                                                        {{ $propertie->areatotal }}<br>
-                                                        {{ $propertie->logradouro }}<br>
-                                                        {{ $propertie->bairro }}<br>
+                                                        {{ $propertie->valorvenal }} <br>
+                                                        {{ $propertie->areatotal }} <br>
+                                                        {{ $propertie->logradouro }} <br>
+                                                        {{ $propertie->bairro }} <br>
 
                                                     </p>
                                                     <div class="row justify-content-center">
