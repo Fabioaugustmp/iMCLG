@@ -31,192 +31,13 @@
 
 
 
-    <style>
-        /*!
-                                                 * bsStepper v{version} (https://github.com/Johann-S/bs-stepper)
-                                                 * Copyright 2018 - {year} Johann-S <johann.servoire@gmail.com>
-                                                 * Licensed under MIT (https://github.com/Johann-S/bs-stepper/blob/master/LICENSE)
-                                                 */
-
-        .bs-stepper .step-trigger {
-            display: inline-flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            font-size: 1rem;
-            font-weight: 700;
-            line-height: 1.5;
-            color: #6c757d;
-            text-align: center;
-            text-decoration: none;
-            white-space: nowrap;
-            vertical-align: middle;
-            user-select: none;
-            background-color: transparent;
-            border: none;
-            border-radius: .25rem;
-            transition: background-color .15s ease-out, color .15s ease-out;
-        }
-
-        .bs-stepper .step-trigger:not(:disabled):not(.disabled) {
-            cursor: pointer;
-        }
-
-        .bs-stepper .step-trigger:disabled,
-        .bs-stepper .step-trigger.disabled {
-            pointer-events: none;
-            opacity: .65;
-        }
-
-        .bs-stepper .step-trigger:focus {
-            color: #007bff;
-            outline: none;
-        }
-
-        .bs-stepper .step-trigger:hover {
-            text-decoration: none;
-            background-color: rgba(0, 0, 0, .06);
-        }
-
-        @media (max-width: 520px) {
-            .bs-stepper .step-trigger {
-                flex-direction: column;
-                padding: 10px;
-            }
-        }
-
-        .bs-stepper-label {
-            display: inline-block;
-            margin: .25rem;
-        }
-
-        .bs-stepper-header {
-            display: flex;
-            align-items: center;
-        }
-
-        @media (max-width: 520px) {
-            .bs-stepper-header {
-                margin: 0 -10px;
-                text-align: center;
-            }
-        }
-
-        .bs-stepper-line,
-        .bs-stepper .line {
-            flex: 1 0 32px;
-            min-width: 1px;
-            min-height: 1px;
-            margin: auto;
-            background-color: rgba(0, 0, 0, .12);
-        }
-
-        @media (max-width: 400px) {
-
-            .bs-stepper-line,
-            .bs-stepper .line {
-                flex-basis: 20px;
-            }
-        }
-
-        .bs-stepper-circle {
-            display: inline-flex;
-            align-content: center;
-            justify-content: center;
-            width: 2em;
-            height: 2em;
-            padding: .5em 0;
-            margin: .25rem;
-            line-height: 1em;
-            color: #fff;
-            background-color: #6c757d;
-            border-radius: 1em;
-        }
-
-        .active .bs-stepper-circle {
-            background-color: #007bff;
-        }
-
-        .bs-stepper-content {
-            padding: 0 20px 20px;
-        }
-
-        @media (max-width: 520px) {
-            .bs-stepper-content {
-                padding: 0;
-            }
-        }
-
-        .bs-stepper.vertical {
-            display: flex;
-        }
-
-        .bs-stepper.vertical .bs-stepper-header {
-            flex-direction: column;
-            align-items: stretch;
-            margin: 0;
-        }
-
-        .bs-stepper.vertical .bs-stepper-pane,
-        .bs-stepper.vertical .content {
-            display: block;
-        }
-
-        .bs-stepper.vertical .bs-stepper-pane:not(.fade),
-        .bs-stepper.vertical .content:not(.fade) {
-            display: block;
-            visibility: hidden;
-        }
-
-        .bs-stepper-pane:not(.fade),
-        .bs-stepper .content:not(.fade) {
-            display: none;
-        }
-
-        .bs-stepper .content.fade,
-        .bs-stepper-pane.fade {
-            visibility: hidden;
-            transition-duration: .3s;
-            transition-property: opacity;
-        }
-
-        .bs-stepper-pane.fade.active,
-        .bs-stepper .content.fade.active {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .bs-stepper-pane.active:not(.fade),
-        .bs-stepper .content.active:not(.fade) {
-            display: block;
-            visibility: visible;
-        }
-
-        .bs-stepper-pane.dstepper-block,
-        .bs-stepper .content.dstepper-block {
-            display: block;
-        }
-
-        .bs-stepper:not(.vertical) .bs-stepper-pane.dstepper-none,
-        .bs-stepper:not(.vertical) .content.dstepper-none {
-            display: none;
-        }
-
-        .vertical .bs-stepper-pane.fade.dstepper-none,
-        .vertical .content.fade.dstepper-none {
-            visibility: hidden;
-        }
-
-    </style>
-
     <div class="container-fluid mt--7">
         <div class="row">
             <div class="col-xl-12 order-xl-1">
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white border-0">
-                        <div class="row m-2">
-                            <div class="col-6">
+                        <div class="row m-4">
+                            <div class="col-md-4">
                                 <div class="row justify-content-start">
                                     <h2><i class="far fa-edit"></i> Edicao do Ativo {{ $properties->name }}</h2>
                                     <small data-toggle="tooltip" data-placement="top"
@@ -225,60 +46,31 @@
 
                                 </div>
                             </div>
+                            <div class="col-md-8">
+                                <div class="row justify-content-end">
+                                    <a href="{{ route('properties.edit.partner', $properties->id) }}"
+                                        class="btn btn-icon btn-3 btn-primary btn-outline-primary mt-4" type="button"><i
+                                            class="fas fa-users-cog"></i> Editar Sócios
+                                    </a>                      
+                                    <a href="{{ route('properties.insert.partner', $properties->id) }}"
+                                        class="btn btn-icon btn-3 btn-primary btn-outline-primary mt-4" type="button"><i
+                                            class="fas fa-user-plus"></i> Inserir Sócios
+                                    </a>   
+                                    <a href="{{ route('properties.insert.partner', $properties->id) }}"
+                                        class="btn btn-icon btn-3 btn-primary btn-outline-primary mt-4" type="button">R<i
+                                            class="fas fa-dollar-sign"></i> Participações
+                                    </a>              
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form role="form" method="POST" action="{{ route('propertie.edit.put', ['properties' => $properties->id]) }}"
+                        <form role="form" method="POST"
+                            action="{{ route('propertie.edit.put', ['properties' => $properties->id]) }}"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-                            <div class="container">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <div class="bs-stepper">
-                                        <div class="bs-stepper-header" role="tablist">
-                                            <!-- your steps here -->
-                                            <div class="step" data-target="#logins-part">
-                                                <button type="button" class="step-trigger" role="tab"
-                                                    aria-controls="logins-part" id="logins-part-trigger">
-                                                    <span class="bs-stepper-circle bg-primary">1</span>
-                                                    <span class="bs-stepper-label text-primary">Dados do Ativo</span>
-                                                </button>
-                                            </div>
-                                            <div class="line"></div>
-                                            <div class="step" data-target="#information-part">
-                                                <a type="button" class="step-trigger" role="tab"
-                                                    href="{{ route('properties.show.partner') }}"
-                                                    aria-controls="information-part" id="information-part-trigger">
-                                                    <span class="bs-stepper-circle">2</span>
-                                                    <span class="bs-stepper-label">Inclusão de Sócios</span>
-                                                </a>
-                                            </div>
-                                            <div class="line"></div>
-                                            <div class="step" data-target="#information-part">
-                                                <button type="button" class="step-trigger" role="tab"
-                                                    aria-controls="information-part" id="information-part-trigger">
-                                                    <span class="bs-stepper-circle">3</span>
-                                                    <span class="bs-stepper-label">Histórico de Despesas</span>
-                                                </button>
-                                            </div>
-                                            <div class="line"></div>
-                                            <div class="step" data-target="#information-part">
-                                                <button type="button" class="step-trigger" role="tab"
-                                                    aria-controls="information-part" id="information-part-trigger">
-                                                    <span class="bs-stepper-circle">4</span>
-                                                    <span class="bs-stepper-label">Salvar Ativo</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="bs-stepper-content">
-                                            <!-- your steps content here -->
-                                            <div id="logins-part" class="content" role="tabpanel"
-                                                aria-labelledby="logins-part-trigger"></div>
-                                            <div id="information-part" class="content" role="tabpanel"
-                                                aria-labelledby="information-part-trigger"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="container">                               
 
                                 <hr>
 
@@ -563,7 +355,7 @@
 
                                 <hr>
 
-                                <div class="form-row">                                 
+                                <div class="form-row">
 
                                     <!-- Modal Images-->
                                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
@@ -639,31 +431,31 @@
                                 <!-- Modais imagens e arquivos do ativo -->
                                 <div class="form-row">
                                     <!--  <div class="input-group mb-3">
-                                                                                                                                            <div class="input-group-prepend">
-                                                                                                                                                <span class="input-group-text" id="pictures">Fotos</span>
+                                                                                                                                                <div class="input-group-prepend">
+                                                                                                                                                    <span class="input-group-text" id="pictures">Fotos</span>
+                                                                                                                                                </div>
+                                                                                                                                                <div class="custom-file">
+                                                                                                                                                    <input type="file" class="custom-file-input" id="pictures"
+                                                                                                                                                        aria-describedby="pictures" name="pictures[]" accept="image/*" multiple>
+                                                                                                                                                    <label class="custom-file-label" for="pictures">Selecionar Foto(s)</label>
+                                                                                                                                                </div>
+                                                                                                                                                @if ($errors->has('pictures'))
+                                                                                                                                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                                                                                                                                        <strong>{{ $errors->first('pictures') }}</strong>
+                                                                                                                                                    </span>
+                                                                                                                                                @endif
                                                                                                                                             </div>
-                                                                                                                                            <div class="custom-file">
-                                                                                                                                                <input type="file" class="custom-file-input" id="pictures"
-                                                                                                                                                    aria-describedby="pictures" name="pictures[]" accept="image/*" multiple>
-                                                                                                                                                <label class="custom-file-label" for="pictures">Selecionar Foto(s)</label>
-                                                                                                                                            </div>
-                                                                                                                                            @if ($errors->has('pictures'))
-                                                                                                                                                <span class="invalid-feedback" style="display: block;" role="alert">
-                                                                                                                                                    <strong>{{ $errors->first('pictures') }}</strong>
-                                                                                                                                                </span>
-                                                                                                                                            @endif
-                                                                                                                                        </div>
-                                                                                                                                        <div class="input-group mb-3">
-                                                                                                                                                                                    <div class="input-group-prepend">
-                                                                                                                                                                                        <span class="input-group-text" id="inputGroupFileAddon01">Anexos</span>
-                                                                                                                                                                                    </div>
-                                                                                                                                                                                    <div class="custom-file">
-                                                                                                                                                                                        <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                                                                                                                                                                            aria-describedby="inputGroupFileAddon01">
-                                                                                                                                                                                        <label class="custom-file-label" for="inputGroupFile01">Selecionar
-                                                                                                                                                                                            Arquivo(s)</label>
-                                                                                                                                                                                    </div>
-                                                                                                                                                                                </div>-->
+                                                                                                                                            <div class="input-group mb-3">
+                                                                                                                                                                                        <div class="input-group-prepend">
+                                                                                                                                                                                            <span class="input-group-text" id="inputGroupFileAddon01">Anexos</span>
+                                                                                                                                                                                        </div>
+                                                                                                                                                                                        <div class="custom-file">
+                                                                                                                                                                                            <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                                                                                                                                                                                aria-describedby="inputGroupFileAddon01">
+                                                                                                                                                                                            <label class="custom-file-label" for="inputGroupFile01">Selecionar
+                                                                                                                                                                                                Arquivo(s)</label>
+                                                                                                                                                                                        </div>
+                                                                                                                                                                                    </div>-->
                                 </div>
 
                                 <h3><i class="far fa-images"></i> Imagens</h3>
@@ -681,10 +473,10 @@
                                                 <strong>{{ $errors->first('pictures') }}</strong>
                                             </span>
                                         @endif
-                                        <button type="button" class="btn btn-primary btn-outline-primary"
-                                            data-toggle="modal" data-target="#filesModal">
+                                        <a href="{{ route('properties.edit.images', $properties->id) }}"
+                                            class="btn btn-primary btn-outline-primary">
                                             <i class="far fa-edit"></i> Editar Imagens
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
 
@@ -696,20 +488,20 @@
                                     <div class="col-12">
                                         <div class="row">
                                             <div class="col-12">
-                                                <button type="button" class="btn btn-primary btn-outline-primary" data-toggle="modal"
-                                                data-target="#filesModal">
-                                                <i class="fas fa-file-upload"></i> Upload de Arquivos
-                                            </button>
-        
-                                            @if ($errors->has('files'))
-                                                <span class="invalid-feedback" style="display: block;" role="alert">
-                                                    <strong>{{ $errors->first('files') }}</strong>
-                                                </span>
-                                            @endif
                                                 <button type="button" class="btn btn-primary btn-outline-primary"
                                                     data-toggle="modal" data-target="#filesModal">
-                                                    <i class="far fa-edit"></i> Editar Arquivos
+                                                    <i class="fas fa-file-upload"></i> Upload de Arquivos
                                                 </button>
+
+                                                @if ($errors->has('files'))
+                                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                                        <strong>{{ $errors->first('files') }}</strong>
+                                                    </span>
+                                                @endif
+                                                <a href="{{ route('properties.edit.files', $properties->id) }}"
+                                                    class="btn btn-primary btn-outline-primary">
+                                                    <i class="far fa-edit"></i> Editar Arquivos
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -784,12 +576,11 @@
                                 <div class="text-start">
                                     <button type="submit" class="btn btn-primary btn-outline-primary mt-4"><i
                                             class="fas fa-check" aria-hidden="true"></i>
-                                        {{ __(' Gravar Ativo') }}</button>
-                                    <a href="{{ route('properties') }}" class="btn btn-primary btn-outline-primary mt-4"
-                                        type="button">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                        <span class="btn-inner--text">Cancelar</span>
-                                    </a>
+                                        {{ __(' Atualizar Ativo') }}</button>                                   
+                                        <a href="{{ route('propertie.show', $properties->id) }}"
+                                            class="btn btn-icon btn-3 btn-primary btn-outline-primary mt-4" type="button"><i
+                                                class="fas fa-chevron-circle-left"></i> Voltar
+                                        </a>
                                 </div>
                             </div>
                         </form>

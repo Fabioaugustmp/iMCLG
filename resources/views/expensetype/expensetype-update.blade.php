@@ -71,9 +71,9 @@
                                 </div>
 
                                 <div class="text-left">
-                                    <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-save"
+                                    <button type="submit" class="btn btn-primary mt-4 btn-outline-primary"><i class="fa fa-save"
                                             aria-hidden="true"></i> {{ __(' Atualizar') }}</button>
-                                    <a href="{{ route('expensetype')}}" class="btn btn-primary mt-4"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+                                    <a href="{{ route('expensetype')}}" class="btn btn-primary mt-4 btn-outline-primary"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
                                 </div>
                             </form>
                         </div>

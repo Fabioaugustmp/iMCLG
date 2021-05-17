@@ -209,7 +209,24 @@ class PropertiesController extends Controller
     public function showEditImages(Properties $properties){
 
 
-        return view('properties.uploads.images');
+
+        return view('properties.uploads.images.properties-edit-images', [
+            'properties' => $properties
+        ]);
+
+    }
+
+    public function editImages(Properties $properties, Request $request){
+
+        dd($request);
+
+    }
+
+    public function showEditFiles(Properties $properties){        
+
+        return view('properties.uploads.files.properties-edit-files', [
+            'properties' => $properties
+        ]);
 
     }
 
@@ -246,6 +263,34 @@ class PropertiesController extends Controller
         $properties->company = $request->company;        
 
         $properties->save();
+
+        if ($request->hasFile('pictures')) {
+
+            for ($i = 0; $i < count($request->allFiles()['pictures']); $i++) {
+
+                $images = $request->allFiles()['pictures'][$i];
+
+                $propertiesImages = new PropertiesImages();
+                $propertiesImages->id_properties = $properties->id;
+                $propertiesImages->path = $images->store('properties/images/' . $properties->id);
+                $propertiesImages->save();
+                unset($propertiesImages);
+            }
+        }
+
+        if ($request->hasFile('files')) {
+
+            for ($i = 0; $i <  count($request->allFiles()['files']); $i++) {
+
+                $files = $request->allFiles()['files'][$i];
+
+                $propertiesFiles = new PropertiesFiles();
+                $propertiesFiles->id_properties = $properties->id;
+                $propertiesFiles->path = $files->store('properties/files/' . $properties->id);
+                $propertiesFiles->save();
+                unset($propertiesFiles);
+            }
+        }
 
         return redirect('properties');
 
@@ -320,8 +365,55 @@ class PropertiesController extends Controller
         return redirect()->route('properties');
     }
 
+    public function showEditPartner(Properties $properties){
+        
+        $partners = $properties->partners()->get();
+
+        return view('properties.partner.properties-update-remove-partner', [
+            'properties' => $properties,
+            'partners' => $partners            
+        ]);
+    }
+
+    public function showEditPartnerAdd(Properties $properties){
+        
+        $partners = Partner::all();
+
+        return view('properties.partner.properties-update-partner', [
+            'properties' => $properties,
+            'partners' => $partners            
+        ]);
+    }
+
+    public function editPartnerAdd(Properties $properties, Request $request){
+
+        $this->validate($request, [
+            'properties' => 'required'
+        ]);
+
+        $properties = Properties::find($request->properties);
+
+        foreach ($request->partners as $partner) {
+
+            $partnerAtt = Partner::find($partner);
+
+            //Adiciona diretamente sem validar se existe ou nao a relacao
+            //$properties->partners()->attach($partnerAtt); Sincroniza o elemento
+            $properties->partners()->attach($partnerAtt); 
+            
+        }
+
+        return redirect()
+        ->route('propertie.show', ['properties' => $properties->id])
+        ->with('success', 'Socios atualizados com sucesso!');
+    }
+
     public function addPartnerValuePropertie(){
 
-        return view('properties.properties-add-partner-value');
+        return view('properties.properties-add-partner-value', [
+            
+        ]);
     }
+
+    
 }

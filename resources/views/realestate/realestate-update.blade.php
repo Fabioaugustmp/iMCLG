@@ -70,9 +70,9 @@
                                 </div>
 
                                 <div class="text-start">
-                                    <button type="submit" class="btn btn-primary mt-4"><i class="fa fa-edit"
+                                    <button type="submit" class="btn btn-primary mt-4 btn-outline-primary"><i class="fa fa-edit"
                                             aria-hidden="true"></i> {{ __(' Atualizar') }}</button>
-                                            <a href="{{ route('realestate')}}" class="btn btn-primary mt-4"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+                                            <a href="{{ route('realestate')}}" class="btn btn-primary mt-4 btn-outline-primary "><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
                                 </div>
                             </form>
                         </div>

@@ -19,10 +19,8 @@
                             </main>
 
                             <div class="row justify-content-end">
-                                <a href="{{ route('expensetype.create') }}" class="btn btn-icon btn-3 btn-primary"
-                                    type="button">
-                                    <span class="btn-inner--icon"><i class="fas fa-plus-square"></i></span>
-                                    <span class="btn-inner--text">Novo</span>
+                                <a href="{{ route('expensetype.create') }}" class="btn btn-icon btn-3 btn-primary btn-outline-primary"
+                                    type="button"><i class="fas fa-plus-square"></i> Novo
                                 </a>
                             </div>
                         </div>
@@ -77,7 +75,7 @@
                                             @endif
 
                                             <td class="justify-content-center">
-                                                <a class="dropdown-item" href="{{ route('expensetype.show' , $type->id ) }}"><i class="fas fa-user-edit"></i></a>
+                                                <a class="dropdown-item" href="{{ route('expensetype.show' , $type->id ) }}"><i class="fas fa-user-edit btn-outline-primary"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

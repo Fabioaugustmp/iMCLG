@@ -17,7 +17,7 @@ class Partner extends Model
     ];
 
     public function properties(){
-        return $this->belongsToMany(Properties::class, 'properties_partners', 'partners', 'properties')->withTimestamps();
+        return $this->belongsToMany(Properties::class, 'properties_partners', 'partners', 'properties')->withPivot(['partial_value', 'manager'])->withTimestamps();
     }
 
 

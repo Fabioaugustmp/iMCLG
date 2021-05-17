@@ -69,6 +69,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('properties/{properties}', [PropertiesController::class, 'editProperties'])->name('properties.edit');	
 	Route::get('expense/view/{properties}', [PropertiesController::class, 'showExpensePropertie'])->name('expense.show.propertie');
 	//Route::get('expense/view/{properties}/unique', [PropertiesController::class, 'showUniqueExpensePropertie'])->name('expense.show.propertie.unique');
+	Route::get('properties/edit/images/{properties}', [PropertiesController::class, 'showEditImages'])->name('properties.edit.images');
+	Route::put('properties/edit/images/{properties}', [PropertiesController::class, 'editImages'])->name('properties.edit.images.put');
+	Route::get('properties/edit/files/{properties}', [PropertiesController::class, 'showEditFiles'])->name('properties.edit.files');
+	Route::get('properties/edit/partner/{properties}', [PropertiesController::class, 'showEditPartner'])->name('properties.edit.partner');
+	Route::get('properties/insert/partner/{properties}', [PropertiesController::class, 'showEditPartnerAdd'])->name('properties.insert.partner');
+	Route::post('properties/insert/partner/{properties}', [PropertiesController::class, 'editPartnerAdd'])->name('properties.insert.partner.post');
 
 	Route::get('partners', [PartnerController::class, 'listaAllPartner'])->name('partners');
 	Route::get('partner/create', [PartnerController::class, 'showCreatePartner'])->name('partner.showcreate');
