@@ -85,7 +85,8 @@ class PropertiesController extends Controller
         } else {
             $view = view('properties.properties-search', [
                 'properties' => $properties,
-                'search' => $search
+                'search' => $search,
+                'searhC' => $searchC
             ]);
         }
 

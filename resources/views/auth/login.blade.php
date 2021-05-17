@@ -50,7 +50,7 @@
                                 </label>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary my-4 fas fa-sign-in-alt">{{ __('Logar') }}</button>
+                                <button type="submit" class="btn btn-primary my-4 "><i class="fas fa-sign-in-alt"></i> {{ __('Logar') }}</button>
                             </div>
                         </form>
                     </div>
