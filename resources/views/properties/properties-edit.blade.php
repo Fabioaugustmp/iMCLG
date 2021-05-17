@@ -95,7 +95,7 @@
                                         <option value="MCLG">MCLG</option>
                                         <option value="MARCELO LIMIRIO">Marcelo Limirio</option>
                                         <option value="CLEONICE LIMIRIO">Cleonice Limirio</option>
-                                        <option value="NEO AVIACAO">Neo Aviação</option>
+                                        <option value="NEO MARCAS">Neo Marcas</option>
                                         <option value="AGROPECUARIA">Agropecuária</option>
                                     </select>
                                     @if ($errors->has('company'))

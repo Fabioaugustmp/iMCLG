@@ -15,7 +15,7 @@
                         <div class="row m-2">
                             <div class="col-6">
                                 <div class="row justify-content-start">
-                                    <h2><i class="fas fa-user-tag"></i> Cadastro de Socio</h2>
+                                    <h2><i class="fas fa-user-tag"></i> Participação dos Sócios</h2>
                                     <small data-toggle="tooltip" data-placement="top"
                                         title="Neste campo socios sao adicionados no ativo!"><i
                                             class="fas fa-info-circle"></i></small>

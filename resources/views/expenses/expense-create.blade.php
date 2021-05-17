@@ -91,7 +91,7 @@
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
                                                 <label for="partner">Data de Inclusão</label>
-                                                <div class="input-group mb-4" id="partner">
+                                                <div class="input-group mb-4" id="includedate">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i
                                                                 class="far fa-calendar-check"></i></span>

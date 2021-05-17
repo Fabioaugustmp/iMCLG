@@ -45,10 +45,10 @@
                                                 <td>{{$expense->id_propertie}}</td>
                                                 <td>{{$expense->classexpense}}</td>
                                                 <td>{{$expense->expensetype}}</td>
-                                                <td>{{$expense->includedate}}</td>
-                                                <td>{{$expense->expiredate}}</td>
-                                                <td>{{$expense->paymentdate}}</td>
-                                                <td>{{$expense->competence}}</td>
+                                                <td>{{ date('d-m-Y', strtotime($expense->includedate)) }}</td>
+                                                <td>{{date('d-m-Y', strtotime($expense->expiredate))}}</td>
+                                                <td>{{date('d-m-Y', strtotime($expense->paymentdate))}}</td>
+                                                <td>{{date('d-m-Y', strtotime($expense->competence))}}</td>
                                                 <td>R$ {{$expense->value}}</td>
                                                 <td class="justify-content-center"><a href="{{ route('expense.show.unique', $expense->id)}}"><i class="far fa-eye"></i></a> </td>
                                                 <td class="justify-content-center"><a href="{{ route('expense.edit', $expense->id) }}"><i class="far fa-edit"></i></a> </td>

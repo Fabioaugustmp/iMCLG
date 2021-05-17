@@ -440,7 +440,7 @@ class PropertiesController extends Controller
 
             //Adiciona diretamente sem validar se existe ou nao a relacao
             //$properties->partners()->attach($partnerAtt); Sincroniza o elemento
-            $properties->partners()->syncWithoutDetaching($partnerAtt); 
+            $properties->partners()->sync($partnerAtt); 
             
         }
 
@@ -474,15 +474,25 @@ class PropertiesController extends Controller
             'properties' => 'required'
         ]);
 
+        //dd($request);
+
         $propertiesArray = $properties->partners()->get();
 
         $properties = Properties::find($request->properties);  
 
-        for ($i=1; $i < count($propertiesArray) ; $i++) {          
+        
 
-            $properties->partners()->attach([
+        for ($i=1; $i <= count($propertiesArray) ; $i++) {    
+            
+            $count = $i++;
+            
+            $partialRequest = $request->partial_value_.$count;
+            $partialRequestTotal = 'partial_value_'.$partialRequest;
+            $partialValue = $request->$partialRequestTotal;
+            
+            $properties->partners()->syncWithoutDetaching([
                 $request->partner.$i => [
-                    'partial_value' => $request->partial_value_.$i
+                    'partial_value' => $partialValue
                 ]
             ]); 
             

@@ -42,7 +42,7 @@
                                                     </option>
                                                     <option value="CLEONICE LIMIRIO">Cleonice Barbosa Limirio Gonçalves
                                                     </option>
-                                                    <option value="NEO AVIACAO">Neo Aviação</option>
+                                                    <option value="NEO MARCAS">Neo Marcas</option>
                                                     <option value="AGROPECUARIA">Agropecuária Limirio</option>
                                                 </select>
                                                 @if ($errors->has('company'))
