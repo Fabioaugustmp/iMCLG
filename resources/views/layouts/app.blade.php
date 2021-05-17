@@ -23,7 +23,11 @@
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <!--<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">-->
-
+    <!--Leaflet hosted map, Mapa tela de Ativos-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    
+    
+    
 </head>
 
 <body class="{{ $class ?? '' }}">
@@ -48,6 +52,7 @@
     <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
     <!--<script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>-->
     <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
     @stack('js')
 
@@ -60,7 +65,7 @@
         crossorigin="anonymous"></script>
 
     <!--<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>-->
-
+    
     <script>
         $(document).ready(function() {
             $('#datatable').DataTable({

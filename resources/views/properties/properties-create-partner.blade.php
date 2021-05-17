@@ -3,7 +3,7 @@
 @section('content')
     @include('properties.partials.header-profile', [
     'title' => __('Ativos'),
-    'description' => __('Criar Ativo'),
+    'description' => __('Criar Sócio'),
     'class' => 'col-lg-12'
     ])
 

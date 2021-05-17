@@ -3,7 +3,7 @@
 @section('content')
     @include('properties.partials.header-profile', [
     'title' => __('Ativos'),
-    'description' => __('Criar Ativo'),
+    'description' => __('Editar Ativo'),
     'class' => 'col-lg-12'
     ])
 
@@ -56,7 +56,7 @@
                                         class="btn btn-icon btn-3 btn-primary btn-outline-primary mt-4" type="button"><i
                                             class="fas fa-user-plus"></i> Inserir Sócios
                                     </a>   
-                                    <a href="{{ route('properties.insert.partner', $properties->id) }}"
+                                    <a href="{{ route('properties.insert.value.partner', $properties->id) }}"
                                         class="btn btn-icon btn-3 btn-primary btn-outline-primary mt-4" type="button">R<i
                                             class="fas fa-dollar-sign"></i> Participações
                                     </a>              

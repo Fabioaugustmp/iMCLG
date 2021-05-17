@@ -365,7 +365,7 @@ class PropertiesController extends Controller
         return redirect()->route('properties');
     }
 
-    public function showEditPartner(Properties $properties){
+    public function showEditPartnerRemove(Properties $properties){
         
         $partners = $properties->partners()->get();
 
@@ -373,6 +373,16 @@ class PropertiesController extends Controller
             'properties' => $properties,
             'partners' => $partners            
         ]);
+    }
+
+    public function editPartnerRemove(Partner $partner){
+
+        $detachPartner = $partner;
+        
+        $partner->properties()->detach($detachPartner);
+
+        return redirect()->route('properties');
+
     }
 
     public function showEditPartnerAdd(Properties $properties){
@@ -399,7 +409,7 @@ class PropertiesController extends Controller
 
             //Adiciona diretamente sem validar se existe ou nao a relacao
             //$properties->partners()->attach($partnerAtt); Sincroniza o elemento
-            $properties->partners()->attach($partnerAtt); 
+            $properties->partners()->syncWithoutDetaching($partnerAtt); 
             
         }
 
@@ -413,6 +423,43 @@ class PropertiesController extends Controller
         return view('properties.properties-add-partner-value', [
             
         ]);
+    }
+
+    public function showPartnerAddValue(Properties $properties){
+
+        $partners = $properties->partners()->get();
+
+        return view('properties.partner.properties-add-partner-value', [
+            'properties' => $properties,
+            'partners' => $partners
+            
+        ]);
+
+    }
+
+    public function partnerAddValue(Request $request, Properties $properties){
+
+       
+
+        $this->validate($request, [
+            'properties' => 'required'
+        ]);
+
+        $propertiesArray = $properties->partners()->get();
+
+        $properties = Properties::find($request->properties);  
+
+        for ($i=1; $i < count($propertiesArray) ; $i++) {          
+
+            $properties->partners()->syncWithoutDetaching([
+                $request->partner.$i => [
+                    'partial_value' => $request->partial_value_.$i
+                ]
+            ]); 
+            
+        }
+
+        return redirect('properties.show', $properties->id);
     }
 
     

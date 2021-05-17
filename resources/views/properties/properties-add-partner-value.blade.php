@@ -3,7 +3,7 @@
 @section('content')
     @include('properties.partials.header-profile', [
     'title' => __('Ativos'),
-    'description' => __('Criar Ativo'),
+    'description' => __('Adicionar Sócios'),
     'class' => 'col-lg-12'
     ])
 
@@ -211,7 +211,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form role="form" method="POST" action="{{ route('properties.add.partner.post') }}"
+                        <form role="form" method="POST" action="{{ route('properties.insert.value.partner.post', $properties->id) }}"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="container">
