@@ -50,7 +50,7 @@
                                 </label>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary my-4 "><i class="fas fa-sign-in-alt"></i> {{ __('Logar') }}</button>
+                                <button type="submit" class="btn btn-primary btn-outline-primary my-4 "><i class="fas fa-sign-in-alt"></i> {{ __('Logar') }}</button>
                             </div>
                         </form>
                     </div>
@@ -63,11 +63,11 @@
                             </a>
                         @endif
                     </div>
-                    <div class="col-6 text-right">
+                    <!--<div class="col-6 text-right">
                         <a href="{{ route('register') }}" class="text-light">
                             <small>{{ __('Criar nova conta') }}</small>
                         </a>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>

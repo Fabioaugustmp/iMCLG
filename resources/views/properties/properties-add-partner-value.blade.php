@@ -359,7 +359,7 @@
                                                     </div>
                                                     <input class="form-control" placeholder="Valor da Aquisição"
                                                         id="partial_value_{{ $partner->id }}" type="text" maxlength="11"
-                                                        name="partial_value_{{ $partner->id }}" onblur="calcular();">
+                                                        name="partial_value_{{ $partner->id }}" ">
                                                 </div>
                                             @endforeach
                                             @if ($errors->has('cpf'))
@@ -367,10 +367,10 @@
                                                     <strong>{{ $errors->first('cpf') }}</strong>
                                                 </span>
                                             @endif
-                                            <input id="txt1" type="text" value="1" onfocus="calcular()" />
+                                           <!-- <input id="txt1" type="text" value="1" onfocus="calcular()" />
                                             <input id="txt2" type="text" value="1" onblur="calcular()" />
 
-                                            <input id="result" type="text" />
+                                            <input id="result" type="text" />-->
                                         </div>
                                     </div>
 

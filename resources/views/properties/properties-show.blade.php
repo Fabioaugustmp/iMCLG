@@ -28,13 +28,17 @@
                                 <div class="row justify-content-end">
                                     <a href="{{ route('expense.show.propertie', $properties->id) }}"
                                         class="btn btn-icon btn-3 btn-primary btn-outline-primary" type="button">
-                                        <i class="fas fa-coins"></i> Histórico de Despesas
+                                        <i class="fas fa-coins"></i> Despesas
+                                    </a>
+                                    <a href="{{ route('properties.add.files', $properties->id) }}"
+                                        class="btn btn-icon btn-3 btn-primary btn-outline-primary" type="button">
+                                        <i class="far fa-folder-open"></i> Anexos
                                     </a>
                                     <a href="{{ route('propertie.edit', $properties->id) }}"
                                         class="btn btn-icon btn-3 btn-primary btn-outline-primary" type="button">
-                                        <i class="far fa-edit"></i> Editar Ativo
-                                    </a>
-                                </div>
+                                        <i class="far fa-edit"></i> Editar
+                                    </a>                                   
+                                </div>                               
                             </div>
                         </div>
                     </div>

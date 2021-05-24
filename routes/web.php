@@ -10,6 +10,7 @@ use App\Http\Controllers\ConstructionController;
 use App\Http\Controllers\StatusPropertiesController;
 use App\Http\Controllers\ExpenseTypeController;
 use App\Http\Controllers\ClassExpensesController;
+use App\Http\Controllers\FileTypeController;
 use App\Models\Construction;
 use App\Models\Expense;
 use App\Models\Properties;
@@ -61,6 +62,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('properties/search/company', [PropertiesController::class, 'searchPropertieCompany'])->name('search.propertie.company');	
 	Route::get('properties/create', [PropertiesController::class, 'createPropertie'])->name('properties.create');
 	Route::post('properties/create', [PropertiesController::class, 'addProperties'])->name('properties.create.post');
+
+	Route::get('properties/add/files/{properties}', [PropertiesController::class, 'showAddFiles'])->name('properties.add.files');	
+
+	Route::get('properties/add/images/{properties}', [PropertiesController::class, 'showAddImages'])->name('properties.add.images');
 	Route::get('properties/add/partner', [PropertiesController::class, 'showAddpartner'])->name('properties.show.partner');
 	Route::post('properties/add/partner', [PropertiesController::class, 'addPartner'])->name('properties.add.partner.post');
 	Route::get('properties/add/partner/value/propertie', [PropertiesController::class, 'addPartnerValuePropertie'])->name('properties.add.partner.value');
@@ -125,7 +130,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('classexpenses/{classexpenses}', [ClassExpensesController::class, 'updateClassExpenses'])->name('classexpenses.show');
 	Route::put('classexpenses/{classexpenses}', [ClassExpensesController::class, 'editClassExpenses'])->name('classexpenses.edit');
 
-
+	Route::get('filetype', [FileTypeController::class, 'index'])->name('filetypes');
+	Route::get('filetype/create', [FileTypeController::class, 'create'])->name('filetype.create');
+	Route::post('filetype/create', [FileTypeController::class, 'store'])->name('filetype.create.post');
+	Route::get('filetype/{filetype}', [FileTypeController::class, 'show'])->name('filetype.show');
+	Route::put('filetype/{filetype}', [FileTypeController::class, 'update'])->name('filetype.update');
 	
 });
 

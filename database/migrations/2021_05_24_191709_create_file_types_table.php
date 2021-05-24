@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePropertiesFilesTable extends Migration
+class CreateFileTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreatePropertiesFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('properties_files', function (Blueprint $table) {
+        Schema::create('file_types', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_properties');
             $table->string('name');
-            $table->string('filetype');
-            $table->string('path');
-            
-            $table->foreign('id_properties')->references('id')->on('properties');
+            $table->text('description');
+            $table->boolean('status');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreatePropertiesFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('properties_files');
+        Schema::dropIfExists('file_types');
     }
 }

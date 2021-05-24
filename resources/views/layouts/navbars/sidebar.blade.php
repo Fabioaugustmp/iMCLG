@@ -199,6 +199,11 @@
                          <i class="fas fa-coins"></i> Classe de Despesas
                      </a>
                  </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('filetypes') }}" style="color: #cfcfcf">
+                        <i class="fas fa-paste"></i> Tipo de Anexos
+                    </a>
+                </li>
                  <!--
                  <li class="nav-item">
                      <a class="nav-link" href="{{ route('expensetype') }}" style="color: #cfcfcf">

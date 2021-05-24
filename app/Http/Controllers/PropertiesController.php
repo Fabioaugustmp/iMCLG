@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Associate;
 use App\Models\RealEstate;
 use App\Models\Construction;
+use App\Models\FileType;
 use App\Models\Partner;
 use App\Models\Properties;
 use App\Models\PropertiesAssociate;
@@ -217,6 +218,13 @@ class PropertiesController extends Controller
         return view('properties.properties-create-partner', [
             'properties' => $properties,
             'partners' => $partners
+        ]);
+    }
+
+    public function showAddImages(Properties $properties){
+
+        return view('properties.uploads.images.properties-add-images', [
+            'properties' => $properties
         ]);
     }
 
@@ -470,7 +478,8 @@ class PropertiesController extends Controller
 
     public function partnerAddValue(Request $request, Properties $properties){
 
-        $this->validate($request, [
+        /* --> Original
+           $this->validate($request, [
             'properties' => 'required'
         ]);
 
@@ -499,6 +508,61 @@ class PropertiesController extends Controller
         }
 
         return redirect('properties');
+        */
+
+        $this->validate($request, [
+            'properties' => 'required'
+        ]);
+
+       // dd($request);
+
+        $propertiesArray = $properties->partners()->get();
+
+        $properties = Properties::find($request->properties);  
+
+        //dd(count($propertiesArray));
+
+        for ($i=1; $i < count($propertiesArray) ; $i++) {    
+            
+            $count = $i++;
+
+            //dd($i);
+            
+            $partialRequest = $request->partial_value_.$i++;
+            $partialRequestTotal = 'partial_value_'.$partialRequest;
+            $partialValue = $request->$partialRequestTotal;
+
+            $partnerRequest = $request->partner.$i++;
+            $partnerJunction = 'partner'.$partnerRequest;
+            $partnerValue = $request->$partnerJunction;
+            
+            dd($partnerValue);
+
+            $properties->partners()->syncWithoutDetaching([
+                $request->partner.$i => [
+                    'partial_value' => $partialValue
+                ]
+            ]); 
+            
+        }
+
+        return redirect('properties');
+    }
+
+    public function showAddFiles(Properties $properties){
+
+        $filetypes = FileType::all();
+
+        return view('properties.uploads.files.properties-add-files', [
+            'properties' => $properties
+        ]);
+
+    }
+
+    public function addFile(Request $request, Properties $properties ){
+
+
+
     }
 
     
