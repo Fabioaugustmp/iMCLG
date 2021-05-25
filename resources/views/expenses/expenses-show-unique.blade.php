@@ -12,7 +12,7 @@
             <div class="col-xl-12 order-xl-1">
                 <div class="card bg-secondary shadow">
                     <div class="card-body">
-                        <form role="form" method="POST" action="{{route('expense.create.post')}}">
+                        <form role="form" method="POST" action="#">
                             @csrf
                             <div class="card-header bg-white border-0">
                                 <div class="container">

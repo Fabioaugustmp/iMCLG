@@ -25,17 +25,17 @@
     <!--<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">-->
     <!--Leaflet hosted map, Mapa tela de Ativos-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    
-    
-    
+
+
+
 </head>
 
 <body class="{{ $class ?? '' }}">
-    
+
     @auth()
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
-        </form>        
+        </form>
         @include('layouts.navbars.sidebar')
     @endauth
 
@@ -48,7 +48,7 @@
         @include('layouts.footers.guest')
     @endguest
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>   
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
     <!--<script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>-->
     <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -65,12 +65,36 @@
         crossorigin="anonymous"></script>
 
     <!--<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>-->
+   
     
     <script>
         $(document).ready(function() {
-            $('#datatable').DataTable({
-                autoFill: true
+            // Setup - add a text input to each footer cell
+            $('#datatable tfoot th').each(function() {               
+                var title = $(this).text();
+                $(this).html('<input type="text" placeholder="Pesquisar ' + title + '" />');
+                
             });
+
+            // DataTable
+            var table = $('#datatable').DataTable({                
+                initComplete: function() {
+                    // Apply the search
+                    this.api().columns().every(function() {
+                        var that = this;
+
+                        $('input', this.footer()).on('keyup change clear', function() {
+                            if (that.search() !== this.value) {
+                                that
+                                    .search(this.value)
+                                    .draw();
+                            }
+                        });
+                    });
+                }
+
+            });
+
 
         });
 

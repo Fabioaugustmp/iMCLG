@@ -64,6 +64,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('properties/create', [PropertiesController::class, 'addProperties'])->name('properties.create.post');
 
 	Route::get('properties/add/files/{properties}', [PropertiesController::class, 'showAddFiles'])->name('properties.add.files');	
+	Route::post('properties/add/files/{properties}', [PropertiesController::class, 'addFile'])->name('properties.add.files.post');
+	Route::get('properties/remove/file/{propertiesFiles}', [PropertiesController::class, 'removeFile'])->name('propertie.remove.file');
+	
 
 	Route::get('properties/add/images/{properties}', [PropertiesController::class, 'showAddImages'])->name('properties.add.images');
 	Route::get('properties/add/partner', [PropertiesController::class, 'showAddpartner'])->name('properties.show.partner');
@@ -73,7 +76,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('properties/edit/{properties}', [PropertiesController::class, 'putEditPropertie'])->name('propertie.edit.put');
 	//Route::get('properties/{properties}', [PropertiesController::class, 'updatePropertie'])->name('properties.update');
 	Route::put('properties/{properties}', [PropertiesController::class, 'editProperties'])->name('properties.edit');	
-	Route::get('expense/view/{properties}', [PropertiesController::class, 'showExpensePropertie'])->name('expense.show.propertie');
+	Route::get('expense/view/{properties}', [PropertiesController::class, 'showExpensePropertie'])->name('expense.show.propertie');	
+	Route::get('expense/create/{properties}', [ExpensesController::class, 'showCreateExpense'])->name('expense.create');	
+	Route::post('expense/create/{properties}', [ExpensesController::class, 'createExpense'])->name('expense.create.post');
 	//Route::get('expense/view/{properties}/unique', [PropertiesController::class, 'showUniqueExpensePropertie'])->name('expense.show.propertie.unique');
 	Route::get('properties/edit/images/{properties}', [PropertiesController::class, 'showEditImages'])->name('properties.edit.images');
 	Route::put('properties/edit/images/{properties}', [PropertiesController::class, 'editImages'])->name('properties.edit.images.put');
@@ -84,6 +89,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('properties/insert/partner/{properties}', [PropertiesController::class, 'editPartnerAdd'])->name('properties.insert.partner.post');
 	Route::get('properties/insert/value/partner/{properties}', [PropertiesController::class, 'showPartnerAddValue'])->name('properties.insert.value.partner');
 	Route::post('properties/insert/value/partner/{properties}', [PropertiesController::class, 'partnerAddValue'])->name('properties.insert.value.partner.post');
+	
+	
 
 	Route::get('partners', [PartnerController::class, 'listaAllPartner'])->name('partners');
 	Route::get('partner/create', [PartnerController::class, 'showCreatePartner'])->name('partner.showcreate');
@@ -92,13 +99,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('partner/edit/{partner}', [PartnerController::class, 'editPartnerPut'])->name('partner.edit.put');
 
 	Route::get('expense', [ExpensesController::class, 'listaAllExpenses'])->name('expense');
-	Route::get('expense/create', [ExpensesController::class, 'showCreateExpense'])->name('expense.create');
-	Route::post('expense/create', [ExpensesController::class, 'createExpense'])->name('expense.create.post');	
-	Route::post('expense/create', [ExpensesController::class, 'createExpense'])->name('expense.create.post');	
 	Route::get('expense/edit/{expenses}', [ExpensesController::class, 'editExpense'])->name('expense.edit');	
 	Route::put('expense/edit/{expenses}', [ExpensesController::class, 'editExpensePut'])->name('expense.edit.put');
 	Route::get('expense/view/unique/{expenses}', [ExpensesController::class, 'showExpensesUnique'])->name('expense.show.unique');	
-
+	
 
 	Route::get('realestate', [RealEstateController::class, 'listAllRealEstate'])->name('realestate');
 	Route::get('realestate/create', [RealEstateController::class, 'showRealEstate'])->name('realestate.create');

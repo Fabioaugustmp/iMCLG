@@ -267,6 +267,7 @@
                                                 <tr>
                                                     <th scope="col">#</th>
                                                     <th scope="col">Nome do Arquivo</th>
+                                                    <th scope="col">Tipo do Arquivo</th>
                                                     <th scope="col">Visualizar</th>
                                                     <th scope="col">Download</th>
                                                 </tr>
@@ -275,9 +276,8 @@
                                                 @foreach ($properties->files as $file)
                                                     <tr>
                                                         <th scope="row">{{ $file->id }}</th>
-                                                        <td>{{ $file->id }} - Arquivo -
-                                                            {{ $properties->realestate }}
-                                                        </td>
+                                                        <td>{{ $file->name }}</td>
+                                                        <td>{{ $file->filetype }}</td>
                                                         <td><a href="" type="button" data-toggle="modal"
                                                                 data-target="#arquivoModal{{ $file->id }}"><i
                                                                     class="fa fa-eye" aria-hidden="true"></i></a></td>
@@ -297,8 +297,8 @@
                                                                 <div class="modal-header">
                                                                     <h3 class="modal-title"
                                                                         id="arquivoModalLabel{{ $file->id }}">
-                                                                        {{ $file->id }} - Arquivo -
-                                                                        {{ $properties->realestate }}</h3>
+                                                                        {{ $file->name }} - Arquivo -
+                                                                        {{ $file->filetype }}</h3>
                                                                     <button type="button" class="close" data-dismiss="modal"
                                                                         aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>

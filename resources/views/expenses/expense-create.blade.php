@@ -12,7 +12,7 @@
             <div class="col-xl-12 order-xl-1">
                 <div class="card bg-secondary shadow">
                     <div class="card-body">
-                        <form role="form" method="POST" action="{{route('expense.create.post')}}">
+                        <form role="form" method="POST" action="{{ route('expense.create.post', ['properties' => $properties->id])}}">
                             @csrf
                             <div class="card-header bg-white border-0">
                                 <div class="container">
@@ -22,13 +22,8 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-home"></i></span>
                                             </div>
-                                            <select class="form-control" name="id_propertie" style="text-transform: uppercase">
-                                                
-                                                @foreach ($properties as $propertie)
-                                                    <option value="{{ $propertie->id }}">{{ $propertie->name }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
+                                            <input type="text" class="form-control" name="id_propertie" value="{{ $properties->id }}" hidden>                                            
+                                            <input type="text" class="form-control" name="propertie" value="{{ $properties->name }}" readonly>                                            
                                         </div>
                                         @if ($errors->has('id_propertie'))
                                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -199,7 +194,7 @@
                                     <div class="text-start">
                                         <button type="submit" class="btn btn-primary btn-outline-primary mt-4"><i class="fa fa-save"
                                                 aria-hidden="true"></i> {{ __(' Gravar Despesa') }}</button>
-                                        <a href="{{ route('expense') }}" class="btn btn-primary btn-outline-primary mt-4" type="button">
+                                        <a href="{{ route('expense.show.propertie', $properties->id) }}" class="btn btn-primary btn-outline-primary mt-4" type="button">
                                             <i class="fa fa-times" aria-hidden="true"></i>
                                             <span class="btn-inner--text">Cancelar</span>
                                         </a>

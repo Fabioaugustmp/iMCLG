@@ -188,7 +188,7 @@
                                     <div class="text-start">
                                         <button type="submit" class="btn btn-primary btn-outline-primary mt-4"><i class="fa fa-edit"
                                                 aria-hidden="true"></i> {{ __(' Atualizar') }}</button>
-                                                <a href="{{ route('expense')}}" class="btn btn-primary btn-outline-primary mt-4"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+                                                <a href="{{ route('expense.show.propertie', $expenses->id_propertie)}}" class="btn btn-primary btn-outline-primary mt-4"><i class="fas fa-chevron-circle-left" aria-hidden="true"></i> Voltar</a>
                                     </div>
                                 </div>                                                          
                             </div>

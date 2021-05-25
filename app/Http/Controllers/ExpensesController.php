@@ -12,12 +12,11 @@ class ExpensesController extends Controller
 {
     //
 
-    public function showCreateExpense()
+    public function showCreateExpense(Properties $properties)
     {
 
         $expensestypes = ExpenseType::all();
-        $classexpenses = ClassExpenses::all();
-        $properties = Properties::all();
+        $classexpenses = ClassExpenses::all();        
 
         return view('expenses.expense-create', [
             'expensetypes' => $expensestypes,
@@ -26,9 +25,8 @@ class ExpensesController extends Controller
         ]);
     }
 
-    public function createExpense(Request $request)
-    {
-
+    public function createExpense(Request $request, Properties $properties)
+    {        
         
         $request->validate([
             'id_propertie' => 'required',
@@ -55,7 +53,7 @@ class ExpensesController extends Controller
         $expense = Expense::create($data);
 
         return redirect()
-            ->route('expense')
+            ->route('expense.show.propertie', ['properties' => $request->id_propertie])
             ->with('success', 'Despesa de(a) ' . $expense->name . 'criado com sucesso!');
     }
 

@@ -584,12 +584,12 @@
                                             <strong>{{ $errors->first('pictures') }}</strong>
                                         </span>
                                     @endif
-
+                                    <!--
                                     <button type="button" class="btn btn-primary btn-outline-primary" data-toggle="modal"
                                         data-target="#filesModal">
                                         <i class="fas fa-folder-plus"></i> Upload de Arquivos
                                     </button>
-
+                                    -->
                                     @if ($errors->has('files'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
                                             <strong>{{ $errors->first('files') }}</strong>

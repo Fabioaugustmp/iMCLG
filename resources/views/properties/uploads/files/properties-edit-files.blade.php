@@ -48,7 +48,7 @@
                                 </div>
                             </div>
                             <div class="col-6">
-                                
+
                             </div>
                         </div>
                     </div>
@@ -76,35 +76,42 @@
                                                 <tr>
                                                     <th scope="col">#</th>
                                                     <th scope="col">Nome do Arquivo</th>
+                                                    <th scope="col">Tipo do Arquivo</th>
                                                     <th scope="col">Visualizar</th>
                                                     <th scope="col">Download</th>
+                                                    <th scope="col">Excluir</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($properties->files as $file)
-                                                    <tr>
+                                                    <tr align="center">
                                                         <th scope="row">{{ $file->id }}</th>
-                                                        <td>{{ $file->id }} - Arquivo -
-                                                            {{ $properties->realestate }}
+                                                        <td>{{ $file->name }}</td>
+                                                        <td>{{ $file->filetype }}
+
                                                         </td>
                                                         <td><a href="" type="button" data-toggle="modal"
-                                                                data-target="#arquivoModal{{ $file->id }}"><i class="fa fa-eye"
-                                                                    aria-hidden="true"></i></a></td>
+                                                                data-target="#arquivoModal{{ $file->id }}"><i
+                                                                    class="fa fa-eye" aria-hidden="true"></i></a></td>
                                                         <td><a href="{{ env('APP_URL') }}/storage/{{ $file->path }}"
                                                                 target="_blank"><i class="fa fa-download"
                                                                     aria-hidden="true"></i></a></td>
+                                                        <td><a href="{{ route('propertie.remove.file', $file->id) }}"><i
+                                                                    class="fa fa-times" aria-hidden="true"></i></a></td>
                                                     </tr>
 
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="arquivoModal{{ $file->id }}" data-backdrop="static"
-                                                        data-keyboard="false" tabindex="-1"
-                                                        aria-labelledby="arquivoModalLabel{{ $file->id }}" aria-hidden="true">
+                                                    <div class="modal fade" id="arquivoModal{{ $file->id }}"
+                                                        data-backdrop="static" data-keyboard="false" tabindex="-1"
+                                                        aria-labelledby="arquivoModalLabel{{ $file->id }}"
+                                                        aria-hidden="true">
                                                         <div
                                                             class="modal-dialog modal-dialog-centered modal-dialog modal-lg">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h3 class="modal-title" id="arquivoModalLabel{{ $file->id }}">
-                                                                        {{ $file->id }} - Arquivo -
+                                                                    <h3 class="modal-title"
+                                                                        id="arquivoModalLabel{{ $file->id }}">
+                                                                        {{ $file->name }} - Arquivo -
                                                                         {{ $properties->realestate }}</h3>
                                                                     <button type="button" class="close" data-dismiss="modal"
                                                                         aria-label="Close">
