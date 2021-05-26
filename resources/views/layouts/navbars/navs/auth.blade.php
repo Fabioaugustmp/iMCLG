@@ -96,8 +96,8 @@
                         <i class="ni ni-support-16"></i>
                         <span>{{ __('Suporte') }}</span>
                     </a>-->
-                    <div class="dropdown-divider"></div>
-                    
+                    <div class="dropdown-divider"></div>                    
+
                     <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         <i class="ni ni-user-run"></i>

@@ -38,8 +38,7 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {	
 
 	Route::get('/', 'App\Http\Controllers\PropertiesController@listaAllProperties')->name('home');
-
-	//Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+	Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
