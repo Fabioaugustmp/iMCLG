@@ -23,7 +23,7 @@ class PropertiesController extends Controller
 
     public function listaAllProperties(Properties $properties)
     {
-        $properties = Properties::all();
+        $properties = Properties::simplePaginate(9);
 
         $propertiename = DB::table('properties')->get();
 

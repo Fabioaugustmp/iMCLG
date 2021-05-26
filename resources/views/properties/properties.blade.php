@@ -143,6 +143,13 @@
                 @endforeach
             </div>
         </div>
+        
+        <div class="container-fluid mt-6">
+            <div class="row justify-content-end">
+                {{$properties->links()}}
+            </div>
+          </div>
+        
     </div>
     </div>
     </div>
