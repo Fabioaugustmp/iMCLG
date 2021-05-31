@@ -8,7 +8,22 @@
     'class' => 'col-lg-12'
     ])
 
-<style> #map {position: absolute;top: 0, bottom: 0, left: 0, right: 0, height: 512px }  </style>
+    <style>
+        #map {
+            position: absolute;
+            top: 0, bottom: 0, left: 0, right: 0, height: 512px
+        }
+
+        .gnw-map.fade {
+            transition: opacity .15s linear;
+        }
+
+        .gnw-map.fade:not(.show) {
+            opacity: 0;
+        }
+
+
+    </style>
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -37,8 +52,8 @@
                                     <a href="{{ route('propertie.edit', $properties->id) }}"
                                         class="btn btn-icon btn-3 btn-primary btn-outline-primary" type="button">
                                         <i class="far fa-edit"></i> Editar
-                                    </a>                                   
-                                </div>                               
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -93,16 +108,56 @@
                     </div>
                     <hr class="my-3"">
 
-                                                                         <div class=" row">
+                                                                                     <div class=" row">
                     <div class=" col-md-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <div class="col-12">
-                                    <h3 class="card-title"><i class="fa fa-info"></i> Informações do Ativo</h3>
+                                <div class="col-12 mt-3">
+                                    <h2 class="card-title"><i class="fa fa-info"></i> Informações do Ativo</h2>
                                 </div>
                             </div>
-                            <div class="card-body">
 
+
+                            <div class="card-body">
+                                <h3><i class="fas fa-map-marked"></i> Localização</h3>
+                                @if ($properties->latitude != null && $properties->longitude != null)
+                                    @map([
+                                    'lat' => $properties->latitude,
+                                    'lng' => $properties->longitude,
+                                    'zoom' => 14,
+                                    'markers' => [
+                                    [
+                                    'title' => $properties->name,
+                                    'lat' => $properties->latitude,
+                                    'lng' => $properties->longitude,
+                                    'url' => $url,
+                                    'popup' => '<h3>Navegar - ' . $properties->name . '</h3>
+                                    <p><i class="fas fa-street-view"></i> Clique <a href="'. $url .'"
+                                            target="_blank">aqui</a>, para navegar.</p>',
+                                    ],
+                                    ],
+                                    ])
+
+                                    <div class="row mt-5">
+                                        <div class="col-6">
+                                            <a href="{{ $url }}" target="_blank" class="btn btn-outline-primary"><i
+                                                    class="fas fa-location-arrow"></i> Navegar</a>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="alert alert-warning alert-dismissible fade show mt-5" role="alert">
+                                        <span class="alert-inner--icon"><i class="fas fa-exclamation-triangle"></i></span>
+                                        <span class="alert-inner--text"><strong>Atenção!</strong> <br><br> Latitude e
+                                            Longitude do ativo não informadas! <br> Clique em <a
+                                                href="{{ route('propertie.edit', $properties->id) }}">aqui</a>, para
+                                            inserir geolocalização.</span>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @endif
+
+                                <hr>
 
                                 <h3><i class="fas fa-home"></i> Ativo</h3>
 
@@ -199,14 +254,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="map"></div>
-                                <script>
-                                    var mymap = L.map('map').setView([0, 0], 1);
-                                    L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=AGiqVMqnAryGntB34DW1',{
-                                    attribuition:'<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
-                                    }).addTo(map);
-                                    var marker = L.marker([51,5, -0,09]).addTo(map);
-                                </script>
 
                                 <h3><i class="fas fa-funnel-dollar"></i> Valores do Imóvel</h3>
 
@@ -385,7 +432,7 @@
         </div>
     </div>
 
-    
+
 
     @include('layouts.footers.auth')
 

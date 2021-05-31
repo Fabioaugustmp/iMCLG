@@ -26,7 +26,7 @@
     <!--Leaflet hosted map, Mapa tela de Ativos-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 
-
+    @mapstyles
 
 </head>
 
@@ -99,6 +99,7 @@
         });
 
     </script>
+    @mapscripts
 </body>
 
 </html>

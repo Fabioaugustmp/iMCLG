@@ -237,6 +237,7 @@ class PropertiesController extends Controller
         $constructions = Construction::all();
         $statusproperties = StatusProperties::all();
         $partners = $properties->partners()->get();
+        
 
         return view('properties.properties-edit', [
             'properties' => $properties,
@@ -303,6 +304,8 @@ class PropertiesController extends Controller
         $properties->valordaaquisicao = $request->valordaaquisicao;
         $properties->construction = $request->construction;
         $properties->company = $request->company;
+        $properties->latitude = $request->latitude;
+        $properties->longitude = $request->longitude;
 
         $properties->save();
 
@@ -334,17 +337,20 @@ class PropertiesController extends Controller
             }
         }
 
-        return redirect('properties');
+        return redirect()
+        ->route('propertie.show', $properties->id);
     }
 
     public function showPropertie(Properties $properties)
     {
 
         $partners = $properties->partners()->get();
+        $url = 'https://www.google.com/maps/search/?api=1&query=' . $properties->latitude . ',' . $properties->longitude;
 
         return view('properties.properties-show', [
             'properties' => $properties,
-            'partners' => $partners
+            'partners' => $partners,
+            'url' => $url
         ]);
     }
 
@@ -585,21 +591,20 @@ class PropertiesController extends Controller
         $propertiesFiles->save();
 
         return redirect()
-        ->route('properties.add.files', $properties->id)
-        ->with('success', 'Arquivo cadastrado com sucesso!');
-
+            ->route('properties.add.files', $properties->id)
+            ->with('success', 'Arquivo cadastrado com sucesso!');
     }
 
-    public function removeFile(PropertiesFiles $propertiesFiles){        
+    public function removeFile(PropertiesFiles $propertiesFiles)
+    {
 
         //$propertiesFiles->delete();
 
         Storage::delete($propertiesFiles);
-        
+
 
         return redirect()
-        ->route('propertie.show', $propertiesFiles->id_properties)
-        ->with('success', 'Anexo removido com sucesso!');
-
+            ->route('propertie.show', $propertiesFiles->id_properties)
+            ->with('success', 'Anexo removido com sucesso!');
     }
 }

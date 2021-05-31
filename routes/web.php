@@ -137,7 +137,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('filetype/create', [FileTypeController::class, 'create'])->name('filetype.create');
 	Route::post('filetype/create', [FileTypeController::class, 'store'])->name('filetype.create.post');
 	Route::get('filetype/{filetype}', [FileTypeController::class, 'show'])->name('filetype.show');
-	Route::put('filetype/{filetype}', [FileTypeController::class, 'update'])->name('filetype.update');
+	Route::put('filetype/update/{fileType}', [FileTypeController::class, 'update'])->name('filetype.update');
 	
 });
 

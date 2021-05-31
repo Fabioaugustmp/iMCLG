@@ -37,29 +37,33 @@
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white border-0">
                         <div class="row m-4">
-                            <div class="col-md-4">
+                            <div class="col-lg-4 col-md-4 col-sm-6">
                                 <div class="row justify-content-start">
                                     <h2><i class="far fa-edit"></i> Edicao do Ativo {{ $properties->name }}</h2>
                                     <small data-toggle="tooltip" data-placement="top"
                                         title="Neste campo um ativo pode ser atualizado! Com todas as informações!"><i
-                                            class="fas fa-info-circle"></i></small>
-
+                                            class="fas fa-info-circle"></i></small>                                                                    
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-lg-8 col-md-8 col-sm-6">
                                 <div class="row justify-content-end">
                                     <a href="{{ route('properties.edit.partner', $properties->id) }}"
                                         class="btn btn-icon btn-3 btn-primary btn-outline-primary mt-4" type="button"><i
                                             class="fas fa-users-cog"></i> Editar Sócios
-                                    </a>                      
+                                    </a>
                                     <a href="{{ route('properties.insert.partner', $properties->id) }}"
                                         class="btn btn-icon btn-3 btn-primary btn-outline-primary mt-4" type="button"><i
                                             class="fas fa-user-plus"></i> Inserir Sócios
-                                    </a>   
+                                    </a>
                                     <a href="{{ route('properties.insert.value.partner', $properties->id) }}"
                                         class="btn btn-icon btn-3 btn-primary btn-outline-primary mt-4" type="button">R<i
                                             class="fas fa-dollar-sign"></i> Participações
-                                    </a>              
+                                    </a>
+                                    <a href="{{ route('propertie.show', $properties->id) }}"
+                                        class="btn btn-icon btn-3 btn-primary btn-outline-primary mt-4" type="button"><i
+                                            class="fas fa-chevron-circle-left"></i> Voltar
+                                    </a>
+                                     
                                 </div>
                             </div>
                         </div>
@@ -70,7 +74,7 @@
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-                            <div class="container">                               
+                            <div class="container">
 
                                 <hr>
 
@@ -431,31 +435,31 @@
                                 <!-- Modais imagens e arquivos do ativo -->
                                 <div class="form-row">
                                     <!--  <div class="input-group mb-3">
-                                                                                                                                                <div class="input-group-prepend">
-                                                                                                                                                    <span class="input-group-text" id="pictures">Fotos</span>
-                                                                                                                                                </div>
-                                                                                                                                                <div class="custom-file">
-                                                                                                                                                    <input type="file" class="custom-file-input" id="pictures"
-                                                                                                                                                        aria-describedby="pictures" name="pictures[]" accept="image/*" multiple>
-                                                                                                                                                    <label class="custom-file-label" for="pictures">Selecionar Foto(s)</label>
-                                                                                                                                                </div>
-                                                                                                                                                @if ($errors->has('pictures'))
-                                                                                                                                                    <span class="invalid-feedback" style="display: block;" role="alert">
-                                                                                                                                                        <strong>{{ $errors->first('pictures') }}</strong>
-                                                                                                                                                    </span>
-                                                                                                                                                @endif
-                                                                                                                                            </div>
-                                                                                                                                            <div class="input-group mb-3">
-                                                                                                                                                                                        <div class="input-group-prepend">
-                                                                                                                                                                                            <span class="input-group-text" id="inputGroupFileAddon01">Anexos</span>
-                                                                                                                                                                                        </div>
-                                                                                                                                                                                        <div class="custom-file">
-                                                                                                                                                                                            <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                                                                                                                                                                                aria-describedby="inputGroupFileAddon01">
-                                                                                                                                                                                            <label class="custom-file-label" for="inputGroupFile01">Selecionar
-                                                                                                                                                                                                Arquivo(s)</label>
-                                                                                                                                                                                        </div>
-                                                                                                                                                                                    </div>-->
+                                                                                                                                                        <div class="input-group-prepend">
+                                                                                                                                                            <span class="input-group-text" id="pictures">Fotos</span>
+                                                                                                                                                        </div>
+                                                                                                                                                        <div class="custom-file">
+                                                                                                                                                            <input type="file" class="custom-file-input" id="pictures"
+                                                                                                                                                                aria-describedby="pictures" name="pictures[]" accept="image/*" multiple>
+                                                                                                                                                            <label class="custom-file-label" for="pictures">Selecionar Foto(s)</label>
+                                                                                                                                                        </div>
+                                                                                                                                                        @if ($errors->has('pictures'))
+                                                                                                                                                            <span class="invalid-feedback" style="display: block;" role="alert">
+                                                                                                                                                                <strong>{{ $errors->first('pictures') }}</strong>
+                                                                                                                                                            </span>
+                                                                                                                                                        @endif
+                                                                                                                                                    </div>
+                                                                                                                                                    <div class="input-group mb-3">
+                                                                                                                                                                                                <div class="input-group-prepend">
+                                                                                                                                                                                                    <span class="input-group-text" id="inputGroupFileAddon01">Anexos</span>
+                                                                                                                                                                                                </div>
+                                                                                                                                                                                                <div class="custom-file">
+                                                                                                                                                                                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                                                                                                                                                                                        aria-describedby="inputGroupFileAddon01">
+                                                                                                                                                                                                    <label class="custom-file-label" for="inputGroupFile01">Selecionar
+                                                                                                                                                                                                        Arquivo(s)</label>
+                                                                                                                                                                                                </div>
+                                                                                                                                                                                            </div>-->
                                 </div>
 
                                 <h3><i class="far fa-images"></i> Imagens</h3>
@@ -576,11 +580,12 @@
                                 <div class="text-start">
                                     <button type="submit" class="btn btn-primary btn-outline-primary mt-4"><i
                                             class="fas fa-check" aria-hidden="true"></i>
-                                        {{ __(' Atualizar Ativo') }}</button>                                   
-                                        <a href="{{ route('propertie.show', $properties->id) }}"
-                                            class="btn btn-icon btn-3 btn-primary btn-outline-primary mt-4" type="button"><i
-                                                class="fas fa-chevron-circle-left"></i> Voltar
-                                        </a>
+                                        {{ __(' Atualizar Ativo') }}</button>
+
+                                    <a href="{{ route('propertie.show', $properties->id) }}"
+                                        class="btn btn-icon btn-3 btn-primary btn-outline-primary mt-4" type="button"><i
+                                            class="fas fa-chevron-circle-left"></i> Voltar
+                                    </a>
                                 </div>
                             </div>
                         </form>

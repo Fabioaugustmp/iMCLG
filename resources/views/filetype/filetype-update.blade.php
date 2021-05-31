@@ -15,7 +15,7 @@
 
                         <div class="card-body">
                             <form role="form" method="POST"
-                                action="{{ route('filetype.update', ['filetype' => $filetype->id]) }}">
+                                action="{{ route('filetype.update', ['fileType' => $filetype->id]) }}">
                                 @csrf
                                 @method('PUT')
 
