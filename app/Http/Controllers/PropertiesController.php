@@ -538,10 +538,6 @@ class PropertiesController extends Controller
 
         for ($i = 0; $i < count($propertiesArray); $i++) {
 
-            $count = $i++;
-
-            //dd($i);
-
             /*$partialRequest = $request->partial_value_ . $i++;
             $partialRequestTotal = 'partial_value_' . $partialRequest;
             $partialValue = $request->$partialRequestTotal;
@@ -559,9 +555,9 @@ class PropertiesController extends Controller
                 return redirect()
                     ->route('properties.add.files', $properties->id)
                     ->with('error', 'A somatória de valores não confere!');
-            }*/
+            }*/                
 
-            $properties->partners()->syncWithoutDetaching([
+            $properties->partners()->sync([
                 $request->partnerId[$i] => [
                     'partial_value' => $request->partnerValue[$i]
                 ]
