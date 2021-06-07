@@ -87,4 +87,15 @@ class PartnerController extends Controller
         ->with('success', 'Socio '. $partner->name .' atualizado com sucesso!');   
 
     }
+
+    public function showPartner(Partner $partner){
+
+        $properties = $partner->properties()->get();
+
+        return view('partner.partner-show', [
+            'partner' => $partner, 
+            'properties' => $properties
+        ]);
+
+    }
 }

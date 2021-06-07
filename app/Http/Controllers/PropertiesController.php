@@ -599,7 +599,7 @@ class PropertiesController extends Controller
     public function removeFile(PropertiesFiles $propertiesFiles)
     {
 
-        //$propertiesFiles->delete();
+        $propertiesFiles->delete();
 
         Storage::delete($propertiesFiles);
 
@@ -611,22 +611,21 @@ class PropertiesController extends Controller
 
     public function searchExpenseDetailed(Request $request, Properties $properties)
     {
-        
+
         $request->validate([
             'dates' => 'required',
             'datainicial' => 'required',
             'datafinal' => 'required'
-        ]);        
+        ]);
 
-        $expenses = DB::table('expenses')    
-        ->whereBetween($request->dates , [$request->datainicial, $request->datafinal])            
-        ->get();
-        
+        $expenses = DB::table('expenses')
+            ->whereBetween($request->dates, [$request->datainicial, $request->datafinal])
+            ->get();
+
 
         return view('properties.properties-show-expenses', [
             'expenses' => $expenses,
             'properties' => $properties
         ]);
-    
     }
 }

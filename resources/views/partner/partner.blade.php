@@ -13,12 +13,13 @@
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white border-0">
                         <div class="row justify-content-end">
-                            <a href="{{ route('partner.create') }}" class="btn btn-icon btn-3 mr-4 btn-primary btn-outline-primary" type="button">
+                            <a href="{{ route('partner.create') }}"
+                                class="btn btn-icon btn-3 mr-4 btn-primary btn-outline-primary" type="button">
                                 <i class="fas fa-plus-square"></i> Novo Sócio
                             </a>
                         </div>
                     </div>
-                    
+
                     <main role="main" class="container">
                         @include('partials.alerts')
                         @yield('content')
@@ -75,7 +76,10 @@
                                             @endif
 
                                             <td class="justify-content-center">
-                                                <a class="dropdown-item" href="{{ route('partner.edit' , $partners->id ) }}"><i class="fas fa-user-edit"></i>
+                                                <a class="mr-2" href="{{ route('partner.show', $partners->id) }}"><i
+                                                    class="fas fa-eye"></i>
+                                                <a href="{{ route('partner.edit', $partners->id) }}"><i
+                                                        class="fas fa-user-edit"></i>                                                
                                             </td>
                                         </tr>
                                     @endforeach

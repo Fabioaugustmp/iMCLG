@@ -95,6 +95,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('partners', [PartnerController::class, 'listaAllPartner'])->name('partners');
 	Route::get('partner/create', [PartnerController::class, 'showCreatePartner'])->name('partner.showcreate');
 	Route::post('partner/create', [PartnerController::class, 'createPartner'])->name('partner.create');
+	Route::get('partner/show/{partner}', [PartnerController::class, 'showPartner'])->name('partner.show');
 	Route::get('partner/edit/{partner}', [PartnerController::class, 'editPartner'])->name('partner.edit');	
 	Route::put('partner/edit/{partner}', [PartnerController::class, 'editPartnerPut'])->name('partner.edit.put');
 
