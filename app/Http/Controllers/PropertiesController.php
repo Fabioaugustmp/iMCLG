@@ -618,8 +618,9 @@ class PropertiesController extends Controller
             'datafinal' => 'required'
         ]);
 
-        $expenses = DB::table('expenses')
+        $expenses = DB::table('expenses')    
             ->whereBetween($request->dates, [$request->datainicial, $request->datafinal])
+            ->where('id_propertie', '=' , $properties->id )
             ->get();
 
 
