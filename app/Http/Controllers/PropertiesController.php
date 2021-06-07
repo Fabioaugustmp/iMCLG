@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Associate;
 use App\Models\RealEstate;
 use App\Models\Construction;
+use App\Models\Expense;
 use App\Models\FileType;
 use App\Models\Partner;
 use App\Models\Properties;
@@ -237,7 +238,7 @@ class PropertiesController extends Controller
         $constructions = Construction::all();
         $statusproperties = StatusProperties::all();
         $partners = $properties->partners()->get();
-        
+
 
         return view('properties.properties-edit', [
             'properties' => $properties,
@@ -338,7 +339,7 @@ class PropertiesController extends Controller
         }
 
         return redirect()
-        ->route('propertie.show', $properties->id);
+            ->route('propertie.show', $properties->id);
     }
 
     public function showPropertie(Properties $properties)
@@ -606,5 +607,26 @@ class PropertiesController extends Controller
         return redirect()
             ->route('propertie.show', $propertiesFiles->id_properties)
             ->with('success', 'Anexo removido com sucesso!');
+    }
+
+    public function searchExpenseDetailed(Request $request, Properties $properties)
+    {
+        
+        $request->validate([
+            'dates' => 'required',
+            'datainicial' => 'required',
+            'datafinal' => 'required'
+        ]);        
+
+        $expenses = DB::table('expenses')    
+        ->whereBetween($request->dates , [$request->datainicial, $request->datafinal])            
+        ->get();
+        
+
+        return view('properties.properties-show-expenses', [
+            'expenses' => $expenses,
+            'properties' => $properties
+        ]);
+    
     }
 }

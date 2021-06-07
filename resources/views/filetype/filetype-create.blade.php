@@ -64,7 +64,7 @@
                                 <div class="text-start">
                                     <button type="submit" class="btn btn-primary btn-outline-primary mt-4"><i class="fa fa-check"
                                             aria-hidden="true"></i> {{ __('Salvar') }}</button>
-                                    <a href="{{ route('expensetype')}}" class="btn btn-primary btn-outline-primary mt-4"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+                                    <a href="{{ route('filetypes')}}" class="btn btn-primary btn-outline-primary mt-4"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
                                 </div>
                             </form>
                         </div>

@@ -75,7 +75,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('properties/edit/{properties}', [PropertiesController::class, 'putEditPropertie'])->name('propertie.edit.put');
 	//Route::get('properties/{properties}', [PropertiesController::class, 'updatePropertie'])->name('properties.update');
 	Route::put('properties/{properties}', [PropertiesController::class, 'editProperties'])->name('properties.edit');	
-	Route::get('expense/view/{properties}', [PropertiesController::class, 'showExpensePropertie'])->name('expense.show.propertie');	
+	Route::post('expense/view/search/{properties}', [PropertiesController::class, 'searchExpenseDetailed'])->name('expense.show.propertie.search');
+	Route::get('expense/view/{properties}', [PropertiesController::class, 'showExpensePropertie'])->name('expense.show.propertie');		
 	Route::get('expense/create/{properties}', [ExpensesController::class, 'showCreateExpense'])->name('expense.create');	
 	Route::post('expense/create/{properties}', [ExpensesController::class, 'createExpense'])->name('expense.create.post');
 	//Route::get('expense/view/{properties}/unique', [PropertiesController::class, 'showUniqueExpensePropertie'])->name('expense.show.propertie.unique');
