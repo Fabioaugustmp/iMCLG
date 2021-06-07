@@ -399,7 +399,7 @@ class PropertiesController extends Controller
             $partnerAtt = Partner::find($partner);
 
             //Adiciona diretamente sem validar se existe ou nao a relacao
-            //$properties->partners()->sync($partnerAtt); Sincroniza o elemento
+            //$properties->partners()->sync($partnerAtt); //Sincroniza o elemento
             $properties->partners()->attach($partnerAtt);
         }
 
@@ -459,8 +459,8 @@ class PropertiesController extends Controller
             $partnerAtt = Partner::find($partner);
 
             //Adiciona diretamente sem validar se existe ou nao a relacao
-            //$properties->partners()->attach($partnerAtt); Sincroniza o elemento
-            $properties->partners()->sync($partnerAtt);
+            $properties->partners()->attach($partnerAtt); //Sincroniza o elemento
+            //$properties->partners()->sync($partnerAtt);
         }
 
         return redirect()
@@ -525,21 +525,24 @@ class PropertiesController extends Controller
             'properties' => 'required'
         ]);
 
-        // dd($request);
+        //dd($request);
 
         $propertiesArray = $properties->partners()->get();
 
         $properties = Properties::find($request->properties);
 
+        $valorTotal =  $request->valordaaquisicao;
+        $somatoria = 0;
+
         //dd(count($propertiesArray));
 
-        for ($i = 1; $i < count($propertiesArray); $i++) {
+        for ($i = 0; $i < count($propertiesArray); $i++) {
 
             $count = $i++;
 
             //dd($i);
 
-            $partialRequest = $request->partial_value_ . $i++;
+            /*$partialRequest = $request->partial_value_ . $i++;
             $partialRequestTotal = 'partial_value_' . $partialRequest;
             $partialValue = $request->$partialRequestTotal;
 
@@ -547,11 +550,20 @@ class PropertiesController extends Controller
             $partnerJunction = 'partner' . $partnerRequest;
             $partnerValue = $request->$partnerJunction;
 
-            dd($partnerValue);
+            dd($partnerValue);*/
+
+            $somatoria = array_sum($request->partnerValue);
+
+            /*if ($somatoria > $valorTotal || $somatoria < $valorTotal) {
+
+                return redirect()
+                    ->route('properties.add.files', $properties->id)
+                    ->with('error', 'A somatória de valores não confere!');
+            }*/
 
             $properties->partners()->syncWithoutDetaching([
-                $request->partner . $i => [
-                    'partial_value' => $partialValue
+                $request->partnerId[$i] => [
+                    'partial_value' => $request->partnerValue[$i]
                 ]
             ]);
         }
@@ -618,9 +630,9 @@ class PropertiesController extends Controller
             'datafinal' => 'required'
         ]);
 
-        $expenses = DB::table('expenses')    
+        $expenses = DB::table('expenses')
             ->whereBetween($request->dates, [$request->datainicial, $request->datafinal])
-            ->where('id_propertie', '=' , $properties->id )
+            ->where('id_propertie', '=', $properties->id)
             ->get();
 
 

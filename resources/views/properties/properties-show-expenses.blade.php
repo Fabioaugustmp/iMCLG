@@ -39,10 +39,10 @@
                             <div class="card-header bg-white border-0">
                                 <div class="container">
                                     <p>
-                                        <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                        <button class="btn btn-primary btn-outline-primary" type="button" data-toggle="collapse"
                                             data-target="#pesquisaDetalhada" aria-expanded="false"
                                             aria-controls="pesquisaDetalhada">
-                                            <i class="fas fa-search"></i> Pesquisa
+                                            <i class="fas fa-filter"></i> Filtrar
                                         </button>
                                     </p>
                                     <div class="row collapse" id="pesquisaDetalhada">

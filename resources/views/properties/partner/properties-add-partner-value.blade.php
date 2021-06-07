@@ -6,7 +6,7 @@
     'description' => __('Adicionar Participação Societária'),
     'class' => 'col-lg-12'
     ])
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            <label for="partner">Valor Societário</label>
+                                            <label for="partner">Valor da Aquisição</label>
                                             <div class="input-group mb-4" id="valordaaquisicao">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-coins"></i></span>
@@ -106,10 +106,18 @@
                                                                 class="fas fa-user-tie"></i></span>
                                                     </div>
 
-                                                    <input type="hidden" value="{{$partner->id}}" name="partner{{count($partners)}}">
-                                                    <input class="form-control" placeholder="{{ $partner->name }}" type="text"
-                                                        name="partnerName{{count($partners)}}" value="{{ $partner->name }}" readonly
-                                                        style="text-transform: uppercase">
+                                                    <!--<input type="hidden" value="{{ $partner->id }}"
+                                                                        name="partner{{ count($partners) }}">
+                                                                    <input class="form-control" placeholder="{{ $partner->name }}"
+                                                                        type="text" name="partnerName{{ count($partners) }}"
+                                                                        value="{{ $partner->name }}" readonly
+                                                                        style="text-transform: uppercase">-->
+
+                                                    <input class="form-control" type="text" value="{{ $partner->id }}"
+                                                        name="partnerId[]" hidden>
+                                                    <input class="form-control" type="text" value="{{ $partner->name }}"
+                                                        name="partnerName[]" readonly>
+
                                                 </div>
                                             @endforeach
                                             @if ($errors->has('partner'))
@@ -121,53 +129,57 @@
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            <label for="partner">Valor da Aquisição</label>
+                                            <label for="partner">Valor Societário</label>
                                             @foreach ($partners as $partner)
                                                 <div class="input-group mb-4" id="partner">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="fas fa-coins"></i></span>
                                                     </div>
-                                                    <input class="form-control" placeholder="Valor da Aquisição"
-                                                        id="partial_value_{{ count($partners) }}" type="text"
-                                                        name="partial_value_{{ count($partners) }}" data-affixes-stay="true" data-prefix="R$ " data-thousands="."
-                                                        data-decimal="," aria-label="Amount">
-                                                        
-                                                </div>                                                
+                                                    <!--<input class="form-control" placeholder="Valor da Aquisição"
+                                                                    id="partial_value_{{ count($partners) }}" type="text"
+                                                                    name="partial_value_{{ count($partners) }}"
+                                                                    data-affixes-stay="true" data-prefix="R$ " data-thousands="."
+                                                                    data-decimal="," aria-label="Amount">-->
+                                                    <input class="form-control" type="number" name="partnerValue[]"
+                                                        id="price">
+                                                </div>
                                                 <script>
                                                     $(function() {
-                                                        $("#partial_value_{{ count($partners) }}").maskMoney();                                                        
-                                                        $("#valordevenda").maskMoney();   
+                                                        $("#partial_value_{{ count($partners) }}").maskMoney();
+                                                        $("#valordevenda").maskMoney();
                                                     })
-                                            
+
                                                 </script>
+
+
                                             @endforeach
                                             @if ($errors->has('cpf'))
                                                 <span class="invalid-feedback" style="display: block;" role="alert">
                                                     <strong>{{ $errors->first('cpf') }}</strong>
                                                 </span>
                                             @endif
-                                            
+
                                         </div>
                                     </div>
 
-                                   <!-- <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <label for="partner">Somatória valor da aquisição</label>
-                                            <div class="input-group mb-4" id="partner">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="fas fa-coins"></i></span>
-                                                </div>
-                                                <input class="form-control" placeholder="Valor da Aquisição" type="numer"
-                                                    maxlength="11" name="cpf" value="{{ old('cpf') }}">
-                                            </div>
-                                            <span id="resultado"></span>
-                                            @if ($errors->has('cpf'))
-                                                <span class="invalid-feedback" style="display: block;" role="alert">
-                                                    <strong>{{ $errors->first('cpf') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                    </div>-->
+                                    <!-- <div class="col-lg-6 col-md-6 col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="partner">Somatória valor da aquisição</label>
+                                                                <div class="input-group mb-4" id="partner">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text"><i class="fas fa-coins"></i></span>
+                                                                    </div>
+                                                                    <input class="form-control" placeholder="Valor da Aquisição" type="numer"
+                                                                        maxlength="11" name="cpf" value="{{ old('cpf') }}">
+                                                                </div>
+                                                                <span id="resultado"></span>
+                                                                @if ($errors->has('cpf'))
+                                                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                                                        <strong>{{ $errors->first('cpf') }}</strong>
+                                                                    </span>
+                                                                @endif
+                                                            </div>
+                                                        </div>-->
                                 </div>
                                 <div class="text-start">
                                     <button type="submit" class="btn btn-primary btn-outline-primary mt-4"><i
@@ -195,5 +207,5 @@
             document.getElementById('result').value = valor1 + valor2;
         }
 
-    </script>     
+    </script>
 @endsection
