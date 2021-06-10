@@ -220,8 +220,8 @@
                                                                     <i class="fas fa-angle-right"></i> {{ $propertie->company }} <br>
                                                                     <i class="fas fa-angle-right"></i> {{ $propertie->realestate }} <br>
                                                                     <i class="fas fa-angle-right"></i> {{ $propertie->statusproperties }} <br>
-                                                                    <i class="fas fa-angle-right"></i> {{ $propertie->valorvenal }}<br>
-                                                                    <i class="fas fa-angle-right"></i> {{ $propertie->areatotal }}<br>
+                                                                    <i class="fas fa-angle-right"></i> {{ $propertie->valorvenal }} <br>
+                                                                    <i class="fas fa-angle-right"></i> {{ $propertie->areatotal }} <b>m<sup>2</sup></b><br>
                                                                     <i class="fas fa-angle-right"></i> {{ $propertie->logradouro }}<br>
                                                                     <i class="fas fa-angle-right"></i> {{ $propertie->bairro }}<br>
                                                                 </p>
