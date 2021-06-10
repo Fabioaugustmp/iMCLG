@@ -29,7 +29,7 @@
 
         #cards_landscape_wrap-2 .card-flyer .image-box {
             background: #ffffff;
-            overflow: hidden;
+            overflow: hidden;                    
             box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.50);
             border-radius: 5px;
         }
@@ -68,7 +68,7 @@
             -ms-transition: all 0.2s ease-in;
             -o-transition: all 0.2s ease-in;
             transition: all 0.2s ease-in;
-            box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.40);
+            box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.40);                        
         }
 
         #cards_landscape_wrap-2 .card-flyer:hover {
@@ -215,15 +215,15 @@
                                                                 @endforeach
                                                             </div>
                                                             <div class="text-container">
-                                                                <h6 align="center">{{ $propertie->name }}</h6>
+                                                                <h6 align="center"><i class="fas fa-tags"></i> {{ $propertie->name }}</h6>
                                                                 <p>
-                                                                    {{ $propertie->company }} <br>
-                                                                    {{ $propertie->realestate }} <br>
-                                                                    {{ $propertie->statusproperties }} <br>
-                                                                    {{ $propertie->valorvenal }}<br>
-                                                                    {{ $propertie->areatotal }}<br>
-                                                                    {{ $propertie->logradouro }}<br>
-                                                                    {{ $propertie->bairro }}<br>
+                                                                    <i class="fas fa-angle-right"></i> {{ $propertie->company }} <br>
+                                                                    <i class="fas fa-angle-right"></i> {{ $propertie->realestate }} <br>
+                                                                    <i class="fas fa-angle-right"></i> {{ $propertie->statusproperties }} <br>
+                                                                    <i class="fas fa-angle-right"></i> {{ $propertie->valorvenal }}<br>
+                                                                    <i class="fas fa-angle-right"></i> {{ $propertie->areatotal }}<br>
+                                                                    <i class="fas fa-angle-right"></i> {{ $propertie->logradouro }}<br>
+                                                                    <i class="fas fa-angle-right"></i> {{ $propertie->bairro }}<br>
                                                                 </p>
                                                             </div>
                                                         </div>
