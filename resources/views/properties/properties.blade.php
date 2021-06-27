@@ -218,10 +218,10 @@
                                                                     @endif
                                                                 @endforeach
                                                             </div>
-                                                            <div class="text-container mt-5">
+                                                            <div class="text-container mt-2">
                                                                 <h6 align="center"><i class="fas fa-tags"></i>
                                                                     {{ $propertie->name }}</h6>
-                                                                <p>
+                                                                <p class="mt-2">
                                                                     <i class="fas fa-angle-right"></i>
                                                                     {{ $propertie->company }} <br>
                                                                     <i class="fas fa-angle-right"></i>
