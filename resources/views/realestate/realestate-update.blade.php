@@ -57,7 +57,7 @@
                                     <label for="status">Selecione Um Novo Status</label>
                                     <div>
                                         <select class="custom-select" id="status" name="status" required>
-                                            <option selected disabled>Selecione...</option>                                                                                        
+                                            <option selected disabled value="">Selecione...</option>                                                                                        
                                             <option value="1">Ativo</option>
                                             <option value="0">Inativo</option>
                                         </select>

@@ -75,7 +75,7 @@
                                             @endif
 
                                             <td class="justify-content-center">
-                                                <a class="dropdown-item" href="{{ route('construction.show' , $construction->id ) }}"><i class="fas fa-user-edit"></i></a>
+                                                <a class="btn btn-outline-primary" href="{{ route('construction.show' , $construction->id ) }}"><i class="fas fa-edit"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

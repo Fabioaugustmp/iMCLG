@@ -76,9 +76,9 @@
                                             @endif
 
                                             <td class="justify-content-center">
-                                                <a class="dropdown-item"
+                                                <a class="btn btn-outline-primary"
                                                     href="{{ route('expensetype.show', $type->id) }}"><i
-                                                        class="fas fa-user-edit btn-outline-primary"></i></a>
+                                                        class="fas fa-edit"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -48,8 +48,8 @@
                                 <div class="form-group">
                                     <label for="status">Status</label>
                                     <div>
-                                        <select class="custom-select" id="status" name="status">
-                                            <option selected disabled value="">Selecione...</option>
+                                        <select class="custom-select" id="status" name="status" required> 
+                                            <option selected disabled>Selecione...</option>
                                             <option value="1">Ativo</option>
                                             <option value="0">Inativo</option>
                                         </select>

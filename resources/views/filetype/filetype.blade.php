@@ -75,7 +75,7 @@
                                             @endif
 
                                             <td class="justify-content-center">
-                                                <a class="dropdown-item" href="{{ route('filetype.show' , $type->id ) }}"><i class="fas fa-user-edit btn-outline-primary"></i></a>
+                                                <a class="btn btn-outline-primary" href="{{ route('filetype.show' , $type->id ) }}"><i class="fas fa-edit"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

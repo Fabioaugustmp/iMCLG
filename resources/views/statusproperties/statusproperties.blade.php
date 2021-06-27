@@ -77,7 +77,7 @@
                                             @endif
 
                                             <td class="justify-content-center">
-                                                <a class="dropdown-item" href="{{ route('statuspropertie.show', $status->id) }}"><i class="fas fa-user-edit"></i>
+                                                <a class="btn btn-outline-primary" href="{{ route('statuspropertie.show', $status->id) }}"><i class="fas fa-edit"></i>
                                             </td>
                                         </tr>
                                     @endforeach

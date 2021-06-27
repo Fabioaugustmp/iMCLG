@@ -76,9 +76,9 @@
                                             @endif
 
                                             <td class="justify-content-center">
-                                                <a class="mr-2" href="{{ route('partner.show', $partners->id) }}"><i
+                                                <a class="btn btn-outline-primary mr-2" href="{{ route('partner.show', $partners->id) }}"><i
                                                     class="fas fa-eye"></i>
-                                                <a href="{{ route('partner.edit', $partners->id) }}"><i
+                                                <a class="btn btn-outline-default" href="{{ route('partner.edit', $partners->id) }}"><i
                                                         class="fas fa-user-edit"></i>                                                
                                             </td>
                                         </tr>

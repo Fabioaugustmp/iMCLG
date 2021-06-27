@@ -57,8 +57,8 @@
                                 <div class="form-group">
                                     <label for="status">Selecione Um Novo Status</label>
                                     <div>
-                                        <select class="custom-select" id="status" name="status">
-                                            <option selected disabled value="{{ $classexpenses->status }}">Selecione...</option>                                                                                        
+                                        <select class="custom-select" id="status" name="status" required>
+                                            <option selected disabled value="">Selecione...</option>                                                                                        
                                             <option value="1">Ativo</option>
                                             <option value="0">Inativo</option>
                                         </select>
@@ -71,7 +71,7 @@
                                 </div>
 
                                 <div class="text-left">
-                                    <button type="submit" class="btn btn-primary mt-4 btn-outline-primary"><i class="fa fa-save"
+                                    <button type="submit" class="btn btn-primary mt-4 btn-outline-primary"><i class="fas fa-sync"
                                             aria-hidden="true"></i> {{ __(' Atualizar') }}</button>
                                     <a href="{{ route('classexpenses')}}" class="btn btn-primary mt-4 btn-outline-primary"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
                                 </div>
