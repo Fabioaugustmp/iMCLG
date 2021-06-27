@@ -39,8 +39,8 @@
                             <div class="card-header bg-white border-0">
                                 <div class="container">
                                     <p>
-                                        <button class="btn btn-primary btn-outline-primary" type="button" data-toggle="collapse"
-                                            data-target="#pesquisaDetalhada" aria-expanded="false"
+                                        <button class="btn btn-primary btn-outline-primary" type="button"
+                                            data-toggle="collapse" data-target="#pesquisaDetalhada" aria-expanded="false"
                                             aria-controls="pesquisaDetalhada">
                                             <i class="fas fa-filter"></i> Filtrar
                                         </button>
@@ -48,7 +48,7 @@
                                     <div class="row collapse" id="pesquisaDetalhada">
                                         <div class="col-12">
                                             <label for="partner">Selecione o tipo de data, para pesquisa.</label>
-                                            <select class="custom-select" id="dates" name="dates">                                                
+                                            <select class="custom-select" id="dates" name="dates">
                                                 <option value="includedate">Data de Inclusão</option>
                                                 <option value="expiredate">Data Vencimento
                                                 </option>
@@ -111,8 +111,9 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="container">
-                                    <table id="datatable" class="display table-responsive " style="width:100%">
+                                <div class="container-fluid">
+                                    <table id="datatable" class="display table-responsive table-striped table-bordered"
+                                        style="width:100%">
                                         <thead>
                                             <tr align="center">
                                                 <th>Tipo Despesa</th>
@@ -122,8 +123,7 @@
                                                 <th>Data Pagamento</th>
                                                 <th>Competencia</th>
                                                 <th>Valor</th>
-                                                <th>Visualizar</th>
-                                                <th>Editar</th>
+                                                <th>Ações</th>                                                
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -136,12 +136,12 @@
                                                     <td>{{ date('d-m-Y', strtotime($expense->paymentdate)) }}</td>
                                                     <td>{{ date('d-m-Y', strtotime($expense->competence)) }}</td>
                                                     <td>R$ {{ $expense->value }}</td>
-                                                    <td align="center"><a
+                                                    <td align="center"><a class="m-2"
                                                             href="{{ route('expense.show.unique', $expense->id) }}"><i
-                                                                class="far fa-eye"></i></a> </td>
-                                                    <td align="center"><a
-                                                            href="{{ route('expense.edit', $expense->id) }}"><i
-                                                                class="far fa-edit"></i></a> </td>
+                                                                class="far fa-eye"></i></a>
+                                                        <a href="{{ route('expense.edit', $expense->id) }}"><i
+                                                                class="far fa-edit"></i></a>
+                                                    </td>                                                    
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -154,8 +154,7 @@
                                                 <th>Data Pagamento</th>
                                                 <th>Competencia</th>
                                                 <th>Valor</th>
-                                                <th>Visualizar</th>
-                                                <th>Editar</th>
+                                                <th>Ações</th>                                                
                                             </tr>
                                         </tfoot>
                                     </table>

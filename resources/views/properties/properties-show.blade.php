@@ -22,6 +22,12 @@
             opacity: 0;
         }
 
+        tr {
+            justify-items: center;
+            align-content: flex-end;
+            text-transform: uppercase;
+        }
+
 
     </style>
 
@@ -325,11 +331,11 @@
                                                         <th scope="row">{{ $file->id }}</th>
                                                         <td>{{ $file->name }}</td>
                                                         <td>{{ $file->filetype }}</td>
-                                                        <td><a href="" type="button" data-toggle="modal"
+                                                        <td><a href="#" class="btn btn-outline-success" type="button" data-toggle="modal"
                                                                 data-target="#arquivoModal{{ $file->id }}"><i
                                                                     class="fa fa-eye" aria-hidden="true"></i></a></td>
-                                                        <td><a href="{{ env('APP_URL') }}/storage/{{ $file->path }}"
-                                                                target="_blank"><i class="fa fa-download"
+                                                        <td><a class="btn btn-outline-primary" href="{{ env('APP_URL') }}/storage/{{ $file->path }}"
+                                                                download="{{$file->name}}"><i class="fa fa-download"
                                                                     aria-hidden="true"></i></a></td>
                                                     </tr>
 
@@ -339,7 +345,7 @@
                                                         aria-labelledby="arquivoModalLabel{{ $file->id }}"
                                                         aria-hidden="true">
                                                         <div
-                                                            class="modal-dialog modal-dialog-centered modal-dialog modal-lg">
+                                                            class="modal-dialog modal-lg">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <h3 class="modal-title"
@@ -364,9 +370,9 @@
                                                                         <button type="button" class="btn btn-secondary"
                                                                             data-dismiss="modal"><i
                                                                                 class="fas fa-times"></i> Fechar</button>
-                                                                        <a type="button" class="btn btn-primary"
+                                                                        <a type="button" class="btn btn-outline-primary"
                                                                             href="{{ env('APP_URL') }}/storage/{{ $file->path }}"
-                                                                            target="_blank"><i class="fas fa-download"></i>
+                                                                            download="{{$file->name}}"><i class="fas fa-download"></i>
                                                                             Download</a>
                                                                     </div>
                                                                 </div>

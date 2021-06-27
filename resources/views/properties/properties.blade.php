@@ -15,7 +15,7 @@
         }
 
         #cards_landscape_wrap-2 .container {
-            padding-bottom: 100px;
+            padding-bottom: 25px;
         }
 
         #cards_landscape_wrap-2 a {
@@ -24,12 +24,14 @@
         }
 
         #cards_landscape_wrap-2 .card-flyer {
-            border-radius: 5px;
+            border-radius: .25rem;
+            border-left-width: .25rem;
+            border-left-color: #5bc0de;
         }
 
         #cards_landscape_wrap-2 .card-flyer .image-box {
             background: #ffffff;
-            overflow: hidden;                    
+            overflow: hidden;
             box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.50);
             border-radius: 5px;
         }
@@ -62,13 +64,13 @@
 
         #cards_landscape_wrap-2 .card-flyer {
             background: #FFFFFF;
-            margin-top: 50px;
+            margin-top: 25px;
             -webkit-transition: all 0.2s ease-in;
             -moz-transition: all 0.2s ease-in;
             -ms-transition: all 0.2s ease-in;
             -o-transition: all 0.2s ease-in;
             transition: all 0.2s ease-in;
-            box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.40);                        
+            box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.40);
         }
 
         #cards_landscape_wrap-2 .card-flyer:hover {
@@ -79,7 +81,8 @@
             -ms-transition: all 0.2s ease-in;
             -o-transition: all 0.2s ease-in;
             transition: all 0.2s ease-in;
-            margin-top: 50px;
+            margin-top: 75px;
+            margin-bottom: 50px;
         }
 
         #cards_landscape_wrap-2 .card-flyer .text-box p {
@@ -200,11 +203,12 @@
 
                             <div id="cards_landscape_wrap-2">
                                 <div class="container">
+                                    
                                     <div class="row">
                                         @foreach ($properties as $propertie)
                                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 p-2">
                                                 <a href="{{ route('propertie.show', $propertie->id) }}">
-                                                    <div class="card-flyer">
+                                                    <div class="card card-flyer h-100">
                                                         <div class="text-box">
                                                             <div class="image-box">
                                                                 @foreach ($propertie->images as $picture)
@@ -214,16 +218,24 @@
                                                                     @endif
                                                                 @endforeach
                                                             </div>
-                                                            <div class="text-container">
-                                                                <h6 align="center"><i class="fas fa-tags"></i> {{ $propertie->name }}</h6>
+                                                            <div class="text-container mt-5">
+                                                                <h6 align="center"><i class="fas fa-tags"></i>
+                                                                    {{ $propertie->name }}</h6>
                                                                 <p>
-                                                                    <i class="fas fa-angle-right"></i> {{ $propertie->company }} <br>
-                                                                    <i class="fas fa-angle-right"></i> {{ $propertie->realestate }} <br>
-                                                                    <i class="fas fa-angle-right"></i> {{ $propertie->statusproperties }} <br>
-                                                                    <i class="fas fa-angle-right"></i> {{ $propertie->valorvenal }} <br>
-                                                                    <i class="fas fa-angle-right"></i> {{ $propertie->areatotal }} <b>m<sup>2</sup></b><br>
-                                                                    <i class="fas fa-angle-right"></i> {{ $propertie->logradouro }}<br>
-                                                                    <i class="fas fa-angle-right"></i> {{ $propertie->bairro }}<br>
+                                                                    <i class="fas fa-angle-right"></i>
+                                                                    {{ $propertie->company }} <br>
+                                                                    <i class="fas fa-angle-right"></i>
+                                                                    {{ $propertie->realestate }} <br>
+                                                                    <i class="fas fa-angle-right"></i>
+                                                                    {{ $propertie->statusproperties }} <br>
+                                                                    <i class="fas fa-angle-right"></i>
+                                                                    {{ $propertie->valorvenal }} <br>
+                                                                    <i class="fas fa-angle-right"></i>
+                                                                    {{ $propertie->areatotal }} <b>m<sup>2</sup></b><br>
+                                                                    <i class="fas fa-angle-right"></i>
+                                                                    {{ $propertie->logradouro }}<br>
+                                                                    <i class="fas fa-angle-right"></i>
+                                                                    {{ $propertie->bairro }}<br>
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -246,63 +258,63 @@
 
 
                             <!-- <div class="container">
-                                            <div class="row">
-                                                @foreach ($properties as $propertie)
-                                                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 p-2">
-                                                        <div class="card" style="width: 16rem;">
-                                                            <div id="{{ $propertie->id }}" class="carousel slide carousel-fade"
-                                                                data-ride="carousel">
-                                                                <div class="carousel-inner">
-                                                                    @foreach ($propertie->images as $picture)
-                                                                        @if ($loop->first)
-                                                                            <div class="carousel-item active">
+                                                <div class="row">
+                                                    @foreach ($properties as $propertie)
+                                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 p-2">
+                                                            <div class="card" style="width: 16rem;">
+                                                                <div id="{{ $propertie->id }}" class="carousel slide carousel-fade"
+                                                                    data-ride="carousel">
+                                                                    <div class="carousel-inner">
+                                                                        @foreach ($propertie->images as $picture)
+                                                                            @if ($loop->first)
+                                                                                <div class="carousel-item active">
                                                                 @else
-                                                                                <div class="carousel-item">
-                                                                        @endif
-                                                                        <a href="{{ route('propertie.show', $propertie->id) }}">
-                                                                            <img src="{{ env('APP_URL') }}/storage/{{ $picture->path }}"
-                                                                                alt="Ativo_{{ $picture->id }}"
-                                                                                class="img-fluid d-block w-100 rounded"
-                                                                                style="width: 254px; height: 254px;">
-                                                                        </a>
-                                                                </div>
-                                                @endforeach
+                                                                                    <div class="carousel-item">
+                                                                            @endif
+                                                                            <a href="{{ route('propertie.show', $propertie->id) }}">
+                                                                                <img src="{{ env('APP_URL') }}/storage/{{ $picture->path }}"
+                                                                                    alt="Ativo_{{ $picture->id }}"
+                                                                                    class="img-fluid d-block w-100 rounded"
+                                                                                    style="width: 254px; height: 254px;">
+                                                                            </a>
+                                                                    </div>
+                                                    @endforeach
 
+                                                </div>
+                                                <a class="carousel-control-prev" href="#{{ $propertie->id }}" role="button"
+                                                    data-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                                <a class="carousel-control-next" href="#{{ $propertie->id }}" role="button"
+                                                    data-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
                                             </div>
-                                            <a class="carousel-control-prev" href="#{{ $propertie->id }}" role="button"
-                                                data-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                            <a class="carousel-control-next" href="#{{ $propertie->id }}" role="button"
-                                                data-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
-                                        </div>
 
-                                        <div class="card-body">
-                                            <h3 class="card-title" align="center">{{ $propertie->name }}</h3>
-                                            <p class="card-text">
+                                            <div class="card-body">
+                                                <h3 class="card-title" align="center">{{ $propertie->name }}</h3>
+                                                <p class="card-text">
 
-                                                {{ $propertie->company }} <br>
-                                                {{ $propertie->realestate }} <br>
-                                                {{ $propertie->statusproperties }} <br>
-                                                {{ $propertie->valorvenal }}<br>
-                                                {{ $propertie->areatotal }}<br>
-                                                {{ $propertie->logradouro }}<br>
-                                                {{ $propertie->bairro }}<br>
+                                                    {{ $propertie->company }} <br>
+                                                    {{ $propertie->realestate }} <br>
+                                                    {{ $propertie->statusproperties }} <br>
+                                                    {{ $propertie->valorvenal }}<br>
+                                                    {{ $propertie->areatotal }}<br>
+                                                    {{ $propertie->logradouro }}<br>
+                                                    {{ $propertie->bairro }}<br>
 
-                                            </p>
-                                            <div class="row justify-content-center">
-                                                <a href="{{ route('propertie.show', $propertie->id) }}"
-                                                    class="btn btn-primary btn-outline-primary"><i class="fas fa-search-location"></i>
-                                                    Visualizar</a>
+                                                </p>
+                                                <div class="row justify-content-center">
+                                                    <a href="{{ route('propertie.show', $propertie->id) }}"
+                                                        class="btn btn-primary btn-outline-primary"><i class="fas fa-search-location"></i>
+                                                        Visualizar</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                @endforeach-->
+                                    @endforeach-->
                         </div>
                     </div>
 
