@@ -132,13 +132,38 @@
                                                     @csrf
                                                     <input class="form-control mr-sm-2" type="search"
                                                         placeholder="Pesquisa de Ativos" aria-label="Search" id="search"
-                                                        name="search">
+                                                        name="search" autocomplete="off">
+                                                        <div class="input-group mr-sm-2">
+                                                            <div class="input-group-prepend">
+                                                                <label class="input-group-text" for="company">
+                                                                    Empresa</label>
+                                                            </div>
+                                                            <select class="custom-select" id="company" name="company">
+                                                                <option selected>Selecione</option>
+                                                                <option value="MCLG">MCLG Empreendimentos e Participações LTDA
+                                                                </option>
+                                                                <option value="MARCELO LIMIRIO">Marcelo Henrique Limirio
+                                                                    Gonçalves
+                                                                </option>
+                                                                <option value="CLEONICE LIMIRIO">Cleonice Barbosa Limirio
+                                                                    Gonçalves
+                                                                </option>
+                                                                <option value="NEO MARCAS">Neo Marcas</option>
+                                                                <option value="AGROPECUARIA">Agropecuária Limirio</option>
+                                                            </select>
+                                                            @if ($errors->has('company'))
+                                                                <span class="invalid-feedback" style="display: block;"
+                                                                    role="alert">
+                                                                    <strong>{{ $errors->first('company') }}</strong>
+                                                                </span>
+                                                            @endif                                                          
+                                                        </div>
 
                                                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i
                                                             class="fas fa-search-location"></i> Buscar</button>
 
                                                 </form>
-                                                <form class="form-inline ml-2 my-2 my-lg-0 m-2"
+                                                <!--<form class="form-inline ml-2 my-2 my-lg-0 m-2"
                                                     action="{{ route('search.propertie.company') }}" method="GET"
                                                     role="search">
                                                     <div class="input-group mr-sm-2">
@@ -169,7 +194,8 @@
                                                             type="submit"><i class="fas fa-search-location"></i>
                                                             Buscar</button>
                                                     </div>
-                                                </form>
+                                                </form>-->
+                                                
                                             </div>
                                         </div>
 

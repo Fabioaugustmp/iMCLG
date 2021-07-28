@@ -1304,3 +1304,4 @@ var SalesChart = (function () {
 		}
 	})
 })(jQuery)
+

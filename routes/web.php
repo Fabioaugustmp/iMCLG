@@ -40,6 +40,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/', 'App\Http\Controllers\PropertiesController@listaAllProperties')->name('home');
 	Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+	Route::get('/dashboard', function(){
+		return view('dashboard');
+		})->name('dashboard');
+
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
