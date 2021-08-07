@@ -160,6 +160,7 @@ class PropertiesController extends Controller
             'valordaaquisicao' => 'required',
             'construction' => 'required',
             'company' => 'required',
+            'dataaquisicao' => 'required'
         ]);
 
         //$request->file('pictures')->store('teste');
@@ -182,7 +183,9 @@ class PropertiesController extends Controller
             'company',
             'feedback',
             'latitude',
-            'longitude'
+            'longitude',
+            'dataaquisicao',
+            'dataavaliacao'
         ]);
 
         $properties = Properties::create($data);
@@ -289,7 +292,8 @@ class PropertiesController extends Controller
             'valorvenal' => 'required',
             'valordaaquisicao' => 'required',
             'construction' => 'required',
-            'company' => 'required',
+            'company' => 'required',            
+            'dataaquisicao' => 'required'
         ]);
 
         $properties->name = $request->name;
@@ -307,6 +311,8 @@ class PropertiesController extends Controller
         $properties->company = $request->company;
         $properties->latitude = $request->latitude;
         $properties->longitude = $request->longitude;
+        $properties->dataaquisicao = $request->dataaquisicao;
+        $properties->dataavaliacao = $request->dataavaliacao;
 
         $properties->save();
 
@@ -555,7 +561,7 @@ class PropertiesController extends Controller
                 return redirect()
                     ->route('properties.add.files', $properties->id)
                     ->with('error', 'A somatória de valores não confere!');
-            }*/                
+            }*/
 
             $properties->partners()->sync([
                 $request->partnerId[$i] => [

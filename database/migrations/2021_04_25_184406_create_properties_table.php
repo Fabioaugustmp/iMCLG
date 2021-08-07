@@ -27,7 +27,9 @@ class CreatePropertiesTable extends Migration
             $table->string('areaconstruida')->nullable();
             $table->string('valorvenal');
             $table->string('valordaaquisicao');
+            $table->date('dataaquisicao');
             $table->string('valordevenda')->nullable();
+            $table->date('dataavaliacao')->nullable();
             $table->string('construction');
             $table->string('company');
             $table->text('feedback')->nullable();

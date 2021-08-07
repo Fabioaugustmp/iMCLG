@@ -26,7 +26,6 @@
         $("#imgInp").change(function() {
             readURL(this);
         });
-
     </script>
 
 
@@ -42,7 +41,7 @@
                                     <h2><i class="far fa-edit"></i> Edicao do Ativo {{ $properties->name }}</h2>
                                     <small data-toggle="tooltip" data-placement="top"
                                         title="Neste campo um ativo pode ser atualizado! Com todas as informações!"><i
-                                            class="fas fa-info-circle"></i></small>                                                                    
+                                            class="fas fa-info-circle"></i></small>
                                 </div>
                             </div>
                             <div class="col-lg-8 col-md-8 col-sm-6">
@@ -63,7 +62,7 @@
                                         class="btn btn-icon btn-3 btn-primary btn-outline-primary mt-4" type="button"><i
                                             class="fas fa-chevron-circle-left"></i> Voltar
                                     </a>
-                                     
+
                                 </div>
                             </div>
                         </div>
@@ -327,6 +326,42 @@
                                             </span>
                                         @endif
                                     </div>
+                                    <div class="col-lg-4 col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <label for="dataaquisicao">Data da Aquisição</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                                </div>
+                                                <input type="date" class="form-control" id="dataaquisicao"
+                                                    name="dataaquisicao" value="{{ $properties->dataaquisicao }}"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        @if ($errors->has('dataaquisicao'))
+                                            <span class="invalid-feedback" style="display: block;" role="alert">
+                                                <strong>{{ $errors->first('dataaquisicao') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <label for="dataavaliacao">Data Venda/Avaliação</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                                </div>
+                                                <input type="date" class="form-control" id="dataavaliacao"
+                                                    name="dataavaliacao" value="{{ $properties->dataavaliacao }}"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        @if ($errors->has('dataavaliacao'))
+                                            <span class="invalid-feedback" style="display: block;" role="alert">
+                                                <strong>{{ $errors->first('dataavaliacao') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
 
                                 </div>
 
@@ -435,31 +470,31 @@
                                 <!-- Modais imagens e arquivos do ativo -->
                                 <div class="form-row">
                                     <!--  <div class="input-group mb-3">
-                                                                                                                                                        <div class="input-group-prepend">
-                                                                                                                                                            <span class="input-group-text" id="pictures">Fotos</span>
+                                                                                                                                                            <div class="input-group-prepend">
+                                                                                                                                                                <span class="input-group-text" id="pictures">Fotos</span>
+                                                                                                                                                            </div>
+                                                                                                                                                            <div class="custom-file">
+                                                                                                                                                                <input type="file" class="custom-file-input" id="pictures"
+                                                                                                                                                                    aria-describedby="pictures" name="pictures[]" accept="image/*" multiple>
+                                                                                                                                                                <label class="custom-file-label" for="pictures">Selecionar Foto(s)</label>
+                                                                                                                                                            </div>
+                                                                                                                                                            @if ($errors->has('pictures'))
+                                                                                                                                                                <span class="invalid-feedback" style="display: block;" role="alert">
+                                                                                                                                                                    <strong>{{ $errors->first('pictures') }}</strong>
+                                                                                                                                                                </span>
+                                                                                                                                                            @endif
                                                                                                                                                         </div>
-                                                                                                                                                        <div class="custom-file">
-                                                                                                                                                            <input type="file" class="custom-file-input" id="pictures"
-                                                                                                                                                                aria-describedby="pictures" name="pictures[]" accept="image/*" multiple>
-                                                                                                                                                            <label class="custom-file-label" for="pictures">Selecionar Foto(s)</label>
-                                                                                                                                                        </div>
-                                                                                                                                                        @if ($errors->has('pictures'))
-                                                                                                                                                            <span class="invalid-feedback" style="display: block;" role="alert">
-                                                                                                                                                                <strong>{{ $errors->first('pictures') }}</strong>
-                                                                                                                                                            </span>
-                                                                                                                                                        @endif
-                                                                                                                                                    </div>
-                                                                                                                                                    <div class="input-group mb-3">
-                                                                                                                                                                                                <div class="input-group-prepend">
-                                                                                                                                                                                                    <span class="input-group-text" id="inputGroupFileAddon01">Anexos</span>
-                                                                                                                                                                                                </div>
-                                                                                                                                                                                                <div class="custom-file">
-                                                                                                                                                                                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                                                                                                                                                                                        aria-describedby="inputGroupFileAddon01">
-                                                                                                                                                                                                    <label class="custom-file-label" for="inputGroupFile01">Selecionar
-                                                                                                                                                                                                        Arquivo(s)</label>
-                                                                                                                                                                                                </div>
-                                                                                                                                                                                            </div>-->
+                                                                                                                                                        <div class="input-group mb-3">
+                                                                                                                                                                                                    <div class="input-group-prepend">
+                                                                                                                                                                                                        <span class="input-group-text" id="inputGroupFileAddon01">Anexos</span>
+                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                    <div class="custom-file">
+                                                                                                                                                                                                        <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                                                                                                                                                                                            aria-describedby="inputGroupFileAddon01">
+                                                                                                                                                                                                        <label class="custom-file-label" for="inputGroupFile01">Selecionar
+                                                                                                                                                                                                            Arquivo(s)</label>
+                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                </div>-->
                                 </div>
 
                                 <h3><i class="far fa-images"></i> Imagens</h3>
@@ -627,7 +662,6 @@
                         console.log('Deu Erro: ' + e.message)
                 })
         })
-
     </script>
     <script>
         $(function() {
@@ -637,6 +671,5 @@
             $('#areatotal').maskMoney();
             $('#areaconstruida').maskMoney();
         })
-
     </script>
 @endsection

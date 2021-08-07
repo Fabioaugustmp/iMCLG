@@ -254,7 +254,7 @@
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <div class="form-group has-success">
-                                            <label for="areaconstruida">Área Construída</label>
+                                            <label for="areaconstruida">Área Construída/Privativa</label>
                                             <input type="text" class="form-control" id="areaconstruida"
                                                 name="areaconstruida" value="{{ $properties->areaconstruida }}" readonly>
                                         </div>
@@ -264,18 +264,6 @@
                                 <h3><i class="fas fa-funnel-dollar"></i> Valores do Imóvel</h3>
 
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <div class="form-group has-success">
-                                            <label for="valorvenal">Valor Venal</label>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">R$</span>
-                                                </div>
-                                                <input type="text" class="form-control" id="valorvenal" name="valorvenal"
-                                                    value="{{ $properties->valorvenal }}" readonly>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <div class="form-group has-success">
                                             <label for="valordaaquisicao">Valor da Aquisição</label>
@@ -291,7 +279,32 @@
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <div class="form-group has-success">
-                                            <label for="valordevenda">Valor de Venda</label>
+                                            <label for="dataaquisicao">Data da Aquisição</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control" id="dataaquisicao"
+                                                    name="dataaquisicao" value="{{ $properties->dataaquisicao }}"
+                                                    readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 col-sm-6">
+                                        <div class="form-group has-success">
+                                            <label for="valorvenal">Valor Venal</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">R$</span>
+                                                </div>
+                                                <input type="text" class="form-control" id="valorvenal" name="valorvenal"
+                                                    value="{{ $properties->valorvenal }}" readonly>
+                                            </div>
+                                        </div>
+                                    </div>                                  
+                                    <div class="col-lg-4 col-md-6 col-sm-6">
+                                        <div class="form-group has-success">
+                                            <label for="valordevenda">Valor Venda/Avaliação</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">R$</span>
@@ -301,6 +314,18 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-lg-4 col-md-6 col-sm-6">
+                                        <div class="form-group has-success">
+                                            <label for="dataavaliacao">Data Venda/Avaliação</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control" id="dataavaliacao"
+                                                    name="dataavaliacao" value="{{ $properties->dataavaliacao }}" readonly>
+                                            </div>
+                                        </div>
+                                    </div>                                    
                                 </div>
 
                                 <h3><i class="fas fa-font"></i> Observações do Ativo</h3>
