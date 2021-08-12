@@ -24,7 +24,7 @@ class PropertiesController extends Controller
 
     public function listaAllProperties(Properties $properties)
     {
-        $properties = Properties::simplePaginate(9);
+        $properties = Properties::paginate(9);
 
         $propertiename = DB::table('properties')->get();
 
@@ -264,8 +264,7 @@ class PropertiesController extends Controller
 
     public function editImages(Properties $properties, Request $request)
     {
-
-        dd($request);
+      
     }
 
     public function showEditFiles(Properties $properties)

@@ -26,7 +26,7 @@
         #cards_landscape_wrap-2 .card-flyer {
             border-radius: .25rem;
             border-left-width: .25rem;
-            border-left-color: #5bc0de;
+            border-left-color: #130d8d;
         }
 
         #cards_landscape_wrap-2 .card-flyer .image-box {
@@ -105,7 +105,6 @@
             letter-spacing: 1px;
             color: #1e1a55;
         }
-
     </style>
 
     <div class="container-fluid mt--7">
@@ -133,39 +132,6 @@
                                                     <input class="form-control mr-sm-2" type="search"
                                                         placeholder="Pesquisa de Ativos" aria-label="Search" id="search"
                                                         name="search" autocomplete="off">
-                                                        <div class="input-group mr-sm-2">
-                                                            <div class="input-group-prepend">
-                                                                <label class="input-group-text" for="company">
-                                                                    Empresa</label>
-                                                            </div>
-                                                            <select class="custom-select" id="company" name="company">
-                                                                <option selected>Selecione</option>
-                                                                <option value="MCLG">MCLG Empreendimentos e Participações LTDA
-                                                                </option>
-                                                                <option value="MARCELO LIMIRIO">Marcelo Henrique Limirio
-                                                                    Gonçalves
-                                                                </option>
-                                                                <option value="CLEONICE LIMIRIO">Cleonice Barbosa Limirio
-                                                                    Gonçalves
-                                                                </option>
-                                                                <option value="NEO MARCAS">Neo Marcas</option>
-                                                                <option value="AGROPECUARIA">Agropecuária Limirio</option>
-                                                            </select>
-                                                            @if ($errors->has('company'))
-                                                                <span class="invalid-feedback" style="display: block;"
-                                                                    role="alert">
-                                                                    <strong>{{ $errors->first('company') }}</strong>
-                                                                </span>
-                                                            @endif                                                          
-                                                        </div>
-
-                                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i
-                                                            class="fas fa-search-location"></i> Buscar</button>
-
-                                                </form>
-                                                <!--<form class="form-inline ml-2 my-2 my-lg-0 m-2"
-                                                    action="{{ route('search.propertie.company') }}" method="GET"
-                                                    role="search">
                                                     <div class="input-group mr-sm-2">
                                                         <div class="input-group-prepend">
                                                             <label class="input-group-text" for="company">
@@ -190,15 +156,14 @@
                                                                 <strong>{{ $errors->first('company') }}</strong>
                                                             </span>
                                                         @endif
-                                                        <button class="btn btn-outline-success ml-2 my-2 my-sm-0"
-                                                            type="submit"><i class="fas fa-search-location"></i>
-                                                            Buscar</button>
                                                     </div>
-                                                </form>-->
-                                                
+
+                                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i
+                                                            class="fas fa-search-location"></i> Buscar</button>
+
+                                                </form>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -229,7 +194,7 @@
 
                             <div id="cards_landscape_wrap-2">
                                 <div class="container">
-                                    
+
                                     <div class="row">
                                         @foreach ($properties as $propertie)
                                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 p-2">
@@ -276,79 +241,10 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
-
-
-
-
-                            <!-- <div class="container">
-                                                <div class="row">
-                                                    @foreach ($properties as $propertie)
-                                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 p-2">
-                                                            <div class="card" style="width: 16rem;">
-                                                                <div id="{{ $propertie->id }}" class="carousel slide carousel-fade"
-                                                                    data-ride="carousel">
-                                                                    <div class="carousel-inner">
-                                                                        @foreach ($propertie->images as $picture)
-                                                                            @if ($loop->first)
-                                                                                <div class="carousel-item active">
-                                                                @else
-                                                                                    <div class="carousel-item">
-                                                                            @endif
-                                                                            <a href="{{ route('propertie.show', $propertie->id) }}">
-                                                                                <img src="{{ env('APP_URL') }}/storage/{{ $picture->path }}"
-                                                                                    alt="Ativo_{{ $picture->id }}"
-                                                                                    class="img-fluid d-block w-100 rounded"
-                                                                                    style="width: 254px; height: 254px;">
-                                                                            </a>
-                                                                    </div>
-                                                    @endforeach
-
-                                                </div>
-                                                <a class="carousel-control-prev" href="#{{ $propertie->id }}" role="button"
-                                                    data-slide="prev">
-                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                    <span class="sr-only">Previous</span>
-                                                </a>
-                                                <a class="carousel-control-next" href="#{{ $propertie->id }}" role="button"
-                                                    data-slide="next">
-                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                    <span class="sr-only">Next</span>
-                                                </a>
-                                            </div>
-
-                                            <div class="card-body">
-                                                <h3 class="card-title" align="center">{{ $propertie->name }}</h3>
-                                                <p class="card-text">
-
-                                                    {{ $propertie->company }} <br>
-                                                    {{ $propertie->realestate }} <br>
-                                                    {{ $propertie->statusproperties }} <br>
-                                                    {{ $propertie->valorvenal }}<br>
-                                                    {{ $propertie->areatotal }}<br>
-                                                    {{ $propertie->logradouro }}<br>
-                                                    {{ $propertie->bairro }}<br>
-
-                                                </p>
-                                                <div class="row justify-content-center">
-                                                    <a href="{{ route('propertie.show', $propertie->id) }}"
-                                                        class="btn btn-primary btn-outline-primary"><i class="fas fa-search-location"></i>
-                                                        Visualizar</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endforeach-->
                         </div>
                     </div>
 
-
-
-
+                    @include('layouts.footers.auth')
                 </div>
-
-                @include('layouts.footers.auth')
-            </div>
-        @endsection
+            @endsection

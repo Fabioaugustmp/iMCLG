@@ -29,9 +29,6 @@
     <!--Leaflet hosted map, Mapa tela de Ativos-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 
-    <!-- UIkit CSS 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.1/dist/css/uikit.min.css" />-->
-
     @mapstyles
 
 </head>
@@ -111,7 +108,7 @@
             });
 
 
-        });       
+        });
     </script>
 
     @mapscripts
