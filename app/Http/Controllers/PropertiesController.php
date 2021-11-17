@@ -294,7 +294,11 @@ class PropertiesController extends Controller
             'company' => 'required',            
             'dataaquisicao' => 'required'
         ]);
-
+        /*
+        //Comentário do Fábio - Aqui vc consegue ver o q tá indo na request como um debug seu burro!
+        dd($request->feedback);
+        exit;
+        */
         $properties->name = $request->name;
         $properties->realestate = $request->realestate;
         $properties->statusproperties = $request->statusproperties;
@@ -312,6 +316,7 @@ class PropertiesController extends Controller
         $properties->longitude = $request->longitude;
         $properties->dataaquisicao = $request->dataaquisicao;
         $properties->dataavaliacao = $request->dataavaliacao;
+        $properties->feedback = $request->feedback;
 
         $properties->save();
 
@@ -641,5 +646,21 @@ class PropertiesController extends Controller
             'expenses' => $expenses,
             'properties' => $properties
         ]);
+    }
+
+    public function removeImages(PropertiesImages $propertiesImages)
+    {
+
+// dd($propertiesFiles);
+// exit;
+
+        $propertiesImages->delete();
+    
+        Storage::delete($propertiesImages);
+
+
+        return redirect()
+            ->route('properties.edit.images', $propertiesImages->id_properties)
+            ->with('success', 'Imagem removida com sucesso!');
     }
 }

@@ -57,8 +57,7 @@
                                                 <label for="name">Nome do Arquivo</label>
                                                 <div class="input-group mb-4" id="name">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i
-                                                                class="far fa-file"></i></span>
+                                                        <span class="input-group-text"><i class="far fa-file"></i></span>
                                                     </div>
                                                     <input class="form-control" placeholder="Insira o nome do arquivo."
                                                         type="text" name="name" value="{{ old('name') }}">
@@ -97,37 +96,41 @@
                                     </div>
                                     <div class="form-group">
                                         <!--<label for="checkbox">Anexar Arquivo</label>
-                                                    <div class="input-group mb-3">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="files"><i
-                                                                    class="fas fa-upload"></i>&ensp;Upload</span>
-                                                        </div>
-                                                        <div class="custom-file">
-                                                            <input type="file" class="custom-file-input" id="files"
-                                                                aria-describedby="files" name="files">
-                                                            <label class="custom-file-label" for="files">Selecione</label>
-                                                        </div>
-                                                       
-                                                                                                
-                                                    </div>-->
+                                                        <div class="input-group mb-3">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="files"><i
+                                                                        class="fas fa-upload"></i>&ensp;Upload</span>
+                                                            </div>
+                                                            <div class="custom-file">
+                                                                <input type="file" class="custom-file-input" id="files"
+                                                                    aria-describedby="files" name="files">
+                                                                <label class="custom-file-label" for="files">Selecione</label>
+                                                            </div>
+                                                           
+                                                                                                    
+                                                        </div>-->
                                         <div class="form-group">
                                             <label for="files"><i class="fas fa-upload"></i>&ensp;Anexar Arquivo</label>
                                             <br>
                                             <!--<input type="file" class="form-control-file" id="files" name="files">-->
-                                            <input type='file' name="files">
+                                            <!--<input type='file' name="files">-->
                                         </div>
                                         @if ($errors->has('files'))
                                             <span class="invalid-feedback" style="display: block;" role="alert">
                                                 <strong>{{ $errors->first('files') }}</strong>
                                             </span>
                                         @endif
+
+                                        <!-- We'll transform this input into a pond -->
+                                        <input type="file" name="files" class="filepond" required>
+                                
                                     </div>
 
                                     <hr>
 
                                     <div class="text-start">
                                         <button type="submit" class="btn btn-primary btn-outline-primary mt-4"><i
-                                                class="fa fa-save" aria-hidden="true"></i>
+                                                class="fas fa-check" aria-hidden="true"></i>
                                             {{ __('Salvar') }}</button>
                                         <a href="{{ route('propertie.show', $properties->id) }}"
                                             class="btn btn-primary btn-outline-primary mt-4" type="button">

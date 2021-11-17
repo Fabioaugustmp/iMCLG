@@ -26,7 +26,7 @@ class ExpensesController extends Controller
     }
 
     public function createExpense(Request $request, Properties $properties)
-    {        
+    {                
         
         $request->validate([
             'id_propertie' => 'required',

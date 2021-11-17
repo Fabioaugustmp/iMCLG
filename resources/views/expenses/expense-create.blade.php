@@ -12,7 +12,8 @@
             <div class="col-xl-12 order-xl-1">
                 <div class="card bg-secondary shadow">
                     <div class="card-body">
-                        <form role="form" method="POST" action="{{ route('expense.create.post', ['properties' => $properties->id])}}">
+                        <form class="needs-validation" method="POST"
+                            action="{{ route('expense.create.post', ['properties' => $properties->id]) }}" novalidate>
                             @csrf
                             <div class="card-header bg-white border-0">
                                 <div class="container">
@@ -22,8 +23,10 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-home"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" name="id_propertie" value="{{ $properties->id }}" hidden>                                            
-                                            <input type="text" class="form-control" name="propertie" value="{{ $properties->name }}" readonly>                                            
+                                            <input type="text" class="form-control" name="id_propertie"
+                                                value="{{ $properties->id }}" hidden>
+                                            <input type="text" class="form-control" name="propertie"
+                                                value="{{ $properties->name }}" readonly>
                                         </div>
                                         @if ($errors->has('id_propertie'))
                                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -40,8 +43,9 @@
                                                         <span class="input-group-text"><i
                                                                 class="ni ni-money-coins"></i></span>
                                                     </div>
-                                                    <select class="form-control"  name="expensetype">                                                        
-                                                        @foreach ($expensetypes as $expensetype)                                                      
+                                                    <select class="form-control" name="expensetype" required>
+                                                        <option selected value="" disabled>Selecione</option>
+                                                        @foreach ($expensetypes as $expensetype)
                                                             @if ($expensetype->status === 1)
                                                                 <option value="{{ $expensetype->name }}">
                                                                     {{ $expensetype->name }}
@@ -49,6 +53,12 @@
                                                             @endif
                                                         @endforeach
                                                     </select>
+                                                    <div class="valid-feedback">
+                                                        Validado!
+                                                    </div>
+                                                    <div class="invalid-feedback">
+                                                        Selecione.
+                                                    </div>
                                                 </div>
                                                 @if ($errors->has('expensetype'))
                                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -64,7 +74,8 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="fas fa-coins"></i></span>
                                                     </div>
-                                                    <select class="form-control" name="classexpense">                                                          
+                                                    <select class="form-control" name="classexpense">
+                                                        <option selected value="" disabled>Selecione</option>
                                                         @foreach ($classexpenses as $classexpense)
                                                             @if ($classexpense->status === 1)
                                                                 <option value="{{ $classexpense->name }}">
@@ -92,7 +103,8 @@
                                                                 class="far fa-calendar-check"></i></span>
                                                     </div>
                                                     <input type="date" class="form-control" placeholder="Inclusao"
-                                                        aria-label="DtInclusao" aria-describedby="addon-wrapping" name="includedate" value="{{ old('includedate')}}">
+                                                        aria-label="DtInclusao" aria-describedby="addon-wrapping"
+                                                        name="includedate" value="{{ old('includedate') }}">
                                                 </div>
                                                 @if ($errors->has('includedate'))
                                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -110,7 +122,8 @@
                                                                 class="far fa-calendar-times"></i></span>
                                                     </div>
                                                     <input type="date" class="form-control" placeholder="Vencimento"
-                                                        aria-label="DtVencimento" aria-describedby="addon-wrapping" name="expiredate" value="{{ old('expiredate') }}">
+                                                        aria-label="DtVencimento" aria-describedby="addon-wrapping"
+                                                        name="expiredate" value="{{ old('expiredate') }}">
                                                     </select>
                                                 </div>
                                                 @if ($errors->has('expiredate'))
@@ -131,7 +144,8 @@
                                                                 class="far fa-calendar-minus"></i></span>
                                                     </div>
                                                     <input type="date" class="form-control" placeholder="Inclusao"
-                                                        aria-label="DtInclusao" aria-describedby="addon-wrapping" name="paymentdate" value="{{ old('paymentdate') }}">
+                                                        aria-label="DtInclusao" aria-describedby="addon-wrapping"
+                                                        name="paymentdate" value="{{ old('paymentdate') }}">
                                                 </div>
                                                 @if ($errors->has('paymentdate'))
                                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -150,7 +164,8 @@
                                                                 class="far fa-calendar"></i></span>
                                                     </div>
                                                     <input type="date" class="form-control" placeholder="Competência"
-                                                        aria-label="" aria-describedby="addon-wrapping" name="competence" value="{{ old('competence') }}">
+                                                        aria-label="" aria-describedby="addon-wrapping" name="competence"
+                                                        value="{{ old('competence') }}">
                                                 </div>
                                                 @if ($errors->has('competence'))
                                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -167,8 +182,12 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-money-bill-wave"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Valor da Despesa" name="value" value="{{ old('value') }}" type="text" data-affixes-stay="true" data-prefix="R$ " data-thousands="."
-                                            data-decimal="," class="form-control" aria-label="Amount" id="valor">
+                                           <!-- <input type="text" class="form-control" placeholder="Valor da Despesa"
+                                                name="value" value="{{ old('value') }}" type="text"
+                                                data-affixes-stay="true" data-prefix="R$ " data-thousands="."
+                                                data-decimal="," class="form-control" aria-label="Amount" id="valor">-->
+
+                                           <input type="number" class="form-control" placeholder="Valor da Despesa" name="value" value="{{ old('value') }}">
                                         </div>
                                         @if ($errors->has('value'))
                                             <span class="invalid-feedback" style="display: block;" role="alert">
@@ -183,23 +202,26 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-stream"></i></span>
                                             </div>
-                                            <textarea class="form-control" placeholder="Observações gerais da despesa..." name="observations" value="{{ old('observations') }}"></textarea>
+                                            <textarea class="form-control" placeholder="Observações gerais da despesa..."
+                                                name="observations" value="{{ old('observations') }}"></textarea>
                                         </div>
                                         @if ($errors->has('observations'))
-                                            <span class="invalid-feedback" styl  e="display: block;" role="alert">
+                                            <span class="invalid-feedback" styl e="display: block;" role="alert">
                                                 <strong>{{ $errors->first('observations') }}</strong>
                                             </span>
                                         @endif
                                     </div>
                                     <div class="text-start">
-                                        <button type="submit" class="btn btn-primary btn-outline-primary mt-4"><i class="fa fa-save"
-                                                aria-hidden="true"></i> {{ __(' Gravar Despesa') }}</button>
-                                        <a href="{{ route('expense.show.propertie', $properties->id) }}" class="btn btn-primary btn-outline-primary mt-4" type="button">
+                                        <button type="submit" class="btn btn-primary btn-outline-primary mt-4"><i
+                                                class="far fa-check-circle" aria-hidden="true"></i>
+                                            {{ __(' Gravar Despesa') }}</button>
+                                        <a href="{{ route('expense.show.propertie', $properties->id) }}"
+                                            class="btn btn-primary btn-outline-primary mt-4" type="button">
                                             <i class="fa fa-times" aria-hidden="true"></i>
                                             <span class="btn-inner--text">Cancelar</span>
                                         </a>
                                     </div>
-                                </div>                                                          
+                                </div>
                             </div>
                         </form>
                         <hr class="my-4" />
@@ -210,10 +232,29 @@
 
         @include('layouts.footers.auth')
     </div>
-    <script>
+    <script>     
         $(function() {
-            $('#valor').maskMoney();           
+            $('#valor').maskMoney();
         })
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
 
     </script>
 @endsection

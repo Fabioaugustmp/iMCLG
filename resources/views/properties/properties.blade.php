@@ -105,6 +105,9 @@
             letter-spacing: 1px;
             color: #1e1a55;
         }
+
+
+
     </style>
 
     <div class="container-fluid mt--7">
@@ -167,7 +170,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            
                             <div class="col-lg-6 col-md-6 col-sm-6">
 
                                 <div class="row justify-content-end">
@@ -187,8 +190,7 @@
                     </div>
                     <div class="card-header bg-white border-0">
                         <div class="card-body">
-
-
+                          
 
                             <!-- Topic Cards -->
 
@@ -205,7 +207,8 @@
                                                                 @foreach ($propertie->images as $picture)
                                                                     @if ($loop->first)
                                                                         <img src="{{ env('APP_URL') }}/storage/{{ $picture->path }}"
-                                                                            alt="Ativo_{{ $picture->id }}" />
+                                                                            alt="Ativo_{{ $picture->id }}" id="img-properties" />
+                                                                           
                                                                     @endif
                                                                 @endforeach
                                                             </div>

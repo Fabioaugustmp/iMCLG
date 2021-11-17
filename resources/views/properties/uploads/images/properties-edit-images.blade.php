@@ -88,7 +88,7 @@
                                             <div class="carousel-inner">
                                                 @foreach ($properties->images as $picture)
                                                     <div class="item active text-center">
-                                                        <a type="submit" class="btn btn-outline-light myButton"><i
+                                                        <a href="{{ route('properties.edit.images.remove', $picture->id) }}" class="btn btn-outline-light myButton"><i
                                                                 class="fas fa-times"></i></a>
                                                     </div>
                                                     @if ($loop->first)

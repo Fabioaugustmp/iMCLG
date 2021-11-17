@@ -112,6 +112,13 @@
                                 </div>
                                 <hr>
                                 <div class="container-fluid">
+                                    
+                                    <div class="col-md-6">
+                                        <div id="chart"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        
+                                    </div>
                                     <table id="datatable" class="display table-responsive table-striped table-bordered"
                                         style="width:100%">
                                         <thead>
@@ -123,7 +130,7 @@
                                                 <th>Data Pagamento</th>
                                                 <th>Competencia</th>
                                                 <th>Valor</th>
-                                                <th>Ações</th>                                                
+                                                <th>Ações</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -131,17 +138,17 @@
                                                 <tr align="center">
                                                     <td>{{ $expense->expensetype }}</td>
                                                     <td>{{ $expense->classexpense }}</td>
-                                                    <td>{{ date('d-m-Y', strtotime($expense->includedate)) }}</td>
-                                                    <td>{{ date('d-m-Y', strtotime($expense->expiredate)) }}</td>
-                                                    <td>{{ date('d-m-Y', strtotime($expense->paymentdate)) }}</td>
-                                                    <td>{{ date('d-m-Y', strtotime($expense->competence)) }}</td>
+                                                    <td>{{ date('d/m/Y', strtotime($expense->includedate)) }}</td>
+                                                    <td>{{ date('d/m/Y', strtotime($expense->expiredate)) }}</td>
+                                                    <td>{{ date('d/m/Y', strtotime($expense->paymentdate)) }}</td>
+                                                    <td>{{ date('d/m/Y', strtotime($expense->competence)) }}</td>
                                                     <td>R$ {{ $expense->value }}</td>
-                                                    <td align="center"><a class="m-2"
+                                                    <td align="center"><a class="m-2 btn btn-outline-primary"
                                                             href="{{ route('expense.show.unique', $expense->id) }}"><i
                                                                 class="far fa-eye"></i></a>
-                                                        <a href="{{ route('expense.edit', $expense->id) }}"><i
+                                                        <a class="btn btn-outline-info" href="{{ route('expense.edit', $expense->id) }}"><i
                                                                 class="far fa-edit"></i></a>
-                                                    </td>                                                    
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -154,12 +161,14 @@
                                                 <th>Data Pagamento</th>
                                                 <th>Competencia</th>
                                                 <th>Valor</th>
-                                                <th>Ações</th>                                                
+                                                <th>Ações</th>
                                             </tr>
                                         </tfoot>
                                     </table>
                                 </div>
                             </div>
+
+                            {{$labels}}
 
                         </form>
                         <hr class="my-4" />
@@ -169,6 +178,30 @@
         </div>
 
         @include('layouts.footers.auth')
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script>
+            var options = {
+                series: [44, 55, 41, 17, 15],
+                labels: [1, 2, 3, 4, 5],
+                chart: {
+                    type: 'donut',
+                },
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            width: 200
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }]
+            };
+
+            var chart = new ApexCharts(document.querySelector("#chart"), options);
+            chart.render();
+        </script>
 
     </div>
 

@@ -86,6 +86,7 @@ Route::group(['middleware' => 'auth'], function () {
 	//Route::get('expense/view/{properties}/unique', [PropertiesController::class, 'showUniqueExpensePropertie'])->name('expense.show.propertie.unique');
 	Route::get('properties/edit/images/{properties}', [PropertiesController::class, 'showEditImages'])->name('properties.edit.images');
 	Route::put('properties/edit/images/{properties}', [PropertiesController::class, 'editImages'])->name('properties.edit.images.put');
+	Route::get('properties/remove/images/{propertiesImages}', [PropertiesController::class, 'removeImages'])->name('properties.edit.images.remove');
 	Route::get('properties/edit/files/{properties}', [PropertiesController::class, 'showEditFiles'])->name('properties.edit.files');
 	Route::get('properties/remove/partner/{properties}', [PropertiesController::class, 'showEditPartnerRemove'])->name('properties.edit.partner');
 	Route::get('properties/edit/partner/{partner}', [PropertiesController::class, 'editPartnerRemove'])->name('properties.remove.partner.post');

@@ -93,8 +93,7 @@
                                                         <div class="carousel-item">
                                                 @endif
                                                 <img src="{{ env('APP_URL') }}/storage/{{ $picture->path }}"
-                                                    class="d-block rounded img-fluid" alt="Ativo_{{ $picture->id }}"
-                                                    style="height: auto; width:100%;">
+                                                    class="d-block w-100 rounded img-fluid" alt="Ativo_{{ $picture->id }}">
                                         </div>
                                         @endforeach
                                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
@@ -326,7 +325,7 @@
                                             </div>
                                         </div>
                                     </div>                                    
-                                </div>
+                                </div>                              
 
                                 <h3><i class="fas fa-font"></i> Observações do Ativo</h3>
 
@@ -462,7 +461,6 @@
             </div>
         </div>
     </div>
-
 
 
     @include('layouts.footers.auth')
