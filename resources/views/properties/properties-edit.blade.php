@@ -597,7 +597,7 @@
                                             <label for="validationTextarea">Observações</label>
                                             <textarea class="form-control" id="validationTextarea"
                                                 placeholder="Observações gerais do ativo"
-                                                name="feedback">{{ old('feedback') }}</textarea>
+                                                name="feedback">{{ $properties->feedback }}</textarea>
 
                                         </div>
                                         @if ($errors->has('feedback'))

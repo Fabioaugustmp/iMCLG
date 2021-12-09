@@ -28,7 +28,6 @@
             text-transform: uppercase;
         }
 
-
     </style>
 
     <div class="container-fluid mt--7">
@@ -80,7 +79,8 @@
                                 <div class="col-lg-8 col-md-8 col-sm-8">
                                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                         <ol class="carousel-indicators">
-                                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
+                                            <li data-target="#carouselExampleIndicators" data-slide-to="0"
+                                                class="active">
                                             </li>
                                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                                             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
@@ -93,7 +93,8 @@
                                                         <div class="carousel-item">
                                                 @endif
                                                 <img src="{{ env('APP_URL') }}/storage/{{ $picture->path }}"
-                                                    class="d-block w-100 rounded img-fluid" alt="Ativo_{{ $picture->id }}">
+                                                    class="d-block w-100 rounded img-fluid"
+                                                    alt="Ativo_{{ $picture->id }}">
                                         </div>
                                         @endforeach
                                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
@@ -110,11 +111,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>                   
+                    </div>
 
                     <hr class="my-3"">
 
-                                                                                     <div class=" row">
+                                                                                         <div class="  row">
                     <div class=" col-md-12">
                         <div class="card card-primary">
                             <div class="card-header">
@@ -157,7 +158,8 @@
                                             Longitude do ativo não informadas! <br> Clique em <a
                                                 href="{{ route('propertie.edit', $properties->id) }}">aqui</a>, para
                                             inserir geolocalização.</span>
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <button type="button" class="close" data-dismiss="alert"
+                                            aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
@@ -301,7 +303,7 @@
                                                     value="{{ $properties->valorvenal }}" readonly>
                                             </div>
                                         </div>
-                                    </div>                                  
+                                    </div>
                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                         <div class="form-group has-success">
                                             <label for="valordevenda">Valor Venda/Avaliação</label>
@@ -322,166 +324,205 @@
                                                     <span class="input-group-text"><i class="fas fa-calendar"></i></span>
                                                 </div>
                                                 <input type="text" class="form-control" id="dataavaliacao"
-                                                    name="dataavaliacao" value="{{ $properties->dataavaliacao }}" readonly>
+                                                    name="dataavaliacao" value="{{ $properties->dataavaliacao }}"
+                                                    readonly>
                                             </div>
                                         </div>
-                                    </div>                                    
-                                </div>                              
-
-                                <h3><i class="fas fa-font"></i> Observações do Ativo</h3>
-
-                                <div class="form-group has-success">
-                                    <label for="feedback">Observações</label>
-                                    <textarea type="text" class="form-control" rows="8"
-                                        readonly>{{ $properties->feedback }}</textarea>
-                                </div>
-
+                                    </div>
+                                </div>                                                        
 
                                 <div class="accordion" id="accordionExample">
                                     <div class="card">
-                                      <div class="card-header" id="headingOne">
-                                        <h2 class="mb-0">
-                                          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            <h3><i class="fas fa-stream"></i> Arquivos</h3>
-                                          </button>
-                                        </h2>
-                                      </div>
-                                  
-                                      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <table class="table table-hover table-responsive">
-                                                        <thead>
-                                                            <tr>
-                                                                <th scope="col">#</th>
-                                                                <th scope="col">Nome do Arquivo</th>
-                                                                <th scope="col">Tipo do Arquivo</th>
-                                                                <th scope="col">Visualizar</th>
-                                                                <th scope="col">Download</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @foreach ($properties->files as $file)
+                                        <div class="card-header" id="headingFeedback">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link btn-block text-left" type="button"
+                                                    data-toggle="collapse" data-target="#collapseFeedback" aria-expanded="true"
+                                                    aria-controls="collapseFeedback">
+                                                    <h3><i class="fas fa-font"></i> Observações do Ativo</h3>
+                                                </button>
+                                            </h2>
+                                        </div>
+
+                                        <div id="collapseFeedback" class="collapse" aria-labelledby="headingFeedback"
+                                            data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="has-success ml-4">  
+                                                            {{ $properties->feedback }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link btn-block text-left" type="button"
+                                                    data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                                    aria-controls="collapseOne">
+                                                    <h3><i class="fas fa-stream"></i> Arquivos</h3>
+                                                </button>
+                                            </h2>
+                                        </div>
+
+                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                            data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <table class="table table-hover table-responsive">
+                                                            <thead>
                                                                 <tr>
-                                                                    <th scope="row">{{ $file->id }}</th>
-                                                                    <td>{{ $file->name }}</td>
-                                                                    <td>{{ $file->filetype }}</td>
-                                                                    <td><a href="#" class="btn btn-outline-success" type="button" data-toggle="modal"
-                                                                            data-target="#arquivoModal{{ $file->id }}"><i
-                                                                                class="fa fa-eye" aria-hidden="true"></i></a></td>
-                                                                    <td><a class="btn btn-outline-primary" href="{{ env('APP_URL') }}/storage/{{ $file->path }}"
-                                                                            download="{{$file->name}}"><i class="fa fa-download"
-                                                                                aria-hidden="true"></i></a></td>
+                                                                    <th scope="col">#</th>
+                                                                    <th scope="col">Nome do Arquivo</th>
+                                                                    <th scope="col">Tipo do Arquivo</th>
+                                                                    <th scope="col">Visualizar</th>
+                                                                    <th scope="col">Download</th>
                                                                 </tr>
-            
-                                                                <!-- Modal -->
-                                                                <div class="modal fade" id="arquivoModal{{ $file->id }}"
-                                                                    data-backdrop="static" data-keyboard="false" tabindex="-1"
-                                                                    aria-labelledby="arquivoModalLabel{{ $file->id }}"
-                                                                    aria-hidden="true">
-                                                                    <div
-                                                                        class="modal-dialog modal-lg">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h3 class="modal-title"
-                                                                                    id="arquivoModalLabel{{ $file->id }}">
-                                                                                    {{ $file->name }} - Arquivo -
-                                                                                    {{ $file->filetype }}</h3>
-                                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                                    aria-label="Close">
-                                                                                    <span aria-hidden="true">&times;</span>
-                                                                                </button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <div class="container">
-            
-                                                                                    <object class="PDFdoc" width="100%" height="500px"
-                                                                                        type="application/pdf"
-                                                                                        data="{{ env('APP_URL') }}/storage/{{ $file->path }}"></object>
-            
-            
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach ($properties->files as $file)
+                                                                    <tr>
+                                                                        <th scope="row">{{ $file->id }}</th>
+                                                                        <td>{{ $file->name }}</td>
+                                                                        <td>{{ $file->filetype }}</td>
+                                                                        <td><a href="#" class="btn btn-outline-success"
+                                                                                type="button" data-toggle="modal"
+                                                                                data-target="#arquivoModal{{ $file->id }}"><i
+                                                                                    class="fa fa-eye"
+                                                                                    aria-hidden="true"></i></a></td>
+                                                                        <td><a class="btn btn-outline-primary"
+                                                                                href="{{ env('APP_URL') }}/storage/{{ $file->path }}"
+                                                                                download="{{ $file->name }}"><i
+                                                                                    class="fa fa-download"
+                                                                                    aria-hidden="true"></i></a></td>
+                                                                    </tr>
+
+                                                                    <!-- Modal -->
+                                                                    <div class="modal fade"
+                                                                        id="arquivoModal{{ $file->id }}"
+                                                                        data-backdrop="static" data-keyboard="false"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="arquivoModalLabel{{ $file->id }}"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog modal-lg">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h3 class="modal-title"
+                                                                                        id="arquivoModalLabel{{ $file->id }}">
+                                                                                        {{ $file->name }} - Arquivo -
+                                                                                        {{ $file->filetype }}</h3>
+                                                                                    <button type="button"
+                                                                                        class="close"
+                                                                                        data-dismiss="modal"
+                                                                                        aria-label="Close">
+                                                                                        <span
+                                                                                            aria-hidden="true">&times;</span>
+                                                                                    </button>
                                                                                 </div>
-                                                                                <div class=" modal-footer">
-                                                                                    <button type="button" class="btn btn-secondary"
-                                                                                        data-dismiss="modal"><i
-                                                                                            class="fas fa-times"></i> Fechar</button>
-                                                                                    <a type="button" class="btn btn-outline-primary"
-                                                                                        href="{{ env('APP_URL') }}/storage/{{ $file->path }}"
-                                                                                        download="{{$file->name}}"><i class="fas fa-download"></i>
-                                                                                        Download</a>
+                                                                                <div class="modal-body">
+                                                                                    <div class="container">
+
+                                                                                        <object class="PDFdoc"
+                                                                                            width="100%" height="500px"
+                                                                                            type="application/pdf"
+                                                                                            data="{{ env('APP_URL') }}/storage/{{ $file->path }}"></object>
+
+
+                                                                                    </div>
+                                                                                    <div class=" modal-footer">
+                                                                                        <button type="button"
+                                                                                            class="btn btn-secondary"
+                                                                                            data-dismiss="modal"><i
+                                                                                                class="fas fa-times"></i>
+                                                                                            Fechar</button>
+                                                                                        <a type="button"
+                                                                                            class="btn btn-outline-primary"
+                                                                                            href="{{ env('APP_URL') }}/storage/{{ $file->path }}"
+                                                                                            download="{{ $file->name }}"><i
+                                                                                                class="fas fa-download"></i>
+                                                                                            Download</a>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                                 </div>
+
                                             </div>
-            
                                         </div>
-                                      </div>
                                     </div>
                                     <div class="card">
                                         <div class="card-header" id="headingPartner">
-                                          <h2 class="mb-0">
-                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapsePartner" aria-expanded="true" aria-controls="collapsePartner">
-                                              <h3><i class="fas fa-user-shield"></i> Sócios do Ativo</h3>
-                                            </button>
-                                          </h2>
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link btn-block text-left" type="button"
+                                                    data-toggle="collapse" data-target="#collapsePartner"
+                                                    aria-expanded="true" aria-controls="collapsePartner">
+                                                    <h3><i class="fas fa-user-shield"></i> Sócios do Ativo</h3>
+                                                </button>
+                                            </h2>
                                         </div>
-                                    
-                                        <div id="collapsePartner" class="collapse" aria-labelledby="headingPartner" data-parent="#accordionExample">
-                                          <div class="card-body">
-                                              <div class="row">
-                                                  <div class="col-12">
-                                                      <table class="table table-hover table-responsive">
-                                                          <thead>
-                                                              <tr>
-                                                                  <th scope="col">#</th>
-                                                                  <th scope="col">Nome do Sócio</th>
-                                                                  <th scope="col">Email</th>
-                                                                  <th scope="col">Valor Investido</th>
-                                                                  <th scope="col">Gestor do Ativo</th>
-                                                              </tr>
-                                                          </thead>
-                                                          <tbody>
-                                                              @foreach ($partners as $partner)
-                                                                  <tr>
-                                                                      <th scope="row">{{ $partner->id }}</th>
-                                                                      <td style="text-transform: uppercase">{{ $partner->name }}</td>
-                                                                      <td>{{ $partner->email }}</td>
-                                                                      <td class="align-items-center">
-                                                                          <div class="input-group mb-3">
-                                                                              <div class="input-group-prepend">
-                                                                                  <span class="input-group-text">R$</span>
-                                                                              </div>
-                                                                              <input type="number" class="form-control"
-                                                                                  value="{{ $partner->pivot->partial_value }}"
-                                                                                  readonly>
-                                                                          </div>
-                                                                      </td>
-                                                                      <td class="text-center" style="font-size: 2rem;">
-                                                                          @if ($partner->pivot->manager === 1)
-                                                                              <i class="fas fa-user-tie"></i>
-                                                                          @endif
-                                                                      </td>
-                                                                  </tr>
-                                                              @endforeach
-                                                          </tbody>
-                                                      </table>
-                                                  </div>
-                                              </div>
-                                          </div>
+
+                                        <div id="collapsePartner" class="collapse" aria-labelledby="headingPartner"
+                                            data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <table class="table table-hover table-responsive">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">#</th>
+                                                                    <th scope="col">Nome do Sócio</th>
+                                                                    <th scope="col">Email</th>
+                                                                    <th scope="col">Valor Investido</th>
+                                                                    <th scope="col">Gestor do Ativo</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach ($partners as $partner)
+                                                                    <tr>
+                                                                        <th scope="row">{{ $partner->id }}</th>
+                                                                        <td style="text-transform: uppercase">
+                                                                            {{ $partner->name }}</td>
+                                                                        <td>{{ $partner->email }}</td>
+                                                                        <td class="align-items-center">
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <span
+                                                                                        class="input-group-text">R$</span>
+                                                                                </div>
+                                                                                <input type="number" class="form-control"
+                                                                                    value="{{ $partner->pivot->partial_value }}"
+                                                                                    readonly>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="text-center"
+                                                                            style="font-size: 2rem;">
+                                                                            @if ($partner->pivot->manager === 1)
+                                                                                <i class="fas fa-user-tie"></i>
+                                                                            @endif
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                      </div>
+                                    </div>
                                 </div>
 
-                
+
                                 <br>
-                                
+
                                 <!-- /.card-body -->
                             </div>
                             <!-- /.card -->
