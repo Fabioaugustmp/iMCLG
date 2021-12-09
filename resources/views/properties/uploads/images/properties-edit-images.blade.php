@@ -129,22 +129,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-
-
-
-                            </div>
-                            <div class="container">
-                                <div class="text-start">
-                                    <button type="button" class="btn btn-primary btn-outline-primary mt-4"><i
-                                            class="fas fa-check" aria-hidden="true"></i>
-                                        {{ __(' Gravar Ativo') }}</button>
-                                    <a href="{{ route('properties') }}" class="btn btn-primary btn-outline-primary mt-4"
-                                        type="button">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                        <span class="btn-inner--text">Cancelar</span>
-                                    </a>
-                                </div>
-                            </div>
+                            </div>                           
                         </form>
 
                         <hr class="my-4" />
