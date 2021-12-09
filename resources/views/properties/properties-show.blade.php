@@ -28,6 +28,34 @@
             text-transform: uppercase;
         }
 
+        .dt-button {
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            border-radius: 0.25rem;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+            color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+        .dt-button:hover {
+            background-color: #0d6efd;
+            color: #fff;
+        }
+
     </style>
 
     <div class="container-fluid mt--7">
@@ -115,7 +143,7 @@
 
                     <hr class="my-3"">
 
-                                                                                         <div class="  row">
+                                                                                             <div class="   row">
                     <div class=" col-md-12">
                         <div class="card card-primary">
                             <div class="card-header">
@@ -329,15 +357,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>                                                        
+                                </div>
 
                                 <div class="accordion" id="accordionExample">
                                     <div class="card">
                                         <div class="card-header" id="headingFeedback">
                                             <h2 class="mb-0">
                                                 <button class="btn btn-link btn-block text-left" type="button"
-                                                    data-toggle="collapse" data-target="#collapseFeedback" aria-expanded="true"
-                                                    aria-controls="collapseFeedback">
+                                                    data-toggle="collapse" data-target="#collapseFeedback"
+                                                    aria-expanded="true" aria-controls="collapseFeedback">
                                                     <h3><i class="fas fa-font"></i> Observações do Ativo</h3>
                                                 </button>
                                             </h2>
@@ -348,7 +376,7 @@
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <div class="has-success ml-4">  
+                                                        <div class="has-success ml-4">
                                                             {{ $properties->feedback }}
                                                         </div>
                                                     </div>
@@ -372,20 +400,20 @@
                                             data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <div class="row">
-                                                    <div class="col-12">
-                                                        <table class="table table-hover table-responsive">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th scope="col">#</th>
-                                                                    <th scope="col">Nome do Arquivo</th>
-                                                                    <th scope="col">Tipo do Arquivo</th>
-                                                                    <th scope="col">Visualizar</th>
-                                                                    <th scope="col">Download</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
+                                                    <div class="col-md-12">
+                                                        <div class="container-fluid table-responsive">
+                                                            <table id="datatable"
+                                                                class="display table-striped table-bordered"> >
+                                                                <thead>
+                                                                    <tr align="center">
+                                                                        <th scope="col">#</th>
+                                                                        <th scope="col">Nome do Arquivo</th>
+                                                                        <th scope="col">Tipo do Arquivo</th>
+                                                                        <th scope="col">Ações</th>
+                                                                    </tr>
+                                                                </thead>
                                                                 @foreach ($properties->files as $file)
-                                                                    <tr>
+                                                                    <tr align="center">
                                                                         <th scope="row">{{ $file->id }}</th>
                                                                         <td>{{ $file->name }}</td>
                                                                         <td>{{ $file->filetype }}</td>
@@ -393,12 +421,13 @@
                                                                                 type="button" data-toggle="modal"
                                                                                 data-target="#arquivoModal{{ $file->id }}"><i
                                                                                     class="fa fa-eye"
-                                                                                    aria-hidden="true"></i></a></td>
-                                                                        <td><a class="btn btn-outline-primary"
+                                                                                    aria-hidden="true"></i></a>
+                                                                            <a class="btn btn-outline-primary"
                                                                                 href="{{ env('APP_URL') }}/storage/{{ $file->path }}"
                                                                                 download="{{ $file->name }}"><i
                                                                                     class="fa fa-download"
-                                                                                    aria-hidden="true"></i></a></td>
+                                                                                    aria-hidden="true"></i></a>
+                                                                        </td>
                                                                     </tr>
 
                                                                     <!-- Modal -->
@@ -451,11 +480,19 @@
                                                                         </div>
                                                                     </div>
                                                                 @endforeach
-                                                            </tbody>
-                                                        </table>
+                                                                </tbody>
+                                                                <tfoot>
+                                                                    <tr align="center">
+                                                                        <th scope="col">#</th>
+                                                                        <th scope="col">Nome do Arquivo</th>
+                                                                        <th scope="col">Tipo do Arquivo</th>
+                                                                        <th scope="col">Ações</th>
+                                                                    </tr>
+                                                                </tfoot>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
