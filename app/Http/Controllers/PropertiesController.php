@@ -254,9 +254,6 @@ class PropertiesController extends Controller
 
     public function showEditImages(Properties $properties)
     {
-
-
-
         return view('properties.uploads.images.properties-edit-images', [
             'properties' => $properties
         ]);

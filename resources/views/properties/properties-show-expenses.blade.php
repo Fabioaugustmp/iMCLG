@@ -7,6 +7,37 @@
     'class' => 'col-lg-12'
     ])
 
+    <style>
+        .dt-button {
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            border-radius: 0.25rem;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+            color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+        .dt-button:hover {
+            background-color: #0d6efd;
+            color: #fff;
+        }
+
+    </style>
+
     <div class="container-fluid mt--7">
         <div class="row">
             <div class="col-xl-12 order-xl-1">
@@ -112,13 +143,13 @@
                                 </div>
                                 <hr>
                                 <div class="container-fluid">
-                                    
-                                    <div class="col-md-6">
+
+                                    {{-- <div class="col-md-6">
                                         <div id="chart"></div>
                                     </div>
                                     <div class="col-md-6">
                                         
-                                    </div>
+                                    </div> --}}
                                     <table id="datatable" class="display table-responsive table-striped table-bordered"
                                         style="width:100%">
                                         <thead>
@@ -146,7 +177,8 @@
                                                     <td align="center"><a class="m-2 btn btn-outline-primary"
                                                             href="{{ route('expense.show.unique', $expense->id) }}"><i
                                                                 class="far fa-eye"></i></a>
-                                                        <a class="btn btn-outline-info" href="{{ route('expense.edit', $expense->id) }}"><i
+                                                        <a class="btn btn-outline-info"
+                                                            href="{{ route('expense.edit', $expense->id) }}"><i
                                                                 class="far fa-edit"></i></a>
                                                     </td>
                                                 </tr>
@@ -168,7 +200,7 @@
                                 </div>
                             </div>
 
-                            {{$labels}}
+                            {{-- {{$labels}} --}}
 
                         </form>
                         <hr class="my-4" />
