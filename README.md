@@ -76,3 +76,12 @@ To stop the application, run the following command:
 ```bash
 docker-compose down
 ```
+
+## Default Login Credentials
+
+For initial login, you can use the following credentials:
+
+*   **Email:** `admin@argon.com`
+*   **Password:** `secret`
+
+After logging in, it is recommended to change the password for security reasons.
