@@ -1,0 +1,28 @@
+<h2>Properties</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let property of properties">
+      <td>{{ property.name }}</td>
+      <td>{{ property.cidade }}</td>
+      <td>{{ property.uf }}</td>
+      <td>{{ property.valordaaquisicao | currency:'BRL' }}</td>
+      <td>
+        <a [routerLink]="['/properties', property.id]" class="btn btn-sm btn-info">View</a>
+        <a [routerLink]="['/properties', property.id, 'edit']" class="btn btn-sm btn-primary">Edit</a>
+        <button (click)="deleteProperty(property.id)" class="btn btn-sm btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<a routerLink="/properties/create" class="btn btn-success">Create Property</a>

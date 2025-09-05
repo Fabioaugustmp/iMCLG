@@ -1,6 +1,6 @@
-# Project Name
+# Real Estate Management Application
 
-A brief description of your project.
+This project is a real estate management application with a Spring Boot backend and an Angular frontend.
 
 ## Prerequisites
 
@@ -20,28 +20,7 @@ git clone <repository-url>
 cd <repository-directory>
 ```
 
-### 2. Create your environment file
-
-Copy the `.env.example` file to `.env`.
-
-```bash
-cp .env.example .env
-```
-
-### 3. Update your environment file
-
-Open the `.env` file and update the database credentials to match the ones in `docker-compose.yml`.
-
-```
-DB_CONNECTION=mysql
-DB_HOST=db
-DB_PORT=3306
-DB_DATABASE=laravel_db
-DB_USERNAME=laravel_user
-DB_PASSWORD=laravel_password
-```
-
-### 4. Build and run the containers
+### 2. Build and run the containers
 
 Run the following command to build the images and start the containers in detached mode.
 
@@ -49,24 +28,19 @@ Run the following command to build the images and start the containers in detach
 docker-compose up -d --build
 ```
 
-### 5. Run database migrations and seeders
+### 3. Access the application
 
-Once the containers are up and running, execute the database migrations and seeders.
+You can now access the application in your browser:
 
-```bash
-docker-compose exec app php artisan migrate --seed
-```
-
-### 6. Access the application
-
-You can now access the application in your browser at [http://localhost:8000](http://localhost:8000).
+- **Frontend (Angular):** [http://localhost](http://localhost)
+- **Backend (Spring Boot):** [http://localhost:8080](http://localhost:8080)
 
 ## Docker Services
 
 The `docker-compose.yml` file defines the following services:
 
-- **app**: The Laravel application running on PHP-FPM.
-- **nginx**: The Nginx web server that serves the application.
+- **backend**: The Spring Boot application running on Java 11.
+- **frontend**: The Angular application served by Nginx.
 - **db**: The MySQL database.
 
 ## Stopping the application
