@@ -2,12 +2,19 @@
 
 namespace App\Models;
 
+use App\Scopes\CompanyScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Properties extends Model
 {
     use HasFactory;
+
+    protected static function booted()
+    {
+        static::addGlobalScope(new CompanyScope);
+    }
+
     protected $fillable = [
         'name',
         'realestate',
@@ -25,11 +32,16 @@ class Properties extends Model
         'valordevenda',
         'dataavaliacao',
         'construction',
-        'company',
+        'company_id',
         'feedback',
         'latitude',
         'longitude'
     ];
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 
     public function images()
     {

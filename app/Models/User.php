@@ -20,8 +20,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        //'user_profileaa'
+        'company_id',
+        'role',
     ];
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 
     /**
      * The attributes that should be hidden for arrays.
