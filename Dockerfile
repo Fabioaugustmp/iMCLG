@@ -1,7 +1,7 @@
 # Dockerfile for Laravel Application
 
 # Use the official PHP image with FPM
-FROM php:8.1-fpm
+FROM php:8.2-fpm
 
 # Set working directory
 WORKDIR /var/www
@@ -29,14 +29,27 @@ RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Set the user to www-data
+# Copy application files before changing ownership
+COPY . /var/www
+
+# Fix git dubious ownership error (system-wide, as root)
+RUN git config --system --add safe.directory /var/www
+
+# Change ownership of the application files
+RUN chown -R www-data:www-data /var/www
+
+# Switch to the application user
 USER www-data
 
-# Copy application files
-COPY --chown=www-data:www-data . /var/www
+# Now run composer install as the correct user with correct permissions
+RUN composer install --no-dev --no-scripts --optimize-autoloader
 
-# Install Composer dependencies
-RUN composer install --no-dev --optimize-autoloader
+# Create .env file and generate application key
+RUN cp .env.example .env
+RUN php artisan key:generate
+
+# Run the post-autoload-dump scripts now that the key exists
+RUN composer run-script post-autoload-dump
 
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
