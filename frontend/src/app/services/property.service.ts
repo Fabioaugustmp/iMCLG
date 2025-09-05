@@ -8,27 +8,11 @@ import { Property } from '../models/property.model';
 })
 export class PropertyService {
 
-  private apiUrl = '/api/properties';
+  private apiUrl = 'http://localhost:8080/api/properties';
 
   constructor(private http: HttpClient) { }
 
   getProperties(): Observable<Property[]> {
     return this.http.get<Property[]>(this.apiUrl);
-  }
-
-  getProperty(id: number): Observable<Property> {
-    return this.http.get<Property>(`${this.apiUrl}/${id}`);
-  }
-
-  createProperty(property: Property): Observable<Property> {
-    return this.http.post<Property>(this.apiUrl, property);
-  }
-
-  updateProperty(id: number, property: Property): Observable<Property> {
-    return this.http.put<Property>(`${this.apiUrl}/${id}`, property);
-  }
-
-  deleteProperty(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

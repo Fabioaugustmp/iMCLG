@@ -1,0 +1,47 @@
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col-xl-12 order-xl-1">
+            <div class="card bg-secondary shadow">
+                <div class="card-header bg-white border-0">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h3 class="mb-0">Tipos de Construção</h3>
+                        </div>
+                        <div class="col-4 text-right">
+                            <a href="#!" class="btn btn-sm btn-primary">Novo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush table-striped table-hover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Tipo de Construção</th>
+                                    <th scope="col">Descrição</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody class="list">
+                                <tr *ngFor="let construction of constructions">
+                                    <th scope="row">{{ construction.id }}</th>
+                                    <td>{{ construction.name | uppercase }}</td>
+                                    <td>{{ construction.description }}</td>
+                                    <td>
+                                        <span *ngIf="construction.status" class="badge badge-pill badge-success">Ativo</span>
+                                        <span *ngIf="!construction.status" class="badge badge-pill badge-danger">Inativo</span>
+                                    </td>
+                                    <td>
+                                        <a href="#!" class="btn btn-sm btn-outline-primary"><i class="fas fa-edit"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

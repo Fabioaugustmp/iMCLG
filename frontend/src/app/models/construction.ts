@@ -1,6 +1,6 @@
-export interface Property {
+export interface Construction {
     id: number;
     name: string;
     description: string;
-    price: number;
+    status: boolean;
 }
