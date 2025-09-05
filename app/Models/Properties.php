@@ -33,6 +33,7 @@ class Properties extends Model
         'dataavaliacao',
         'construction',
         'company_id',
+        'user_id', // Add user_id to fillable
         'feedback',
         'latitude',
         'longitude'
@@ -41,6 +42,12 @@ class Properties extends Model
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    // Add user relationship
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function images()

@@ -30,6 +30,37 @@
                                     </span>
                                 @endif
                             </div>
+                            
+                            <div class="form-group{{ $errors->has('company_id') ? ' has-danger' : '' }}">
+                                <label class="form-control-label" for="input-company">Company</label>
+                                <select name="company_id" id="input-company" class="form-control form-control-alternative{{ $errors->has('company_id') ? ' is-invalid' : '' }}">
+                                    <option value="">Select Company</option>
+                                    @foreach ($companies as $company)
+                                        <option value="{{ $company->id }}" {{ old('company_id') == $company->id ? 'selected' : '' }}>{{ $company->name }}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('company_id'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('company_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group{{ $errors->has('role') ? ' has-danger' : '' }}">
+                                <label class="form-control-label" for="input-role">Role</label>
+                                <select name="role" id="input-role" class="form-control form-control-alternative{{ $errors->has('role') ? ' is-invalid' : '' }}" required>
+                                    <option value="">Select Role</option>
+                                    <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                                    <option value="manager" {{ old('role') == 'manager' ? 'selected' : '' }}>Manager</option>
+                                    <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
+                                </select>
+                                @if ($errors->has('role'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('role') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
