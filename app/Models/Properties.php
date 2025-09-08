@@ -71,4 +71,9 @@ class Properties extends Model
     {
         return $this->hasMany(Expense::class, 'id_propertie', 'id');
     }
+
+    public function billings()
+    {
+        return $this->hasMany(Billing::class, 'property_id');
+    }
 }

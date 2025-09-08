@@ -81,6 +81,7 @@ use App\Http\Controllers\ExpenseTypeController;
 use App\Http\Controllers\ClassExpensesController;
 use App\Http\Controllers\FileTypeController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\BillingController;
 use App\Models\Construction;
 use App\Models\Expense;
 use App\Models\Properties;
@@ -114,7 +115,7 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('dashboard');
 		})->name('dashboard');
 
-	Route::get('/billing', function () { return view('billing'); })->name('billing');
+	Route::resource('billing', BillingController::class);
 
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 

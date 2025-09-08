@@ -517,10 +517,8 @@
                                     </div>
                                 </div>
 
-                                <hr>
-
                                 <h3><i class="fas fa-stream"></i> Arquivos</h3>
-                                <br>
+                            
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="row">

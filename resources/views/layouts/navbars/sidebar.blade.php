@@ -131,6 +131,7 @@
                              style="color: #cfcfcf;">{{ __('Sócios e Participações') }}</span>
                      </a>
                  </li>
+                 
                  <!--
                     <li class="nav-item">
                      <a class="nav-link active" href="{{ route('expense') }}" role="button" aria-expanded="true"
@@ -203,6 +204,11 @@
                  <li class="nav-item">
                     <a class="nav-link" href="{{ route('companies.index') }}" style="color: #cfcfcf">
                         <i class="ni ni-building"></i> Companies
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('billing.index') }}" style="color: #cfcfcf">
+                        <i class="fas fa-file-invoice-dollar"></i> Faturas
                     </a>
                 </li>
                 @endif
