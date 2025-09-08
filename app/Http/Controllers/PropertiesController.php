@@ -129,12 +129,14 @@ class PropertiesController extends Controller
         $constructions = Construction::all();
         $statusproperties = StatusProperties::all();
         $partners = Partner::all();
+        $companies = \App\Models\Company::all();
 
         return view('properties.properties-create', [
             'realestate' => $realestate,
             'constructions' => $constructions,
             'statusproperties' => $statusproperties,
-            'partners' => $partners
+            'partners' => $partners,
+            'companies' => $companies
         ]);
     }
 
@@ -159,7 +161,7 @@ class PropertiesController extends Controller
             'valorvenal' => 'required',
             'valordaaquisicao' => 'required',
             'construction' => 'required',
-            'company' => 'required',
+            'company_id' => 'required|exists:companies,id',
             'dataaquisicao' => 'required'
         ]);
 
@@ -180,7 +182,7 @@ class PropertiesController extends Controller
             'valordaaquisicao',
             'valordevenda',
             'construction',
-            'company',
+            'company_id',
             'feedback',
             'latitude',
             'longitude',
@@ -241,6 +243,7 @@ class PropertiesController extends Controller
         $constructions = Construction::all();
         $statusproperties = StatusProperties::all();
         $partners = $properties->partners()->get();
+        $companies = \App\Models\Company::all();
 
 
         return view('properties.properties-edit', [
@@ -248,7 +251,8 @@ class PropertiesController extends Controller
             'realestate' => $realestate,
             'constructions' => $constructions,
             'statusproperties' => $statusproperties,
-            'partners' => $partners
+            'partners' => $partners,
+            'companies' => $companies
         ]);
     }
 
@@ -288,7 +292,7 @@ class PropertiesController extends Controller
             'valorvenal' => 'required',
             'valordaaquisicao' => 'required',
             'construction' => 'required',
-            'company' => 'required',            
+            'company_id' => 'required|exists:companies,id',            
             'dataaquisicao' => 'required'
         ]);
         /*
@@ -308,7 +312,7 @@ class PropertiesController extends Controller
         $properties->valorvenal = $request->valorvenal;
         $properties->valordaaquisicao = $request->valordaaquisicao;
         $properties->construction = $request->construction;
-        $properties->company = $request->company;
+        $properties->company_id = $request->company_id;
         $properties->latitude = $request->latitude;
         $properties->longitude = $request->longitude;
         $properties->dataaquisicao = $request->dataaquisicao;

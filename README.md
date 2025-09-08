@@ -85,3 +85,22 @@ For initial login, you can use the following credentials:
 *   **Password:** `secret`
 
 After logging in, it is recommended to change the password for security reasons.
+
+## Test Users
+
+### Admin User
+
+*   **Email:** `admin@example.com`
+*   **Password:** `password`
+
+This user has the `admin` role and can access the company management view at the `/companies` route.
+
+### Customer User
+
+*   **Email:** `customer@example.com`
+*   **Password:** `password`
+
+This user has the `user` role and can only see the assets assigned to them.
+
+
+https://argon-dashboard-laravel.creative-tim.com/profile

@@ -301,22 +301,18 @@
                                 <hr>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" for="company">
+                                        <label class="input-group-text" for="company_id">
                                             Empresa</label>
                                     </div>
-                                    <select class="custom-select" id="company" name="company">
+                                    <select class="custom-select" id="company_id" name="company_id">
                                         <option selected>Selecione</option>
-                                        <option value="MCLG">MCLG Empreendimentos e Participações LTDA</option>
-                                        <option value="MARCELO LIMIRIO">Marcelo Henrique Limirio Gonçalves
-                                        </option>
-                                        <option value="CLEONICE LIMIRIO">Cleonice Barbosa Limirio Gonçalves
-                                        </option>
-                                        <option value="NEO AVIACAO">Neo Aviação</option>
-                                        <option value="AGROPECUARIA">Agropecuária Limirio</option>
+                                        @foreach ($companies as $company)
+                                            <option value="{{ $company->id }}">{{ $company->name }}</option>
+                                        @endforeach
                                     </select>
-                                    @if ($errors->has('company'))
+                                    @if ($errors->has('company_id'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
-                                            <strong>{{ $errors->first('company') }}</strong>
+                                            <strong>{{ $errors->first('company_id') }}</strong>
                                         </span>
                                     @endif
                                 </div>

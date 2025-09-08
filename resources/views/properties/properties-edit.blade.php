@@ -90,20 +90,18 @@
                                 <hr>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" for="company">
+                                        <label class="input-group-text" for="company_id">
                                             Empresa</label>
                                     </div>
-                                    <select class="custom-select" id="company" name="company">
-                                        <option selected>{{ $properties->company }}</option>
-                                        <option value="MCLG">MCLG</option>
-                                        <option value="MARCELO LIMIRIO">Marcelo Limirio</option>
-                                        <option value="CLEONICE LIMIRIO">Cleonice Limirio</option>
-                                        <option value="NEO MARCAS">Neo Marcas</option>
-                                        <option value="AGROPECUARIA">Agropecuária</option>
+                                    <select class="custom-select" id="company_id" name="company_id">
+                                        <option>Selecione</option>
+                                        @foreach ($companies as $company)
+                                            <option value="{{ $company->id }}" {{ $properties->company_id == $company->id ? 'selected' : '' }}>{{ $company->name }}</option>
+                                        @endforeach
                                     </select>
-                                    @if ($errors->has('company'))
+                                    @if ($errors->has('company_id'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
-                                            <strong>{{ $errors->first('company') }}</strong>
+                                            <strong>{{ $errors->first('company_id') }}</strong>
                                         </span>
                                     @endif
                                 </div>
