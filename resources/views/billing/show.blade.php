@@ -12,6 +12,18 @@
                             <div class="col">
                                 <h3 class="mb-0">Billing Details</h3>
                             </div>
+                            <div class="col text-right">
+                                @can('update', $billing)
+                                    <a href="{{ route('billing.edit', $billing) }}" class="btn btn-sm btn-primary">Edit</a>
+                                @endcan
+                                @can('delete', $billing)
+                                    <form action="{{ route('billing.destroy', $billing) }}" method="POST" style="display: inline-block;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
+                                @endcan
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">

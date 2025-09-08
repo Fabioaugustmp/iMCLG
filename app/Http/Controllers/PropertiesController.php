@@ -13,6 +13,7 @@ use App\Models\PropertiesAssociate;
 use App\Models\PropertiesFiles;
 use App\Models\PropertiesImages;
 use App\Models\StatusProperties;
+use App\Models\Billing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -663,5 +664,15 @@ class PropertiesController extends Controller
         return redirect()
             ->route('properties.edit.images', $propertiesImages->id_properties)
             ->with('success', 'Imagem removida com sucesso!');
+    }
+
+    public function showBillings(Properties $property)
+    {
+        $billings = $property->billings()->get();
+
+        return view('properties.billings', [
+            'property' => $property,
+            'billings' => $billings
+        ]);
     }
 }

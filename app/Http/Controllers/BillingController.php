@@ -6,15 +6,28 @@ use App\Models\Billing;
 use App\Models\Properties;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class BillingController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Billing::class, 'billing');
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $billings = Billing::with('property')->get();
+        if (Auth::user()->role === 'admin') {
+            $billings = Billing::with('property')->get();
+        } else {
+            $billings = Billing::whereHas('property', function ($query) {
+                $query->where('company_id', Auth::user()->company_id);
+            })->with('property')->get();
+        }
+
         return view('billing.index', compact('billings'));
     }
 
@@ -68,24 +81,47 @@ class BillingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Billing $billing)
     {
-        //
+        $properties = Properties::all();
+        return view('billing.edit', compact('billing', 'properties'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Billing $billing)
     {
-        //
+        $request->validate([
+            'property_id' => 'required|exists:properties,id',
+            'title' => 'required',
+            'description' => 'required',
+            'value' => 'required|numeric',
+            'expiration_date' => 'required|date',
+            'payment_status' => 'required|in:paid,unpaid,overdue',
+            'pdf' => 'nullable|mimes:pdf|max:2048',
+        ]);
+
+        $data = $request->except('pdf');
+
+        if ($request->hasFile('pdf')) {
+            Storage::disk('public')->delete($billing->pdf_path);
+            $data['pdf_path'] = $request->file('pdf')->store('billings', 'public');
+        }
+
+        $billing->update($data);
+
+        return redirect()->route('billing.index')->with('success', 'Billing updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Billing $billing)
     {
-        //
+        Storage::disk('public')->delete($billing->pdf_path);
+        $billing->delete();
+
+        return redirect()->route('billing.index')->with('success', 'Billing deleted successfully.');
     }
 }

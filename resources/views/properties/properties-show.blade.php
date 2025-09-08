@@ -78,6 +78,10 @@
                                         class="btn btn-icon btn-3 btn-primary btn-outline-primary" type="button">
                                         <i class="fas fa-coins"></i> Despesas
                                     </a>
+                                    <a href="{{ route('properties.billings', $properties->id) }}"
+                                        class="btn btn-icon btn-3 btn-primary btn-outline-primary" type="button">
+                                        <i class="fas fa-file-invoice-dollar"></i> Faturas
+                                    </a>
                                     <a href="{{ route('properties.add.files', $properties->id) }}"
                                         class="btn btn-icon btn-3 btn-primary btn-outline-primary" type="button">
                                         <i class="far fa-folder-open"></i> Anexos

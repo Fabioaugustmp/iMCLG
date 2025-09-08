@@ -10,9 +10,10 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="mb-0">Billings</h3>
+                                <h3 class="mb-0">Billings for {{ $property->name }}</h3>
                             </div>
                             <div class="col text-right">
+                                <a href="{{ route('propertie.show', $property) }}" class="btn btn-sm btn-primary">Back to Property</a>
                                 @can('create', App\Models\Billing::class)
                                     <a href="{{ route('billing.create') }}" class="btn btn-sm btn-primary">Add billing</a>
                                 @endcan
@@ -25,7 +26,6 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">Title</th>
-                                    <th scope="col">Property</th>
                                     <th scope="col">Amount</th>
                                     <th scope="col">Expiration Date</th>
                                     <th scope="col">Payment Status</th>
@@ -36,7 +36,6 @@
                                 @foreach ($billings as $billing)
                                     <tr>
                                         <td>{{ $billing->title }}</td>
-                                        <td>{{ $billing->property->name }}</td>
                                         <td>{{ $billing->value }}</td>
                                         <td>{{ $billing->expiration_date }}</td>
                                         <td>{{ $billing->payment_status }}</td>

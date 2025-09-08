@@ -138,6 +138,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('properties', [PropertiesController::class, 'listaAllProperties'])->name('properties');
 	Route::get('properties/list', [PropertiesController::class, 'listaAllPropertiesList'])->name('properties.list');
 	Route::get('properties/view/{properties}', [PropertiesController::class, 'showPropertie'])->name('propertie.show');
+	Route::get('properties/{property}/billings', [PropertiesController::class, 'showBillings'])->name('properties.billings');
 	Route::get('properties/search', [PropertiesController::class, 'searchPropertie'])->name('search.propertie');	
 	Route::get('properties/search/company', [PropertiesController::class, 'searchPropertieCompany'])->name('search.propertie.company');	
 	Route::get('properties/create', [PropertiesController::class, 'createPropertie'])->name('properties.create');
