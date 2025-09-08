@@ -31,8 +31,6 @@ class CreatePropertiesTable extends Migration
             $table->string('valordevenda')->nullable();
             $table->date('dataavaliacao')->nullable();
             $table->string('construction');
-            // Add company_id column
-            $table->foreignId('company_id')->nullable()->constrained('companies')->onDelete('set null');
             $table->text('feedback')->nullable();
             $table->text('latitude')->nullable();
             $table->text('longitude')->nullable();
@@ -47,10 +45,6 @@ class CreatePropertiesTable extends Migration
      */
     public function down()
     {
-        Schema::table('properties', function (Blueprint $table) {
-            $table->dropForeign(['company_id']);
-            $table->dropColumn('company_id');
-        });
         Schema::dropIfExists('properties');
     }
 }

@@ -17,7 +17,18 @@
                             </div>
                         </div>
                     </div>
-                    
+
+                    <div class="col-12">
+                        @if (session('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('success') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
+                    </div>
+
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
@@ -42,7 +53,9 @@
                                                     <form action="{{ route('companies.destroy', $company) }}" method="post">
                                                         @csrf
                                                         @method('delete')
-                                                        <button type="button" class="dropdown-item" onclick="confirm('{{ __('Are you sure you want to delete this company?') }}') ? this.parentElement.submit() : ''">Delete</button>
+                                                        <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete this company?') ? this.parentElement.submit() : ''">
+                                                            Delete
+                                                        </button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -52,10 +65,15 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="card-footer py-4">
+                        <nav class="d-flex justify-content-end" aria-label="...">
+                            {{ $companies->links() }}
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
-            
+
         @include('layouts.footers.auth')
     </div>
 @endsection

@@ -105,7 +105,7 @@ Auth::routes();
 
 
 
-Route::group(['middleware' => 'auth'], function () {	
+Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/', 'App\Http\Controllers\PropertiesController@listaAllProperties')->name('home');
 	Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -117,7 +117,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/billing', function () { return view('billing'); })->name('billing');
 
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
-	Route::resource('companies', CompanyController::class);
+
+    Route::group(['middleware' => 'role:admin'], function () {
+        Route::resource('companies', CompanyController::class);
+    });
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::get('upgrade', function () {return view('pages.upgrade');})->name('upgrade'); 

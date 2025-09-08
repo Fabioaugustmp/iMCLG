@@ -199,6 +199,13 @@
                          <i class="fas fa-coins"></i> Classe de Despesas
                      </a>
                  </li>
+                 @if(auth()->user()->role == 'admin')
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('companies.index') }}" style="color: #cfcfcf">
+                        <i class="ni ni-building"></i> Companies
+                    </a>
+                </li>
+                @endif
                  <li class="nav-item">
                     <a class="nav-link" href="{{ route('filetypes') }}" style="color: #cfcfcf">
                         <i class="fas fa-paste"></i> Tipo de Anexos
