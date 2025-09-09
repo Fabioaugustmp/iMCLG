@@ -82,6 +82,7 @@ use App\Http\Controllers\ClassExpensesController;
 use App\Http\Controllers\FileTypeController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\BillingController;
+use App\Http\Controllers\FilepondController;
 use App\Models\Construction;
 use App\Models\Expense;
 use App\Models\Properties;
@@ -114,6 +115,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/dashboard', function(){
 		return view('dashboard');
 		})->name('dashboard');
+
+    Route::post('/upload/temp', [FilepondController::class, 'upload']);
+    Route::delete('/upload/temp/revert', [FilepondController::class, 'revert']);
 
 	Route::resource('billing', BillingController::class);
 
