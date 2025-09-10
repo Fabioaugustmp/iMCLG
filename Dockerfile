@@ -51,6 +51,15 @@ RUN php artisan key:generate
 # Run the post-autoload-dump scripts now that the key exists
 RUN composer run-script post-autoload-dump
 
+# Clear caches
+RUN php artisan cache:clear
+RUN php artisan config:clear
+RUN php artisan route:clear
+RUN php artisan view:clear
+
+# Create the storage link
+RUN php artisan storage:link
+
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
 CMD ["php-fpm"]
