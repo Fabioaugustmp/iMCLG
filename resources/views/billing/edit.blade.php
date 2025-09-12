@@ -49,11 +49,11 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="payment_status">Payment Status</label>
+                            <label for="payment_status">Status do Pagamento</label>
                             <select class="form-control" id="payment_status" name="payment_status" required>
-                                <option value="unpaid" {{ $billing->payment_status == 'unpaid' ? 'selected' : '' }}>Unpaid</option>
-                                <option value="paid" {{ $billing->payment_status == 'paid' ? 'selected' : '' }}>Paid</option>
-                                <option value="overdue" {{ $billing->payment_status == 'overdue' ? 'selected' : '' }}>Overdue</option>
+                                <option value="unpaid" {{ $billing->payment_status == 'unpaid' ? 'selected' : '' }}>Não pago</option>
+                                <option value="paid" {{ $billing->payment_status == 'paid' ? 'selected' : '' }}>Pago</option>
+                                <option value="overdue" {{ $billing->payment_status == 'overdue' ? 'selected' : '' }}>Vencido</option>
                             </select>
                         </div>
 

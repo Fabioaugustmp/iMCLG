@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('layouts.headers.cards')
+    @include('layouts.breadcrumbs.breadcrumb')
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -10,7 +10,7 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="mb-0">Billing Details</h3>
+                                <h3 class="mb-0">Detalhes de Fatura</h3>
                             </div>
                             <div class="col text-right">
                                 @can('update', $billing)
@@ -32,7 +32,21 @@
                         <p><strong>Description:</strong> {{ $billing->description }}</p>
                         <p><strong>Amount:</strong> {{ $billing->value }}</p>
                         <p><strong>Expiration Date:</strong> {{ $billing->expiration_date }}</p>
-                        <p><strong>Payment Status:</strong> {{ $billing->payment_status }}</p>
+                        <p><strong>Status do Pagamento:</strong>
+                            @switch($billing->payment_status)
+                                @case('paid')
+                                    <span class="badge badge-success">Pago</span>
+                                    @break
+                                @case('unpaid')
+                                    <span class="badge badge-warning">Não pago</span>
+                                    @break
+                                @case('overdue')
+                                    <span class="badge badge-danger">Vencido</span>
+                                    @break
+                                @default
+                                    <span class="badge badge-secondary">{{ $billing->payment_status }}</span>
+                            @endswitch
+                        </p>
                         <a href="{{ Storage::url($billing->pdf_path) }}" target="_blank" class="btn btn-primary">View PDF</a>
                     </div>
                 </div>

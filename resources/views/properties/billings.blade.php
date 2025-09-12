@@ -34,7 +34,21 @@
                                                 <h6 class="mb-3 text-lg">{{ $billing->title }}</h6>
                                                 <span class="mb-2">Valor Total: <span class="text-dark font-weight-bold ms-sm-2">{{ $billing->value }}</span></span>
                                                 <span class="mb-2">Data de Vencimento: <span class="text-dark ms-sm-2 font-weight-bold">{{ $billing->expiration_date }}</span></span>
-                                                <span class="">Status Pagamento: <span class="text-dark ms-sm-2 font-weight-bold">{{ $billing->payment_status }}</span></span>
+                                                <span class="">Status Pagamento:
+                                                    @switch($billing->payment_status)
+                                                        @case('paid')
+                                                            <span class="badge badge-success">Pago</span>
+                                                            @break
+                                                        @case('unpaid')
+                                                            <span class="badge badge-warning">Não pago</span>
+                                                            @break
+                                                        @case('overdue')
+                                                            <span class="badge badge-danger">Vencido</span>
+                                                            @break
+                                                        @default
+                                                            <span class="badge badge-secondary">{{ $billing->payment_status }}</span>
+                                                    @endswitch
+                                                </span>
                                             </div>
 
                                             <div class="d-flex align-items-center">
