@@ -114,8 +114,8 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('dashboard');
 		})->name('dashboard');
 
-    Route::post('/upload/temp', [FilepondController::class, 'upload']);
-    Route::delete('/upload/temp/revert', [FilepondController::class, 'revert']);
+    Route::post('/upload/temp', [FilepondController::class, 'upload'])->name('filepond.upload');
+    Route::delete('/upload/temp/revert', [FilepondController::class, 'revert'])->name('filepond.revert');
 
 	Route::resource('billing', BillingController::class);
 

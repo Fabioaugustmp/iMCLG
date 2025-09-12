@@ -17,6 +17,7 @@ use App\Models\Billing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Expr\Isset_;
 
 class PropertiesController extends Controller
@@ -668,7 +669,11 @@ class PropertiesController extends Controller
 
     public function showBillings(Properties $property)
     {
-        $billings = $property->billings()->paginate(10);
+        if (Auth::user()->role === 'admin') {
+            $billings = $property->billings()->paginate(10);
+        } else {
+            $billings = $property->billings()->where('active', true)->paginate(10);
+        }
 
         return view('properties.billings', [
             'property' => $property,

@@ -23,7 +23,7 @@ class BillingController extends Controller
         if (Auth::user()->role === 'admin') {
             $billings = Billing::with('property')->paginate(10);
         } else {
-            $billings = Billing::whereHas('property', function ($query) {
+            $billings = Billing::where('active', true)->whereHas('property', function ($query) {
                 $query->where('company_id', Auth::user()->company_id);
             })->with('property')->paginate(10);
         }
@@ -45,9 +45,6 @@ class BillingController extends Controller
      */
     public function store(Request $request)
     {
-
-        // dd($request);
-
         $request->validate([
             'property_id' => 'required|exists:properties,id',
             'title' => 'required',
@@ -55,40 +52,22 @@ class BillingController extends Controller
             'value' => 'required|numeric',
             'expiration_date' => 'required|date',
             'payment_status' => 'required|in:paid,unpaid,overdue',
-            'pdf' => 'required|string', // FilePond sends the temporary path as a string in the 'pdf' field
+            'pdf' => 'required|file|mimes:pdf|max:2048',
         ]);
 
-        // Get the temporary path from the hidden input field that FilePond creates
-        $tempPdfPath = $request->input('pdf');
+        $pdfPath = $request->file('pdf')->store('billings', 'public');
 
-        // Move the file from the temporary location to its permanent location
-        $finalPdfPath = null;
-        if ($tempPdfPath && Storage::disk('public')->exists($tempPdfPath)) {
-            $fileName = basename($tempPdfPath);
-            // Ensure the 'billings' directory exists within 'public' disk
-            if (!Storage::disk('public')->exists('billings')) {
-                Storage::disk('public')->makeDirectory('billings');
-            }
-            Storage::disk('public')->move($tempPdfPath, 'billings/' . $fileName);
-            $finalPdfPath = 'billings/' . $fileName;
-        }
-
-        // If the file was not moved, or tempPdfPath was null, handle the error
-        if (!$finalPdfPath) {
-            return back()->withErrors(['pdf' => 'PDF file upload failed.'])->withInput();
-        }
-
-        Billing::create([
+        $billing = Billing::create([
             'property_id' => $request->property_id,
             'title' => $request->title,
             'description' => $request->description,
             'value' => $request->value,
             'expiration_date' => $request->expiration_date,
             'payment_status' => $request->payment_status,
-            'pdf_path' => $finalPdfPath, // Use the final path
+            'pdf_path' => $pdfPath,
         ]);
 
-        return redirect()->route('billing.index')->with('success', 'Billing created successfully.');
+        return redirect()->route('properties.billings', ['property' => $billing->property_id])->with('success', 'Billing created successfully.');
     }
 
     /**
@@ -132,7 +111,7 @@ class BillingController extends Controller
 
         $billing->update($data);
 
-        return redirect()->route('billing.index')->with('success', 'Billing updated successfully.');
+        return redirect()->route('properties.billings', ['property' => $billing->property_id])->with('success', 'Billing updated successfully.');
     }
 
     /**
@@ -140,9 +119,12 @@ class BillingController extends Controller
      */
     public function destroy(Billing $billing)
     {
-        Storage::disk('public')->delete($billing->pdf_path);
-        $billing->delete();
+        $property_id = $billing->property_id;
+        $billing->active = !$billing->active;
+        $billing->save();
 
-        return redirect()->route('billing.index')->with('success', 'Billing deleted successfully.');
+        $message = $billing->active ? 'Billing activated successfully.' : 'Billing deactivated successfully.';
+
+        return redirect()->route('properties.billings', ['property' => $property_id])->with('success', $message);
     }
 }

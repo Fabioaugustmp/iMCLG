@@ -44,6 +44,15 @@
                                             <span class="badge badge-secondary">{{ $billing->payment_status }}</span>
                                     @endswitch
                                 </p>
+                                @if (Auth::user()->role === 'admin')
+                                <p class="mb-0 mt-1"><strong>Status:</strong>
+                                    @if ($billing->active)
+                                        <span class="badge badge-success">Active</span>
+                                    @else
+                                        <span class="badge badge-danger">Inactive</span>
+                                    @endif
+                                </p>
+                                @endif
                             </div>
                             <div class="col-12 col-lg-6 d-flex align-items-center justify-content-lg-end flex-wrap">
                                 @can('view', $billing)
@@ -59,8 +68,13 @@
                                 <form action="{{ route('billing.destroy', $billing) }}" method="POST" class="d-inline m-1">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Tem certeza que deseja deletar este item?');">
-                                        <i class="far fa-trash-alt"></i> Deletar
+                                    <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Tem certeza que deseja alterar o status deste item?');">
+                                        <i class="far fa-trash-alt"></i> 
+                                        @if ($billing->active)
+                                            Deletar
+                                        @else
+                                            Ativar
+                                        @endif
                                     </button>
                                 </form>
                                 @endcan

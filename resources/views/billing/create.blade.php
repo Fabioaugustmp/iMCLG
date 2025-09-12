@@ -69,28 +69,9 @@
                             <div class="form-group">
                                 <label for="pdf">PDF</label>
                                 <input type="file" class="form-control-file" id="pdf" name="pdf" required>
-                                {{-- FilePond will replace this input with its own UI --}}
                             </div>
 
-@push('scripts')
-<script>
-    // Get a reference to the file input element
-    const inputElement = document.querySelector('input[id="pdf"]');
 
-    // Create a FilePond instance
-    const pond = FilePond.create(inputElement);
-
-    FilePond.setOptions({
-        server: {
-            process: '/upload/temp', // This will be your Laravel endpoint for temporary uploads
-            revert: '/upload/temp/revert', // Optional: for deleting temporary files
-            headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}' // Important for Laravel
-            }
-        }
-    });
-</script>
-@endpush
 
                             <button type="submit" class="btn btn-primary">Add Billing</button>
                         </form>

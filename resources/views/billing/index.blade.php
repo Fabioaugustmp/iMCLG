@@ -32,6 +32,9 @@
                                     <th scope="col">Amount</th>
                                     <th scope="col">Expiration Date</th>
                                     <th scope="col">Payment Status</th>
+                                    @if (Auth::user()->role === 'admin')
+                                        <th scope="col">Status</th>
+                                    @endif
                                     <th scope="col">PDF</th>
                                     <th scope="col"></th>
                                 </tr>
@@ -44,6 +47,15 @@
                                         <td>{{ $billing->value }}</td>
                                         <td>{{ $billing->expiration_date }}</td>
                                         <td>{{ $billing->payment_status }}</td>
+                                        @if (Auth::user()->role === 'admin')
+                                            <td>
+                                                @if ($billing->active)
+                                                    <span class="badge badge-success">Active</span>
+                                                @else
+                                                    <span class="badge badge-danger">Inactive</span>
+                                                @endif
+                                            </td>
+                                        @endif
                                         <td><a href="{{ Storage::url($billing->pdf_path) }}" target="_blank">View PDF</a></td>
                                         <td class="text-right">
                                             @can('view', $billing)
@@ -56,7 +68,13 @@
                                                 <form action="{{ route('billing.destroy', $billing) }}" method="POST" style="display: inline-block;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    <button type="submit" class="btn btn-sm btn-danger">
+                                                        @if ($billing->active)
+                                                            Deactivate
+                                                        @else
+                                                            Activate
+                                                        @endif
+                                                    </button>
                                                 </form>
                                             @endcan
                                         </td>
