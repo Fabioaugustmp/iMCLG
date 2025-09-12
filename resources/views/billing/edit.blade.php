@@ -58,6 +58,25 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="month_reference">Mês de Referência</label>
+                            <select class="form-control" id="month_reference" name="month_reference">
+                                <option value="">Selecionar Mês</option>
+                                <option value="1" {{ $billing->month_reference == 1 ? 'selected' : '' }}>Janeiro</option>
+                                <option value="2" {{ $billing->month_reference == 2 ? 'selected' : '' }}>Fevereiro</option>
+                                <option value="3" {{ $billing->month_reference == 3 ? 'selected' : '' }}>Março</option>
+                                <option value="4" {{ $billing->month_reference == 4 ? 'selected' : '' }}>Abril</option>
+                                <option value="5" {{ $billing->month_reference == 5 ? 'selected' : '' }}>Maio</option>
+                                <option value="6" {{ $billing->month_reference == 6 ? 'selected' : '' }}>Junho</option>
+                                <option value="7" {{ $billing->month_reference == 7 ? 'selected' : '' }}>Julho</option>
+                                <option value="8" {{ $billing->month_reference == 8 ? 'selected' : '' }}>Agosto</option>
+                                <option value="9" {{ $billing->month_reference == 9 ? 'selected' : '' }}>Setembro</option>
+                                <option value="10" {{ $billing->month_reference == 10 ? 'selected' : '' }}>Outubro</option>
+                                <option value="11" {{ $billing->month_reference == 11 ? 'selected' : '' }}>Novembro</option>
+                                <option value="12" {{ $billing->month_reference == 12 ? 'selected' : '' }}>Dezembro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <label for="pdf">PDF</label>
                             <input type="file" class="form-control-file" id="pdf" name="pdf">
                         </div>

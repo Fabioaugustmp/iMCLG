@@ -29,6 +29,25 @@
                                 <h4 class="mb-2">{{ $billing->title }}</h4>
                                 <p class="mb-1"><strong>Valor Total:</strong> R$ {{ number_format($billing->value, 2, ',', '.') }}</p>
                                 <p class="mb-1"><strong>Data de Vencimento:</strong> {{ \Carbon\Carbon::parse($billing->expiration_date)->format('d/m/Y') }}</p>
+                                <p class="mb-1"><strong>Mês de Referência:</strong>
+                                    @php
+                                        $months = [
+                                            1 => 'Janeiro',
+                                            2 => 'Fevereiro',
+                                            3 => 'Março',
+                                            4 => 'Abril',
+                                            5 => 'Maio',
+                                            6 => 'Junho',
+                                            7 => 'Julho',
+                                            8 => 'Agosto',
+                                            9 => 'Setembro',
+                                            10 => 'Outubro',
+                                            11 => 'Novembro',
+                                            12 => 'Dezembro',
+                                        ];
+                                    @endphp
+                                    {{ $billing->month_reference ? $months[$billing->month_reference] : 'N/A' }}
+                                </p>
                                 <p class="mb-0"><strong>Status Pagamento:</strong>
                                     @switch($billing->payment_status)
                                         @case('paid')

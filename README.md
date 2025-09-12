@@ -61,6 +61,39 @@ docker-compose exec app php artisan migrate --seed
 
 You can now access the application in your browser at [http://localhost:8000](http://localhost:8000).
 
+## Running Locally with Artisan
+
+If you are not using Docker, you can run the application locally using the `php artisan serve` command. Here are the steps to get it running:
+
+1.  **Set the `APP_URL`**: Open the `.env` file and make sure the `APP_URL` is set to the correct URL of your application, including the port number. For example:
+
+    ```
+    APP_URL=http://127.0.0.1:8000
+    ```
+
+2.  **Create the storage link**: If you haven't already, create the symbolic link to the storage directory:
+
+    ```bash
+    php artisan storage:link
+    ```
+
+3.  **Clear caches**: To make sure your application is using the latest configuration, clear all the caches:
+
+    ```bash
+    php artisan cache:clear
+    php artisan route:clear
+    php artisan view:clear
+    php artisan config:clear
+    ```
+
+4.  **Run the server**: Start the development server:
+
+    ```bash
+    php artisan serve
+    ```
+
+    This will usually start the server at `http://127.0.0.1:8000`.
+
 ## File Storage
 
 This application uses Laravel's file storage system to handle file uploads, such as the PDFs for billings. By default, files are stored in the `storage/app/public` directory. However, to make these files accessible from the web, a symbolic link needs to be created from `public/storage` to `storage/app/public`.

@@ -101,10 +101,6 @@
 
 
     <!--FilePond-->
-    <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
-
-    <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
-
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
     <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
 
@@ -176,14 +172,18 @@
     <!-- Turn all file input elements into ponds -->
     <script>
         // Register the plugin
-
-        // Get a reference to the file input element
-        const inputElement = document.querySelector('input[type="file"]');
-
-        // Create a FilePond instance
-        const pond = FilePond.create(inputElement);
         FilePond.registerPlugin(FilePondPluginImagePreview);
 
+        // Turn all file input elements into ponds
+        FilePond.setOptions({
+            server: {
+                url: '{{ route('filepond.upload') }}',
+                revert: '{{ route('filepond.revert') }}',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            }
+        });
         FilePond.parse(document.body);
     </script>
 

@@ -17,6 +17,7 @@ class Billing extends Model
         'expiration_date',
         'pdf_path',
         'payment_status',
+        'month_reference',
     ];
 
     public function property()

@@ -31,6 +31,7 @@
                                     <th scope="col">Property</th>
                                     <th scope="col">Amount</th>
                                     <th scope="col">Expiration Date</th>
+                                    <th scope="col">Mês de Referência</th>
                                     <th scope="col">Payment Status</th>
                                     @if (Auth::user()->role === 'admin')
                                         <th scope="col">Status</th>
@@ -46,6 +47,25 @@
                                         <td><a href="{{ route('propertie.show', $billing->property) }}">{{ $billing->property->name }}</a></td>
                                         <td>{{ $billing->value }}</td>
                                         <td>{{ $billing->expiration_date }}</td>
+                                        <td>
+                                            @php
+                                                $months = [
+                                                    1 => 'Janeiro',
+                                                    2 => 'Fevereiro',
+                                                    3 => 'Março',
+                                                    4 => 'Abril',
+                                                    5 => 'Maio',
+                                                    6 => 'Junho',
+                                                    7 => 'Julho',
+                                                    8 => 'Agosto',
+                                                    9 => 'Setembro',
+                                                    10 => 'Outubro',
+                                                    11 => 'Novembro',
+                                                    12 => 'Dezembro',
+                                                ];
+                                            @endphp
+                                            {{ $billing->month_reference ? $months[$billing->month_reference] : 'N/A' }}
+                                        </td>
                                         <td>{{ $billing->payment_status }}</td>
                                         @if (Auth::user()->role === 'admin')
                                             <td>

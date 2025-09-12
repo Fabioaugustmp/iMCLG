@@ -53,6 +53,7 @@ class BillingController extends Controller
             'expiration_date' => 'required|date',
             'payment_status' => 'required|in:paid,unpaid,overdue',
             'pdf' => 'required|file|mimes:pdf|max:2048',
+            'month_reference' => 'nullable|integer|min:1|max:12',
         ]);
 
         $pdfPath = $request->file('pdf')->store('billings', 'public');
@@ -65,6 +66,7 @@ class BillingController extends Controller
             'expiration_date' => $request->expiration_date,
             'payment_status' => $request->payment_status,
             'pdf_path' => $pdfPath,
+            'month_reference' => $request->month_reference,
         ]);
 
         return redirect()->route('properties.billings', ['property' => $billing->property_id])->with('success', 'Billing created successfully.');
@@ -100,6 +102,7 @@ class BillingController extends Controller
             'expiration_date' => 'required|date',
             'payment_status' => 'required|in:paid,unpaid,overdue',
             'pdf' => 'nullable|mimes:pdf|max:2048',
+            'month_reference' => 'nullable|integer|min:1|max:12',
         ]);
 
         $data = $request->except('pdf');
@@ -108,6 +111,8 @@ class BillingController extends Controller
             Storage::disk('public')->delete($billing->pdf_path);
             $data['pdf_path'] = $request->file('pdf')->store('billings', 'public');
         }
+
+        $data['month_reference'] = $request->month_reference;
 
         $billing->update($data);
 
