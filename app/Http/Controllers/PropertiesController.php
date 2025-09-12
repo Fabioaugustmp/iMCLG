@@ -668,7 +668,7 @@ class PropertiesController extends Controller
 
     public function showBillings(Properties $property)
     {
-        $billings = $property->billings()->get();
+        $billings = $property->billings()->paginate(10);
 
         return view('properties.billings', [
             'property' => $property,

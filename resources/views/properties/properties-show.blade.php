@@ -11,7 +11,9 @@
     <style>
         #map {
             position: absolute;
-            top: 0, bottom: 0, left: 0, right: 0, height: 512px
+            top: 0;
+            bottom: 0;
+            left: 0; right: 0; height: 512px;
         }
 
         .gnw-map.fade {
@@ -295,6 +297,7 @@
                                     </div>
                                 </div>
 
+                                @if(Auth::user()->role == 'admin')
                                 <h3><i class="fas fa-funnel-dollar"></i> Valores do Imóvel</h3>
 
                                 <div class="row">
@@ -362,6 +365,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
 
                                 <div class="accordion" id="accordionExample">
                                     <div class="card">

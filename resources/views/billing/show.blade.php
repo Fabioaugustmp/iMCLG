@@ -9,16 +9,16 @@
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
-                            <div class="col">
+                            <div class="col-12 col-md-6 mb-3 mb-md-0">
                                 <h3 class="mb-0">Detalhes da Fatura</h3>
                             </div>
-                            <div class="col text-right">
-                                <a href="{{ route('billing.index') }}" class="btn btn-sm btn-primary">Voltar</a>
+                            <div class="col-12 col-md-6 text-md-right">
+                                <a href="{{ route('properties.billings', ['property' => $billing->property_id]) }}" class="btn btn-sm btn-primary">Voltar</a>
                                 @can('update', $billing)
                                     <a href="{{ route('billing.edit', $billing) }}" class="btn btn-sm btn-primary">Editar</a>
                                 @endcan
                                 @can('delete', $billing)
-                                    <form action="{{ route('billing.destroy', $billing) }}" method="POST" style="display: inline-block;">
+                                    <form action="{{ route('billing.destroy', $billing) }}" method="POST" class="d-inline-block">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja deletar este item?');">Deletar</button>
@@ -29,23 +29,28 @@
                     </div>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                                <strong>Título:</strong> {{ $billing->title }}
+                            <li class="list-group-item px-0">
+                                <strong>Título:</strong><br>
+                                {{ $billing->title }}
                             </li>
-                            <li class="list-group-item">
-                                <strong>Imóvel:</strong> {{ $billing->property->name }}
+                            <li class="list-group-item px-0">
+                                <strong>Imóvel:</strong><br>
+                                {{ $billing->property->name }}
                             </li>
-                            <li class="list-group-item">
-                                <strong>Descrição:</strong> {{ $billing->description }}
+                            <li class="list-group-item px-0">
+                                <strong>Descrição:</strong><br>
+                                <p class="mb-0">{{ $billing->description }}</p>
                             </li>
-                            <li class="list-group-item">
-                                <strong>Valor:</strong> R$ {{ number_format($billing->value, 2, ',', '.') }}
+                            <li class="list-group-item px-0">
+                                <strong>Valor:</strong><br>
+                                R$ {{ number_format($billing->value, 2, ',', '.') }}
                             </li>
-                            <li class="list-group-item">
-                                <strong>Data de Vencimento:</strong> {{ \Carbon\Carbon::parse($billing->expiration_date)->format('d/m/Y') }}
+                            <li class="list-group-item px-0">
+                                <strong>Data de Vencimento:</strong><br>
+                                {{ \Carbon\Carbon::parse($billing->expiration_date)->format('d/m/Y') }}
                             </li>
-                            <li class="list-group-item">
-                                <strong>Status do Pagamento:</strong>
+                            <li class="list-group-item px-0">
+                                <strong>Status do Pagamento:</strong><br>
                                 @switch($billing->payment_status)
                                     @case('paid')
                                         <span class="badge badge-success">Pago</span>
@@ -61,14 +66,14 @@
                                 @endswitch
                             </li>
                         </ul>
-                        <div class="mt-4">
+                        <div class="mt-4 d-flex flex-wrap">
                             <!-- View PDF Button -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pdfModal">
+                            <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#pdfModal">
                                 <i class="fas fa-eye"></i> Visualizar PDF
                             </button>
 
                             <!-- Download PDF Button -->
-                            <a href="{{ Storage::url($billing->pdf_path) }}" download class="btn btn-success">
+                            <a href="{{ Storage::url($billing->pdf_path) }}" download class="btn btn-success m-1">
                                 <i class="fas fa-download"></i> Baixar PDF
                             </a>
                         </div>
